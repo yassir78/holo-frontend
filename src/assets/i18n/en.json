@@ -1,0 +1,17 @@
+{
+    "app":{
+        "navbar":{
+            "button1":"login",
+            "button2":"register"
+        },
+    
+              "home":{
+                "title":{
+            "part1":"All your online businesses.",
+            "part2":"Clicking is",
+            "part3":"delivered !"
+                }
+        }
+        
+    }
+}

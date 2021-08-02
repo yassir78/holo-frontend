@@ -1,0 +1,12 @@
+//Button
+.btn {
+    border-color: transparent;
+    border-radius: 7px;
+    &:disabled, 
+    &.disabled {  
+      pointer-events: none;
+    }
+  }
+  
+  //Alternate Button
+ 

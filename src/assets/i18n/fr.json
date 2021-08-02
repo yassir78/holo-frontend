@@ -1,0 +1,16 @@
+{
+    "app":{
+        "navbar":{
+            "button1":"Se connecter",
+            "button2":"S'inscrire"
+        },
+        "home":{
+            "title":{
+            "part1":"Tous vos commerces en ligne.",
+            "part2":"Cliquez, c'est",
+            "part3":"livré !" 
+            }
+        }
+        
+    }
+}

@@ -1,0 +1,61 @@
+<section class="login h-2 md:h-screen grid md:grid-cols-2 bg-blue-100 md:bg-white">
+    <div
+        class="login__right shadow-lg md:shadow-none px-0 pt-12 pb-10  md:pt-12 md:pb-12 md:px-12 bg-white md:bg-blue-100">
+
+        <div class="login__right__logo ">
+            <img class="mx-auto md:mx-0" src="../../../../../assets/images/logo.png" alt="">
+
+        </div>
+        <div class="login__right__frame mt-3 hidden md:block">
+            <img class="mx-auto" src="../../../../../assets/images/Frame.png" alt="">
+        </div>
+
+
+    </div>
+    <div
+        class=" login__left h-full rounded-xl shadow-lg md:shadow-none md:border-0 md:rounded-none py-3 md:py-0 border-2 md:mt-28 mt-9 mx-3 px-4 lg:px-9 xl:px-36 bg-white ">
+        <div class="login__left__title ">
+            <span class="login__left__title__text">Se connecter</span>
+        </div>
+        <div class="login__left__form mt-10">
+            <div class="login__left__form__group ">
+                <label for="email" class="font-medium text-warm-gray-900 login__left__form__group__label">Email</label>
+                <input type="email" name="email" id="email" placeholder="Votre email"
+                    class="py-3 mt-2 px-4 w-full block shadow-sm text-warm-gray-900 focus:ring-blue-300	 focus:border-blue-100 border-warm-gray-200 rounded-xl placeholder-200">
+            </div>
+            <div class="login__left__form__group mt-5">
+                <label for="password" class="font-medium text-warm-gray-900 login__left__form__group__label">Mot de
+                    password</label>
+                <div class="relative ">
+                    <input type="password" name="password" id="password" placeholder="Votre mot de passe"
+                        class="py-3 mt-2 px-4 w-full block shadow-sm text-warm-gray-900 focus:ring-blue-300	 focus:border-blue-100 border-warm-gray-200 rounded-xl placeholder-200">
+                    <img class="absolute bottom-3 right-3 hover:cursor-pointer active:-translate-y-1 transition		"
+                        src="../../../../../assets/images/eye.png" alt="">
+                </div>
+            </div>
+            <div class="text-right my-4 ">
+                <span class="inter text-gray-400 font-medium">Mot de passe oublié ?</span>
+            </div>
+            <div class="my-3">
+                <button
+                    class="w-full text-white py-4  popping login__left__form__group__btn hover:bg-blue-600 rounded-xl active:-translate-y-1">Se
+                    connecter</button>
+            </div>
+            <div class="text-center">
+                <span>Ou</span>
+            </div>
+            <div class="my-3">
+                <button type="button"
+                    class="w-full inline-flex justify-center items-center popping  py-4 border border-blue shadow-sm text-base font-medium rounded-xl text-black bg-white focus:outline-none hover:bg-blue-200 active:-translate-y-1">
+                    <!-- Heroicon name: solid/mail -->
+                    <img src="../../../../../assets/images/google.svg" class="mr-3" height="20px" width="20px" alt="">
+                    Se connecter avec Google
+                </button>
+            </div>
+            <div class="mt-5 text-center text-base">
+                <span class="inter text-gray-400">Pas encore inscrit(e) ? </span><span class="popping text--blue">
+                    S'inscrire</span>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,36 @@
+//Footer
+footer {
+    width: 100%;
+    
+    &.dark {
+      background: rgba(0,0,0,1);  
+    }
+  }
+  
+  //Footer Buttons
+  footer .btn {  
+    color: $red; 
+  }
+
+  //Footer
+footer {
+    width: 100%;
+  
+    &.dark {
+      background: rgba(0,0,0,1);  
+    }
+  
+    .container {
+      padding: 1em;
+    }
+  }
+  
+  //Footer Buttons
+  footer .btn {  
+    color: $red; 
+  }
+  
+  //Footer Copyright Message
+  footer .copyright {  
+    text-align: center; 
+  }

@@ -1,0 +1,42 @@
+.font-1{
+    font-size: 1rem;
+}
+.bg-blue{
+     @include bgColor($blue);
+}
+.bg-blue-light{
+    @include bgColor($blue_light);
+}
+.popping{
+    @include popping();
+}
+.border-blue{
+    border: 1px solid $blue;
+}
+.inter{
+    font-family: 'Inter', sans-serif;
+}
+.text--blue{
+    color:$blue
+}
+.placeholder-200{
+    &::placeholder{
+        //font-weight: 400;
+        color: rgba(156, 163, 175, var(--tw-text-opacity));
+    }
+}
+.bg-blue1{
+    background-color: $bordure_champ;
+}
+.leading-20{
+    line-height: 3.5rem !important;
+}
+.-z-10{
+    z-index: -10;
+}
+.gray{
+    color: #44576B;
+}
+.light-red{
+ color: #F07777;
+}
