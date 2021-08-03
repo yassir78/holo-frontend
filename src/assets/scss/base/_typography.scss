@@ -40,3 +40,15 @@
 .light-red{
  color: #F07777;
 }
+
+.bg-blue-2{
+    @include bgColor($blue_2);
+}
+
+.text-blue-2{
+    color: $blue_2;
+}
+
+.dotted-color{
+  background-color: #7EC69D;
+}

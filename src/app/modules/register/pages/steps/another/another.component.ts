@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-another',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnotherComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
+  goToProperty(){
+   this.router.navigate(['/register/property'])
+  }
 
+  returnToAddress(){
+    this.router.navigate(['/register/address'])
+  }
 }

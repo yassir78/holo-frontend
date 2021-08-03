@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+
   {
     path:'login',
     loadChildren:()=>
@@ -22,7 +24,6 @@ const routes: Routes = [
     loadChildren:()=>
     import('./modules/landing/landing-routing.module').then((m)=>m.LandingRoutingModule)
   },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({
