@@ -10,7 +10,6 @@ import { PropertyComponent } from './pages/steps/property/property.component';
 import { AddressComponent } from './pages/steps/address/address.component';
 import { AnotherComponent } from './pages/steps/another/another.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 
@@ -19,8 +18,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     RegisterRoutingModule,
-	    	FormsModule,
-        RouterModule
-  ]
+    BrowserModule,
+	    	FormsModule,  ]
 })
 export class RegisterModule { }
