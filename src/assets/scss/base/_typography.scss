@@ -10,6 +10,10 @@
 .bg-blue-light{
     @include bgColor($blue_light);
 }
+
+.bg_blue_button{
+    @include bgColor($blue_button);
+}
 .popping{
     @include popping();
 }
@@ -20,7 +24,7 @@
     font-family: 'Inter', sans-serif;
 }
 .text--blue{
-    color:$blue
+    color:$blue_button
 }
 .placeholder-200{
     &::placeholder{
