@@ -21,6 +21,7 @@
     "@angular/router": "~12.1.4",
     "@ngneat/tailwind": "^7.0.3",
     "animate.css": "^4.1.1",
+    "ng2-animate-on-scroll": "^2.2.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "web-animations-js": "^2.3.2",

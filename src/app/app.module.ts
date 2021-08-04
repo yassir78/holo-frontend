@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginModule } from './modules/login/login.module';
 import { RegisterModule } from './modules/register/register.module';
-
+import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
 @NgModule({
   declarations: [
     AppComponent,
@@ -13,6 +13,8 @@ import { RegisterModule } from './modules/register/register.module';
   imports: [
     BrowserModule,
     AppRoutingModule, 
+    AnimateOnScrollModule.forRoot()
+
   ],
 
   providers: [],
