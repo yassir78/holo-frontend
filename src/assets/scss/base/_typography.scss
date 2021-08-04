@@ -7,6 +7,10 @@
 .bg-blue-light{
     @include bgColor($blue_light);
 }
+
+.bg_blue_button{
+    @include bgColor($blue_button);
+}
 .popping{
     @include popping();
 }
