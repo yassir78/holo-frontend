@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./activity.component.scss']
 })
 export class ActivityComponent implements OnInit {
-
+  currentInput:string = "+  Ajouter";
   constructor(private router:Router) { }
 
   ngOnInit(): void {
@@ -18,5 +18,11 @@ export class ActivityComponent implements OnInit {
 
   returnToAbout(){
     this.router.navigate(['/register/about'])
+  }
+
+
+  onFileSelected(event:any) {
+    this.currentInput = event.target.files[0].name+"  x";
+      console.log(event.target.files[0].name);
   }
 }
