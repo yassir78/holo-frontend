@@ -4,6 +4,9 @@
 .bg-blue{
      @include bgColor($blue);
 }
+.bg-blue_dark{
+    @include bgColor($dark_blue)
+}
 .bg-blue-light{
     @include bgColor($blue_light);
 }

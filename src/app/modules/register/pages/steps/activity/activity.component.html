@@ -1,5 +1,5 @@
 
-  <div class="mt-5 md:mt-0 md:col-span-2 bg-white ">
+  <div class="mt-5 md:mt-0 md:col-span-2 bg-white">
     <div class="text-gray-700 text-2xl  font-medium text-gray-700 mb-6">Activité professionelle</div>
     <form action="#" method="POST">
       <div class="grid grid-cols-6 gap-6">
@@ -49,6 +49,61 @@
           </div>
       
       </div>
+      <fieldset class="mt-6">
+        <div>
+          <legend class="text-base font-medium text-gray-900">
+            Fiche de salaire
+          </legend>
+        </div>
+        <div class="mt-4 space-y-4">
+          <div class="flex items-center">
+            <label for="push-everything" class="mr-3 block text-sm font-medium text-gray-500">
+              1er mois de salaire
+            </label>
+            <label for="upload0">
+              <span [ngClass]="currentInput=='+  Ajouter' ? 'text-blue-2' : 'text-gray-700'" > {{currentInput}}</span>
+              <input type="file" id="upload0"  
+              (change)="onFileSelected($event)" style="display:none">
+        </label>          </div>
+          <div class="flex items-center">
+            <label for="push-email" class="mr-3 block text-sm font-medium text-gray-500">
+              2ème mois de salaire
+            </label>
+            <label for="upload1">
+              <span class="text-blue-2"> +  Ajouter</span>
+              <input type="file" id="upload1" style="display:none">
+        </label>         
+          </div>
+          <div class="flex items-center">
+            <label for="push-nothing" class="mr-3 block text-sm font-medium text-gray-500">
+            3ème mois de salaire
+             </label>
+             <label for="upload2">
+              <span class="text-blue-2"> +  Ajouter</span>
+              <input type="file" id="upload2" style="display:none">
+        </label>        
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class="mt-6">
+        <div>
+          <legend class="text-base font-medium text-gray-900">
+            Fiche de poursuite
+          </legend>
+        </div>
+        <div class="mt-4 space-y-4">
+          <div class="flex items-center">
+            <label for="push-everything" class="mr-3 block text-sm font-medium text-gray-500">
+              Dernier fiche de poursuite
+            </label>
+            <label for="upload3">
+                  <span class="text-blue-2"> +  Ajouter</span>
+                  <input type="file" id="upload3" style="display:none">
+            </label>
+         </div>
+         
+        </div>
+      </fieldset>
       <div class="grid grid-rows-6 grid-flow-col gap-2 mt-2">
         <div class="px-4 py-3 text-left sm:px-6 row-span-6 sm:row-span-6">
             <a (click)="returnToAbout()" class="inline-flex items-center px-3 py-2  text-sm text-blue-2 cursor-pointer hover:bg-blue-2">
