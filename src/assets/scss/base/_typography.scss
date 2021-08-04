@@ -2,7 +2,10 @@
     font-size: 1rem;
 }
 .bg-blue{
-     @include bgColor($blue);
+     @include bgColor($blue_button);
+}
+.bg-blue_dark{
+    @include bgColor($dark_blue)
 }
 .bg-blue-light{
     @include bgColor($blue_light);
@@ -21,7 +24,7 @@
     font-family: 'Inter', sans-serif;
 }
 .text--blue{
-    color:$blue
+    color:$blue_button
 }
 .placeholder-200{
     &::placeholder{
@@ -79,4 +82,10 @@
 }
 .text-purple{
     color: $purple;
+}
+.max-width-80{
+    max-width: 80%;
+}
+.height-100{
+    height: 100px !important;
 }
