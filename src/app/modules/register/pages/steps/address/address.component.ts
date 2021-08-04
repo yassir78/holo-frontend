@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-address',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddressComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
-
+  goToAnother(){
+    this.router.navigate(["/register/another"])
+  }
+  returnToActivity(){
+    this.router.navigate(['/register/activity'])
+  }
 }
