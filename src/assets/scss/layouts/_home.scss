@@ -174,3 +174,12 @@
         }
     }
 }   
+
+.rotate {
+    &:hover{
+        transform: rotate(-5deg);
+        transition: 2s ease-out;
+
+    }
+    
+}
