@@ -7,6 +7,18 @@
       pointer-events: none;
     }
   }
-  
+
+.btnhover{
+  &:hover{
+    background-color: $hover-btn;
+    box-shadow: 0 4px 12px #00000014;
+    transform: scale(1.03);
+  }
+}
+
+
+
+
+
   //Alternate Button
  
