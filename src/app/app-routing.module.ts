@@ -2,31 +2,31 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'register', pathMatch: 'full' },
   {
     path:'document',
     loadChildren:()=>
-    import('./modules/documents/documents-routing.module').then((m)=>m.DocumentsRoutingModule)
+    import('./modules/documents/documents.module').then((m)=>m.DocumentsModule)
   },
   {
     path:'login',
     loadChildren:()=>
-    import('./modules/login/login-routing.module').then((m)=>m.LoginRoutingModule)
+    import('./modules/login/login.module').then((m)=>m.LoginModule)
   },
   {
     path:'register',
     loadChildren:()=>
-    import('./modules/register/register-routing.module').then((m)=>m.RegisterRoutingModule)
+    import('./modules/register/register.module').then((m)=>m.RegisterModule)
   },
     {
     path:'home',
     loadChildren:()=>
-    import('./modules/home/home-routing.module').then((m)=>m.HomeRoutingModule)
+    import('./modules/home/home.module').then((m)=>m.HomeModule)
   },
      {
     path:'landing',
     loadChildren:()=>
-    import('./modules/landing/landing-routing.module').then((m)=>m.LandingRoutingModule)
+    import('./modules/landing/landing.module').then((m)=>m.LandingModule)
   }
 
 ];

@@ -18,7 +18,6 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     RegisterRoutingModule,
-    BrowserModule,
 	    	FormsModule,  ]
 })
 export class RegisterModule { }
