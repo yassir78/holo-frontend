@@ -9,12 +9,10 @@ import { RegisterModule } from './modules/register/register.module';
 @NgModule({
   declarations: [
     AppComponent,
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule 
-
   ],
 
   providers: [],
