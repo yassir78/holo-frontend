@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
+ 
   {
     path:'document',
     loadChildren:()=>
@@ -27,8 +28,8 @@ const routes: Routes = [
     path:'landing',
     loadChildren:()=>
     import('./modules/landing/landing.module').then((m)=>m.LandingModule)
-  }
-
+  },
+ {path:'**',redirectTo:'login',pathMatch:'full'}
 ];
 
 @NgModule({
