@@ -4,13 +4,16 @@ import { CommonModule } from '@angular/common';
 import { LandingRoutingModule } from './landing-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { SharedModule } from '../shared/shared.module';
+import { LandingComponent } from './pages/landing/landing.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [LandingComponent],
   imports: [
     CommonModule,
-    LandingRoutingModule
+    LandingRoutingModule,
+    SharedModule
   ]
 })
 export class LandingModule { }
