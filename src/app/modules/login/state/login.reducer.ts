@@ -3,10 +3,13 @@ import { initialLoginState } from "./login.state";
 import * as LoginActions from "./login.actions"
 export const loginReducer = createReducer(
     initialLoginState,
-    on(LoginActions.loginSuccess,(state,action)=>{
-        return {...state,isAuthenticated:true,token:action.token}
+    on(LoginActions.login, (state) => {
+        return { ...state, loginLoading: true }
     }),
-    on(LoginActions.loginFalure,(state,action)=>{
-        return {...state,isAuthenticated:false,errorMessage:action.error}
+    on(LoginActions.loginSuccess, (state, action) => {
+        return { ...state, isAuthenticated: true, token: action.token, loginLoading: false }
+    }),
+    on(LoginActions.loginFalure, (state, action) => {
+        return { ...state, isAuthenticated: false, errorMessage: action.error, loginLoading: false }
     })
 )

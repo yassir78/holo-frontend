@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { loginState } from '../../state/login.state';
 import * as LoginActions from "../../state/login.actions"
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +12,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-
   constructor(private store: Store<loginState>, private fb: FormBuilder) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
