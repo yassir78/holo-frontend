@@ -9,7 +9,7 @@ export const loginReducer = createReducer(
     on(LoginActions.loginSuccess, (state, action) => {
         return { ...state, isAuthenticated: true, token: action.token, loginLoading: false }
     }),
-    on(LoginActions.loginFalure, (state, action) => {
+    on(LoginActions.loginFailure, (state, action) => {
         return { ...state, isAuthenticated: false, errorMessage: action.error, loginLoading: false }
     })
 )

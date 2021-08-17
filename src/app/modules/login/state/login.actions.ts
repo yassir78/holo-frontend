@@ -8,7 +8,7 @@ export const loginSuccess = createAction(
     '[Login Effect] Login Success',
     props<{token:string}>()
 );
-export const loginFalure = createAction(
+export const loginFailure = createAction(
     '[Login Effect] Login Failure',
     props<{error:string}>()
 );

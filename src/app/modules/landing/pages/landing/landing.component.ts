@@ -7,6 +7,10 @@ import {
   trigger,
 } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { landingState } from '../../state/landing.state';
+import * as LandingActions from '../../state/landing.actions';
 
 @Component({
   selector: 'app-landing',
@@ -51,9 +55,36 @@ import { Component, OnInit } from '@angular/core';
   ],
 })
 export class LandingComponent implements OnInit {
+  landingForm: FormGroup;
 
-  constructor() { }
-
+  constructor(private fb: FormBuilder, private store: Store<landingState>) {
+    this.landingForm = this.fb.group({
+      nom: ['', Validators.required],
+      prenom: ['', Validators.required],
+      telephone: ['', [Validators.required]],
+      email: ['', Validators.required]
+    })
+  }
+  onSubmit() {
+    console.log("hello world")
+    console.log(this.nom?.value)
+    console.log(this.prenom?.value)
+    console.log(this.email?.value)
+    console.log(this.telephone?.value)
+    this.store.dispatch(LandingActions.createContact({ nom: this.nom?.value, prenom: this.prenom?.value, email: this.email?.value, telephone: this.telephone?.value }))
+  }
+  get nom() {
+    return this.landingForm.get('nom')
+  }
+  get prenom() {
+    return this.landingForm.get('prenom')
+  }
+  get telephone() {
+    return this.landingForm.get('telephone')
+  }
+  get email() {
+    return this.landingForm.get('email')
+  }
   ngOnInit(): void {
   }
 

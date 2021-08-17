@@ -18,10 +18,7 @@ export class LoginEffects {
                     tap(console.log),
                     map((token) => LoginActions.loginSuccess({ token: token.token })),
                     catchError((response: HttpErrorResponse) => {
-                        const errorStatus = response.status;
-                        console.log(`this is the status of the error ${errorStatus}`)
-                        console.log(response.status)
-                        return of(LoginActions.loginFalure({ error: response.message }));
+                        return of(LoginActions.loginFailure({ error: response.message }));
                     })
                 )
 
