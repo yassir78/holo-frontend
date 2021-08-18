@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   animate,
   keyframes,
@@ -7,7 +8,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { landingState } from '../../state/landing.state';
 import * as LandingActions from '../../state/landing.actions';
@@ -55,29 +56,25 @@ import * as LandingActions from '../../state/landing.actions';
   ],
 })
 export class LandingComponent implements OnInit {
-  landingForm: FormGroup;
+  landingForm: FormGroup = new FormGroup({
+    nom: new FormControl('', Validators.required),
+    prenom: new FormControl('', Validators.required),
+    telephone: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email])
+  })
 
   constructor(private fb: FormBuilder, private store: Store<landingState>) {
-    this.landingForm = this.fb.group({
-      nom: ['', Validators.required],
-      prenom: ['', Validators.required],
-      telephone: ['', [Validators.required]],
-      email: ['', Validators.required]
-    })
   }
   onSubmit() {
-    console.log("hello world")
-    console.log(this.nom?.value)
-    console.log(this.prenom?.value)
-    console.log(this.email?.value)
-    console.log(this.telephone?.value)
+    console.log("dispatching the saving contact method")
     this.store.dispatch(LandingActions.createContact({ nom: this.nom?.value, prenom: this.prenom?.value, email: this.email?.value, telephone: this.telephone?.value }))
   }
+  // @ts-nocheck
   get nom() {
     return this.landingForm.get('nom')
   }
   get prenom() {
-    return this.landingForm.get('prenom')
+    return this.landingForm?.get('prenom')
   }
   get telephone() {
     return this.landingForm.get('telephone')

@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   base_url: "http://localhost:3000",
   campainId: "5kw03",
-  customFieldId:"p8XrIo"
+  customFieldId:"p8XrIo",
+  getResponseApiKey:"8ndtifh1asicn585irsfw55hyuliryai"
 };
 
 /*
