@@ -11,6 +11,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    SweetAlert2Module.forRoot(),
     HttpClientJsonpModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot(),

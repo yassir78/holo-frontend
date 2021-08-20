@@ -23,8 +23,10 @@
     "@ngrx/effects": "^12.3.0",
     "@ngrx/store": "^12.3.0",
     "@ngrx/store-devtools": "^12.3.0",
+    "@sweetalert2/ngx-sweetalert2": "^10.0.0",
     "animate.css": "^4.1.1",
     "rxjs": "~6.6.0",
+    "sweetalert2": "^11.1.4",
     "tslib": "^2.0.0",
     "web-animations-js": "^2.3.2",
     "zone.js": "~0.11.4"

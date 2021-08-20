@@ -88,8 +88,19 @@
             </div>
             <div class="mt-6">
                 <button [disabled]="landingForm.invalid"
-                    class="text-white text-sm py-3 px-9 popping font-extrabold  bg-blue hover:bg-blue-600 rounded-xl active:-translate-y-1">
-                    Envoyer </button>
+                    class="text-white text-sm py-3 px-9 popping font-extrabold  bg-blue hover:bg-blue-600 rounded-xl active:-translate-y-1 flex flex-row justify-between items-center	 ">
+                    <div class=" flex justify-center items-center mr-5" *ngIf="loading$ | async">
+                        <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-gray-900"></div>
+                    </div>
+                    Envoyer
+                </button>
+
+                <swal #addSuccess title="Succès" text="Vos informations sont enregistrées avec succès" icon="success"
+                    [focusCancel]="true" (confirm)="resetForm()">
+                </swal>
+                <swal #addFailure title="Erreur" [text]=errorMessage icon="error" [focusCancel]="true"
+                    (confirm)="resetForm()">
+                </swal>
             </div>
 
         </form>

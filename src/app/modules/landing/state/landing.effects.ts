@@ -15,14 +15,10 @@ export class LandingEffect {
     landing$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(LandingActions.createContact),
-            mergeMap(action => this.getResponseApiService.saveContact({ firstName: action.nom, lastName: action.prenom, email: action.email, phone:action.telephone})
+            mergeMap(action => this.getResponseApiService.saveContact({ firstName: action.nom, lastName: action.prenom, email: action.email, phone: action.telephone })
                 .pipe(
                     tap(console.log),
-                    map((response) => LandingActions.createContactSuccess({ success: true })),
-                    catchError((response) => {
-                        console.log(response)
-                        return of(LandingActions.createContactFailure({ error: response.message }));
-                    })
+                    map((response) => response.result == "success" ? LandingActions.createContactSuccess() : LandingActions.createContactFailure({ error: response.msg })),
                 )
 
             )
