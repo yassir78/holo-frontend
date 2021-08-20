@@ -15,7 +15,7 @@ export class LandingEffect {
     landing$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(LandingActions.createContact),
-            mergeMap(action => this.getResponseApiService.saveContact({ name: `${action.nom} ${action.prenom}`, email: action.email, customFieldValues: [{ customFieldId: environment.customFieldId, value: [action.telephone] }], campaign: { campaignId: environment.campainId } })
+            mergeMap(action => this.getResponseApiService.saveContact({ firstName: action.nom, lastName: action.prenom, email: action.email, phone:action.telephone})
                 .pipe(
                     tap(console.log),
                     map((response) => LandingActions.createContactSuccess({ success: true })),
