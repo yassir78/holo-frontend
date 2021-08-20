@@ -1,27 +1,32 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { GetResponseApi } from '../models/getResponseApi';
-
+interface MailChimpResponse {
+  result: string;
+  msg: string;
+}
 @Injectable({
   providedIn: 'root'
 })
 export class GetResponseApiService {
-  private readonly API = "https://api.getresponse.com/v3/contacts"
-  constructor(private http: HttpClient) { }
+  private mailChimpEndpoint = 'https://gmail.us5.list-manage.com/subscribe/post-json?u=1f7e6ec27ba59da9234d01be0&id=1a3fdfa650&';
+
+  constructor(private http: HttpClient) { 
+  
+   }
 
   saveContact(getReponseAPi: GetResponseApi) {
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Credentials': 'true',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
-      'X-Auth-Token': `api-key ${environment.getResponseApiKey}`
-    });
-    let options = { headers: headers };
-    console.log(options)
-    console.log(JSON.stringify(getReponseAPi))
-    return this.http.post(`${this.API}`, JSON.stringify(getReponseAPi), options)
+    const params = new HttpParams()
+    .set('FNAME', getReponseAPi.firstName)
+    .set('LNAME', getReponseAPi.lastName)
+    .set('EMAIL', getReponseAPi.email)
+    .set('PNUMBER',getReponseAPi.phone)
+    .set('subscribe','Subscribe')
+  console.log(params);
+  const mailChimpUrl = this.mailChimpEndpoint + params.toString();
+
+  return  this.http.jsonp<MailChimpResponse>(mailChimpUrl, 'c');
+  
   }
 }

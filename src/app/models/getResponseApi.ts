@@ -1,9 +1,7 @@
-import { CampainFieldValueGetResponseApi } from "./CampaignGetResponseApi";
-import { CustomFieldValueGetResponseApi } from "./customFieldValuesGetResponseApi";
 
 export interface GetResponseApi {
-    name: string;
+    firstName: string;
+    lastName:string;
     email: string;
-    customFieldValues: CustomFieldValueGetResponseApi[];
-    campaign: CampainFieldValueGetResponseApi;
+   phone:string;
 }
