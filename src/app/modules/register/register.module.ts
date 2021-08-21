@@ -11,10 +11,11 @@ import { AddressComponent } from './pages/steps/address/address.component';
 import { AnotherComponent } from './pages/steps/another/another.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { RoleRegisterComponent } from './pages/role-register/role-register.component';
 
 
 @NgModule({
-  declarations: [RegisterComponent, RegisterComponent, AboutComponent, ActivityComponent, RecouvrementComponent, PropertyComponent, AddressComponent, AnotherComponent],
+  declarations: [RegisterComponent, RegisterComponent, AboutComponent, ActivityComponent, RecouvrementComponent, PropertyComponent, AddressComponent, AnotherComponent, RoleRegisterComponent],
   imports: [
     CommonModule,
     RegisterRoutingModule,

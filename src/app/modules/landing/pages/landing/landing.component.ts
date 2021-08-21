@@ -83,6 +83,8 @@ export class LandingComponent implements OnInit {
     this.addFailureModalShow$.pipe(delay(500)).subscribe(value => value ? this.addFailure.fire() : false)
 
   }
+  ngOnInit(): void {
+  }
   onSubmit() {
     this.store.dispatch(LandingActions.createContact({ nom: this.nom?.value, prenom: this.prenom?.value, email: this.email?.value, telephone: this.telephone?.value }))
   }
@@ -102,7 +104,6 @@ export class LandingComponent implements OnInit {
   get email() {
     return this.landingForm.get('email')
   }
-  ngOnInit(): void {
-  }
+
 
 }

@@ -37,6 +37,9 @@
 .bg-blue1{
     background-color: $bordure_champ;
 }
+.bg-red-light{
+   @include bgColor($red_light) 
+}
 .leading-20{
     line-height: 3.5rem !important;
 }
@@ -102,4 +105,9 @@
 
 .btn_blue_3{
     background-color: $blue_3;
+}
+.linear-gradient{
+   background: -webkit-gradient(linear, left top, left bottom, from(rgba(191, 116, 223, 0.25)), to(rgba(223, 125, 125, 0)));
+   background: -o-linear-gradient(top, rgba(191, 116, 223, 0.25) 0%, rgba(223, 125, 125, 0) 100%);
+   background: linear-gradient(180deg, rgba(191, 116, 223, 0.25) 0%, rgba(223, 125, 125, 0) 100%); /* W3C */
 }

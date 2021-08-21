@@ -1,11 +1,11 @@
-<div class="  px-6 sm:px-8  pt-16 mb-5 lg:px-24"
-    style="background: linear-gradient(180deg, rgba(191, 116, 223, 0.25) 0%, rgba(223, 125, 125, 0) 100%);background-size: 10vh;">
+<div class="  px-6 sm:px-8  pt-16 mb-5 lg:px-24 linear-gradient h-screen">
 
     <div class="flex justify-between mb-20 container px-18">
         <img src="../../../../../assets/images/logo1.png" class="animate__animated animate__fadeInUp" alt="">
 
         <button
-            class="text-white px-6 rounded-md font-700 text-xl btn_blue_3 btnhover font-semibold flex flex-row items-center justify-between">Accueil
+            class="text-white px-6 rounded-md font-700 text-xl btn_blue_3 btnhover font-semibold flex flex-row items-center justify-between"
+            routerLink="/home">Accueil
             <span class="hidden md:block ml-2">😍</span>
         </button>
     </div>
@@ -14,7 +14,7 @@
             <img class="-translate-x-16 translate-y-4 hidden md:block" src="../../../../../assets/images/dots.png"
                 alt="">
             <h2
-                class="popping font-extrabold  my-5 animate__animated animate__fadeInUp text-3xl text-black leading-tight sm:text-4xl leading-20 animate__animated animate__fadeInUp  ">
+                class="popping font-extrabold  my-5 animate__animated animate__fadeInUp text-4xl text-black leading-tight sm:text-4xl leading-20 animate__animated animate__fadeInUp  ">
                 Heureux de vous avoir dans <br> <span class="text-blue-300">notre communauté</span> </h2>
 
         </div>
@@ -40,7 +40,7 @@
             <div>
                 <label for="nom" class="block text-sm font-medium text-gray-700">Votre nom</label>
                 <div class="mt-1">
-                    <input type="text" name="nom" id="nom" placeholder="Votre nom" formControlName="nom"
+                    <input type="text" name="nom" id="nom" placeholder="nom" formControlName="nom"
                         [ngClass]=" nom?.invalid && nom?.touched ? 'border-red-500' : 'border-blue-100'"
                         class="py-3 mt-2 px-4 w-full  block shadow-sm text-warm-gray-900   border-warm-gray-200 rounded-xl placeholder-200">
                     <div *ngIf="nom?.touched && nom?.invalid" class="text-left mt-1">
@@ -49,9 +49,9 @@
                 </div>
             </div>
             <div>
-                <label for="prenom" class="block text-sm font-medium text-gray-700">Votre Prénom</label>
+                <label for="prenom" class="block text-sm font-medium text-gray-700">Votre prénom</label>
                 <div class="mt-1">
-                    <input type="text" name="prenom" id="prenom" placeholder="Votre prénom" formControlName="prenom"
+                    <input type="text" name="prenom" id="prenom" placeholder="prénom" formControlName="prenom"
                         [ngClass]=" prenom?.invalid && prenom?.touched ? 'border-red-500' : 'border-blue-100'"
                         class="py-3 mt-2 px-4 w-full  block shadow-sm text-warm-gray-900 focus:ring-blue-300	 focus:border-blue-100 border-warm-gray-200 rounded-xl placeholder-200">
                     <div *ngIf="prenom?.touched && prenom?.invalid" class="text-left mt-1">
@@ -60,9 +60,9 @@
                 </div>
             </div>
             <div>
-                <label for="telephone" class="block text-sm font-medium text-gray-700">Téléphone</label>
+                <label for="telephone" class="block text-sm font-medium text-gray-700">Votre téléphone</label>
                 <div class="mt-1">
-                    <input type="text" name="telephone" id="telephone" placeholder="Votre téléphone +41...."
+                    <input type="text" name="telephone" id="telephone" placeholder="téléphone +41"
                         formControlName="telephone"
                         [ngClass]=" telephone?.invalid && telephone?.touched ? 'border-red-500' : 'border-blue-100'"
                         class="py-3 mt-2 px-4 w-full  block shadow-sm text-warm-gray-900 focus:ring-blue-300  focus:border-blue-100 border-warm-gray-200 rounded-xl placeholder-200">
@@ -73,9 +73,9 @@
                 </div>
             </div>
             <div>
-                <label for="last-name" class="block text-sm font-medium text-gray-700">Email</label>
+                <label for="last-name" class="block text-sm font-medium text-gray-700">Votre email</label>
                 <div class="mt-1">
-                    <input type="email" name="email" id="email" placeholder="Votre email" formControlName="email"
+                    <input type="email" name="email" id="email" placeholder="email" formControlName="email"
                         [ngClass]=" email?.invalid && email?.touched ? 'border-red-500' : 'border-blue-100'"
                         class="py-3 mt-2 px-4 w-full  block shadow-sm text-warm-gray-900 focus:ring-blue-300  focus:border-blue-100 border-warm-gray-200 rounded-xl placeholder-200">
                     <div *ngIf="email?.touched && email?.invalid" class="text-left mt-1">
