@@ -9,11 +9,11 @@
     <div class="flex flex-col justify-center items-center">
         <h1 class="popping font-medium leading-tight text-4xl mb-4 sm:text-5xl">Vous rejoignez en tant que ?</h1>
         <div class="flex flex-row justify-between mt-10">
-            <button
+            <button (click) ="goToMemberRegister()"
                 class="bg-red-light hover:bg-blue-700 text-white popping font-semibold py-4  mr-2 w-96		 px-11 rounded-xl">TROUVER
                 UN
                 LOCATAIRE</button>
-            <button
+            <button (click) ="goToPropertyRegister()"
                 class="bg-blue-2 hover:bg-blue-700 text-white popping font-semibold  py-3 px-11  w-96		ml-2 rounded-xl">TROUVER
                 UN
                 BIEN</button>
