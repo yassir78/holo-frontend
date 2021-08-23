@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-role-register',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoleRegisterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
+  }
+
+  goToMemberRegister(){
+    this.router.navigate(['/register/membre'])
+  }
+
+  goToPropertyRegister(){
+    this.router.navigate(['/register'])
   }
 
 }
