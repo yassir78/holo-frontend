@@ -13,10 +13,10 @@ export class AnotherComponent implements OnInit {
   ngOnInit(): void {
   }
   goToProperty(){
-   this.router.navigate(['/register/property'])
+   this.router.navigate(['/register/bailleur/property'])
   }
 
   returnToAddress(){
-    this.router.navigate(['/register/address'])
+    this.router.navigate(['/register/bailleur/address'])
   }
 }
