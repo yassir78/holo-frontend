@@ -13,9 +13,10 @@ import { Store } from '@ngrx/store';
 import { landingState } from '../../state/landing.state';
 import * as LandingActions from '../../state/landing.actions';
 import { Observable } from 'rxjs';
-import { getLoading } from '../../state/landing.selector'
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { delay } from 'rxjs/operators';
+import { HostListener, OnInit } from '@angular/core';
+
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
@@ -62,6 +63,7 @@ export class LandingComponent implements OnInit {
   @ViewChild('addSuccess') private addSuccess: SwalComponent;
   @ViewChild('addFailure') private addFailure: SwalComponent;
   errorMessage$: Observable<string>;
+  transparent: boolean = false;
   errorMessage: string = "";
   loading$: Observable<boolean>;
   addSuccessModalShow$: Observable<boolean>;
@@ -84,6 +86,14 @@ export class LandingComponent implements OnInit {
 
   }
   ngOnInit(): void {
+  }
+  @HostListener('window:scroll', ['$event'])
+  getScrollPosition(event) {
+    if (window.pageYOffset < 100) {
+      this.transparent = true;
+    } else {
+      this.transparent = false;
+    }
   }
   onSubmit() {
     this.store.dispatch(LandingActions.createContact({ nom: this.nom?.value, prenom: this.prenom?.value, email: this.email?.value, telephone: this.telephone?.value }))
