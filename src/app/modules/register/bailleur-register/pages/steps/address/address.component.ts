@@ -13,9 +13,9 @@ export class AddressComponent implements OnInit {
   ngOnInit(): void {
   }
   goToAnother(){
-    this.router.navigate(["/register/another"])
+    this.router.navigate(["/register/bailleur/another"])
   }
   returnToActivity(){
-    this.router.navigate(['/register/activity'])
+    this.router.navigate(['/register/bailleur/activity'])
   }
 }

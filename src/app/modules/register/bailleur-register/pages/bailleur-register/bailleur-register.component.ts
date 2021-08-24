@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ActivationEnd, NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  selector: 'app-bailleur-register',
+  templateUrl: './bailleur-register.component.html',
+  styleUrls: ['./bailleur-register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class BailleurRegisterComponent implements OnInit {
+
   isActive:boolean = false;
   activeRoute:string = '';
   constructor(private router: Router,private route: ActivatedRoute) { 
@@ -21,5 +22,4 @@ export class RegisterComponent implements OnInit {
       }
   });
   }
-
 }

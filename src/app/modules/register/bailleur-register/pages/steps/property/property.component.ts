@@ -13,10 +13,10 @@ export class PropertyComponent implements OnInit {
   ngOnInit(): void {
   }
   goToRecouvrement(){
-   this.router.navigate(['/register/recouvrement'])
+   this.router.navigate(['/register/bailleur/recouvrement'])
   }
 
   returnToAnother(){
- this.router.navigate(['/register/another'])
+ this.router.navigate(['/register/bailleur/another'])
   }
 }

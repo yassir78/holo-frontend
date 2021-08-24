@@ -15,14 +15,14 @@ const routes: Routes = [
       import('./modules/login/login.module').then((m) => m.LoginModule)
   },
   {
-    path: 'register',
+    path: 'register/bailleur',
     loadChildren: () =>
-      import('./modules/register/register.module').then((m) => m.RegisterModule)
+      import('./modules/register/bailleur-register/bailleur-register.module').then((m) => m.BailleurRegisterModule)
   },
   {
-    path: 'register/membre',
+    path: 'register/locataire',
     loadChildren: () =>
-      import('./modules/register/membre/membre.module').then((m) => m.MembreModule)
+      import('./modules/register/locataire-register/locataire-register.module').then((m) => m.LocataireRegisterModule)
   },
   {
     path: 'home',
