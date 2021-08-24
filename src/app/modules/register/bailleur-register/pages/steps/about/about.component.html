@@ -1,108 +1,123 @@
+<div class="mt-5 md:mt-0 md:col-span-2 bg-white ">
+  <div class="text-gray-700 text-2xl  font-medium text-gray-700 mb-6">A propos de vous</div>
+  <form [formGroup]="aboutForm">
+    <div class="grid grid-cols-6 gap-6">
+      <!--    <div class="col-span-6 sm:col-span-6">
+        <label for="country" class="block text-sm font-medium text-gray-700">Vous rejoigner en tant que</label>
+        <select id="country" name="country" autocomplete="country"
+          class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          <option>Remeteur</option>
+          <option>Locataire</option>
+          <option>Bailleur</option>
+        </select>
+      </div> -->
+      <div class="col-span-6 sm:col-span-6">
+        <label for="genre" class="block text-sm font-medium text-gray-700">Genre</label>
+        <select id="genre" name="genre" autocomplete="genre" formControlName="genre"
+          class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          <option>Monsieur</option>
+          <option>Madame</option>
+        </select>
+      </div>
+      <div class="col-span-6 sm:col-span-3">
+        <label for="firstName" class="block text-sm font-medium text-gray-700">Nom</label>
+        <input type="text" name="firstName" placeholder="Votre nom" id="firstName" autocomplete="firstName"
+          formControlName="firstName"
+          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+      </div>
 
-  <div class="mt-5 md:mt-0 md:col-span-2 bg-white ">
-    <div class="text-gray-700 text-2xl  font-medium text-gray-700 mb-6">A propos de vous</div>
-    <form action="#" method="POST">
-      <div class="grid grid-cols-6 gap-6">
-        <div class="col-span-6 sm:col-span-3">
-          <label for="country" class="block text-sm font-medium text-gray-700">Vous rejoigner en tant que</label>
-          <select id="country" name="country" autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-            <option>Remeteur</option>
-            <option>Locataire</option>
-            <option>Bailleur</option>
-          </select>
-        </div>
-        <div class="col-span-6 sm:col-span-3">
-          <label for="country" class="block text-sm font-medium text-gray-700">Genre</label>
-          <select id="country" name="country" autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-            <option>Monsieur</option>
-            <option>Mesdame</option>
-          </select>
-        </div>
-        <div class="col-span-6 sm:col-span-3">
-          <label for="first-name" class="block text-sm font-medium text-gray-700">Nom</label>
-          <input type="text" name="first-name" placeholder="Votre nom" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-        </div>
+      <div class="col-span-6 sm:col-span-3">
+        <label for="lastName" class="block text-sm font-medium text-gray-700">Prénom</label>
+        <input type="text" name="lastName" placeholder="Votre prénom" id="lastName" autocomplete="lastName"
+          formControlName="lastName"
+          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+      </div>
 
-        <div class="col-span-6 sm:col-span-3">
-          <label for="last-name" class="block text-sm font-medium text-gray-700">Prénom</label>
-          <input type="text" name="last-name" placeholder="Votre prénom" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-        </div>
+      <div class="col-span-6 sm:col-span-3">
+        <label for="birth" class="block text-sm font-medium text-gray-700">Date de naissance</label>
+        <input type="date" name="birth" id="birth" autocomplete="birth" formControlName="birth"
+          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+      </div>
 
-        <div class="col-span-6 sm:col-span-3">
-          <label for="first-name" class="block text-sm font-medium text-gray-700">Date de naissance</label>
-          <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-        </div>
+      <div class="col-span-6 sm:col-span-3">
+        <label for="locality" class="block text-sm font-medium text-gray-700">NPA/Localité</label>
+        <input type="text" name="locality" id="locality" autocomplete="locality" formControlName="locality"
+          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+      </div>
+      <div class="col-span-6 sm:col-span-3">
+        <label for="address" class="block text-sm font-medium text-gray-700">Adresse actuelle</label>
+        <input type="text" name="address" id="address" autocomplete="address" formControlName="address"
+          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+      </div>
+      <div class="col-span-6 sm:col-span-3">
+        <label for="domiciledSince" class="block text-sm font-medium text-gray-700">Domicilié depuis</label>
+        <input type="date" name="domiciledSince" id="domiciledSince" autocomplete="domiciledSince"
+          formControlName="domiciledSince"
+          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+      </div>
+      <div class="col-span-6 sm:col-span-6">
+        <label for="last-name" class="block text-sm font-medium mb-3 text-gray-700">Photo de profil</label>
+        <div class="grid grid-rows-6 grid-flow-col gap-2">
+          <div class="row-span-6 sm:row-span-6 ">
+            <div class="mt-1 sm:mt-0 sm:col-span-2">
+              <div class="flex items-center">
 
-        <div class="col-span-6 sm:col-span-3">
-          <label for="last-name" class="block text-sm font-medium text-gray-700">NPA/Localité</label>
-          <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-        </div>
-        <div class="col-span-6 sm:col-span-3">
-          <label for="last-name" class="block text-sm font-medium text-gray-700">Adresse actuelle</label>
-          <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-        </div>
-        <div class="col-span-6 sm:col-span-3">
-          <label for="last-name" class="block text-sm font-medium text-gray-700">Domicilié depuis</label>
-          <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-        </div>
-        <div class="col-span-6 sm:col-span-6">
-          <label for="last-name" class="block text-sm font-medium mb-3 text-gray-700">Photo de profil</label>
-          <div class="grid grid-rows-6 grid-flow-col gap-2">
-            <div class="row-span-6 sm:row-span-6 ">
-              <div class="mt-1 sm:mt-0 sm:col-span-2">
-                <div class="flex items-center">
-            
-                  <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-                     <label>
-                      <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                      </svg>
-                      <input type="file" id="upload" style="display:none">
-                     </label>
-                  </span>
-                  <button type="button" class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Choisir
-                  </button>
-                  <button type="button" class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Supprimer
-                  </button>
-                </div>
+                <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+                  <label>
+                    <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                      <path
+                        d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <input type="file" id="upload" style="display:none">
+                  </label>
+                </span>
+                <button type="button"
+                  class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  Choisir
+                </button>
+                <button type="button"
+                  class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  Supprimer
+                </button>
               </div>
-            </div>    
-            <div class="row-span-6 sm:row-span-6">
             </div>
           </div>
-          
-         </div>
-         <div class="col-span-6 sm:col-span-6">
-          <label for="country" class="block text-sm font-medium text-gray-700">Etat civil</label>
-          <select id="country" name="country" autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-            <option>Célibataire</option>
-            <option>Marié</option>
-          </select>
+          <div class="row-span-6 sm:row-span-6">
+          </div>
         </div>
-        <div class="col-span-6 sm:col-span-3">
-          <label for="last-name" class="block text-sm font-medium text-gray-700">Téléphone</label>
-          <input type="text" name="last-name" placeholder="Votre numéro de téléphone" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-        </div>
-      
-        <div class="col-span-6 sm:col-span-3">
-          <label for="first-name" class="block text-sm font-medium text-gray-700">Email</label>
-          <input type="text" placeholder="Votre adresse email" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+
+      </div>
+      <div class="col-span-6 sm:col-span-6">
+        <label for="maritalStatus" class="block text-sm font-medium text-gray-700">Etat civil</label>
+        <select id="maritalStatus" name="maritalStatus" autocomplete="maritalStatus" formControlName="maritalStatus"
+          class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          <option>Célibataire</option>
+          <option>Marié</option>
+        </select>
+      </div>
+      <div class="col-span-6 sm:col-span-3">
+        <label for="phoneNumber" class="block text-sm font-medium text-gray-700">Téléphone</label>
+        <input type="text" name="phoneNumber" placeholder="Votre numéro de téléphone" id="phoneNumber"
+          autocomplete="phoneNumber" formControlName="phoneNumber"
+          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+      </div>
+
+      <div class="col-span-6 sm:col-span-3">
+        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+        <input type="email" placeholder="Votre adresse email" name="email" id="email" autocomplete="email"
+          formControlName="email"
+          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+      </div>
+    </div>
+    <div>
+      <div class="space-y-8 divide-y divide-gray-200">
+        <div class=" py-3 text-right sm:px-6">
+          <button type="button" (click)="goToActivity()"
+            class="inline-flex  items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-blue-2 hover:bg-blue-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-blue-2">
+            Suivant
+          </button>
         </div>
       </div>
-      <div>
-        <div class="space-y-8 divide-y divide-gray-200">
-          <div class=" py-3 text-right sm:px-6">
-           <button type="button" (click)="goToActivity()" class="inline-flex  items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-blue-2 hover:bg-blue-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-blue-2">
-               Suivant
-             </button>
-         </div>
-       </div>
-      </div>
-    </form>
-  </div>
-   
-
-
-  
+    </div>
+  </form>
+</div>

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { RegisterRoutingModule } from './register-routing.module';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RoleRegisterComponent } from './pages/role-register/role-register.component';
 
 
@@ -12,6 +12,7 @@ import { RoleRegisterComponent } from './pages/role-register/role-register.compo
   imports: [
     CommonModule,
     RegisterRoutingModule,
-	    	FormsModule,  ]
+    FormsModule,
+    ]
 })
 export class RegisterModule { }

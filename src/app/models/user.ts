@@ -7,40 +7,23 @@ import { Property } from "./property";
 import { Recouvrement } from "./recouvrement";
 
 export interface User {
-   id?:number;
-   firstName?:string;
-   lastName?:string;
-   password?:string;
-   email?:string;
-   phoneNumber?:string;
-   birth?:Date;
-   domiciledSince?:string;
-   roles?:Role[];
-   gender?:string;
-   profileImage?:string;
-   maritalStatus?:string;
-   profession:Profession;
-   address: Address;
-   other:Other;
-   property:Property;
-   recouvrement:Recouvrement;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   id?: number;
+   firstName?: string;
+   lastName?: string;
+   password?: string;
+   email?: string;
+   phoneNumber?: string;
+   birth?: Date;
+   domiciledSince?: Date;
+   roles?: Role[];
+   gender?: string;
+   locality?: string;
+   profileImage?: string;
+   maritalStatus?: string;
+   profession?: Profession;
+   simpleAddress?: string;
+   address?: Address;
+   other?: Other;
+   property?: Property;
+   recouvrement?: Recouvrement;
 }

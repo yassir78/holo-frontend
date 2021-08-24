@@ -15,14 +15,9 @@ const routes: Routes = [
       import('./modules/login/login.module').then((m) => m.LoginModule)
   },
   {
-    path: 'register/bailleur',
+    path: 'register',
     loadChildren: () =>
-      import('./modules/register/bailleur-register/bailleur-register.module').then((m) => m.BailleurRegisterModule)
-  },
-  {
-    path: 'register/locataire',
-    loadChildren: () =>
-      import('./modules/register/locataire-register/locataire-register.module').then((m) => m.LocataireRegisterModule)
+      import('./modules/register/register.module').then((m) => m.RegisterModule)
   },
   {
     path: 'home',

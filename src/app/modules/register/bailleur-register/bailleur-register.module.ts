@@ -9,6 +9,9 @@ import { RecouvrementComponent } from './pages/steps/recouvrement/recouvrement.c
 import { PropertyComponent } from './pages/steps/property/property.component';
 import { AddressComponent } from './pages/steps/address/address.component';
 import { AnotherComponent } from './pages/steps/another/another.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { bailleurReducer } from './state/bailleur.reducer';
 
 
 @NgModule({
@@ -18,7 +21,12 @@ import { AnotherComponent } from './pages/steps/another/another.component';
   ],
   imports: [
     CommonModule,
-    BailleurRegisterRoutingModule
+    BailleurRegisterRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    StoreModule.forFeature(
+      "bailleur", bailleurReducer
+    ),
   ]
 })
 export class BailleurRegisterModule { }

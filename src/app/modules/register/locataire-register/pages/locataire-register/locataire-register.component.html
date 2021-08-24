@@ -1,50 +1,54 @@
 <div class="min-h-screen bg-white flex">
-    <div class="hidden lg:block relative w-1/2  flex-1 bg-blue-light text-center ">
-      <div class="mx-auto w-full sticky top-20">
-        <div class="m-20">
-          <img class="w-auto ml-8" src="../../../../../assets/images/logo.png">
-        </div>
-        <div class="m-12">
-          <img class="mx-auto" height="400" width="450"
-            src="../../../../../assets/images/membreRegister.png">
-        </div>
+  <div class="hidden lg:block relative w-1/2  flex-1 bg-blue-light text-center ">
+    <div class="mx-auto w-full sticky top-20">
+      <div class="m-20">
+        <img class="w-auto ml-8" src="../../../../../assets/images/logo.png">
       </div>
-  
+      <div class="m-12">
+        <img class="mx-auto" height="400" width="450" src="../../../../../assets/images/membreRegister.png">
+      </div>
     </div>
-    <div class="flex-1 flex h-full flex-col justify-center w-1/2  py-6 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-      <div class="mt-20 mb-10 ">
-          <h2 class="text-gray-700 text-3xl  font-bold">Inscrits toi et devient membre de la communauté </h2>
-      </div>
-      <div>
-        <form class="space-y-6" action="#" method="POST">
-            <div>
-              <label for="email" class="block text-sm font-medium text-gray-700">
-                Email
-              </label>
-              <div class="mt-1">
-                <input id="email" name="email" type="email" placeholder="Votre e-mail" autocomplete="email" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-              </div>
-            </div>
-            <div>
-                <label for="email" class="block text-sm font-medium text-gray-700">
-                  Date de naissance
-                </label>
-                <div class="mt-1">
-                  <input id="dateNaissance" name="dateNaissance" placeholder="Date de naissance"  type="date" autocomplete="date" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                </div>
-              </div>
-      
-    
-            <div>
-              <label for="password" class="block text-sm font-medium text-gray-700">
-                Mot de passe
-              </label>
-              <div class="mt-1">
-                <input id="password" name="password" type="password" placeholder="Choisir un mot de passe" autocomplete="current-password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-              </div>
-            </div>
-    
-            <div class="flex items-center justify-between">
+
+  </div>
+  <div class="flex-1 flex h-full flex-col justify-center w-1/2  py-6 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+    <div class="mt-20 mb-10 ">
+      <h2 class="text-gray-700 text-3xl  font-bold">Inscrits toi et devient membre de la communauté </h2>
+    </div>
+    <div>
+      <form class="space-y-6" action="#" method="POST">
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">
+            Email
+          </label>
+          <div class="mt-1">
+            <input id="email" name="email" type="email" placeholder="Votre e-mail" autocomplete="email" required
+              class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          </div>
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">
+            Date de naissance
+          </label>
+          <div class="mt-1">
+            <input id="dateNaissance" name="dateNaissance" placeholder="Date de naissance" type="date"
+              autocomplete="date" required
+              class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          </div>
+        </div>
+
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">
+            Mot de passe
+          </label>
+          <div class="mt-1">
+            <input id="password" name="password" type="password" placeholder="Choisir un mot de passe"
+              autocomplete="current-password" required
+              class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          </div>
+        </div>
+
+        <!--      <div class="flex items-center justify-between">
               <div class="flex items-center">
                 <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
                 <label for="remember-me" class="ml-2 block text-sm text-gray-900">
@@ -57,33 +61,38 @@
                   Mot de passe oublié?
                 </a>
               </div>
-            </div>
-    
-            <div>
-              <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white linear-blue hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                S'incrire
-            </button>
-            <div class="text-center mt-0">
-                <span >Ou</span>
-            </div>
-            </div>
-         
-            <div>
-                <button type="submit" class="w-full flex justify-center py-3 px-4 border border-indigo-200 rounded-md shadow-sm text-sm font-medium text-white hover:linear-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    <img  width="20px" height="20px" src="../../../../../assets/images/google.svg">
-                   <span class="ml-2 text-gray-700 ">Se connecter avec Google</span>
-                  </button>
-            </div>
-            <div>
-                <p>
-                    En vous inscrivant, vous acceptez nos <span class=" text-gray-700 font-bold "> Conditions générales </span>
-                   ainsi que notre <span class=" text-gray-700 font-bold ">Politique de confidentiailité </span> 
-                </p>
-            </div>
-          </form>
-      </div>
-  
-  
+            </div> -->
+
+        <div class="my-3">
+          <button
+            class="w-full text-white py-4  popping bg_blue_button hover:bg-blue-600 rounded-xl active:-translate-y-1">S'inscrire</button>
+        </div>
+        <div class="text-center">
+          <span>Ou</span>
+        </div>
+        <div class="my-3">
+          <button type="button"
+            class="w-full inline-flex justify-center items-center popping  py-4 border border-blue shadow-sm text-base font-medium rounded-xl text-black bg-white focus:outline-none hover:bg-blue-100 active:-translate-y-1">
+            <!-- Heroicon name: solid/mail -->
+            <img src="../../../../../assets/images/google.svg" class="mr-3" height="20px" width="20px" alt="">
+            Se Connecter avec Google
+          </button>
+        </div>
+        <div class="mt-5 text-center text-base">
+          <span class="inter text-gray-400">Pas encore inscrit(e) ? </span><span
+            class="popping text--blue hover:cursor-pointer active:-translate-y-1" routerLink="/register">
+            S'inscrire</span>
+        </div>
+        <div>
+          <p>
+            En vous inscrivant, vous acceptez nos <span class=" text-gray-700 font-bold "> Conditions générales </span>
+            ainsi que notre <span class=" text-gray-700 font-bold ">Politique de confidentiailité </span>
+          </p>
+        </div>
+      </form>
     </div>
-  
+
+
   </div>
+
+</div>
