@@ -13,11 +13,11 @@ export class ActivityComponent implements OnInit {
   ngOnInit(): void {
   }
   goToAddress(){
-   this.router.navigate(['/register/address'])
+   this.router.navigate(['/register/bailleur/address'])
   }
 
   returnToAbout(){
-    this.router.navigate(['/register/about'])
+    this.router.navigate(['/register/bailleur/about'])
   }
 
 

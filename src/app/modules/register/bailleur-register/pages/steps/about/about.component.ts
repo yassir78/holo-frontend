@@ -14,7 +14,7 @@ export class AboutComponent implements OnInit {
   }
 
   goToActivity(){
-    this.router.navigate(['/register/activity'])
+    this.router.navigate(['/register/bailleur/activity'])
   }
 
 }

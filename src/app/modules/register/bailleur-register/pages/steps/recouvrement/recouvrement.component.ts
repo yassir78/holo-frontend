@@ -13,6 +13,6 @@ export class RecouvrementComponent implements OnInit {
   ngOnInit(): void {
   }
   returnToProperty(){
-   this.router.navigate(['/register/property'])
+   this.router.navigate(['/register/bailleur/property'])
   }
 }
