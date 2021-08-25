@@ -59,17 +59,19 @@ export class AboutComponent implements OnInit {
     return this.aboutForm.get('email');
   }
   goToActivity() {
-    console.log(this.genre?.value)
-    console.log(this.firstName?.value)
-    console.log(this.lastName?.value)
-    console.log(this.birth?.value)
-    console.log(this.locality?.value)
-    console.log(this.address?.value)
-    console.log(this.domiciledSince?.value)
-    console.log(this.maritalStatus?.value)
-    console.log(this.phoneNumber?.value)
-    console.log(this.email?.value)
-    //this.store.dispatch(AboutActions.about({gender:this.ge}))
+
+    this.store.dispatch(AboutActions.about({
+      gender: this.genre?.value,
+      address: this.address?.value,
+      birth: new Date(this.birth?.value),
+      domiciledSince: new Date(this.domiciledSince?.value),
+      email: this.email?.value,
+      firstName: this.firstName?.value,
+      lastName: this.lastName?.value,
+      locality: this.locality?.value,
+      maritalStatus: this.maritalStatus?.value,
+      phoneNumber: this.phoneNumber?.value
+    }))
     //this.router.navigate(['/register/bailleur/activity'])
   }
 
