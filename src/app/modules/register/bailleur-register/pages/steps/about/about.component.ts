@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { bailleurRegisterState } from '../../../state/bailleur.state';
-import * as AboutActions from "../../../state/bailleur.action"
+import * as BailleurActions from "../../../state/bailleur.action";
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -60,7 +60,7 @@ export class AboutComponent implements OnInit {
   }
   goToActivity() {
 
-    this.store.dispatch(AboutActions.about({
+    this.store.dispatch(BailleurActions.about({
       gender: this.genre?.value,
       address: this.address?.value,
       birth: new Date(this.birth?.value),
@@ -72,7 +72,7 @@ export class AboutComponent implements OnInit {
       maritalStatus: this.maritalStatus?.value,
       phoneNumber: this.phoneNumber?.value
     }))
-    //this.router.navigate(['/register/bailleur/activity'])
+    this.router.navigate(['/register/bailleur/activity'])
   }
 
 }

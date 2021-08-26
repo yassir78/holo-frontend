@@ -1,51 +1,51 @@
 
   <div class="mt-5 md:mt-0 md:col-span-2 bg-white">
     <div class="text-gray-700 text-2xl  font-medium text-gray-700 mb-6">Activité professionelle</div>
-    <form action="#" method="POST">
+    <form [formGroup]="activityForm">
       <div class="grid grid-cols-6 gap-6">
         <div class="col-span-6 sm:col-span-3">
-            <label for="first-name" class="block text-sm font-medium text-gray-700">Profession</label>
-            <input type="text" name="first-name" placeholder="Votre profession" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            <label for="profession" class="block text-sm font-medium text-gray-700">Profession</label>
+            <input type="text" name="profession" formControlName="profession" placeholder="Votre profession" id="profession" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
           </div>
         <div class="col-span-6 sm:col-span-3">
-          <label for="first-name" class="block text-sm font-medium text-gray-700">Depuis</label>
-          <input type="date" name="first-name"  id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          <label for="professionDate" class="block text-sm font-medium text-gray-700">Depuis</label>
+          <input type="date" name="professionDate"  formControlName="professionDate" id="professionDate" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
         </div>
 
         <div class="col-span-6 sm:col-span-3">
-          <label for="last-name" class="block text-sm font-medium text-gray-700">Employeur</label>
-          <input type="text" name="last-name" placeholder="Employeur" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          <label for="employer" class="block text-sm font-medium text-gray-700">Employeur</label>
+          <input type="text" name="employer" formControlName="employer" placeholder="Employeur" id="employer" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
         </div>
 
         <div class="col-span-6 sm:col-span-3">
-          <label for="first-name" class="block text-sm font-medium text-gray-700">Lieu de travail</label>
-          <input type="text" name="first-name" id="first-name" placeholder="Votre lieu de travail" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          <label for="workplace" class="block text-sm font-medium text-gray-700">Lieu de travail</label>
+          <input type="text" name="workplace" formControlName="workplace" id="workplace" placeholder="Votre lieu de travail" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
         </div>
 
         <div class="col-span-6 sm:col-span-3">
-          <label for="last-name" class="block text-sm font-medium text-gray-700">Personne de contact</label>
-          <input type="text" name="last-name" placeholder="Votre personne de contact" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          <label for="contactPerson" class="block text-sm font-medium text-gray-700">Personne de contact</label>
+          <input type="text" name="contactPerson" formControlName="contactPerson" placeholder="Votre personne de contact" id="contactPerson" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
         </div>
         <div class="col-span-6 sm:col-span-3">
-          <label for="last-name" class="block text-sm font-medium text-gray-700">Téléphone professionnel</label>
-          <input type="text" placeholder="+41" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          <label for="professionalPhoneNumber" class="block text-sm font-medium text-gray-700">Téléphone professionnel</label>
+          <input type="text" placeholder="+41" name="professionalPhoneNumber" formControlName="professionalPhoneNumber" id="professionalPhoneNumber" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
         </div>
         <div class="col-span-6 sm:col-span-3">
-          <label for="last-name" class="block text-sm font-medium text-gray-700">Revenu mensuel brut</label>
-          <input type="text" name="last-name" placeholder = "0" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          <label for="grossMonthlyIncome" class="block text-sm font-medium text-gray-700">Revenu mensuel brut</label>
+          <input type="text" name="grossMonthlyIncome" formControlName="grossMonthlyIncome" placeholder = "0" id="grossMonthlyIncome" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
         </div>
         <div class="col-span-6 sm:col-span-3">
-          <label for="last-name" class="block text-sm font-medium text-gray-700">Revenu mensuel net</label>
-          <input type="text" name="last-name" placeholder="0" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          <label for="netMonthlyIncome" class="block text-sm font-medium text-gray-700">Revenu mensuel net</label>
+          <input type="text" name="netMonthlyIncome" formControlName="netMonthlyIncome" placeholder="0" id="netMonthlyIncome" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
         </div>
       
         <div class="col-span-6 sm:col-span-3">
-          <label for="first-name" class="block text-sm font-medium text-gray-700">Employeur précédent</label>
-          <input type="text" placeholder="Votre employeur précédent" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          <label for="lastEmployer" class="block text-sm font-medium text-gray-700">Employeur précédent</label>
+          <input type="text" placeholder="Votre employeur précédent" name="lastEmployer"  formControlName="lastEmployer" id="lastEmployer" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
         </div>
         <div class="col-span-6 sm:col-span-3">
-            <label for="first-name" class="block text-sm font-medium text-gray-700">Depuis</label>
-            <input type="date"  name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            <label for="lastEmployerSince" class="block text-sm font-medium text-gray-700">Depuis</label>
+            <input type="date"  name="lastEmployerSince" formControlName="lastEmployerSince" id="lastEmployerSince" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
           </div>
       
       </div>
@@ -62,7 +62,7 @@
             </label>
             <label for="upload0">
               <span [ngClass]="currentInput=='+  Ajouter' ? 'text-blue-2' : 'text-gray-700'" > {{currentInput}}</span>
-              <input type="file" id="upload0"  
+              <input type="file" id="payslip1"  
               (change)="onFileSelected($event)" style="display:none">
         </label>          </div>
           <div class="flex items-center">
@@ -71,7 +71,7 @@
             </label>
             <label for="upload1">
               <span class="text-blue-2"> +  Ajouter</span>
-              <input type="file" id="upload1" style="display:none">
+              <input type="file" id="payslip2" style="display:none">
         </label>         
           </div>
           <div class="flex items-center">
@@ -98,7 +98,7 @@
             </label>
             <label for="upload3">
                   <span class="text-blue-2"> +  Ajouter</span>
-                  <input type="file" id="upload3" style="display:none">
+                  <input type="file" formControlName="pursuitSheet"  id="pursuitSheet" style="display:none">
             </label>
          </div>
          
