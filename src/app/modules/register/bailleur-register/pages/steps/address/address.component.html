@@ -1,24 +1,24 @@
 
   <div class="mt-5 md:mt-0 md:col-span-2 bg-white ">
     <div class="text-gray-700 text-2xl  font-medium text-gray-700 mb-6">Lieu et adresse</div>
-    <form action="#" method="POST">
+    <form [formGroup]="addressForm">
       <div class="grid grid-cols-6 gap-6">
     
           <div class="col-span-6 sm:col-span-3">
-            <label for="country" class="block text-sm font-medium text-gray-700">Nationalité</label>
-            <select id="country" name="country" autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-              <option>Remeteur</option>
-              <option>Locataire</option>
-              <option>Bailleur</option>
+            <label for="nationality" class="block text-sm font-medium text-gray-700">Nationalité</label>
+            <select id="nationality" name="nationality" formControlName="nationality" autocomplete="nationality" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+              <option>Française</option>
+              <option>Amercaine</option>
+              <option>Marocaine</option>
             </select>
           </div>
         <div class="col-span-6 sm:col-span-3">
-          <label for="first-name" class="block text-sm font-medium text-gray-700">Lieu d'origine</label>
-          <input type="text" name="first-name" placeholder="versoix"  id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          <label for="placeOfOrigin" class="block text-sm font-medium text-gray-700">Lieu d'origine</label>
+          <input type="text" name="placeOfOrigin" formControlName="placeOfOrigin" placeholder="versoix"  id="placeOfOrigin" autocomplete="placeOfOrigin" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
         </div>
         <div class="col-span-6 sm:col-span-6">
-          <label for="country" class="block text-sm font-medium text-gray-700">Permis</label>
-          <select id="country" name="country" autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          <label for="typeOfPermit" class="block text-sm font-medium text-gray-700">Permis</label>
+          <select id="typeOfPermit" name="typeOfPermit" formControlName="typeOfPermit" autocomplete="typeOfPermit" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             <option>Permis C</option>
             <option>Permis B</option>
           </select>
@@ -27,52 +27,52 @@
           <label for="last-name" class="block text-sm font-medium text-gray-700">Existe-il une mesure de mise sous tutelle?</label>
           <div class="grid grid-rows-6 grid-flow-col gap-2">
             <div class="row-span-6 sm:row-span-6 ">
-              <select id="country" name="country" autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+              <select id="hasPutUnderGuardianship" name="hasPutUnderGuardianship" formControlName="hasPutUnderGuardianship" autocomplete="hasPutUnderGuardianship" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                 <option>Oui</option>
                 <option>Non</option>
               </select>
             </div>    
             <div class="row-span-6 sm:row-span-6">
-              <input type="text" name="first-name" id="first-name" placeholder="Laquelle ?" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              <input type="text" name="putUnderGuardianship" formControlName="putUnderGuardianship" id="putUnderGuardianship" placeholder="Laquelle ?" autocomplete="putUnderGuardianship" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
           </div>
       
           </div>
           <div class="col-span-6 sm:col-span-3">
-            <label for="first-name" class="block text-sm font-medium text-gray-700">En Suisse depuis</label>
-            <input type="date" name="first-name" placeholder="versoix"  id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            <label for="inSwitzerlandSince" class="block text-sm font-medium text-gray-700">En Suisse depuis</label>
+            <input type="date" name="inSwitzerlandSince" formControlName="inSwitzerlandSince" placeholder="versoix"  id="inSwitzerlandSince" autocomplete="inSwitzerlandSince" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
           </div>
           <div class="col-span-6 sm:col-span-3">
-            <label for="country" class="block text-sm font-medium text-gray-700">Logement familial/principal?</label>
-            <select id="country" name="country" autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <label for="familyOrPrimaryAccommodation" class="block text-sm font-medium text-gray-700">Logement familial/principal?</label>
+            <select id="familyOrPrimaryAccommodation" name="familyOrPrimaryAccommodation" formControlName="familyOrPrimaryAccommodation" autocomplete="familyOrPrimaryAccommodation" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
               <option>Oui</option>
               <option>Non</option>
             </select>
           </div>
   
         <div class="col-span-6 sm:col-span-6">
-          <label for="last-name" class="block text-sm font-medium text-gray-700">Nombre de personnes occupant le future logement</label>
-          <input type="number" name="last-name" placeholder="12" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          <label for="numberOfPeopleOccupyingTheFutureAccommodation" class="block text-sm font-medium text-gray-700">Nombre de personnes occupant le future logement</label>
+          <input type="number" name="numberOfPeopleOccupyingTheFutureAccommodation" formControlName="numberOfPeopleOccupyingTheFutureAccommodation" placeholder="12" id="numberOfPeopleOccupyingTheFutureAccommodation" autocomplete="numberOfPeopleOccupyingTheFutureAccommodation" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
         </div>
         <div class="col-span-6 sm:col-span-3">
-          <label for="last-name" class="block text-sm font-medium text-gray-700">Nombre d'adultes</label>
-          <input type="number" placeholder="6" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          <label for="numberOfAdults" class="block text-sm font-medium text-gray-700">Nombre d'adultes</label>
+          <input type="number" placeholder="6" name="numberOfAdults" formControlName="numberOfAdults" id="numberOfAdults" autocomplete="numberOfAdults" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
         </div>
         <div class="col-span-6 sm:col-span-3">
-          <label for="last-name" class="block text-sm font-medium text-gray-700">Nombre d'enfants</label>
-          <input type="number" name="last-name" placeholder = "6" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          <label for="numberOfChildren" class="block text-sm font-medium text-gray-700">Nombre d'enfants</label>
+          <input type="number" name="numberOfChildren" formControlName="numberOfChildren" placeholder = "6" id="numberOfChildren" autocomplete="numberOfChildren" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
         </div>
         <div class="col-span-6 sm:col-span-6">
           <label for="last-name" class="block text-sm font-medium text-gray-700">Animaux domestiques</label>
           <div class="grid grid-rows-6 grid-flow-col gap-2">
             <div class="row-span-6 sm:row-span-6 ">
-              <select id="country" name="country" autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+              <select id="hasPets" name="hasPets" formControlName="hasPets" autocomplete="hasPets" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                 <option>Oui</option>
                 <option>Non</option>
               </select>
             </div>    
             <div class="row-span-6 sm:row-span-6">
-              <input type="text" name="first-name" id="first-name" placeholder="Lesquels ?" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              <input type="text" name="pets" formControlName="pets" id="pets" placeholder="Lesquels ?" autocomplete="pets" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
           </div>
           </div>
@@ -80,13 +80,13 @@
             <label for="last-name" class="block text-sm font-medium text-gray-700">Instrument de musique</label>
             <div class="grid grid-rows-6 grid-flow-col gap-2">
               <div class="row-span-6 sm:row-span-6 ">
-                <select id="country" name="country" autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <select id="hasMusicInstruments" formControlName="hasMusicInstruments" name="hasMusicInstruments" autocomplete="hasMusicInstruments" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   <option>Oui</option>
                   <option>Non</option>
                 </select>
               </div>    
               <div class="row-span-6 sm:row-span-6">
-                <input type="text" name="first-name" id="first-name" placeholder="Lequel ?" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                <input type="text" name="musicInstruments" formControlName="musicInstruments" id="musicInstruments" placeholder="Lequel ?" autocomplete="musicInstruments" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
               </div>
             </div>
     

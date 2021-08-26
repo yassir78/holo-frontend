@@ -1,2 +1,4 @@
-export interface Remetteur {
+import { User } from "./user";
+
+export interface Remetteur  extends User{
 }
