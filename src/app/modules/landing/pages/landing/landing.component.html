@@ -1,13 +1,21 @@
-<div class="  px-6 sm:px-8  pt-16 mb-5 lg:px-24 linear-gradient h-screen">
+<div class="fixed top-0 left-0 right-0 pt-4  px-2 px-2 sm:px-10 sm:px-10 md:px-24 md:px-24 z-50 transition	"
+    [ngClass]="{'bg-white shadow' : transparent}">
 
-    <div class="flex justify-between mb-20 container px-20">
+    <div class="flex justify-between mb-5 ">
         <a routerLink="/home"><img src="../../../../../assets/images/logo1.png"
-                class="animate__animated animate__fadeInUp" alt=""></a>
-        <button
-            class="text-white px-6 rounded-md font-700 text-xl btn_blue_3 btnhover font-semibold flex flex-row items-center justify-between"
-            routerLink="/home">Accueil
-        </button>
+                class="animate__animated animate__fadeInUp" alt="">
+        </a>
+        <div class="flex flex-row">
+            <button
+                class="text-white px-6 rounded-md font-700 text-xl btn_blue_3 btnhover font-semibold flex flex-row items-center justify-between"
+                routerLink="/home">Accueil
+            </button>
+
+        </div>
     </div>
+</div>
+<div class="  px-6 sm:px-8  pt-20 md:pt-28 mb-5 lg:px-20 linear-gradient ">
+
     <div class="grid md:grid-cols-2">
         <div class="relative">
             <img class="-translate-x-16 translate-y-4 hidden md:block" src="../../../../../assets/images/dots.png"
@@ -43,7 +51,7 @@
                         [ngClass]=" nom?.invalid && nom?.touched ? 'border-red-500' : 'border-blue-100'"
                         class="py-3 mt-2 px-4 w-full  block shadow-sm text-warm-gray-900   border-warm-gray-200 rounded-xl placeholder-200">
                     <div *ngIf="nom?.touched && nom?.invalid" class="text-left mt-1">
-                        <div class="text-red-600" *ngIf="nom?.errors?.required">Le nom est obligatoire.</div>
+                        <div class="text-red-600" *ngIf="nom?.errors?.required">Champ obligatoire</div>
                     </div>
                 </div>
             </div>
@@ -54,19 +62,18 @@
                         [ngClass]=" prenom?.invalid && prenom?.touched ? 'border-red-500' : 'border-blue-100'"
                         class="py-3 mt-2 px-4 w-full  block shadow-sm text-warm-gray-900 focus:ring-blue-300	 focus:border-blue-100 border-warm-gray-200 rounded-xl placeholder-200">
                     <div *ngIf="prenom?.touched && prenom?.invalid" class="text-left mt-1">
-                        <div class="text-red-600" *ngIf="prenom?.errors?.required">Le prénom est obligatoire.</div>
+                        <div class="text-red-600" *ngIf="prenom?.errors?.required">Champ obligatoire</div>
                     </div>
                 </div>
             </div>
             <div>
                 <label for="telephone" class="block text-sm font-medium text-gray-700">Votre téléphone</label>
                 <div class="mt-1">
-                    <input type="text" name="telephone" id="telephone" placeholder="téléphone +41"
-                        formControlName="telephone"
+                    <input type="text" name="telephone" id="telephone" placeholder="+41" formControlName="telephone"
                         [ngClass]=" telephone?.invalid && telephone?.touched ? 'border-red-500' : 'border-blue-100'"
                         class="py-3 mt-2 px-4 w-full  block shadow-sm text-warm-gray-900 focus:ring-blue-300  focus:border-blue-100 border-warm-gray-200 rounded-xl placeholder-200">
                     <div *ngIf="telephone?.touched && telephone?.invalid" class="text-left mt-1">
-                        <div class="text-red-600" *ngIf="telephone?.errors?.required">Le télépgone est obligatoire.
+                        <div class="text-red-600" *ngIf="telephone?.errors?.required">Champ obligatoire
                         </div>
                     </div>
                 </div>
@@ -78,9 +85,9 @@
                         [ngClass]=" email?.invalid && email?.touched ? 'border-red-500' : 'border-blue-100'"
                         class="py-3 mt-2 px-4 w-full  block shadow-sm text-warm-gray-900 focus:ring-blue-300  focus:border-blue-100 border-warm-gray-200 rounded-xl placeholder-200">
                     <div *ngIf="email?.touched && email?.invalid" class="text-left mt-1">
-                        <span class="text-red-600" *ngIf="email?.errors?.required">L'email est obligatoire.
+                        <span class="text-red-600" *ngIf="email?.errors?.required">Champ obligatoire
                         </span>
-                        <span class="text-red-600" *ngIf="email?.errors?.email">L'email est invalid.
+                        <span class="text-red-600" *ngIf="email?.errors?.email">Adresse email invalide
                         </span>
                     </div>
                 </div>
@@ -94,11 +101,11 @@
                     Envoyer
                 </button>
 
-                <swal #addSuccess title="Succès" text="Vos informations sont enregistrées avec succès" icon="success"
+                <swal #addSuccess title="Succès" text="Merci pour votre inscription." icon="success"
                     [focusCancel]="true" (confirm)="resetForm()">
                 </swal>
-                <swal #addFailure title="Erreur" [text]=errorMessage icon="error" [focusCancel]="true"
-                    (confirm)="resetForm()">
+                <swal #addFailure title="Erreur" text="Une erreur s'est produite. Veuillez vérifier les champs."
+                    icon="error" [focusCancel]="true" (confirm)="resetForm()">
                 </swal>
             </div>
 

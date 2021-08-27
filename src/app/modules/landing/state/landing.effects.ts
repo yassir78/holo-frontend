@@ -18,7 +18,8 @@ export class LandingEffect {
             mergeMap(action => this.getResponseApiService.saveContact({ firstName: action.nom, lastName: action.prenom, email: action.email, phone: action.telephone })
                 .pipe(
                     tap(console.log),
-                    map((response) => response.result == "success" ? LandingActions.createContactSuccess() : LandingActions.createContactFailure({ error: response.msg.replace(/<a.*<\/a>/, '').replace('OK', '') })),
+                    // map((response) => response.result == "success" ? LandingActions.createContactSuccess() : LandingActions.createContactFailure({ error: response.msg.replace(/<a.*<\/a>/, '').replace('OK', '') })),
+                    map((response) => response.result == "success" ? LandingActions.createContactSuccess() : LandingActions.createContactFailure({ error: "" })),
                 )
 
             )

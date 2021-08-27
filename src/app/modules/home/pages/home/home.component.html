@@ -1,5 +1,6 @@
-<div class="px-6 sm:px-8  pt-16 mb-5 lg:px-20 linear-gradient ">
-    <div class="nav flex flex-row justify-between ">
+<div class="fixed top-0 left-0 right-0 pt-4  px-2 px-2 sm:px-10 sm:px-10 md:px-24 md:px-24 z-50 transition	"
+    [ngClass]="{'bg-white shadow' : transparent}">
+    <div class="flex justify-between mb-5 ">
         <a routerLink="/home"><img src="../../../../../assets/images/logo1.png"
                 class="animate__animated animate__fadeInUp" alt="">
         </a>
@@ -10,10 +11,9 @@
             </button>
 
         </div>
-
-        
-
     </div>
+</div>
+<div class="px-6 sm:px-8 pt-20 md:pt-28 mb-5 lg:px-20 linear-gradient ">
     <div class="grid md:grid-cols-2 mt-10 container mx-auto lg:px-10">
         <div class="flex flex-col my-auto items-start">
             <div class="flex flex-row">
@@ -40,16 +40,11 @@
                 class="hidden md:block mx-auto md:mx-0" alt="">
 
             <div class="flex flex-col pt-10 items-start ">
-                <div class="flex flex-row">
-                    <h1 class=" popping font-extrabold leading-tight text-4xl mb-4 sm:text-5xl">tenders <span
-                            class="text-purple">en
-                            quelques <br>
-                            mots...</span>
-                    </h1>
-                    <!-- <img src="../../../../../assets/images/bulle1.png" class="-translate-y-20 -translate-x-20"
-                        alt=""> -->
-
-                </div>
+                <h1 class=" popping font-extrabold leading-tight text-4xl mb-4 sm:text-5xl">tenders <span
+                        class="text-purple">en
+                        quelques <br>
+                        mots...</span>
+                </h1>
 
                 <p class="text-lg text-gray-500">Tenders est le réseau immobilier de suisse pensé pour ses acteurs.
                     Aucun intermédiaire ! Notre
@@ -88,7 +83,7 @@
 
             <div class="flex-1 bg-white p-6 flex flex-col justify-between ">
                 <div class="flex-1 ">
-                    <a href="#" class="block mt-2">
+                    <a class="block mt-2">
 
                         <img src="../../../../../assets/images/locataire.png" class="mb-5 " alt="">
 
@@ -114,14 +109,15 @@
             <div class="flex-1 bg-white p-6 flex flex-col justify-between">
                 <div class="flex-1">
 
-                    <a href="#" class="block mt-2">
+                    <a class="block mt-2">
                         <img src="../../../../../assets/images/bailleur.png" class="mb-5" alt="">
 
                         <p class="text-xl font-bold text-gray-900">
                             Propriétaire
                         </p>
                         <p class="mt-3 text-lg text-gray-500">
-                            Grâce à Tenders, trouver en un rien de temps le candidat idéal pour la location de votre bien.
+                            Grâce à Tenders, trouver en un rien de temps le candidat idéal pour la location de votre
+                            bien.
                         </p>
                     </a>
                 </div>
@@ -160,8 +156,7 @@
     <div class="relative   mt-20 animate__animated animate__fadeInUp ">
         <div class="grid md:grid-cols-2 gap-14 ">
 
-            <img src="../../../../../assets/images/GROUPE.png"
-                class="order-last md:order-first" alt="">
+            <img src="../../../../../assets/images/GROUPE.png" class="order-last md:order-first" alt="">
             <div class="flex flex-col pt-10 items-end ">
 
                 <!-- <img src="../../../../../assets/images/home8.png" class="	" alt="">
@@ -205,7 +200,7 @@
         </div>
     </div>
 
-   
+
 
 
 
@@ -214,14 +209,12 @@
             <img src="../../../../../assets/images/Tenders-assets/MOCKUPS/15. candidatures-nouveau.png"
                 class="mx-auto md:mx-0 shadow-lg" class="order-last md:order-first" alt="">
 
-            <div class="flex flex-col pt-10 items-start ">
-                <div class="flex flex-row">
-                    <h2 class=" popping font-extrabold leading-snug text-3xl sm:text-4xl ">Vous souhaitez trouver
-                        <span class="text--blue">le candidat idéal ?</span>
-                    </h2>
-                    <!--  <img src="../../../../../assets/images/bulle8.png"
-                        class="hidden md:block -translate-y-20 -translate-x-16 height-100" alt=""> -->
-                </div>
+            <div class="flex flex-col pt-5 items-start ">
+                <h1 class="text-xl border-bottom-red popping font-extrabold mb-5">Vous êtes remetteur ou propriétaire
+                </h1>
+                <h2 class=" popping font-extrabold leading-snug text-3xl sm:text-4xl ">Vous souhaitez trouver
+                    <span class="text--blue">le candidat idéal ?</span>
+                </h2>
 
                 <p class="mt-5 text-lg text-gray-500">
                     Les algorithmes développés pour notre plateforme permettent aux remetteurs de bail et aux
@@ -245,10 +238,10 @@
 
 
     <div class="relative  mt-20 mb-20 animate__animated animate__fadeInUp">
-        <div class="grid md:grid-cols-2 grid-flow-scolgap-14">
+        <div class="grid md:grid-cols-2 grid-flow-scolgap-14 gap-14">
             <div class="flex flex-col pt-10 items-start ">
-                <h1 class="text-xl border-bottom-red popping font-extrabold mb-5">Vous êtes remetteur ou propriétaire
-                </h1>
+                <!--   <h1 class="text-xl border-bottom-red popping font-extrabold mb-5">Vous êtes remetteur ou propriétaire
+                </h1> -->
                 <div class="flex flex-row ">
                     <h2 class=" popping font-extrabold  leading-snug text-3xl sm:text-4xl ">Publiez <span
                             class="light-yellow">vos biens<br>immobiliers</span></h2>
@@ -260,7 +253,8 @@
                     vous suffit de vous connecter et de publier votre bien.
                     <br><br>
                     Tenders vous accompagne dans la publication de votre bien en vous proposant une série d'informations
-                    à remplir afin de maximiser vos chances pour trouver le/les candidat(s) qui vous correspondent le plus.
+                    à remplir afin de maximiser vos chances pour trouver le/les candidat(s) qui vous correspondent le
+                    plus.
                 </p>
             </div>
             <img src="../../../../../assets/images/Tenders-assets/MOCKUPS/32. nouveau_bien7.png"
@@ -296,16 +290,20 @@
     <div class="grid md:grid-cols-2  mt-10 mb-20 bg-light-yellow1 rounded-2xl ">
         <img src="../../../../../assets/images/newsLetter.png" class="justify-self-center -translate-y-14	"
             height="100px">
-        <div class="flex flex-col my-auto items-start px-5 md:px-0">
-            <h1 class="popping font-extrabold text-2xl ">Newsletter</h1>
-            <p class="text-lg text-gray-500 mt-3">Inscrivez-vous et créer votre profil afin d'être les premiers connecter. Vous recevrez une notification un jour avant le lancement.
+        <div class="flex flex-col my-auto items-start px-5 md:px-0 ml-3 ">
+            <h1 class="popping font-extrabold text-2xl ">Nous ferons notre entrée sur <br class="hidden md:block"> le
+                marché Genevois le 30
+                septembre
+                2021
+            </h1>
+            <p class="text-lg text-gray-500 mt-3">Inscrivez-vous et créer votre profil afin d'être les premiers
+                connecter. Vous recevrez une notification un jour avant le lancement.
             </p>
-            <div class="mt-5 w-full">
-                <input type="email" name="email" id="email" placeholder="Votre email"
-                    class="py-3 mt-2 px-4  xl:w-1/2 inline  shadow-sm text-warm-gray-900 focus:ring-blue-300	 focus:border-blue-100 border-warm-gray-200 rounded-xl placeholder-200">
-                <button class=" bg-blue  hover:bg-blue-700 text-white ml-2 font-bold py-3 px-12 rounded-xl mt-3 mb-8">
-                    S'abonner</button>
-            </div>
+            <!--  <input type="email" name="email" id="email" placeholder="Votre email"
+                    class="py-3 mt-2 px-4  xl:w-1/2 inline  shadow-sm text-warm-gray-900 focus:ring-blue-300	 focus:border-blue-100 border-warm-gray-200 rounded-xl placeholder-200"> -->
+            <button routerLink="/landing"
+                class=" bg-blue  hover:bg-blue-700 text-white mt-6 active:-translate-y-2 font-bold py-3 px-12 rounded-xl mt-3 mb-8">
+                M'inscrire</button>
 
         </div>
 

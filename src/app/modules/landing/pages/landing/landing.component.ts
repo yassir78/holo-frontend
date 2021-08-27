@@ -88,11 +88,11 @@ export class LandingComponent implements OnInit {
   ngOnInit(): void {
   }
   @HostListener('window:scroll', ['$event'])
-  getScrollPosition(event) {
-    if (window.pageYOffset < 100) {
-      this.transparent = true;
-    } else {
+  getScrollPosition() {
+    if (window.pageYOffset < 150) {
       this.transparent = false;
+    } else {
+      this.transparent = true;
     }
   }
   onSubmit() {
