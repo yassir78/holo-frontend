@@ -1,12 +1,21 @@
-<div class="  px-6 sm:px-8 pt-16 mb-5 lg:px-20 linear-gradient ">
-    <div class="flex justify-between mb-20 container ">
+<div class="fixed top-0 left-0 right-0 pt-4  px-2 px-2 sm:px-10 sm:px-10 md:px-24 md:px-24 z-50 transition	"
+    [ngClass]="{'bg-white shadow' : transparent}">
+
+    <div class="flex justify-between mb-5 ">
         <a routerLink="/home"><img src="../../../../../assets/images/logo1.png"
-                class="animate__animated animate__fadeInUp" alt=""></a>
-        <button
-            class="text-white px-6 rounded-md font-700 text-xl btn_blue_3 btnhover font-semibold flex flex-row items-center justify-between"
-            routerLink="/home">Accueil
-        </button>
+                class="animate__animated animate__fadeInUp" alt="">
+        </a>
+        <div class="flex flex-row">
+            <button
+                class="text-white px-6 rounded-md font-700 text-xl btn_blue_3 btnhover font-semibold flex flex-row items-center justify-between"
+                routerLink="/home">Accueil
+            </button>
+
+        </div>
     </div>
+</div>
+<div class="  px-6 sm:px-8  pt-20 md:pt-28 mb-5 lg:px-20 linear-gradient ">
+
     <div class="grid md:grid-cols-2">
         <div class="relative">
             <img class="-translate-x-16 translate-y-4 hidden md:block" src="../../../../../assets/images/dots.png"
@@ -92,8 +101,8 @@
                     Envoyer
                 </button>
 
-                <swal #addSuccess title="Succès" text="Merci pour votre inscription." icon="success" [focusCancel]="true"
-                    (confirm)="resetForm()">
+                <swal #addSuccess title="Succès" text="Merci pour votre inscription." icon="success"
+                    [focusCancel]="true" (confirm)="resetForm()">
                 </swal>
                 <swal #addFailure title="Erreur" text="Une erreur s'est produite. Veuillez vérifier les champs."
                     icon="error" [focusCancel]="true" (confirm)="resetForm()">

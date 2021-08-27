@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import {
   animate,
   keyframes,
@@ -51,10 +51,17 @@ import {
   ],
 })
 export class HomeComponent implements OnInit {
-
+  transparent: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  @HostListener('window:scroll', ['$event'])
+  getScrollPosition() {
+    if (window.pageYOffset < 150) {
+      this.transparent = false;
+    } else {
+      this.transparent = true;
+    }
+  }
 }
