@@ -43,6 +43,37 @@ export const bailleurReducer = createReducer(
               
             } }
         }
+    }),
+    on(BailleurActions.otherInfos, (state, action) => {
+        return {
+            ...state, user: { ...state.user,  other: {...state.user.other,smoker:action.smoker,
+                contractHasBeenTerminatedByTheLessor:action.contractHasBeenTerminatedByTheLessor,
+                contractHasBeenTerminatedByTheLessorWhy:action.contractHasBeenTerminatedByTheLessorWhy,
+                lawsuitsDuringTheLastTwoYears:action.lawsuitsDuringTheLastTwoYears,
+                BeingSubjectOfActsOfDefaultOfGoodsDuringInTheLastFiveYears:action.BeingSubjectOfActsOfDefaultOfGoodsDuringInTheLastFiveYears,
+                civilLiabilityInsurance:action.civilLiabilityInsurance,
+                civilLiabilityInsuranceCompany:action.civilLiabilityInsuranceCompany
+            } }
+        }
+    }),
+    on(BailleurActions.property, (state, action) => {
+        return {
+            ...state, user: { ...state.user,  other: {...state.user.other, 
+                currentDonor:action.currentDonor,
+                numberOfPieces:action.numberOfPieces,
+                currentRent:action.currentRent,
+                leaseInYourName:action.leaseInYourName,
+                ReasonForChange:action.ReasonForChange,
+                howDidYouFindThisObject:action.howDidYouFindThisObject,
+                doYouHaveACar:action.doYouHaveACar,
+                HaveACarHowMuch:action.HaveACarHowMuch,
+                areYouInterestedInAParkingSpace:action.areYouInterestedInAParkingSpace,
+                InterestedInAParkingSpaceHowMuch:action.InterestedInAParkingSpaceHowMuch,
+                refrences:action.refrences,
+                possibleRemarks:action.possibleRemarks
+
+            } }
+        }
     })
 
 )

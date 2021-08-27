@@ -1,14 +1,15 @@
 export interface Property{
-    liabilityInsurance:boolean;
-   liabilityInsuranceCompagnies:string;
-   currentDonor:string;
-   numberOfPieces:number;
-   currentRent:number;
-   leaseInYourName:boolean;
-   ReasonForChange:string;
-   howDidYouFindThisObject:string;
-   doYouHaveACar:boolean;
-   areYouInterestedInAParkingSpace:boolean;
-   refrences:string;
-   possibleRemarks:string;
+  
+   currentDonor?:string;
+   numberOfPieces?:number;
+   currentRent?:number;
+   leaseInYourName?:string;
+   ReasonForChange?:string;
+   howDidYouFindThisObject?:string;
+   doYouHaveACar?:string;
+   HaveACarHowMuch?:number;
+   areYouInterestedInAParkingSpace?:string;
+   InterestedInAParkingSpaceHowMuch?:number,
+   refrences?:string;
+   possibleRemarks?:string;
 }
