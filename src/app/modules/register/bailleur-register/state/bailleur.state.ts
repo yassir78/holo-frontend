@@ -1,9 +1,18 @@
 import { Bailleur } from "src/app/models/bailleur";
-import { User } from "src/app/models/user";
 
 export interface bailleurRegisterState {
     user: Bailleur;
+    payslipProcessLoading: boolean;
+    payslipProcessErrorMsg: string;
+    payslipProcessEndedSuccessfuly: boolean;
+    gross: number;
+    net: number;
 }
 export const initialBailleurRegisterState: bailleurRegisterState = {
-    user: {}
+    user: { },
+    gross: 0,
+    net: 0,
+    payslipProcessLoading: false,
+    payslipProcessErrorMsg: '',
+    payslipProcessEndedSuccessfuly: false
 };
