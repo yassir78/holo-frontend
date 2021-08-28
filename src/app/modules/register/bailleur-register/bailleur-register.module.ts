@@ -12,6 +12,8 @@ import { AnotherComponent } from './pages/steps/another/another.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { bailleurReducer } from './state/bailleur.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { BailleurEffect } from './state/bailleur.effect';
 
 
 @NgModule({
@@ -27,6 +29,8 @@ import { bailleurReducer } from './state/bailleur.reducer';
     StoreModule.forFeature(
       "bailleur", bailleurReducer
     ),
+    EffectsModule.forFeature([BailleurEffect]),
+
   ]
 })
 export class BailleurRegisterModule { }

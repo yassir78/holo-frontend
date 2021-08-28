@@ -25,7 +25,11 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     BrowserAnimationsModule,
     SweetAlert2Module.forRoot(),
     HttpClientJsonpModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot({ }, {
+      runtimeChecks: {
+        strictActionImmutability: false,
+      }
+    }),
     EffectsModule.forRoot(),
     StoreDevtoolsModule.instrument({
       maxAge: 10
