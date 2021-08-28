@@ -66,3 +66,38 @@ export const processPayslipServer = createAction('[activity effect] process Pays
 
 export const processPayslipSuccess = createAction('[activity effect] process Payslip Success', props<{ montantBrut: number, montantNet: number }>());
 export const processPayslipFailure = createAction('[activity effect] process Payslip Failure', props<{ errorMsg: string }>());
+
+
+export const otherInfos = createAction(
+    '[OtherInfos component] add about section info to state',
+    props<{
+        smoker?: string;
+        contractHasBeenTerminatedByTheLessor?: string;
+        contractHasBeenTerminatedByTheLessorWhy?: string;
+        lawsuitsDuringTheLastTwoYears?: string
+        BeingSubjectOfActsOfDefaultOfGoodsDuringInTheLastFiveYears?: number;
+        civilLiabilityInsurance?: string;
+        civilLiabilityInsuranceCompany?: string;
+    }>()
+)
+
+
+export const property = createAction(
+    '[Property component] add about section info to state',
+    props<{
+        currentDonor?: string;
+        numberOfPieces?: number;
+        currentRent?: number;
+        leaseInYourName?: string;
+        ReasonForChange?: string;
+        howDidYouFindThisObject?: string;
+        doYouHaveACar?: string;
+        HaveACarHowMuch?: number;
+        areYouInterestedInAParkingSpace?: string;
+        InterestedInAParkingSpaceHowMuch?: number,
+        refrences?: string;
+        possibleRemarks?: string;
+    }>()
+)
+
+

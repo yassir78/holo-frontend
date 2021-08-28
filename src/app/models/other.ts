@@ -1,7 +1,10 @@
 export interface Other{
-    smoker:boolean;
-    contractHasBeenTerminatedByTheLessor:string;
-    lawsuitsDuringTheLastTwoYears:string
-    BeingSubjectOfActsOfDefaultOfGoodsDuringInTheLastFiveYears:number;
-    civilLiabilityInsurance:boolean;
+    smoker?:string;
+    contractHasBeenTerminatedByTheLessor?:string;
+    contractHasBeenTerminatedByTheLessorWhy?:string;
+    lawsuitsDuringTheLastTwoYears?:string
+    BeingSubjectOfActsOfDefaultOfGoodsDuringInTheLastFiveYears?:number;
+    civilLiabilityInsurance?:string;
+    civilLiabilityInsuranceCompany?:string;
+
 }

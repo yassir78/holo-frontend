@@ -11,19 +11,19 @@ import * as BailleurActions from "../../../state/bailleur.action";
 })
 export class AddressComponent implements OnInit {
   addressForm = new FormGroup({
-               nationality:new FormControl('', Validators.required),
+               nationality:new FormControl('Française', Validators.required),
                 placeOfOrigin:new FormControl('', Validators.required),
-                typeOfPermit:new FormControl('', Validators.required),
-                hasPutUnderGuardianship: new FormControl('', Validators.required),
+                typeOfPermit:new FormControl('Permis C', Validators.required),
+                hasPutUnderGuardianship: new FormControl('Oui', Validators.required),
                 putUnderGuardianship:new FormControl('', Validators.required),
                 inSwitzerlandSince:new FormControl('', Validators.required),
-                familyOrPrimaryAccommodation:new FormControl('', Validators.required),
+                familyOrPrimaryAccommodation:new FormControl('Oui', Validators.required),
                 numberOfPeopleOccupyingTheFutureAccommodation:new FormControl('', Validators.required),
                 numberOfAdults:new FormControl('', Validators.required),
                 numberOfChildren:new FormControl('', Validators.required),
-                hasPets:new FormControl('', Validators.required),
+                hasPets:new FormControl('Oui', Validators.required),
                 pets:new FormControl('', Validators.required),
-                hasMusicInstruments: new FormControl('', Validators.required),
+                hasMusicInstruments: new FormControl('Oui', Validators.required),
                 musicInstruments:new FormControl('', Validators.required),
   })
 
