@@ -18,7 +18,7 @@ export class AboutComponent implements OnInit {
     locality: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
     domiciledSince: new FormControl('', Validators.required),
-    profileImage: new FormControl('', Validators.required),
+    profileImage: new FormControl(''),
     maritalStatus: new FormControl('Célibataire', Validators.required),
     phoneNumber: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required)
@@ -72,7 +72,7 @@ export class AboutComponent implements OnInit {
       maritalStatus: this.maritalStatus?.value,
       phoneNumber: this.phoneNumber?.value
     }))
-    this.router.navigate(['/register/bailleur/activity'])
+    this.router.navigate(['/register/bailleur/address'])
   }
 
 }

@@ -98,6 +98,6 @@ export class AddressComponent implements OnInit {
     this.router.navigate(["/register/bailleur/another"])
   }
   returnToActivity(){
-    this.router.navigate(['/register/bailleur/activity'])
+    this.router.navigate(['/register/bailleur/about'])
   }
 }

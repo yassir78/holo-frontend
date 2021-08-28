@@ -15,7 +15,12 @@
         <div class="col-span-6 sm:col-span-3">
           <label for="placeOfOrigin" class="block text-sm font-medium text-gray-700">Lieu d'origine</label>
           <input type="text" name="placeOfOrigin" formControlName="placeOfOrigin" placeholder="versoix"  id="placeOfOrigin" autocomplete="placeOfOrigin" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-        </div>
+          <span
+          *ngIf="(placeOfOrigin?.dirty || placeOfOrigin?.touched) && placeOfOrigin?.invalid && placeOfOrigin?.errors?.required"
+        >
+        Lieu d'origine Obligatoire.
+        </span>
+         </div>
         <div class="col-span-6 sm:col-span-6">
           <label for="typeOfPermit" class="block text-sm font-medium text-gray-700">Permis</label>
           <select id="typeOfPermit" name="typeOfPermit" formControlName="typeOfPermit" autocomplete="typeOfPermit" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
@@ -34,6 +39,7 @@
             </div>    
             <div class="row-span-6 sm:row-span-6">
               <input type="text" name="putUnderGuardianship" formControlName="putUnderGuardianship" id="putUnderGuardianship" placeholder="Laquelle ?" autocomplete="putUnderGuardianship" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+           
             </div>
           </div>
       
@@ -41,6 +47,11 @@
           <div class="col-span-6 sm:col-span-3">
             <label for="inSwitzerlandSince" class="block text-sm font-medium text-gray-700">En Suisse depuis</label>
             <input type="date" name="inSwitzerlandSince" formControlName="inSwitzerlandSince" placeholder="versoix"  id="inSwitzerlandSince" autocomplete="inSwitzerlandSince" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            <span
+            *ngIf="(inSwitzerlandSince?.dirty || inSwitzerlandSince?.touched) && inSwitzerlandSince?.invalid && inSwitzerlandSince?.errors?.required"
+          >
+          Date Obligatoire.
+          </span>
           </div>
           <div class="col-span-6 sm:col-span-3">
             <label for="familyOrPrimaryAccommodation" class="block text-sm font-medium text-gray-700">Logement familial/principal?</label>
@@ -101,7 +112,7 @@
               </div>
                <div class="px-4 py-3 text-right sm:px-6 row-span-6 sm:row-span-6">
                 
-                <button type="button" (click)="goToAnother()" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-blue-2 hover:bg-blue-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-blue-2">
+                <button type="button"  [disabled]="!addressForm.valid" (click)="goToAnother()" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-blue-2 hover:bg-blue-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-blue-2">
                     Suivant
                   </button>
               </div>
