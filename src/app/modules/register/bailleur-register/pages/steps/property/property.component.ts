@@ -83,7 +83,7 @@ export class PropertyComponent implements OnInit {
   get possibleRemarks(){
     return this.propertyForm.get("possibleRemarks");
   }
-  goToRecouvrement(){
+  goToActivity(){
     this.store.dispatch(BailleurActions.property({
                 currentDonor: this.currentDonor?.value,
                 numberOfPieces:this.numberOfPieces?.value,
@@ -98,7 +98,7 @@ export class PropertyComponent implements OnInit {
                 refrences:this.refrences?.value,
                 possibleRemarks:this.possibleRemarks?.value
     }));
-   this.router.navigate(['/register/bailleur/recouvrement'])
+   this.router.navigate(['/register/bailleur/activity'])
   }
 
   returnToAnother(){

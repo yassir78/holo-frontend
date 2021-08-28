@@ -102,7 +102,7 @@ export class ActivityComponent implements OnInit {
   get pursuitSheet() {
     return this.activityForm.get('pursuitSheet')
   }
-  goToAddress() {
+  goToLogin() {
     this.store.dispatch(BailleurActions.profession({
       profession: this.profession?.value,
       professionDate: this.professionDate?.value,
@@ -117,10 +117,10 @@ export class ActivityComponent implements OnInit {
       pursuitSheet: this.pursuitSheet?.value,
       payslips: []
     }))
-    this.router.navigate(['/register/bailleur/address'])
+    this.router.navigate(['/login'])
   }
-  returnToAbout() {
-    this.router.navigate(['/register/bailleur/about'])
+  returnToProperty() {
+    this.router.navigate(['/register/bailleur/property'])
   }
   onFileSelected(event: any) {
     this.currentInput = event.target.files[0].name + "  x";

@@ -97,7 +97,7 @@ export class AddressComponent implements OnInit {
     }))
     this.router.navigate(["/register/bailleur/another"])
   }
-  returnToActivity(){
+  returnToAbout(){
     this.router.navigate(['/register/bailleur/about'])
   }
 }
