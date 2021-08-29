@@ -21,10 +21,10 @@
       </div>
       <div class="col-span-6 sm:col-span-3">
         <label for="firstName" class="block text-sm font-medium text-gray-700">Nom</label>
-        <input type="text" name="firstName" placeholder="Votre nom" id="firstName" autocomplete="firstName"
+        <input type="text" name="firstName"  [ngClass]=" firstName?.invalid && firstName?.touched ? 'border-red-500' : 'border-blue-100'" placeholder="Votre nom" id="firstName" autocomplete="firstName"
           formControlName="firstName"
           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-          <span
+          <span class="text-red-600"
           *ngIf="(firstName?.dirty || firstName?.touched) && firstName?.invalid && firstName?.errors?.required"
         >
           Nom Obligatoire.
@@ -33,10 +33,10 @@
 
       <div class="col-span-6 sm:col-span-3">
         <label for="lastName" class="block text-sm font-medium text-gray-700">Prénom</label>
-        <input type="text" name="lastName" placeholder="Votre prénom" id="lastName" autocomplete="lastName"
+        <input  [ngClass]=" (lastName?.dirty || lastName?.touched) && lastName?.invalid && lastName?.errors?.required ? 'border-red-500' : 'border-blue-100'" type="text" name="lastName" placeholder="Votre prénom" id="lastName" autocomplete="lastName"
           formControlName="lastName"
           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-          <span
+          <span class="text-red-600"
           *ngIf="(lastName?.dirty || lastName?.touched) && lastName?.invalid && lastName?.errors?.required"
         >
           Prénom Obligatoire.
@@ -45,9 +45,9 @@
 
       <div class="col-span-6 sm:col-span-3">
         <label for="birth" class="block text-sm font-medium text-gray-700">Date de naissance</label>
-        <input type="date" name="birth" id="birth" autocomplete="birth" formControlName="birth"
+        <input  [ngClass]="(birth?.dirty || birth?.touched) && birth?.invalid && birth?.errors?.required ? 'border-red-500' : 'border-blue-100'" type="date" name="birth" id="birth" autocomplete="birth" formControlName="birth"
           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-          <span
+          <span class="text-red-600"
           *ngIf="(birth?.dirty || birth?.touched) && birth?.invalid && birth?.errors?.required"
         >
           Date de Naissance Obligatoire.
@@ -56,9 +56,9 @@
 
       <div class="col-span-6 sm:col-span-3">
         <label for="locality" class="block text-sm font-medium text-gray-700">NPA/Localité</label>
-        <input type="text" name="locality" id="locality" autocomplete="locality" placeholder="NPA/Localité" formControlName="locality"
+        <input   [ngClass]=" (locality?.dirty || locality?.touched) && locality?.invalid && locality?.errors?.required ? 'border-red-500' : 'border-blue-100'" type="text" name="locality" id="locality" autocomplete="locality" placeholder="NPA/Localité" formControlName="locality"
           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-          <span
+          <span class="text-red-600"
           *ngIf="(locality?.dirty || locality?.touched) && locality?.invalid && locality?.errors?.required"
         >
         Localité Obligatoire.
@@ -66,9 +66,9 @@
          </div>
       <div class="col-span-6 sm:col-span-3">
         <label for="address" class="block text-sm font-medium text-gray-700">Adresse actuelle</label>
-        <input type="text" name="address" id="address" autocomplete="address" placeholder="Adresse" formControlName="address"
+        <input  [ngClass]=" (address?.dirty || address?.touched) && address?.invalid && address?.errors?.required? 'border-red-500' : 'border-blue-100'" type="text" name="address" id="address" autocomplete="address" placeholder="Adresse" formControlName="address"
           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-          <span
+          <span class="text-red-600"
           *ngIf="(address?.dirty || address?.touched) && address?.invalid && address?.errors?.required"
         >
          Adresse Obligatoire.
@@ -76,10 +76,10 @@
         </div>
       <div class="col-span-6 sm:col-span-3">
         <label for="domiciledSince" class="block text-sm font-medium text-gray-700">Domicilié depuis</label>
-        <input type="date" name="domiciledSince" id="domiciledSince" autocomplete="domiciledSince"
+        <input  [ngClass]=" (domiciledSince?.dirty || domiciledSince?.touched) && domiciledSince?.invalid && domiciledSince?.errors?.required ? 'border-red-500' : 'border-blue-100'" type="date" name="domiciledSince" id="domiciledSince" autocomplete="domiciledSince"
           formControlName="domiciledSince"
           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-          <span
+          <span class="text-red-600"
           *ngIf="(domiciledSince?.dirty || domiciledSince?.touched) && domiciledSince?.invalid && domiciledSince?.errors?.required"
         >
          Date Obligatoire.
@@ -94,11 +94,8 @@
 
                 <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
                   <label>
-                    <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                      <path
-                        d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
-                    <input type="file" id="upload" style="display:none">
+                    {{imageUrl}}
+                    <input type="file" id="upload" style="display:none"  (change)="onFileSelected($event)">
                   </label>
                 </span>
                 <button type="button"
@@ -127,10 +124,10 @@
       </div>
       <div class="col-span-6 sm:col-span-3">
         <label for="phoneNumber" class="block text-sm font-medium text-gray-700">Téléphone</label>
-        <input type="text" name="phoneNumber" placeholder="Votre numéro de téléphone" id="phoneNumber"
+        <input  [ngClass]=" (phoneNumber?.dirty || phoneNumber?.touched) && phoneNumber?.invalid && phoneNumber?.errors?.required ? 'border-red-500' : 'border-blue-100'" type="text" name="phoneNumber" placeholder="Votre numéro de téléphone" id="phoneNumber"
           autocomplete="phoneNumber" formControlName="phoneNumber"
           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-          <span
+          <span class="text-red-600"
           *ngIf="(phoneNumber?.dirty || phoneNumber?.touched) && phoneNumber?.invalid && phoneNumber?.errors?.required"
         >
          Téléphone Obligatoire.
@@ -139,10 +136,10 @@
 
       <div class="col-span-6 sm:col-span-3">
         <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-        <input type="email" placeholder="Votre adresse email" name="email" id="email" autocomplete="email"
+        <input  [ngClass]=" (email?.dirty || email?.touched) && email?.invalid && email?.errors?.required ? 'border-red-500' : 'border-blue-100'" type="email" placeholder="Votre adresse email" name="email" id="email" autocomplete="email"
           formControlName="email"
           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-          <span
+          <span class="text-red-600"
           *ngIf="(email?.dirty || email?.touched) && email?.invalid && email?.errors?.required"
         >
         Email Obligatoire.

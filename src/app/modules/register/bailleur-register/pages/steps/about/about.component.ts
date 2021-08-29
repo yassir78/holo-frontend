@@ -10,6 +10,12 @@ import * as BailleurActions from "../../../state/bailleur.action";
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
+  file: any;
+  imageUrl: string | ArrayBuffer | null =
+    '<svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">'+
+    +'<path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />'+
+  '</svg>';
+  downloadURL: any;
   aboutForm: FormGroup = new FormGroup({
     genre: new FormControl('Monsieur', Validators.required),
     firstName: new FormControl('', Validators.required),
@@ -58,6 +64,21 @@ export class AboutComponent implements OnInit {
   get email() {
     return this.aboutForm.get('email');
   }
+
+  onFileSelected(event: any) {
+    if (event.target.files[0]) {
+      this.file = event.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(this.file);
+      reader.onload = (event) => {
+        this.imageUrl = reader.result;
+      };
+      this.uploadFileService.pushFileToStorage(this.file).subscribe()
+  }
+  }
+
+ 
+ 
   goToActivity() {
 
     this.store.dispatch(BailleurActions.about({
