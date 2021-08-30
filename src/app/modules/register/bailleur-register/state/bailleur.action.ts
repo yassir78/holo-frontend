@@ -15,6 +15,7 @@ export const about = createAction(
         domiciledSince: Date,
         maritalStatus: string,
         phoneNumber: string,
+        profileImage: string,
         email: string
     }>()
 )

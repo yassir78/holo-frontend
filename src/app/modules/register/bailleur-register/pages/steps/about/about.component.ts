@@ -77,17 +77,23 @@ export class AboutComponent implements OnInit {
       };
       this.progress.percentage = 0;
       this.uploadFileService.pushFileToStorage(this.file).subscribe(evt=>{
-        if (evt.type === HttpEventType.UploadProgress) {
-         console.log(evt)
-          if(evt.total !=  undefined)
-          this.progress.percentage = Math.round(100 * event.loaded / evt.total);
+       // console.log(data)
+     /*  if (event.type === HttpEventType.UploadProgress) {
+        // console.log(event)
+        if(event.total !=  undefined){
+          this.progress.percentage = Math.round(100 * event.loaded / event.total);
+          console.log(this.progress)
           this.progress$.next( this.progress.percentage);
-        } else if (event instanceof HttpResponse) {
-           this.downloadURL = event.body as any;
+        }*/
+      
+         if (evt instanceof HttpResponse) {   
+           /* @ts-ignore*/
+           this.downloadURL = evt.body.Location;
            console.log(this.downloadURL)
         }
-      
         
+      }, error =>{
+        console.log(error)
       })
       
   }
@@ -106,6 +112,7 @@ export class AboutComponent implements OnInit {
       firstName: this.firstName?.value,
       lastName: this.lastName?.value,
       locality: this.locality?.value,
+      profileImage: this.downloadURL,
       maritalStatus: this.maritalStatus?.value,
       phoneNumber: this.phoneNumber?.value
     }))
