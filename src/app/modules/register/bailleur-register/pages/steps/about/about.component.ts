@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { bailleurRegisterState } from '../../../state/bailleur.state';
 import * as BailleurActions from "../../../state/bailleur.action";
+import { UploadFileService } from 'src/app/services/uploadFileService';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -11,10 +14,9 @@ import * as BailleurActions from "../../../state/bailleur.action";
 })
 export class AboutComponent implements OnInit {
   file: any;
-  imageUrl: string | ArrayBuffer | null =
-    '<svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">'+
-    +'<path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />'+
-  '</svg>';
+  progress: { percentage: number } = { percentage: 0 };
+  progress$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  imageUrl: string | ArrayBuffer | null = 'https://via.placeholder.com/300x300?text=Inserer+Votre+Logo';
   downloadURL: any;
   aboutForm: FormGroup = new FormGroup({
     genre: new FormControl('Monsieur', Validators.required),
@@ -30,7 +32,7 @@ export class AboutComponent implements OnInit {
     email: new FormControl('', Validators.required)
 
   })
-  constructor(private router: Router, private store: Store<bailleurRegisterState>) { }
+  constructor(private router: Router, private store: Store<bailleurRegisterState>, private uploadFileService:UploadFileService) { }
 
   ngOnInit(): void {
   }
@@ -73,7 +75,21 @@ export class AboutComponent implements OnInit {
       reader.onload = (event) => {
         this.imageUrl = reader.result;
       };
-      this.uploadFileService.pushFileToStorage(this.file).subscribe()
+      this.progress.percentage = 0;
+      this.uploadFileService.pushFileToStorage(this.file).subscribe(evt=>{
+        if (evt.type === HttpEventType.UploadProgress) {
+         console.log(evt)
+          if(evt.total !=  undefined)
+          this.progress.percentage = Math.round(100 * event.loaded / evt.total);
+          this.progress$.next( this.progress.percentage);
+        } else if (event instanceof HttpResponse) {
+           this.downloadURL = event.body as any;
+           console.log(this.downloadURL)
+        }
+      
+        
+      })
+      
   }
   }
 

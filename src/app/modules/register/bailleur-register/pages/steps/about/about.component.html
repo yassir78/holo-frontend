@@ -94,7 +94,7 @@
 
                 <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
                   <label>
-                    {{imageUrl}}
+                    <img [src]="imageUrl" alt="..." class="img-thumbnail">
                     <input type="file" id="upload" style="display:none"  (change)="onFileSelected($event)">
                   </label>
                 </span>
@@ -149,7 +149,7 @@
     <div>
       <div class="space-y-8 divide-y divide-gray-200">
         <div class=" py-3 text-right sm:px-6">
-          <button type="button" (click)="goToActivity()" [disabled]="!aboutForm.valid"
+          <button type="button" (click)="goToActivity()" [disabled]="!aboutForm.valid  || (progress$|async)!==100"
             class="inline-flex  items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-blue-2 hover:bg-blue-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-blue-2">
             Suivant
           </button>
