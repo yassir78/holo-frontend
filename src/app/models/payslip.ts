@@ -1,4 +1,6 @@
 export interface Payslip {
-    id?:number;
-    path?:string;
+    id?: number;
+    firstMonthSalary?: string;
+    secondMonthSalary?: string;
+    thirdMonthSalary?: string;
 }

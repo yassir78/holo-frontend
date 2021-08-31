@@ -5,8 +5,10 @@ import { Store } from '@ngrx/store';
 import { bailleurRegisterState } from '../../../state/bailleur.state';
 import * as BailleurActions from "../../../state/bailleur.action"
 import { TextractService } from 'src/app/services/textract.service';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { getGross, getNet, getpayslipProcessEndedSuccessfuly, getpayslipProcessErrorMsg, getpayslipProcessLoading } from '../../../state/bailleur.selector';
+import { UploadFileService } from 'src/app/services/uploadFileService';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-activity',
@@ -14,7 +16,18 @@ import { getGross, getNet, getpayslipProcessEndedSuccessfuly, getpayslipProcessE
   styleUrls: ['./activity.component.scss']
 })
 export class ActivityComponent implements OnInit {
-  currentInput: string = "+  Ajouter";
+  firstMonthSalary: string = "+ Ajouter";
+  secondMonthSalary: string = "+ Ajouter";
+  thirdMonthSalary: string = "+ Ajouter";
+  progress1$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  progress2$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  progress3$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  /* @ts-ignore */
+  firstMonthSalaryUrl: string;
+  /* @ts-ignore */
+  secondMonthSalaryUrl: string;
+  /* @ts-ignore */
+  thirdMonthSalaryUrl: string;
   /* @ts-ignore */
   payslipProcessLoading$: Observable<boolean>;
   /* @ts-ignore */
@@ -42,13 +55,15 @@ export class ActivityComponent implements OnInit {
     lastEmployerSince: new FormControl('', Validators.required),
     pursuitSheet: new FormControl('', null)
   })
-  constructor(private router: Router, private store: Store<bailleurRegisterState>, private textractSerivce: TextractService) { }
+  constructor(private router: Router, private store: Store<bailleurRegisterState>, private textractSerivce: TextractService, private uploadService: UploadFileService) { }
 
   ngOnInit(): void {
     /* ts-ignore */
     this.payslipProcessEndedSuccessfuly$ = this.store.select(getpayslipProcessEndedSuccessfuly);
     this.payslipProcessErrorMsg$ = this.store.select(getpayslipProcessErrorMsg);
     this.payslipProcessLoading$ = this.store.select(getpayslipProcessLoading);
+
+
     this.gross$ = this.store.select(getGross)
     this.net$ = this.store.select(getNet)
     this.net$.subscribe(net => this.net = net);
@@ -122,10 +137,25 @@ export class ActivityComponent implements OnInit {
   returnToProperty() {
     this.router.navigate(['/register/bailleur/property'])
   }
-  onFileSelected(event: any) {
-    this.currentInput = event.target.files[0].name + "  x";
+  firstMonthSalaryDocument(event: any) {
+    this.firstMonthSalary = event.target.files[0].name;
     console.log(event.target.files[0].name);
     const file: File = event.target.files[0];
+    this.uploadService.uploadFile(file).subscribe(evt => {
+      if (evt.type === HttpEventType.UploadProgress) {
+        if (evt.total != undefined) {
+          console.log(Math.round(100 * evt.loaded / evt.total))
+          this.progress1$.next(Math.round(100 * evt.loaded / evt.total));
+        }
+        if (evt instanceof HttpResponse) {
+          /* @ts-ignore*/
+          this.firstMonthSalaryUrl = evt.body.Location;
+        }
+      }
+    }, error => {
+      console.log(error)
+    })
+
     const reader = new FileReader();
     var fileByteArray: any = [];
     reader.readAsArrayBuffer(file);
@@ -142,7 +172,44 @@ export class ActivityComponent implements OnInit {
       }
       this.store.dispatch(BailleurActions.processPayslip())
       this.store.dispatch(BailleurActions.processPayslipServer({ buffer: Buffer.from(new Uint8Array(fileByteArray)) }))
-
     }
+  }
+  secondMonthSalaryDocument(event: any) {
+    this.secondMonthSalary = event.target.files[0].name;
+    console.log(event.target.files[0].name);
+    const file: File = event.target.files[0];
+    this.uploadService.uploadFile(file).subscribe(evt => {
+      if (evt.type === HttpEventType.UploadProgress) {
+        if (evt.total != undefined) {
+          console.log(Math.round(100 * evt.loaded / evt.total))
+          this.progress2$.next(Math.round(100 * evt.loaded / evt.total));
+        }
+        if (evt instanceof HttpResponse) {
+          /* @ts-ignore*/
+          this.secondMonthSalaryUrl = evt.body.Location;
+        }
+      }
+    }, error => {
+      console.log(error)
+    })
+  }
+  thirdMonthSalaryDocument(event: any) {
+    this.thirdMonthSalary = event.target.files[0].name;
+    console.log(event.target.files[0].name);
+    const file: File = event.target.files[0];
+    this.uploadService.uploadFile(file).subscribe(evt => {
+      if (evt.type === HttpEventType.UploadProgress) {
+        if (evt.total != undefined) {
+          console.log(Math.round(100 * evt.loaded / evt.total))
+          this.progress3$.next(Math.round(100 * evt.loaded / evt.total));
+        }
+        if (evt instanceof HttpResponse) {
+          /* @ts-ignore*/
+          this.thirdMonthSalaryUrl = evt.body.Location;
+        }
+      }
+    }, error => {
+      console.log(error)
+    })
   }
 }

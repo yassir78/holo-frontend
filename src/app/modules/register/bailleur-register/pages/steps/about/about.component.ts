@@ -14,10 +14,9 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AboutComponent implements OnInit {
   file: any;
-  progress: { percentage: number } = { percentage: 0 };
   progress$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   imageUrl: string | ArrayBuffer | null = 'https://via.placeholder.com/300x300?text=Inserer+Votre+Logo';
-  downloadURL: any;
+  profileImgUrl: any;
   aboutForm: FormGroup = new FormGroup({
     genre: new FormControl('Monsieur', Validators.required),
     firstName: new FormControl('', Validators.required),
@@ -32,7 +31,7 @@ export class AboutComponent implements OnInit {
     email: new FormControl('', Validators.required)
 
   })
-  constructor(private router: Router, private store: Store<bailleurRegisterState>, private uploadFileService:UploadFileService) { }
+  constructor(private router: Router, private store: Store<bailleurRegisterState>, private uploadFileService: UploadFileService) { }
 
   ngOnInit(): void {
   }
@@ -75,32 +74,25 @@ export class AboutComponent implements OnInit {
       reader.onload = (event) => {
         this.imageUrl = reader.result;
       };
-      this.progress.percentage = 0;
-      this.uploadFileService.pushFileToStorage(this.file).subscribe(evt=>{
-       // console.log(data)
-     /*  if (event.type === HttpEventType.UploadProgress) {
-        // console.log(event)
-        if(event.total !=  undefined){
-          this.progress.percentage = Math.round(100 * event.loaded / event.total);
-          console.log(this.progress)
-          this.progress$.next( this.progress.percentage);
-        }*/
-      
-         if (evt instanceof HttpResponse) {   
-           /* @ts-ignore*/
-           this.downloadURL = evt.body.Location;
-           console.log(this.downloadURL)
+      this.uploadFileService.uploadImage(this.file).subscribe(evt => {
+        if (evt.type === HttpEventType.UploadProgress) {
+          if (evt.total != undefined) {
+            this.progress$.next(Math.round(100 * evt.loaded / evt.total));
+          }
+          if (evt instanceof HttpResponse) {
+            /* @ts-ignore*/
+            this.profileImgUrl = evt.body.Location;
+          }
         }
-        
-      }, error =>{
+      }, error => {
         console.log(error)
       })
-      
-  }
+
+    }
   }
 
- 
- 
+
+
   goToActivity() {
 
     this.store.dispatch(BailleurActions.about({
@@ -112,7 +104,7 @@ export class AboutComponent implements OnInit {
       firstName: this.firstName?.value,
       lastName: this.lastName?.value,
       locality: this.locality?.value,
-      profileImage: this.downloadURL,
+      profileImage: this.profileImgUrl,
       maritalStatus: this.maritalStatus?.value,
       phoneNumber: this.phoneNumber?.value
     }))

@@ -4,7 +4,20 @@
 .bg-blue{
      @include bgColor($blue_button);
 }
-
+.circle {
+    background-color:#fff;
+   
+    height:100%;
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    width:100px;
+    border-width: 2px;
+    border-style: solid;
+}
+.circle-success{
+       border-color:  green;
+}
 
 .bg-blue_dark{
     @include bgColor($dark_blue)

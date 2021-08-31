@@ -8,56 +8,43 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class UploadFileService {
-private readonly API:any = environment.base_url
+  private readonly API: any = environment.base_url
 
   constructor(private http: HttpClient) { }
-  pushFileToStorage(file: File){
+  uploadImage(file: File) {
     const data: FormData = new FormData();
     data.append('file', file);
-    const newRequest = new HttpRequest('POST', this.API+'/upload/image', data, {
+    const newRequest = new HttpRequest('POST', this.API + '/upload/image', data, {
       reportProgress: true
     });
     return this.http.request(newRequest);
-   //return this.http.post(this.API+'/upload/image', data);
+    //return this.http.post(this.API+'/upload/image', data);
 
   }
-  deleteFile(fileUrl:string , productImageId:number){
-   return this.http.post<any>(`${this.API}/deleteFile`,{
-    fileName:fileUrl,
-    productImageId:productImageId
+  uploadFile(file: File) {
+    const data: FormData = new FormData();
+    data.append('file', file);
+    const newRequest = new HttpRequest('POST', this.API + '/upload/document', data, {
+      reportProgress: true
     });
+    return this.http.request(newRequest);
+    //return this.http.post(this.API+'/upload/image', data);
 
-
-
+  }
+  deleteFile(fileUrl: string, productImageId: number) {
+    return this.http.post<any>(`${this.API}/deleteFile`, {
+      fileName: fileUrl,
+      productImageId: productImageId
+    });
   }
 
 
-  
-public async Upload(file: File) {
-  try {
 
+  public async uploadFiles(file: File): Promise<any> {
     const formData = new FormData();
     formData.append("file", file);
-    
-    const result = await this.http.post(this.API+'/upload/image', formData).pipe(map((response: any) => response)).toPromise();
-     console.log(result)
-
-    return result;
-  }
-  catch (ex) {
-    console.log(ex)
+    return await this.http.post(this.API + '/upload/image', formData);
 
   }
-  finally {
-  }
-}
-
-
-public async uploadFiles(file: File): Promise<any> {
-  const formData = new FormData();
-  formData.append("file", file);
-  return await this.http.post( this.API+'/upload/image',formData);
- 
-}
 
 }
