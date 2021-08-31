@@ -87,6 +87,16 @@ export const bailleurReducer = createReducer(
                 }
             }
         }
-    })
+    }),
+    on(BailleurActions.processPayslip, (state, action) => {
+        return { ...state, payslipProcessLoading: true, payslipProcessEndedSuccessfuly: false, payslipProcessErrorMsg: '' }
+    }),
+    // we should recover the implementation
+    on(BailleurActions.processPayslipSuccess, (state, action) => {
+        return { ...state, payslipProcessLoading: false, payslipProcessEndedSuccessfuly: true, gross: action.montantBrut, net: action.montantNet }
+    }),
+    on(BailleurActions.processPayslipFailure, (state, action) => {
+        return { ...state, payslipProcessLoading: false, payslipProcessErrorMsg: action.errorMsg }
+    }),
 
 )
