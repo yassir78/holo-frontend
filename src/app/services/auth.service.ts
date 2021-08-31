@@ -8,8 +8,11 @@ import { User } from '../models/user';
 })
 export class AuthService {
   private readonly API = environment.base_url
-  constructor(private http:HttpClient) { }
-  login(username:string,password:string){
-    return this.http.post(`${this.API}/login`,{username:username,password:password})
+  constructor(private http: HttpClient) { }
+  login(username: string, password: string) {
+    return this.http.post(`${this.API}/login`, { username: username, password: password })
+  }
+  register(user: User) {
+    return this.http.post(`${this.API}/register`, user);
   }
 }

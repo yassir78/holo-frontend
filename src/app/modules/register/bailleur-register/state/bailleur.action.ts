@@ -1,6 +1,7 @@
 import { createAction, props } from "@ngrx/store";
 import { ModifyInstanceAttributeRequest } from "aws-sdk/clients/ec2";
 import { Payslip } from "src/app/models/payslip";
+import { User } from "src/app/models/user";
 
 
 export const about = createAction(
@@ -100,5 +101,15 @@ export const property = createAction(
         possibleRemarks?: string;
     }>()
 )
-
+export const register = createAction(
+    '[Activity component] register process',
+    props<{ user: User }>()
+)
+export const registerSuccess = createAction(
+    '[Bailleur effect] register process success'
+)
+export const registerFailure = createAction(
+    '[Bailleur effect] register process failure',
+    props<{ error: string }>()
+)
 

@@ -9,6 +9,9 @@ export const getpayslipProcessEndedSuccessfuly = createSelector(getBailleurRegis
 export const getNet = createSelector(getBailleurRegisterState, (state) => {
     return state.net;
 });
+export const getUser = createSelector(getBailleurRegisterState, (state) => {
+    return state.user;
+})
 export const getGross = createSelector(getBailleurRegisterState, (state) => {
     return state.gross;
 });

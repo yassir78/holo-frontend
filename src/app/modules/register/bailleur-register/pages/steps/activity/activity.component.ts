@@ -6,9 +6,10 @@ import { bailleurRegisterState } from '../../../state/bailleur.state';
 import * as BailleurActions from "../../../state/bailleur.action"
 import { TextractService } from 'src/app/services/textract.service';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { getGross, getNet, getpayslipProcessEndedSuccessfuly, getpayslipProcessErrorMsg, getpayslipProcessLoading } from '../../../state/bailleur.selector';
+import { getGross, getNet, getpayslipProcessEndedSuccessfuly, getpayslipProcessErrorMsg, getpayslipProcessLoading, getUser } from '../../../state/bailleur.selector';
 import { UploadFileService } from 'src/app/services/uploadFileService';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-activity',
@@ -31,8 +32,8 @@ export class ActivityComponent implements OnInit {
   secondMonthSalaryUrl: string;
   /* @ts-ignore */
   thirdMonthSalaryUrl: string;
-    /* @ts-ignore */
-  pursuitUrl:string;
+  /* @ts-ignore */
+  pursuitUrl: string;
   /* @ts-ignore */
   payslipProcessLoading$: Observable<boolean>;
   /* @ts-ignore */
@@ -47,6 +48,8 @@ export class ActivityComponent implements OnInit {
   net: number;
   /* @ts-ignore */
   gross: number;
+  /* @ts-ignore */
+  user: Observable<User>;
   activityForm: FormGroup = new FormGroup({
     profession: new FormControl('', Validators.required),
     professionDate: new FormControl('', Validators.required),
@@ -67,7 +70,7 @@ export class ActivityComponent implements OnInit {
     this.payslipProcessEndedSuccessfuly$ = this.store.select(getpayslipProcessEndedSuccessfuly);
     this.payslipProcessErrorMsg$ = this.store.select(getpayslipProcessErrorMsg);
     this.payslipProcessLoading$ = this.store.select(getpayslipProcessLoading);
-
+    this.user = this.store.select(getUser);
 
     this.gross$ = this.store.select(getGross)
     this.net$ = this.store.select(getNet)
@@ -135,12 +138,16 @@ export class ActivityComponent implements OnInit {
       lastEmployer: this.lastEmployer?.value,
       lastEmployerSince: this.lastEmployerSince?.value,
       pursuitSheet: this.pursuitUrl,
-      payslips:{
+      payslips: {
         firstMonthSalary: this.firstMonthSalaryUrl,
         secondMonthSalary: this.secondMonthSalaryUrl,
         thirdMonthSalary: this.thirdMonthSalaryUrl,
       }
     }))
+    this.user.subscribe(user => {
+      this.store.dispatch(BailleurActions.register({ user: user }))
+    })
+
     this.router.navigate(['/login'])
   }
   returnToProperty() {
@@ -158,12 +165,12 @@ export class ActivityComponent implements OnInit {
         }
 
       }
-        else if (evt instanceof HttpResponse) {
-          /* @ts-ignore*/
-          this.firstMonthSalaryUrl = evt.body.Location;
-          console.log(this.firstMonthSalaryUrl)
-        }
-      
+      else if (evt instanceof HttpResponse) {
+        /* @ts-ignore*/
+        this.firstMonthSalaryUrl = evt.body.Location;
+        console.log(this.firstMonthSalaryUrl)
+      }
+
     }, error => {
       console.log(error)
     })
@@ -196,12 +203,12 @@ export class ActivityComponent implements OnInit {
           console.log(Math.round(100 * evt.loaded / evt.total))
           this.progress4$.next(Math.round(100 * evt.loaded / evt.total));
         }
-       
+
       }
       else if (evt instanceof HttpResponse) {
         /* @ts-ignore*/
         this.pursuitUrl = evt.body.Location;
-        console.log( this.pursuitUrl)
+        console.log(this.pursuitUrl)
       }
     }, error => {
       console.log(error)
@@ -218,7 +225,7 @@ export class ActivityComponent implements OnInit {
           this.progress3$.next(Math.round(100 * evt.loaded / evt.total));
         }
       }
-     else if (evt instanceof HttpResponse) {
+      else if (evt instanceof HttpResponse) {
         /* @ts-ignore*/
         this.thirdMonthSalaryUrl = evt.body.Location;
         console.log(this.thirdMonthSalaryUrl)
@@ -238,12 +245,12 @@ export class ActivityComponent implements OnInit {
           console.log(Math.round(100 * evt.loaded / evt.total))
           this.progress2$.next(Math.round(100 * evt.loaded / evt.total));
         }
-       
+
       }
       else if (evt instanceof HttpResponse) {
         /* @ts-ignore*/
         this.secondMonthSalaryUrl = evt.body.Location;
-        console.log( this.secondMonthSalaryUrl)
+        console.log(this.secondMonthSalaryUrl)
       }
     }, error => {
       console.log(error)
