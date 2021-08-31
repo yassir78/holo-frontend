@@ -14,8 +14,8 @@
           </div>
         <div class="col-span-6 sm:col-span-3">
           <label for="placeOfOrigin" class="block text-sm font-medium text-gray-700">Lieu d'origine</label>
-          <input type="text" name="placeOfOrigin" formControlName="placeOfOrigin" placeholder="versoix"  id="placeOfOrigin" autocomplete="placeOfOrigin" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-          <span
+          <input type="text" [ngClass]=" (placeOfOrigin?.invalid && placeOfOrigin?.touched) ? 'border-red-500' : 'border-blue-100'" name="placeOfOrigin" formControlName="placeOfOrigin" placeholder="versoix"  id="placeOfOrigin" autocomplete="placeOfOrigin" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+          <span class="text-red-600"
           *ngIf="(placeOfOrigin?.dirty || placeOfOrigin?.touched) && placeOfOrigin?.invalid && placeOfOrigin?.errors?.required"
         >
         Lieu d'origine Obligatoire.
@@ -39,15 +39,15 @@
             </div>    
             <div class="row-span-6 sm:row-span-6">
               <input type="text" name="putUnderGuardianship" formControlName="putUnderGuardianship" id="putUnderGuardianship" placeholder="Laquelle ?" autocomplete="putUnderGuardianship" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-           
+               
             </div>
           </div>
       
           </div>
           <div class="col-span-6 sm:col-span-3">
             <label for="inSwitzerlandSince" class="block text-sm font-medium text-gray-700">En Suisse depuis</label>
-            <input type="date" name="inSwitzerlandSince" formControlName="inSwitzerlandSince" placeholder="versoix"  id="inSwitzerlandSince" autocomplete="inSwitzerlandSince" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-            <span
+            <input type="date" [ngClass]=" (inSwitzerlandSince?.invalid && inSwitzerlandSince?.touched) ? 'border-red-500' : 'border-blue-100'" name="inSwitzerlandSince" formControlName="inSwitzerlandSince" placeholder="versoix"  id="inSwitzerlandSince" autocomplete="inSwitzerlandSince" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+            <span class="text-red-600"
             *ngIf="(inSwitzerlandSince?.dirty || inSwitzerlandSince?.touched) && inSwitzerlandSince?.invalid && inSwitzerlandSince?.errors?.required"
           >
           Date Obligatoire.
@@ -63,16 +63,31 @@
   
         <div class="col-span-6 sm:col-span-6">
           <label for="numberOfPeopleOccupyingTheFutureAccommodation" class="block text-sm font-medium text-gray-700">Nombre de personnes occupant le future logement</label>
-          <input type="number" name="numberOfPeopleOccupyingTheFutureAccommodation" formControlName="numberOfPeopleOccupyingTheFutureAccommodation" placeholder="12" id="numberOfPeopleOccupyingTheFutureAccommodation" autocomplete="numberOfPeopleOccupyingTheFutureAccommodation" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          <input type="number"  [ngClass]=" (numberOfPeopleOccupyingTheFutureAccommodation?.invalid && numberOfPeopleOccupyingTheFutureAccommodation?.touched) ? 'border-red-500' : 'border-blue-100'" name="numberOfPeopleOccupyingTheFutureAccommodation" formControlName="numberOfPeopleOccupyingTheFutureAccommodation" placeholder="12" id="numberOfPeopleOccupyingTheFutureAccommodation" autocomplete="numberOfPeopleOccupyingTheFutureAccommodation" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+          <span class="text-red-600"
+          *ngIf="(numberOfPeopleOccupyingTheFutureAccommodation?.dirty || numberOfPeopleOccupyingTheFutureAccommodation?.touched) && numberOfPeopleOccupyingTheFutureAccommodation?.invalid && numberOfPeopleOccupyingTheFutureAccommodation?.errors?.required"
+        >
+         Champ Obligatoire.
+        </span>
         </div>
         <div class="col-span-6 sm:col-span-3">
           <label for="numberOfAdults" class="block text-sm font-medium text-gray-700">Nombre d'adultes</label>
-          <input type="number" placeholder="6" name="numberOfAdults" formControlName="numberOfAdults" id="numberOfAdults" autocomplete="numberOfAdults" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          <input type="number" [ngClass]=" (numberOfAdults?.invalid && numberOfAdults?.touched) ? 'border-red-500' : 'border-blue-100'" placeholder="6" name="numberOfAdults" formControlName="numberOfAdults" id="numberOfAdults" autocomplete="numberOfAdults" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+          <span class="text-red-600"
+          *ngIf="(numberOfAdults?.dirty || numberOfAdults?.touched) && numberOfAdults?.invalid && numberOfAdults?.errors?.required"
+        >
+        Nombre d'adultes Obligatoire.
+        </span>
         </div>
         <div class="col-span-6 sm:col-span-3">
           <label for="numberOfChildren" class="block text-sm font-medium text-gray-700">Nombre d'enfants</label>
-          <input type="number" name="numberOfChildren" formControlName="numberOfChildren" placeholder = "6" id="numberOfChildren" autocomplete="numberOfChildren" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-        </div>
+          <input type="number" [ngClass]=" (numberOfChildren?.invalid && numberOfChildren?.touched) ? 'border-red-500' : 'border-blue-100'" name="numberOfChildren" formControlName="numberOfChildren" placeholder = "6" id="numberOfChildren" autocomplete="numberOfChildren" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+          <span class="text-red-600"
+          *ngIf="(numberOfChildren?.dirty || numberOfChildren?.touched) && numberOfChildren?.invalid && numberOfChildren?.errors?.required"
+        >
+        Nombre d'enfants Obligatoire.
+        </span>
+         </div>
         <div class="col-span-6 sm:col-span-6">
           <label for="last-name" class="block text-sm font-medium text-gray-700">Animaux domestiques</label>
           <div class="grid grid-rows-6 grid-flow-col gap-2">

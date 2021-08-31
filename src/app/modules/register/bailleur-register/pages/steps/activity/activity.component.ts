@@ -36,8 +36,8 @@ export class ActivityComponent implements OnInit {
     workplace: new FormControl('', Validators.required),
     contactPerson: new FormControl('', Validators.required),
     professionalPhoneNumber: new FormControl('', Validators.required),
-    grossMonthlyIncome: new FormControl(0, Validators.required),
-    netMonthlyIncome: new FormControl(0, Validators.required),
+    grossMonthlyIncome: new FormControl('', Validators.required),
+    netMonthlyIncome: new FormControl('', Validators.required),
     lastEmployer: new FormControl('', Validators.required),
     lastEmployerSince: new FormControl('', Validators.required),
     pursuitSheet: new FormControl('', null)

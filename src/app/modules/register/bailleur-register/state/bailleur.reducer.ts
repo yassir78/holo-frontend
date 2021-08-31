@@ -5,7 +5,7 @@ export const bailleurReducer = createReducer(
     initialBailleurRegisterState,
     on(BailleurActions.about, (state, action) => {
         return {
-            ...state, user: { ...state.user, firstName: action.firstName, lastName: action.lastName, gender: action.gender, birth: action.birth, locality: action.locality, simpleAddress: action.address, domiciledSince: action.domiciledSince, maritalStatus: action.maritalStatus, phoneNumber: action.phoneNumber, email: action.email }
+            ...state, user: { ...state.user, profileImage: action.profileImage, firstName: action.firstName, lastName: action.lastName, gender: action.gender, birth: action.birth, locality: action.locality, simpleAddress: action.address, domiciledSince: action.domiciledSince, maritalStatus: action.maritalStatus, phoneNumber: action.phoneNumber, email: action.email }
         }
     }),
     on(BailleurActions.profession, (state, action) => {

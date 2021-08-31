@@ -4,12 +4,20 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { bailleurRegisterState } from '../../../state/bailleur.state';
 import * as BailleurActions from "../../../state/bailleur.action";
+import { UploadFileService } from 'src/app/services/uploadFileService';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
+  file: any;
+  progress: { percentage: number } = { percentage: 0 };
+  progress$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  imageUrl: string | ArrayBuffer | null = 'https://via.placeholder.com/300x300?text=Inserer+Votre+Logo';
+  downloadURL: any;
   aboutForm: FormGroup = new FormGroup({
     genre: new FormControl('Monsieur', Validators.required),
     firstName: new FormControl('', Validators.required),
@@ -24,7 +32,7 @@ export class AboutComponent implements OnInit {
     email: new FormControl('', Validators.required)
 
   })
-  constructor(private router: Router, private store: Store<bailleurRegisterState>) { }
+  constructor(private router: Router, private store: Store<bailleurRegisterState>, private uploadFileService:UploadFileService) { }
 
   ngOnInit(): void {
   }
@@ -58,6 +66,41 @@ export class AboutComponent implements OnInit {
   get email() {
     return this.aboutForm.get('email');
   }
+
+  onFileSelected(event: any) {
+    if (event.target.files[0]) {
+      this.file = event.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(this.file);
+      reader.onload = (event) => {
+        this.imageUrl = reader.result;
+      };
+      this.progress.percentage = 0;
+      this.uploadFileService.pushFileToStorage(this.file).subscribe(evt=>{
+       // console.log(data)
+     /*  if (event.type === HttpEventType.UploadProgress) {
+        // console.log(event)
+        if(event.total !=  undefined){
+          this.progress.percentage = Math.round(100 * event.loaded / event.total);
+          console.log(this.progress)
+          this.progress$.next( this.progress.percentage);
+        }*/
+      
+         if (evt instanceof HttpResponse) {   
+           /* @ts-ignore*/
+           this.downloadURL = evt.body.Location;
+           console.log(this.downloadURL)
+        }
+        
+      }, error =>{
+        console.log(error)
+      })
+      
+  }
+  }
+
+ 
+ 
   goToActivity() {
 
     this.store.dispatch(BailleurActions.about({
@@ -69,6 +112,7 @@ export class AboutComponent implements OnInit {
       firstName: this.firstName?.value,
       lastName: this.lastName?.value,
       locality: this.locality?.value,
+      profileImage: this.downloadURL,
       maritalStatus: this.maritalStatus?.value,
       phoneNumber: this.phoneNumber?.value
     }))
