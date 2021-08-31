@@ -202,8 +202,10 @@
             Dernier fiche de poursuite
           </label>
           <label for="upload3">
-            <span class="text-blue-2"> + Ajouter</span>
-            <input type="file" formControlName="pursuitSheet" id="pursuitSheet" style="display:none">
+             <span class="cursor-pointer	" [ngClass]="pursuit=='+ Ajouter' ? 'text-blue-2' : 'text-gray-700'">
+              {{pursuit}}</span>
+            <span class="font-medium mx-3 " *ngIf="pursuit != '+ Ajouter'">{{progress4$|async}} %</span>
+            <input type="file" formControlName="pursuitSheet" id="upload3" style="display:none"  (change)="pursuitDocument($event)">
           </label>
         </div>
 

@@ -19,15 +19,20 @@ export class ActivityComponent implements OnInit {
   firstMonthSalary: string = "+ Ajouter";
   secondMonthSalary: string = "+ Ajouter";
   thirdMonthSalary: string = "+ Ajouter";
+  pursuit: string = "+ Ajouter";
   progress1$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   progress2$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   progress3$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  progress4$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+
   /* @ts-ignore */
   firstMonthSalaryUrl: string;
   /* @ts-ignore */
   secondMonthSalaryUrl: string;
   /* @ts-ignore */
   thirdMonthSalaryUrl: string;
+    /* @ts-ignore */
+  pursuitUrl:string;
   /* @ts-ignore */
   payslipProcessLoading$: Observable<boolean>;
   /* @ts-ignore */
@@ -129,8 +134,12 @@ export class ActivityComponent implements OnInit {
       netMonthlyIncome: this.netMonthlyIncome?.value,
       lastEmployer: this.lastEmployer?.value,
       lastEmployerSince: this.lastEmployerSince?.value,
-      pursuitSheet: this.pursuitSheet?.value,
-      payslips: []
+      pursuitSheet: this.pursuitUrl,
+      payslips:{
+        firstMonthSalary: this.firstMonthSalaryUrl,
+        secondMonthSalary: this.secondMonthSalaryUrl,
+        thirdMonthSalary: this.thirdMonthSalaryUrl,
+      }
     }))
     this.router.navigate(['/login'])
   }
@@ -147,11 +156,14 @@ export class ActivityComponent implements OnInit {
           console.log(Math.round(100 * evt.loaded / evt.total))
           this.progress1$.next(Math.round(100 * evt.loaded / evt.total));
         }
-        if (evt instanceof HttpResponse) {
+
+      }
+        else if (evt instanceof HttpResponse) {
           /* @ts-ignore*/
           this.firstMonthSalaryUrl = evt.body.Location;
+          console.log(this.firstMonthSalaryUrl)
         }
-      }
+      
     }, error => {
       console.log(error)
     })
@@ -174,20 +186,22 @@ export class ActivityComponent implements OnInit {
       this.store.dispatch(BailleurActions.processPayslipServer({ buffer: Buffer.from(new Uint8Array(fileByteArray)) }))
     }
   }
-  secondMonthSalaryDocument(event: any) {
-    this.secondMonthSalary = event.target.files[0].name;
+  pursuitDocument(event: any) {
+    this.pursuit = event.target.files[0].name;
     console.log(event.target.files[0].name);
     const file: File = event.target.files[0];
     this.uploadService.uploadFile(file).subscribe(evt => {
       if (evt.type === HttpEventType.UploadProgress) {
         if (evt.total != undefined) {
           console.log(Math.round(100 * evt.loaded / evt.total))
-          this.progress2$.next(Math.round(100 * evt.loaded / evt.total));
+          this.progress4$.next(Math.round(100 * evt.loaded / evt.total));
         }
-        if (evt instanceof HttpResponse) {
-          /* @ts-ignore*/
-          this.secondMonthSalaryUrl = evt.body.Location;
-        }
+       
+      }
+      else if (evt instanceof HttpResponse) {
+        /* @ts-ignore*/
+        this.pursuitUrl = evt.body.Location;
+        console.log( this.pursuitUrl)
       }
     }, error => {
       console.log(error)
@@ -203,10 +217,33 @@ export class ActivityComponent implements OnInit {
           console.log(Math.round(100 * evt.loaded / evt.total))
           this.progress3$.next(Math.round(100 * evt.loaded / evt.total));
         }
-        if (evt instanceof HttpResponse) {
-          /* @ts-ignore*/
-          this.thirdMonthSalaryUrl = evt.body.Location;
+      }
+     else if (evt instanceof HttpResponse) {
+        /* @ts-ignore*/
+        this.thirdMonthSalaryUrl = evt.body.Location;
+        console.log(this.thirdMonthSalaryUrl)
+      }
+    }, error => {
+      console.log(error)
+    })
+  }
+
+  secondMonthSalaryDocument(event: any) {
+    this.secondMonthSalary = event.target.files[0].name;
+    console.log(event.target.files[0].name);
+    const file: File = event.target.files[0];
+    this.uploadService.uploadFile(file).subscribe(evt => {
+      if (evt.type === HttpEventType.UploadProgress) {
+        if (evt.total != undefined) {
+          console.log(Math.round(100 * evt.loaded / evt.total))
+          this.progress2$.next(Math.round(100 * evt.loaded / evt.total));
         }
+       
+      }
+      else if (evt instanceof HttpResponse) {
+        /* @ts-ignore*/
+        this.secondMonthSalaryUrl = evt.body.Location;
+        console.log( this.secondMonthSalaryUrl)
       }
     }, error => {
       console.log(error)

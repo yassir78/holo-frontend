@@ -11,6 +11,6 @@ export interface Profession{
    netMonthlyIncome?:number;
    lastEmployer?:string;
    lastEmployerSince?:Date;
-   payslips?:Payslip[];
+   payslips?:Payslip;
    pursuitSheet?:string;
 }

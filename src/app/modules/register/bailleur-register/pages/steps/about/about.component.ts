@@ -75,15 +75,19 @@ export class AboutComponent implements OnInit {
         this.imageUrl = reader.result;
       };
       this.uploadFileService.uploadImage(this.file).subscribe(evt => {
+        console.log(evt)
         if (evt.type === HttpEventType.UploadProgress) {
           if (evt.total != undefined) {
             this.progress$.next(Math.round(100 * evt.loaded / evt.total));
           }
-          if (evt instanceof HttpResponse) {
+        }
+         else if (evt instanceof HttpResponse) {
             /* @ts-ignore*/
             this.profileImgUrl = evt.body.Location;
+            console.log(this.profileImgUrl)
           }
-        }
+     
+        
       }, error => {
         console.log(error)
       })
