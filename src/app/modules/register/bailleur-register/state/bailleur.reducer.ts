@@ -1,6 +1,7 @@
 import { createReducer, on } from "@ngrx/store";
+import * as BailleurActions from "./bailleur.action";
 import { initialBailleurRegisterState } from "./bailleur.state";
-import * as BailleurActions from "./bailleur.action"
+
 export const bailleurReducer = createReducer(
     initialBailleurRegisterState,
     on(BailleurActions.about, (state, action) => {

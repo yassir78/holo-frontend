@@ -11,83 +11,130 @@
 
   </div>
   <div class="flex-1 flex h-full flex-col justify-center w-1/2  py-6 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-    <div class="mt-20 mb-10 ">
-      <h2 class="text-gray-700 text-3xl  font-bold">Inscrits toi et devient membre de la communauté </h2>
+    <div class="text-right mb-5">
+      <a class="inline-flex items-center py-2  text-xl text-blue-2 cursor-pointer hover:bg-blue-2" routerLink="/login">
+        Se connecter
+      </a>
+
     </div>
-    <div>
-      <form class="space-y-6" action="#" method="POST">
-        <div>
-          <label for="email" class="block text-sm font-medium text-gray-700">
-            Email
-          </label>
-          <div class="mt-1">
-            <input id="email" name="email" type="email" placeholder="Votre e-mail" autocomplete="email" required
-              class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    <div class="mt-6 md:mt-0 md:col-span-2 bg-white ">
+      <div class="text-gray-700 text-2xl  font-medium text-gray-700 mb-6">A propos de vous</div>
+      <form [formGroup]="registerForm">
+        <div class="grid grid-cols-6 gap-6">
+  
+          <div class="col-span-6 sm:col-span-3">
+            <label for="genre" class="block text-sm font-bold popping">Genre</label>
+            <select id="genre" name="genre" autocomplete="genre" formControlName="genre"
+              class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+              <option>Monsieur</option>
+              <option>Madame</option>
+            </select>
           </div>
-        </div>
-        <div>
-          <label for="email" class="block text-sm font-medium text-gray-700">
-            Date de naissance
-          </label>
-          <div class="mt-1">
-            <input id="dateNaissance" name="dateNaissance" placeholder="Date de naissance" type="date"
-              autocomplete="date" required
-              class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          <div class="col-span-6 sm:col-span-3">
+            <label for="birth" class="block text-sm font-bold popping">Date de naissance</label>
+            <input
+              [ngClass]="(birth?.dirty || birth?.touched) && birth?.invalid && birth?.errors?.required ? 'border-red-500' : 'border-blue-100'"
+              type="date" name="birth" id="birth" autocomplete="birth" formControlName="birth"
+              class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+            <span class="text-red-600"
+              *ngIf="(birth?.dirty || birth?.touched) && birth?.invalid && birth?.errors?.required">
+              Date de Naissance Obligatoire.
+            </span>
           </div>
-        </div>
-
-
-        <div>
-          <label for="password" class="block text-sm font-medium text-gray-700">
-            Mot de passe
-          </label>
-          <div class="mt-1">
-            <input id="password" name="password" type="password" placeholder="Choisir un mot de passe"
-              autocomplete="current-password" required
-              class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-          </div>
-        </div>
-
-        <!--      <div class="flex items-center justify-between">
-              <div class="flex items-center">
-                <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
-                <label for="remember-me" class="ml-2 block text-sm text-gray-900">
-                  Se souvenir
-                </label>
-              </div>
     
-              <div class="text-sm">
-                <a href="#" class="font-medium text-gray-600 hover:text-indigo-500">
-                  Mot de passe oublié?
-                </a>
+          <div class="col-span-6 sm:col-span-3">
+            <label for="firstName" class="block text-sm font-bold popping">Nom</label>
+            <input type="text" name="firstName"
+              [ngClass]=" (firstName?.invalid && firstName?.touched) ? 'border-red-500' : 'border-blue-100'"
+              placeholder="Votre nom" id="firstName" autocomplete="firstName" formControlName="firstName"
+              class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
+            <span class="text-red-600"
+              *ngIf="(firstName?.dirty || firstName?.touched) && firstName?.invalid && firstName?.errors?.required">
+              Nom Obligatoire.
+            </span>
+          </div>
+    
+          <div class="col-span-6 sm:col-span-3">
+            <label for="lastName" class="block text-sm font-bold popping">Prénom</label>
+            <input
+              [ngClass]=" (lastName?.dirty || lastName?.touched) && lastName?.invalid && lastName?.errors?.required ? 'border-red-500' : 'border-blue-100'"
+              type="text" name="lastName" placeholder="Votre prénom" id="lastName" autocomplete="lastName"
+              formControlName="lastName"
+              class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+            <span class="text-red-600"
+              *ngIf="(lastName?.dirty || lastName?.touched) && lastName?.invalid && lastName?.errors?.required">
+              Prénom Obligatoire.
+            </span>
+          </div>
+    
+        
+          <div class="col-span-6 sm:col-span-6">
+            <label for="last-name" class="block text-sm  mb-3 font-bold popping">Photo de profil</label>
+            <div class="grid grid-rows-6 grid-flow-col gap-2">
+              <div class="row-span-6 sm:row-span-6 ">
+                <div class="mt-1 sm:mt-0 sm:col-span-2">
+                  <div class="flex items-center">
+    
+                    <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100 ">
+                      <label>
+                        <img [src]="imageUrl" alt="..." class="img-thumbnail circle border-pulsate"
+                          [ngClass]="{'circle-success': (progress$|async) == 100}"
+                          [ngClass]="{'border-pulsate': (progress$|async) != 100 && (progress$|async) != 0}">
+                        <input type="file" id="upload" style="display:none" (change)="onFileSelected($event)" #file>
+                      </label>
+                    </span>
+                    <button type="button" (click)="file.click()"
+                      class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                      Choisir
+                    </button>
+                    <button type="button"
+                      class=" popping ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                      Supprimer
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div> -->
-
-        <div class="my-3">
-          <button
-            class="w-full text-white py-4  popping bg_blue_button hover:bg-blue-600 rounded-xl active:-translate-y-1">S'inscrire</button>
-        </div>
-        <div class="text-center">
-          <span>Ou</span>
-        </div>
-        <div class="my-3">
-          <button type="button"
-            class="w-full inline-flex justify-center items-center popping  py-4 border border-blue shadow-sm text-base font-medium rounded-xl text-black bg-white focus:outline-none hover:bg-blue-100 active:-translate-y-1">
-            <!-- Heroicon name: solid/mail -->
-            <img src="../../../../../assets/images/google.svg" class="mr-3" height="20px" width="20px" alt="">
-            Se Connecter avec Google
-          </button>
-        </div>
-        <div class="mt-5 text-center text-base">
-          <span class="inter text-gray-400">Pas encore inscrit(e) ? </span><span
-            class="popping text--blue hover:cursor-pointer active:-translate-y-1" routerLink="/register">
-            S'inscrire</span>
+              <div class="row-span-6 sm:row-span-6">
+              </div>
+            </div>
+    
+          </div>
+     
+          <div class="col-span-6 sm:col-span-3">
+            <label for="phoneNumber" class="block text-sm font-bold popping">Téléphone</label>
+            <input
+              [ngClass]=" (phoneNumber?.dirty || phoneNumber?.touched) && phoneNumber?.invalid && phoneNumber?.errors?.required ? 'border-red-500' : 'border-blue-100'"
+              type="text" name="phoneNumber" placeholder="Votre numéro de téléphone" id="phoneNumber"
+              autocomplete="phoneNumber" formControlName="phoneNumber"
+              class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
+            <span class="text-red-600"
+              *ngIf="(phoneNumber?.dirty || phoneNumber?.touched) && phoneNumber?.invalid && phoneNumber?.errors?.required">
+              Téléphone Obligatoire.
+            </span>
+          </div>
+    
+          <div class="col-span-6 sm:col-span-3">
+            <label for="email" class="block text-sm font-bold popping">Email</label>
+            <input
+              [ngClass]=" (email?.dirty || email?.touched) && email?.invalid && email?.errors?.required ? 'border-red-500' : 'border-blue-100'"
+              type="email" placeholder="Votre adresse email" name="email" id="email" autocomplete="email"
+              formControlName="email"
+              class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
+            <span class="text-red-600"
+              *ngIf="(email?.dirty || email?.touched) && email?.invalid && email?.errors?.required">
+              Email Obligatoire.
+            </span>
+          </div>
         </div>
         <div>
-          <p>
-            En vous inscrivant, vous acceptez nos <span class=" text-gray-700 font-bold "> Conditions générales </span>
-            ainsi que notre <span class=" text-gray-700 font-bold ">Politique de confidentiailité </span>
-          </p>
+          <div class="space-y-8 divide-y divide-gray-200">
+            <div class=" py-3 text-right sm:px-6">
+              <button type="button" (click)="register()" [disabled]="!registerForm.valid"
+                class=" popping inline-flex  items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-blue-2 hover:bg-blue-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-blue-2">
+                S'inscrire
+              </button>
+            </div>
+          </div>
         </div>
       </form>
     </div>
