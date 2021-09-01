@@ -2,11 +2,13 @@ import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { UploadFileService } from 'src/app/services/uploadFileService';
 import { RemetteurRegisterState } from '../../state/remetteur.state';
 import * as RemetteurActions from "../../state/remetteur.action";
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
+import { getUser } from '../../state/remetteur.selector';
 
 @Component({
   selector: 'app-locataire-register',
@@ -14,6 +16,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./locataire-register.component.scss']
 })
 export class LocataireRegisterComponent implements OnInit {
+  /** @ts-ignore */
+  user: Observable<User>;
   file: any;
   progress$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   imageUrl: string | ArrayBuffer | null = 'https://via.placeholder.com/300x300?text=Inserer+Votre+Logo';
@@ -51,6 +55,7 @@ export class LocataireRegisterComponent implements OnInit {
     return this.registerForm.get('email');
   }
   ngOnInit(): void {
+    this.user = this.store.select(getUser);
   }
 
   
@@ -96,6 +101,9 @@ export class LocataireRegisterComponent implements OnInit {
       profileImage: this.profileImgUrl,
       phoneNumber: this.phoneNumber?.value
     }))
+    this.user.subscribe(user => {
+      this.store.dispatch(RemetteurActions.remetteurRegister({ user: user }))
+    })
     this.router.navigate(['/login'])
     
   }
