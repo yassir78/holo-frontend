@@ -1,3 +1,5 @@
 export enum Role {
-    "REMETTEUR","LOCATAIRE","BAILLEUR"
+    Remetteur = 'REMETTEUR',
+    Locataire = 'LOCATAIRE',
+    Bailleur = 'BAILLEUR'
 }

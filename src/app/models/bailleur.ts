@@ -15,5 +15,4 @@ export interface Bailleur extends User {
     address?: Address;
     other?: Other;
     property?: Property;
-    recouvrement?: Recouvrement;
 }

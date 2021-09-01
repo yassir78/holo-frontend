@@ -12,7 +12,7 @@ export interface bailleurRegisterState {
     error: string;
 }
 export const initialBailleurRegisterState: bailleurRegisterState = {
-    user: { roles: [Role.BAILLEUR] },
+    user: { roles: [Role.Bailleur] },
     gross: 0,
     net: 0,
     payslipProcessLoading: false,
