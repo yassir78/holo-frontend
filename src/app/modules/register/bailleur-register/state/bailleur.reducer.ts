@@ -99,5 +99,11 @@ export const bailleurReducer = createReducer(
     on(BailleurActions.processPayslipFailure, (state, action) => {
         return { ...state, payslipProcessLoading: false, payslipProcessErrorMsg: action.errorMsg }
     }),
+    on(BailleurActions.registerSuccess, (state, action) => {
+        return { ...state, isLoading: false }
+    }),
+    on(BailleurActions.registerFailure, (state, action) => {
+        return { ...state, isLoading: false, error: action.error }
+    }),
 
 )

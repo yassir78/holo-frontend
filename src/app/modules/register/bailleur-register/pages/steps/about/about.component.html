@@ -100,7 +100,7 @@
 
                 <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100 ">
                   <label>
-                    <img [src]="imageUrl" alt="..." class="img-thumbnail circle border-pulsate"
+                    <img [src]="imageUrl" alt="..." class="img-thumbnail circle"
                       [ngClass]="{'circle-success': (progress$|async) == 100}"
                       [ngClass]="{'border-pulsate': (progress$|async) != 100 && (progress$|async) != 0}">
                     <input type="file" id="upload" style="display:none" (change)="onFileSelected($event)" #file>

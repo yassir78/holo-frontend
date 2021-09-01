@@ -10,4 +10,5 @@ export interface User {
    birth?: Date;
    roles?: Role[];
    profileImage?: string;
+
 }

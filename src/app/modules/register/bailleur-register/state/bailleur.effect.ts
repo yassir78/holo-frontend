@@ -11,30 +11,7 @@ import { TextractService } from "src/app/services/textract.service";
     providedIn: 'root'
 })
 export class BailleurEffect {
-    /*     payslipProcess = createEffect(() => {
-            return this.actions$.pipe(
-                ofType(BailleurActions.processPayslip),
-                mergeMap(action => this.textractSerivce.analyseDocument(action.buffer)
-                    .pipe(
-                        tap(console.log),
-                        map(data => {
-                            const montantBrut = this.textractSerivce.getMontantBrut(data);
-                            const montantNet = this.textractSerivce.getMontantNet(data);
-                            if (montantBrut == null || montantNet == null) {
-                                BailleurActions.processPayslipFailure({ errorMsg: "Erreur dans le document" })
-                            } else {
-                                BailleurActions.processPayslipSuccess({ montantBrut: montantBrut, montantNet: montantNet })
-                            }
-                        }),
-                              catchError((response: HttpErrorResponse) => {
-                                  return of(BailleurActions.processPayslipFailure({ errorMsg: "Erreur serveur" })
-                                  );
-                              }) 
-                    )
-                )
-    
-            )
-        }); */
+
     payslipProcess$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(BailleurActions.processPayslipServer),
@@ -46,8 +23,21 @@ export class BailleurEffect {
             )
         );
     })
-
-    constructor(private actions$: Actions, private textractSerivce: TextractService) { }
+    registerEffect$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(BailleurActions.register),
+            mergeMap((action) => this.authService.register(action.user)
+                .pipe(
+                    tap(console.log),
+                    map(data => BailleurActions.registerSuccess()),
+                    catchError((response: HttpErrorResponse) => {
+                        return of(BailleurActions.registerFailure({ error: response.message }));
+                    })
+                )
+            )
+        )
+    })
+    constructor(private actions$: Actions, private textractSerivce: TextractService, private authService: AuthService) { }
     processing(data: any) {
         const montantBrut = this.textractSerivce.getMontantBrut(data);
         const montantNet = this.textractSerivce.getMontantNet(data);
