@@ -133,7 +133,9 @@
 .text-gray-3{
     color: $gray_3;
 }
-
+.bg-gray-4{
+    @include bgColor($gray_4)
+}
 
 .text-black{
     color:#302929;
