@@ -51,6 +51,16 @@
         color: rgba(156, 163, 175, var(--tw-text-opacity));
     }
 }
+.placeholder-size-1{
+    &::placeholder{
+        font-size: .8rem;
+    }
+}
+.placeholder-size-2{
+    &::placeholder{
+        font-size: 1rem;
+    }
+}
 .bg-blue1{
     background-color: $bordure_champ;
 }
@@ -92,6 +102,9 @@
 }
 .bg-light-yellow1{
     @include bgColor($yellow_light1)
+}
+.bg-light-gray{
+    @include bgColor($gray_1);
 }
 .border-bottom-blue::after {
     content: ""; /* This is necessary for the pseudo element to work. */ 

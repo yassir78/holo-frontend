@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BailleurComponent } from './bailleur/bailleur.component';
 import { LocataireComponent } from './locataire/locataire.component';
-import { RemetteurComponent } from './remetteur/remetteur.component';
 
 const routes: Routes = [
   {
@@ -9,8 +9,8 @@ const routes: Routes = [
     component: LocataireComponent
   },
   {
-    path: 'remetteur',
-    component: RemetteurComponent
+    path: 'bailleur',
+    component: BailleurComponent
   }
 ];
 

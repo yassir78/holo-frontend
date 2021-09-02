@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RemetteurComponent } from './remetteur.component';
+import { BailleurComponent } from './bailleur.component';
 
-describe('RemetteurComponent', () => {
-  let component: RemetteurComponent;
-  let fixture: ComponentFixture<RemetteurComponent>;
+describe('BailleurComponent', () => {
+  let component: BailleurComponent;
+  let fixture: ComponentFixture<BailleurComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RemetteurComponent ]
+      declarations: [ BailleurComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RemetteurComponent);
+    fixture = TestBed.createComponent(BailleurComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

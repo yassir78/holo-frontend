@@ -2,18 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { RemetteurComponent } from './remetteur/remetteur.component';
 import { LocataireComponent } from './locataire/locataire.component';
+import { SharedModule } from '../shared/shared.module';
+import { BailleurComponent } from './bailleur/bailleur.component';
 
 
 @NgModule({
   declarations: [
-    RemetteurComponent,
-    LocataireComponent
+    LocataireComponent,
+    BailleurComponent
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    SharedModule
   ]
 })
 export class DashboardModule { }
