@@ -1,0 +1,9 @@
+.menu{
+    &:hover{
+        svg,.label{
+       color: $blue_2 !important;
+       transform: scale(1.1);
+          }
+    }
+
+}
