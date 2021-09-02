@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RegisterSuccessComponent } from './pages/register-success/register-success.component';
 import { RoleRegisterComponent } from './pages/role-register/role-register.component';
 
 const routes: Routes = [
@@ -7,6 +8,10 @@ const routes: Routes = [
   {
     path: 'role',
     component: RoleRegisterComponent
+  },
+  {
+    path: 'success',
+    component: RegisterSuccessComponent
   },
   {
     path: 'bailleur',

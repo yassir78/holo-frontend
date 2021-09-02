@@ -4,6 +4,7 @@
 .bg-blue{
      @include bgColor($blue_button);
 }
+
 .circle {
     background-color:#fff;
    
@@ -40,6 +41,9 @@
 }
 .text--blue{
     color:$blue_button
+}
+.text--blue-dark{
+    color:$blue_4
 }
 .placeholder-200{
     &::placeholder{

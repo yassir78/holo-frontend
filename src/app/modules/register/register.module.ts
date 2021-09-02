@@ -5,10 +5,11 @@ import { RegisterRoutingModule } from './register-routing.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RoleRegisterComponent } from './pages/role-register/role-register.component';
+import { RegisterSuccessComponent } from './pages/register-success/register-success.component';
 
 
 @NgModule({
-  declarations: [RoleRegisterComponent],
+  declarations: [RoleRegisterComponent, RegisterSuccessComponent],
   imports: [
     CommonModule,
     RegisterRoutingModule,
