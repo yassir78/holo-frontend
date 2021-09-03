@@ -16,6 +16,10 @@ module.exports = {
           colors: {
           'warm-gray': colors.warmGray,
           teal: colors.teal,
+        },
+        width: {
+          'lw': '1150px',
+          'sw': '450px'
         }
       },
     },

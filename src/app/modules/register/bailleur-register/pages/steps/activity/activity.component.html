@@ -1,5 +1,5 @@
 <div class="mt-5 md:mt-0 md:col-span-2 bg-white">
-  <div class="text-gray-700 text-2xl  font-medium text-gray-700 mb-6">Activité professionelle</div>
+  <div class="text-black text-3xl font-extrabold mt-20 mb-10">Activité professionelle</div>
   <form [formGroup]="activityForm">
     <div class="grid grid-cols-6 gap-6">
       <div class="col-span-6 sm:col-span-3">
@@ -11,7 +11,7 @@
           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
         <span class="text-red-600"
           *ngIf="(profession?.dirty || profession?.touched) && profession?.invalid && profession?.errors?.required">
-          Champ Obligatoire.
+          Champ obligatoire.
         </span>
       </div>
       <div class="col-span-6 sm:col-span-3">
@@ -22,7 +22,7 @@
           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
         <span class="text-red-600"
           *ngIf="(professionDate?.dirty || professionDate?.touched) && professionDate?.invalid && professionDate?.errors?.required">
-          Date Obligatoire.
+          Date obligatoire.
         </span>
       </div>
 
@@ -33,7 +33,7 @@
           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
         <span class="text-red-600"
           *ngIf="(employer?.dirty || employer?.touched) && employer?.invalid && employer?.errors?.required">
-          Champ Obligatoire.
+          Champ obligatoire.
         </span>
       </div>
 
@@ -46,7 +46,7 @@
           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
         <span class="text-red-600"
           *ngIf="(workplace?.dirty || workplace?.touched) && workplace?.invalid && workplace?.errors?.required">
-          Champ Obligatoire.
+          Champ obligatoire.
         </span>
       </div>
 
@@ -59,7 +59,7 @@
           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
         <span class="text-red-600"
           *ngIf="(contactPerson?.dirty || contactPerson?.touched) && contactPerson?.invalid && contactPerson?.errors?.required">
-          Champ Obligatoire.
+          Champ obligatoire.
         </span>
       </div>
       <div class="col-span-6 sm:col-span-3">
@@ -72,7 +72,7 @@
           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
         <span class="text-red-600"
           *ngIf="(professionalPhoneNumber?.dirty || professionalPhoneNumber?.touched) && professionalPhoneNumber?.invalid && professionalPhoneNumber?.errors?.required">
-          Champ Obligatoire.
+          Champ obligatoire.
         </span>
       </div>
       <div class="col-span-6 sm:col-span-3">
@@ -84,7 +84,7 @@
           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
         <span class="text-red-600"
           *ngIf="(grossMonthlyIncome?.dirty || grossMonthlyIncome?.touched) && grossMonthlyIncome?.invalid && grossMonthlyIncome?.errors?.required">
-          Champ Obligatoire.
+          Champ obligatoire.
         </span>
         <div *ngIf=" grossMonthlyIncome?.invalid" class="text-left mt-1">
           <div class="text-red-600" *ngIf="grossMonthlyIncome?.errors?.inv">Montant brut ne correspond pas à celui de
@@ -100,7 +100,7 @@
           [ngClass]=" (netMonthlyIncome?.invalid && netMonthlyIncome?.touched) ? 'border-red-500' : 'border-blue-100'">
         <span class="text-red-600"
           *ngIf="(netMonthlyIncome?.dirty || netMonthlyIncome?.touched) && netMonthlyIncome?.invalid && netMonthlyIncome?.errors?.required">
-          Champ Obligatoire.
+          Champ obligatoire.
         </span>
         <div *ngIf=" netMonthlyIncome?.invalid" class="text-left mt-1">
           <div class="text-red-600" *ngIf="netMonthlyIncome?.errors?.inv">Montant net ne correspond pas à celui de votre
@@ -117,7 +117,7 @@
           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
         <span class="text-red-600"
           *ngIf="(lastEmployer?.dirty || lastEmployer?.touched) && lastEmployer?.invalid && lastEmployer?.errors?.required">
-          Champ Obligatoire.
+          Champ obligatoire.
         </span>
       </div>
       <div class="col-span-6 sm:col-span-3">
@@ -128,7 +128,7 @@
           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
         <span class="text-red-600"
           *ngIf="(lastEmployerSince?.dirty || lastEmployerSince?.touched) && lastEmployerSince?.invalid && lastEmployerSince?.errors?.required">
-          Date Obligatoire.
+          Date obligatoire.
         </span>
       </div>
 
@@ -211,21 +211,21 @@
 
       </div>
     </fieldset>
-    <div class="grid grid-rows-6 grid-flow-col gap-2 mt-2">
-      <div class="px-4 py-3 text-left sm:px-6 row-span-6 sm:row-span-6">
+    <div class="flex justify-between mt-20">
+
         <a (click)="returnToProperty()"
           class="inline-flex items-center px-3 py-2  text-sm text-blue-2 cursor-pointer hover:bg-blue-2">
           <img src="../../../../../../assets/images/precedent.svg" />
         </a>
 
-      </div>
-      <div class="px-4 py-3 text-right sm:px-6 row-span-6 sm:row-span-6">
+ 
+     
 
         <button type="button" (click)="goToLogin()"
-          class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-blue-2 hover:bg-blue-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-blue-2">
+          class="inline-flex  items-center px-8 py-2 border border-transparent text-sm leading-4 font-xl rounded-md shadow-sm text-white bg-blue-2 hover:bg-blue-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-blue-2">
           Commencer à postuler
         </button>
-      </div>
+
     </div>
   </form>
 </div>

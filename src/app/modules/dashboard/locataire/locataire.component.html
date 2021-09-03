@@ -1,474 +1,543 @@
 <navbar></navbar>
 
-<div class="bg-white">
-    <div>
-     
 
-      <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="bg-blue1 w-full h-full " >
+    <div class="max-w-7xl pt-10 mx-5 grid grid-cols-12 gap-4">
+        <div class="col-span-3 border-red-500	border-black lg:block	hidden">
+            <sidenav></sidenav>
+        </div>
+        <div class="col-span-9 border-red-500	border-black lg:w-lw md:mw" >
         
-        <section aria-labelledby="products-heading" class="pt-6 pb-24">
-          <h2 id="products-heading" class="sr-only">Products</h2>
-  
-          <div class="grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-10">
-            <!-- Filters -->
-            <form class="hidden lg:block">
-              <h3 >Filtrer les résultats</h3>
-              <ul role="list" class="text-sm font-medium text-gray-900 space-y-4 pb-6 border-b border-gray-200">
-                      <h3 class="mt-3">
-                    <span class="font-medium text-gray-900">
-                        Principal
-                      </span>
-                      </h3>
-                 <li>
-                  <a href="#">
-                    Acheter
-                  </a>
-                </li>
-  
-                <li>
-                  <a href="#">
-                    Louer
-                  </a>
-                </li>
-
-              </ul>
-  
-              <div class="border-b border-gray-200 py-6">
-                <h3 class="-my-3 flow-root">
-                  <!-- Expand/collapse section button -->
-                  <button type="button" class="py-3 bg-white w-full flex items-center justify-between text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-0" aria-expanded="false">
-                    <span class="font-medium text-gray-900">
-                      Type
-                    </span>
-                    <span class="ml-6 flex items-center">
-                      <!--
-                        Expand icon, show/hide based on section open state.
-  
-                        Heroicon name: solid/plus-sm
-                      -->
-                      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
-                      </svg>
-                      <!--
-                        Collapse icon, show/hide based on section open state.
-  
-                        Heroicon name: solid/minus-sm
-                      -->
-                      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" />
-                      </svg>
-                    </span>
-                  </button>
-                </h3>
-                <!-- Filter section, show/hide based on section state. -->
-                <div class="pt-6" id="filter-section-0">
-                  <div class="space-y-4">
+            <div>
+              <main class="mx-auto px-4 sm:px-6 lg:px-4 ">
              
-  
-                    <div class="flex items-center">
-                      <input id="filter-color-1" name="color[]" value="beige" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                      <label for="filter-color-1" class="ml-3 text-sm text-gray-600">
-                        Appartements
-                      </label>
-                    </div>
-  
-                    <div class="flex items-center">
-                      <input id="filter-color-2" name="color[]" value="blue" type="checkbox" checked class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                      <label for="filter-color-2" class="ml-3 text-sm text-gray-600">
-                        Villa/Maison
-                      </label>
-                    </div>
-  
-                    <div class="flex items-center">
-                      <input id="filter-color-3" name="color[]" value="brown" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                      <label for="filter-color-3" class="ml-3 text-sm text-gray-600">
-                        Meublé
-                      </label>
-                    </div>
-  
-                    <div class="flex items-center">
-                      <input id="filter-color-4" name="color[]" value="green" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                      <label for="filter-color-4" class="ml-3 text-sm text-gray-600">
-                        Bureau
-                      </label>
-                    </div>
-  
-                    <div class="flex items-center">
-                      <input id="filter-color-5" name="color[]" value="purple" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                      <label for="filter-color-5" class="ml-3 text-sm text-gray-600">
-                        Dépots
-                      </label>
-                    </div>
-
-                    <div class="flex items-center">
-                        <input id="filter-color-0" name="color[]" value="white" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                        <label for="filter-color-0" class="ml-3 text-sm text-gray-600">
-                          Ateliers
-                        </label>
+                <section aria-labelledby="products-heading" class=" pb-24">
+                  <h2 id="products-heading" class="sr-only">Products</h2>
+          
+                  <div class="grid grid-cols-12 lg:grid-cols-12 gap-x-8 gap-y-10">
+                    <!-- Filters -->
+                    <form class="hidden rounded-lg lg:block hidden  lg:col-span-3 col-span-3 bg-white px-4">
+                      <h3 >Filtrer les résultats</h3>
+                      <ul role="list" class="text-sm font-medium text-gray-900 space-y-4 pb-6 border-b border-gray-200">
+                              <h3 class="mt-3">
+                            <span class="font-medium text-gray-900">
+                                Principal
+                              </span>
+                              </h3>
+                         <li>
+                          <a href="#">
+                            Acheter
+                          </a>
+                        </li>
+          
+                        <li>
+                          <a href="#">
+                            Louer
+                          </a>
+                        </li>
+        
+                      </ul>
+          
+                      <div class="border-b border-gray-200 py-6">
+                        <h3 class="-my-3 flow-root">
+                          <!-- Expand/collapse section button -->
+                          <button type="button" class="py-3 bg-white w-full flex items-center justify-between text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-0" aria-expanded="false">
+                            <span class="font-medium text-gray-900">
+                              Type
+                            </span>
+                            <span class="ml-6 flex items-center">
+                              <!--
+                                Expand icon, show/hide based on section open state.
+          
+                                Heroicon name: solid/plus-sm
+                              -->
+                              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                              </svg>
+                              <!--
+                                Collapse icon, show/hide based on section open state.
+          
+                                Heroicon name: solid/minus-sm
+                              -->
+                              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" />
+                              </svg>
+                            </span>
+                          </button>
+                        </h3>
+                        <!-- Filter section, show/hide based on section state. -->
+                        <div class="pt-6" id="filter-section-0">
+                          <div class="space-y-4">
+                     
+          
+                            <div class="flex items-center">
+                              <input id="filter-color-1" name="color[]" value="beige" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                              <label for="filter-color-1" class="ml-3 text-sm text-gray-600">
+                                Appartements
+                              </label>
+                            </div>
+          
+                            <div class="flex items-center">
+                              <input id="filter-color-2" name="color[]" value="blue" type="checkbox" checked class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                              <label for="filter-color-2" class="ml-3 text-sm text-gray-600">
+                                Villa/Maison
+                              </label>
+                            </div>
+          
+                            <div class="flex items-center">
+                              <input id="filter-color-3" name="color[]" value="brown" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                              <label for="filter-color-3" class="ml-3 text-sm text-gray-600">
+                                Meublé
+                              </label>
+                            </div>
+          
+                            <div class="flex items-center">
+                              <input id="filter-color-4" name="color[]" value="green" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                              <label for="filter-color-4" class="ml-3 text-sm text-gray-600">
+                                Bureau
+                              </label>
+                            </div>
+          
+                            <div class="flex items-center">
+                              <input id="filter-color-5" name="color[]" value="purple" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                              <label for="filter-color-5" class="ml-3 text-sm text-gray-600">
+                                Dépots
+                              </label>
+                            </div>
+        
+                            <div class="flex items-center">
+                                <input id="filter-color-0" name="color[]" value="white" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                                <label for="filter-color-0" class="ml-3 text-sm text-gray-600">
+                                  Ateliers
+                                </label>
+                              </div>
+        
+        
+                              <div class="flex items-center">
+                                <input id="filter-color-0" name="color[]" value="white" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                                <label for="filter-color-0" class="ml-3 text-sm text-gray-600">
+                                  Terrains
+                                </label>
+                              </div>
+        
+                              <div class="flex items-center">
+                                <input id="filter-color-0" name="color[]" value="white" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                                <label for="filter-color-0" class="ml-3 text-sm text-gray-600">
+                                  Logement vacance
+                                </label>
+                              </div>
+        
+                              <div class="flex items-center">
+                                <input id="filter-color-0" name="color[]" value="white" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                                <label for="filter-color-0" class="ml-3 text-sm text-gray-600">
+                                  Parkings
+                                </label>
+                              </div>
+                          </div>
+                        </div>
                       </div>
-
-
-                      <div class="flex items-center">
-                        <input id="filter-color-0" name="color[]" value="white" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                        <label for="filter-color-0" class="ml-3 text-sm text-gray-600">
-                          Terrains
-                        </label>
+          
+                      <div class="border-b border-gray-200 py-6">
+                        <h3 class="-my-3 flow-root">
+                          <!-- Expand/collapse section button -->
+                          <button type="button" class="py-3 bg-white w-full flex items-center justify-between text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-1" aria-expanded="false">
+                            <span class="font-medium text-gray-900">
+                              Nombre de pièces
+                            </span>
+                            <span class="ml-6 flex items-center">
+                              <!--
+                                Expand icon, show/hide based on section open state.
+          
+                                Heroicon name: solid/plus-sm
+                              -->
+                              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                              </svg>
+                              <!--
+                                Collapse icon, show/hide based on section open state.
+          
+                                Heroicon name: solid/minus-sm
+                              -->
+                              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" />
+                              </svg>
+                            </span>
+                          </button>
+                        </h3>
+                        <!-- Filter section, show/hide based on section state. -->
+                        <div class="pt-6" id="filter-section-1">
+                          <div class="space-y-4">
+                            <div class="flex items-center">
+                              <input id="filter-category-0" name="category[]" value="new-arrivals" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                              <label for="filter-category-0" class="ml-3 text-sm text-gray-600">
+                                Studio à 1 pièce
+                              </label>
+                            </div>
+          
+                            <div class="flex items-center">
+                              <input id="filter-category-1" name="category[]" value="sale" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                              <label for="filter-category-1" class="ml-3 text-sm text-gray-600">
+                                2 pièces
+                              </label>
+                            </div>
+          
+                            <div class="flex items-center">
+                              <input id="filter-category-2" name="category[]" value="travel" type="checkbox" checked class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                              <label for="filter-category-2" class="ml-3 text-sm text-gray-600">
+                                Travel
+                              </label>
+                            </div>
+          
+                            <div class="flex items-center">
+                              <input id="filter-category-3" name="category[]" value="organization" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                              <label for="filter-category-3" class="ml-3 text-sm text-gray-600">
+                                3 pièces
+                              </label>
+                            </div>
+          
+                            <div class="flex items-center">
+                              <input id="filter-category-4" name="category[]" value="accessories" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                              <label for="filter-category-4" class="ml-3 text-sm text-gray-600">
+                                4 pièces
+                              </label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="filter-category-5" name="category[]" value="accessories" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                                <label for="filter-category-5" class="ml-3 text-sm text-gray-600">
+                                  5 pièces et plus
+                                </label>
+                              </div>
+                          </div>
+                        </div>
                       </div>
-
-                      <div class="flex items-center">
-                        <input id="filter-color-0" name="color[]" value="white" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                        <label for="filter-color-0" class="ml-3 text-sm text-gray-600">
-                          Logement vacance
-                        </label>
+          
+                      <div class="border-b border-gray-200 py-6">
+                        <h3 class="-my-3 flow-root">
+                          <!-- Expand/collapse section button -->
+                          <button type="button" class="py-3 bg-white w-full flex items-center justify-between text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-2" aria-expanded="false">
+                            <span class="font-medium text-gray-900">
+                              Surface
+                            </span>
+                            <span class="ml-6 flex items-center">
+                              <!--
+                                Expand icon, show/hide based on section open state.
+          
+                                Heroicon name: solid/plus-sm
+                              -->
+                              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                              </svg>
+                              <!--
+                                Collapse icon, show/hide based on section open state.
+          
+                                Heroicon name: solid/minus-sm
+                              -->
+                              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" />
+                              </svg>
+                            </span>
+                          </button>
+                        </h3>
+                        <!-- Filter section, show/hide based on section state. -->
+                        <div class="pt-6" id="filter-section-2">
+                          <div class="space-y-4">
+                            <div class="flex items-center">
+                              <input id="filter-size-0" name="size[]" value="2l" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                              <label for="filter-size-0" class="ml-3 text-sm text-gray-600">
+                                10 m2
+                              </label>
+                            </div>
+          
+                            <div class="flex items-center">
+                              <input id="filter-size-1" name="size[]" value="6l" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                              <label for="filter-size-1" class="ml-3 text-sm text-gray-600">
+                                400 m2
+                              </label>
+                            </div>
+          
+                            <div class="flex items-center">
+                              <input id="filter-size-2" name="size[]" value="12l" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                              <label for="filter-size-2" class="ml-3 text-sm text-gray-600">
+                                600 m2
+                              </label>
+                            </div>
+          
+                            <div class="flex items-center">
+                              <input id="filter-size-3" name="size[]" value="18l" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                              <label for="filter-size-3" class="ml-3 text-sm text-gray-600">
+                                150 m2
+                              </label>
+                            </div>
+          
+                            <div class="flex items-center">
+                              <input id="filter-size-4" name="size[]" value="20l" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                              <label for="filter-size-4" class="ml-3 text-sm text-gray-600">
+                                300 m2
+                              </label>
+                            </div>
+          
+                            <div class="flex items-center">
+                              <input id="filter-size-5" name="size[]" value="40l" type="checkbox" checked class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                              <label for="filter-size-5" class="ml-3 text-sm text-gray-600">
+                                1000 m2
+                              </label>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-
-                      <div class="flex items-center">
-                        <input id="filter-color-0" name="color[]" value="white" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                        <label for="filter-color-0" class="ml-3 text-sm text-gray-600">
-                          Parkings
-                        </label>
+        
+                      <div class="border-b border-gray-200 py-6">
+                        <h3 class="-my-3 flow-root">
+                          <!-- Expand/collapse section button -->
+                          <button type="button" class="py-3 bg-white w-full flex items-center justify-between text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-0" aria-expanded="false">
+                            <span class="font-medium text-gray-900">
+                              Prix
+                            </span>
+                            <span class="ml-6 flex items-center">
+                              <!--
+                                Expand icon, show/hide based on section open state.
+          
+                                Heroicon name: solid/plus-sm
+                              -->
+                              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                              </svg>
+                              <!--
+                                Collapse icon, show/hide based on section open state.
+          
+                                Heroicon name: solid/minus-sm
+                              -->
+                              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" />
+                              </svg>
+                            </span>
+                          </button>
+                        </h3>
+                        <!-- Filter section, show/hide based on section state. -->
+                        <div class="pt-6" id="filter-section-0">
+                          <div class="space-y-4">
+                            <div class="flex items-center">
+                              <input id="filter-color-0" name="color[]" value="white" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                              <label for="filter-color-0" class="ml-3 text-sm text-gray-600">
+                                0 à 1500 CHF
+                              </label>
+                            </div>
+          
+                            <div class="flex items-center">
+                              <input id="filter-color-1" name="color[]" value="beige" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                              <label for="filter-color-1" class="ml-3 text-sm text-gray-600">
+                                1000 à 2000 CHF
+        
+                              </label>
+                            </div>
+          
+                            <div class="flex items-center">
+                              <input id="filter-color-2" name="color[]" value="blue" type="checkbox" checked class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                              <label for="filter-color-2" class="ml-3 text-sm text-gray-600">
+                                2000 à 3000 CHF
+        
+                            </label>
+                            </div>
+          
+                            <div class="flex items-center">
+                              <input id="filter-color-3" name="color[]" value="brown" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                              <label for="filter-color-3" class="ml-3 text-sm text-gray-600">
+                                3000 à 5000 CHF
+        
+                              </label>
+                            </div>
+                          </div>
+                        </div>
                       </div>
+                    </form>
+          
+                    <!-- Product grid -->
+                    <div class="lg:col-span-9 col-span-9  bg-blue1 ">
+                      <div class="min-w-0 flex-1 md:px-8 lg:px-0 ">
+                        <div class="flex items-center px-6 pb-3 md:max-w-3xl md:mx-auto lg:max-w-none lg:mx-0 xl:px-0">
+                          <div class="w-full">
+                            <label for="search" class="sr-only">Search</label>
+                            <div class="relative">
+                              <div class="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
+                                <!-- Heroicon name: solid/search -->
+                                <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                  <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                </svg>
+                              </div>
+                              <input id="search" name="search" class="block w-full bg-white border border-gray-300 rounded-md py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Search" type="search">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Résultats-->
+                      <div class="relative z-10 flex items-baseline justify-between border-b border-gray-200">
+                        <h1 class="text-2xl font-bold tracking-tight text-gray-900">139 Résultats</h1>
+                
+                        <div class="flex items-center">
+                          <h3 class="mr-2">Afficher par</h3>
+                          <div class="relative inline-block text-left">
+                            <div>
+                              <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                                Pertinance
+                                <!-- Heroicon name: solid/chevron-down -->
+                                <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                              </button>
+                            </div>
+                
+                         
+                          <!-- <div class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-2xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                              <div class="py-1" role="none">
+                               
+                                <a href="#" class="font-medium text-gray-900 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">
+                                  Most Popular
+                                </a>
+                
+                                <a href="#" class="text-gray-500 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">
+                                  Best Rating
+                                </a>
+                
+                                <a href="#" class="text-gray-500 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">
+                                  Newest
+                                </a>
+                
+                                <a href="#" class="text-gray-500 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-3">
+                                  Price: Low to High
+                                </a>
+                
+                                <a href="#" class="text-gray-500 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-4">
+                                  Price: High to Low
+                                </a>
+                              </div>
+                            </div>  -->
+                          </div>
+              
+                        </div>
+                      </div>
+                      <!-- Replace with your content -->
+                      <div class="rounded-lg h-96 lg:h-full" >
+                        <ul role="list" class=" mt-1 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-3 xl:gap-x-8">
+                            <li class="relative">
+                              <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                                <button type="button" class="absolute inset-0 focus:outline-none">
+                                  <span class="sr-only">View details for IMG_4985.HEIC</span>
+                                </button>
+                              </div>
+                              <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
+                              <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
+                            </li>
+                            <li class="relative">
+                                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
+                                  <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                                  <button type="button" class="absolute inset-0 focus:outline-none">
+                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
+                                  </button>
+                                </div>
+                                <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
+                                <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
+                              </li>
+                              <li class="relative">
+                                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
+                                  <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                                  <button type="button" class="absolute inset-0 focus:outline-none">
+                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
+                                  </button>
+                                </div>
+                                <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
+                                <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
+                              </li>
+                              <li class="relative">
+                                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
+                                  <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                                  <button type="button" class="absolute inset-0 focus:outline-none">
+                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
+                                  </button>
+                                </div>
+                                <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
+                                <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
+                              </li>
+                              <li class="relative">
+                                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
+                                  <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                                  <button type="button" class="absolute inset-0 focus:outline-none">
+                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
+                                  </button>
+                                </div>
+                                <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
+                                <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
+                              </li>
+                              <li class="relative">
+                                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
+                                  <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                                  <button type="button" class="absolute inset-0 focus:outline-none">
+                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
+                                  </button>
+                                </div>
+                                <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
+                                <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
+                              </li>
+                              <li class="relative">
+                                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
+                                  <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                                  <button type="button" class="absolute inset-0 focus:outline-none">
+                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
+                                  </button>
+                                </div>
+                                <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
+                                <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
+                              </li>
+                              <li class="relative">
+                                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
+                                  <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                                  <button type="button" class="absolute inset-0 focus:outline-none">
+                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
+                                  </button>
+                                </div>
+                                <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
+                                <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
+                              </li>
+                              <li class="relative">
+                                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
+                                  <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                                  <button type="button" class="absolute inset-0 focus:outline-none">
+                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
+                                  </button>
+                                </div>
+                                <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
+                                <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
+                              </li>
+                              <li class="relative">
+                                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
+                                  <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                                  <button type="button" class="absolute inset-0 focus:outline-none">
+                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
+                                  </button>
+                                </div>
+                                <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
+                                <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
+                              </li>
+                              <li class="relative">
+                                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
+                                  <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                                  <button type="button" class="absolute inset-0 focus:outline-none">
+                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
+                                  </button>
+                                </div>
+                                <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
+                                <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
+                              </li>
+                          
+                            <!-- More files... -->
+                          </ul>
+                      </div>
+                      <!-- /End replace -->
+                    </div>
                   </div>
-                </div>
-              </div>
-  
-              <div class="border-b border-gray-200 py-6">
-                <h3 class="-my-3 flow-root">
-                  <!-- Expand/collapse section button -->
-                  <button type="button" class="py-3 bg-white w-full flex items-center justify-between text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-1" aria-expanded="false">
-                    <span class="font-medium text-gray-900">
-                      Nombre de pièces
-                    </span>
-                    <span class="ml-6 flex items-center">
-                      <!--
-                        Expand icon, show/hide based on section open state.
-  
-                        Heroicon name: solid/plus-sm
-                      -->
-                      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
-                      </svg>
-                      <!--
-                        Collapse icon, show/hide based on section open state.
-  
-                        Heroicon name: solid/minus-sm
-                      -->
-                      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" />
-                      </svg>
-                    </span>
-                  </button>
-                </h3>
-                <!-- Filter section, show/hide based on section state. -->
-                <div class="pt-6" id="filter-section-1">
-                  <div class="space-y-4">
-                    <div class="flex items-center">
-                      <input id="filter-category-0" name="category[]" value="new-arrivals" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                      <label for="filter-category-0" class="ml-3 text-sm text-gray-600">
-                        Studio à 1 pièce
-                      </label>
-                    </div>
-  
-                    <div class="flex items-center">
-                      <input id="filter-category-1" name="category[]" value="sale" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                      <label for="filter-category-1" class="ml-3 text-sm text-gray-600">
-                        2 pièces
-                      </label>
-                    </div>
-  
-                    <div class="flex items-center">
-                      <input id="filter-category-2" name="category[]" value="travel" type="checkbox" checked class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                      <label for="filter-category-2" class="ml-3 text-sm text-gray-600">
-                        Travel
-                      </label>
-                    </div>
-  
-                    <div class="flex items-center">
-                      <input id="filter-category-3" name="category[]" value="organization" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                      <label for="filter-category-3" class="ml-3 text-sm text-gray-600">
-                        3 pièces
-                      </label>
-                    </div>
-  
-                    <div class="flex items-center">
-                      <input id="filter-category-4" name="category[]" value="accessories" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                      <label for="filter-category-4" class="ml-3 text-sm text-gray-600">
-                        4 pièces
-                      </label>
-                    </div>
-                    <div class="flex items-center">
-                        <input id="filter-category-5" name="category[]" value="accessories" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                        <label for="filter-category-5" class="ml-3 text-sm text-gray-600">
-                          5 pièces et plus
-                        </label>
-                      </div>
-                  </div>
-                </div>
-              </div>
-  
-              <div class="border-b border-gray-200 py-6">
-                <h3 class="-my-3 flow-root">
-                  <!-- Expand/collapse section button -->
-                  <button type="button" class="py-3 bg-white w-full flex items-center justify-between text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-2" aria-expanded="false">
-                    <span class="font-medium text-gray-900">
-                      Surface
-                    </span>
-                    <span class="ml-6 flex items-center">
-                      <!--
-                        Expand icon, show/hide based on section open state.
-  
-                        Heroicon name: solid/plus-sm
-                      -->
-                      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
-                      </svg>
-                      <!--
-                        Collapse icon, show/hide based on section open state.
-  
-                        Heroicon name: solid/minus-sm
-                      -->
-                      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" />
-                      </svg>
-                    </span>
-                  </button>
-                </h3>
-                <!-- Filter section, show/hide based on section state. -->
-                <div class="pt-6" id="filter-section-2">
-                  <div class="space-y-4">
-                    <div class="flex items-center">
-                      <input id="filter-size-0" name="size[]" value="2l" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                      <label for="filter-size-0" class="ml-3 text-sm text-gray-600">
-                        10 m2
-                      </label>
-                    </div>
-  
-                    <div class="flex items-center">
-                      <input id="filter-size-1" name="size[]" value="6l" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                      <label for="filter-size-1" class="ml-3 text-sm text-gray-600">
-                        400 m2
-                      </label>
-                    </div>
-  
-                    <div class="flex items-center">
-                      <input id="filter-size-2" name="size[]" value="12l" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                      <label for="filter-size-2" class="ml-3 text-sm text-gray-600">
-                        600 m2
-                      </label>
-                    </div>
-  
-                    <div class="flex items-center">
-                      <input id="filter-size-3" name="size[]" value="18l" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                      <label for="filter-size-3" class="ml-3 text-sm text-gray-600">
-                        150 m2
-                      </label>
-                    </div>
-  
-                    <div class="flex items-center">
-                      <input id="filter-size-4" name="size[]" value="20l" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                      <label for="filter-size-4" class="ml-3 text-sm text-gray-600">
-                        300 m2
-                      </label>
-                    </div>
-  
-                    <div class="flex items-center">
-                      <input id="filter-size-5" name="size[]" value="40l" type="checkbox" checked class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                      <label for="filter-size-5" class="ml-3 text-sm text-gray-600">
-                        1000 m2
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="border-b border-gray-200 py-6">
-                <h3 class="-my-3 flow-root">
-                  <!-- Expand/collapse section button -->
-                  <button type="button" class="py-3 bg-white w-full flex items-center justify-between text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-0" aria-expanded="false">
-                    <span class="font-medium text-gray-900">
-                      Prix
-                    </span>
-                    <span class="ml-6 flex items-center">
-                      <!--
-                        Expand icon, show/hide based on section open state.
-  
-                        Heroicon name: solid/plus-sm
-                      -->
-                      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
-                      </svg>
-                      <!--
-                        Collapse icon, show/hide based on section open state.
-  
-                        Heroicon name: solid/minus-sm
-                      -->
-                      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" />
-                      </svg>
-                    </span>
-                  </button>
-                </h3>
-                <!-- Filter section, show/hide based on section state. -->
-                <div class="pt-6" id="filter-section-0">
-                  <div class="space-y-4">
-                    <div class="flex items-center">
-                      <input id="filter-color-0" name="color[]" value="white" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                      <label for="filter-color-0" class="ml-3 text-sm text-gray-600">
-                        0 à 1500 CHF
-                      </label>
-                    </div>
-  
-                    <div class="flex items-center">
-                      <input id="filter-color-1" name="color[]" value="beige" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                      <label for="filter-color-1" class="ml-3 text-sm text-gray-600">
-                        1000 à 2000 CHF
-
-                      </label>
-                    </div>
-  
-                    <div class="flex items-center">
-                      <input id="filter-color-2" name="color[]" value="blue" type="checkbox" checked class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                      <label for="filter-color-2" class="ml-3 text-sm text-gray-600">
-                        2000 à 3000 CHF
-
-                    </label>
-                    </div>
-  
-                    <div class="flex items-center">
-                      <input id="filter-color-3" name="color[]" value="brown" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                      <label for="filter-color-3" class="ml-3 text-sm text-gray-600">
-                        3000 à 5000 CHF
-
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </form>
-  
-            <!-- Product grid -->
-            <div class="lg:col-span-3">
-              <!-- Replace with your content -->
-              <div class="border-4 border-dashed border-gray-200 rounded-lg h-96 lg:h-full" style="width: 1032px;">
-                <ul role="list" class=" grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-                    <li class="relative">
-                      <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                        <button type="button" class="absolute inset-0 focus:outline-none">
-                          <span class="sr-only">View details for IMG_4985.HEIC</span>
-                        </button>
-                      </div>
-                      <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                      <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                    </li>
-                    <li class="relative">
-                        <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                          <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                          <button type="button" class="absolute inset-0 focus:outline-none">
-                            <span class="sr-only">View details for IMG_4985.HEIC</span>
-                          </button>
-                        </div>
-                        <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                        <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                      </li>
-                      <li class="relative">
-                        <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                          <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                          <button type="button" class="absolute inset-0 focus:outline-none">
-                            <span class="sr-only">View details for IMG_4985.HEIC</span>
-                          </button>
-                        </div>
-                        <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                        <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                      </li>
-                      <li class="relative">
-                        <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                          <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                          <button type="button" class="absolute inset-0 focus:outline-none">
-                            <span class="sr-only">View details for IMG_4985.HEIC</span>
-                          </button>
-                        </div>
-                        <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                        <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                      </li>
-                      <li class="relative">
-                        <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                          <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                          <button type="button" class="absolute inset-0 focus:outline-none">
-                            <span class="sr-only">View details for IMG_4985.HEIC</span>
-                          </button>
-                        </div>
-                        <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                        <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                      </li>
-                      <li class="relative">
-                        <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                          <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                          <button type="button" class="absolute inset-0 focus:outline-none">
-                            <span class="sr-only">View details for IMG_4985.HEIC</span>
-                          </button>
-                        </div>
-                        <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                        <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                      </li>
-                      <li class="relative">
-                        <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                          <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                          <button type="button" class="absolute inset-0 focus:outline-none">
-                            <span class="sr-only">View details for IMG_4985.HEIC</span>
-                          </button>
-                        </div>
-                        <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                        <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                      </li>
-                      <li class="relative">
-                        <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                          <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                          <button type="button" class="absolute inset-0 focus:outline-none">
-                            <span class="sr-only">View details for IMG_4985.HEIC</span>
-                          </button>
-                        </div>
-                        <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                        <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                      </li>
-                      <li class="relative">
-                        <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                          <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                          <button type="button" class="absolute inset-0 focus:outline-none">
-                            <span class="sr-only">View details for IMG_4985.HEIC</span>
-                          </button>
-                        </div>
-                        <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                        <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                      </li>
-                      <li class="relative">
-                        <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                          <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                          <button type="button" class="absolute inset-0 focus:outline-none">
-                            <span class="sr-only">View details for IMG_4985.HEIC</span>
-                          </button>
-                        </div>
-                        <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                        <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                      </li>
-                      <li class="relative">
-                        <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                          <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                          <button type="button" class="absolute inset-0 focus:outline-none">
-                            <span class="sr-only">View details for IMG_4985.HEIC</span>
-                          </button>
-                        </div>
-                        <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                        <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                      </li>
-                  
-                    <!-- More files... -->
-                  </ul>
-              </div>
-              <!-- /End replace -->
+                </section>
+              </main>
             </div>
           </div>
-        </section>
-      </main>
     </div>
-  </div>
+</div>
