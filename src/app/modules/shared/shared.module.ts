@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { GoodcardComponent } from './goodcard/goodcard.component';
 
 @NgModule({
   declarations: [
     FooterComponent,
     NavbarComponent,
-    SidenavComponent
+    SidenavComponent,
+    GoodcardComponent
   ],
   imports: [
     CommonModule
@@ -16,7 +18,8 @@ import { SidenavComponent } from './sidenav/sidenav.component';
   exports: [
     FooterComponent,
     NavbarComponent,
-    SidenavComponent
+    SidenavComponent,
+    GoodcardComponent
   ]
 })
 export class SharedModule { }

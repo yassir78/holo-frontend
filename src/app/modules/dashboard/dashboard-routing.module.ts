@@ -6,7 +6,8 @@ import { LocataireComponent } from './locataire/locataire.component';
 const routes: Routes = [
   {
     path: 'locataire',
-    component: LocataireComponent
+    loadChildren: () =>
+      import('./locataire/locataire.module').then((m) => m.LocataireModule)
   },
   {
     path: 'bailleur',
