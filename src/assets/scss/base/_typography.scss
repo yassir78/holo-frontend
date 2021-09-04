@@ -48,6 +48,9 @@
 .placeholder-200{
     &::placeholder{
         //font-weight: 400;
+            overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
         color: rgba(156, 163, 175, var(--tw-text-opacity));
     }
 }
@@ -66,6 +69,9 @@
 }
 .bg-red-light{
    @include bgColor($red_light) 
+}
+.text-red-light{
+    color: $red_light;
 }
 .leading-20{
     line-height: 3.5rem !important;
@@ -149,3 +155,31 @@
    background: -o-linear-gradient(top, rgba(191, 116, 223, 0.25) 0%, rgba(223, 125, 125, 0) 100%);
    background: linear-gradient(180deg, rgba(191, 116, 223, 0.25) 0%, rgba(223, 125, 125, 0) 100%); /* W3C */
 }
+.text-green-1{
+    color: $green_2;
+}
+.text-green-3{
+    color: $green_3;
+}
+.text-orange-1{
+    color: $orange_1;
+}
+.bg-green-1{
+    @include bgColor($green_1)
+}
+ .scroll::-webkit-scrollbar {
+  width: 5px;
+  height: 1rem;
+  border-radius:50%;
+}
+
+.scroll::-webkit-scrollbar-track {
+  background: $transparent; 
+}
+.scroll::-webkit-scrollbar-thumb {
+  background: $blue_1; 
+}
+/* Handle on hover */
+.scroll::-webkit-scrollbar-thumb:hover {
+  background: $blue_1; 
+} 

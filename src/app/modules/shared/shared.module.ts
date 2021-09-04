@@ -4,22 +4,27 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { GoodcardComponent } from './goodcard/goodcard.component';
+import { ResponsivenavComponent } from './responsivenav/responsivenav.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     FooterComponent,
     NavbarComponent,
     SidenavComponent,
-    GoodcardComponent
+    GoodcardComponent,
+    ResponsivenavComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     FooterComponent,
     NavbarComponent,
     SidenavComponent,
-    GoodcardComponent
+    GoodcardComponent,
+    ResponsivenavComponent
   ]
 })
 export class SharedModule { }

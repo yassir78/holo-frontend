@@ -24,7 +24,7 @@ import { UploadFileService } from './services/uploadFileService';
     BrowserAnimationsModule,
     SweetAlert2Module.forRoot(),
     HttpClientJsonpModule,
-    StoreModule.forRoot({ }, {
+    StoreModule.forRoot({}, {
       runtimeChecks: {
         strictActionImmutability: false,
       }

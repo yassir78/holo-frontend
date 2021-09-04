@@ -1,8 +1,7 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
-<nav class="space-y-1 bg-white shadow-xl py-3 pr-3 rounded-2xl" aria-label="Sidebar">
+<nav class=" space-y-1 bg-white shadow-xl py-3 pr-3 rounded-2xl" aria-label="Sidebar">
     <!-- Current: "bg-gray-200 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
-    <a href="#"
-        class=" text-gray-3 menu hover:text-gray-900 flex items-center pl-5 pr-3 py-2 text-sm font-medium rounded-md"
+    <a href="#" class=" text-gray-3 menu hover:text-gray-900 flex items-center pl-5 pr-3 py-2 text-sm font-medium "
         aria-current="page">
         <svg class="text-gray-400  flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
             viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -19,8 +18,8 @@
         </span>
     </a>
 
-    <a href="#"
-        class="text-gray-3 menu hover:text-gray-900 flex items-center pl-5 pr-3 py-2 text-sm font-medium rounded-md">
+    <a [routerLink]="['/dashboard/bailleur/mygoods']" [routerLinkActive]="['border-l-2', 'border-blue-400']"
+        class="text-gray-3 menu hover:text-gray-900 flex items-center pl-5 pr-3 py-2 text-sm font-medium">
         <!-- Heroicon name: outline/users -->
         <svg class="text-gray-400 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
             viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -32,8 +31,7 @@
         </span>
     </a>
 
-    <a href="#"
-        class="text-gray-3 menu hover:text-gray-900 flex items-center pl-5 pr-3 py-2 text-sm font-medium rounded-md">
+    <a href="#" class="text-gray-3 menu hover:text-gray-900 flex items-center pl-5 pr-3 py-2 text-sm font-medium">
         <!-- Heroicon name: outline/folder -->
         <svg class="text-gray-400 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
             viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -49,8 +47,8 @@
         </span>
     </a>
 
-    <a href="#"
-        class="text-gray-3 menu hover:text-gray-900 flex items-center pl-5 pr-3 py-2 text-sm font-medium rounded-md">
+    <a [routerLink]="['/dashboard/bailleur/applications']" [routerLinkActive]="['border-l-2', 'border-blue-400']"
+        class="text-gray-3 menu hover:text-gray-900 flex items-center pl-5 pr-3 py-2 text-sm font-medium ">
         <!-- Heroicon name: outline/calendar -->
         <svg class="text-gray-400 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
             viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
