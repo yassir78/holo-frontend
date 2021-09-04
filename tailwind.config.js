@@ -3,7 +3,6 @@ const { guessProductionMode } = require("@ngneat/tailwind");
 process.env.TAILWIND_MODE = guessProductionMode() ? 'build' : 'watch';
 const colors = require('tailwindcss/colors')
 module.exports = {
-<<<<<<< HEAD
     prefix: '',
     mode: 'jit',
     purge: {
@@ -13,14 +12,26 @@ module.exports = {
     },  
     darkMode: false, // or 'media' or 'class'
     theme: {
+      screens: {
+        'sm': '640px',
+        // => @media (min-width: 640px) { ... }
+  
+        'md': '768px',
+        // => @media (min-width: 768px) { ... }
+  
+        'lg': '1024px',
+        // => @media (min-width: 1024px) { ... }
+  
+        'xl': '1280px',
+        // => @media (min-width: 1280px) { ... }
+  
+        '2xl': '1536px',
+        // => @media (min-width: 1536px) { ... }
+      },
       extend: {
           colors: {
           'warm-gray': colors.warmGray,
           teal: colors.teal,
-        },
-        width: {
-          'lw': '1150px',
-          'sw': '450px'
         }
       },
     },
@@ -31,7 +42,6 @@ module.exports = {
       require('@tailwindcss/forms'),
       require('@tailwindcss/aspect-ratio'),
     ],
-=======
   prefix: '',
   mode: 'jit',
   purge: {
@@ -55,5 +65,4 @@ module.exports = {
     require('@tailwindcss/forms'),
     require('@tailwindcss/aspect-ratio'),
   ],
->>>>>>> 67a1a91aeee166c874dba05f85504a0513da9b29
 };

@@ -1,12 +1,10 @@
 <navbar></navbar>
-
-
 <div class="bg-blue1 w-full h-full " >
-    <div class="max-w-7xl pt-10 mx-5 grid grid-cols-12 gap-4">
+    <div class=" pt-10 lg:mx-5 grid grid-cols-12 gap-4">
         <div class="col-span-3 border-red-500	border-black lg:block	hidden">
             <sidenav></sidenav>
         </div>
-        <div class="col-span-9 border-red-500	border-black lg:w-lw md:mw" >
+        <div class="col-span-12 lg:col-span-9 md:col-span-12 border-red-500	border-black w-full mx-auto">
         
             <div>
               <main class="mx-auto px-4 sm:px-6 lg:px-4 ">
@@ -14,9 +12,9 @@
                 <section aria-labelledby="products-heading" class=" pb-24">
                   <h2 id="products-heading" class="sr-only">Products</h2>
           
-                  <div class="grid grid-cols-12 lg:grid-cols-12 gap-x-8 gap-y-10">
+                  <div class="grid grid-cols-12 lg:grid-cols-12 lg:gap-x-8 gap-y-10">
                     <!-- Filters -->
-                    <form class="hidden rounded-lg lg:block hidden  lg:col-span-3 col-span-3 bg-white px-4">
+                    <form class="hidden rounded-lg lg:block hidden  lg:col-span-3 col-span-none bg-white px-4">
                       <h3 >Filtrer les résultats</h3>
                       <ul role="list" class="text-sm font-medium text-gray-900 space-y-4 pb-6 border-b border-gray-200">
                               <h3 class="mt-3">
@@ -352,9 +350,9 @@
                     </form>
           
                     <!-- Product grid -->
-                    <div class="lg:col-span-9 col-span-9  bg-blue1 ">
-                      <div class="min-w-0 flex-1 md:px-8 lg:px-0 ">
-                        <div class="flex items-center px-6 pb-3 md:max-w-3xl md:mx-auto lg:max-w-none lg:mx-0 xl:px-0">
+                    <div class="lg:col-span-9 col-span-12  bg-blue1 ">
+                      <div class="min-w-0 flex-1  lg:px-0 ">
+                        <div class="flex items-center pb-3 md:max-w-3xl md:mx-auto lg:max-w-none lg:mx-0 xl:px-0">
                           <div class="w-full">
                             <label for="search" class="sr-only">Search</label>
                             <div class="relative">
@@ -369,13 +367,13 @@
                           </div>
                         </div>
                       </div>
-                      <!-- Résultats-->
-                      <div class="relative z-10 flex items-baseline justify-between border-b border-gray-200">
-                        <h1 class="text-2xl font-bold tracking-tight text-gray-900">139 Résultats</h1>
+                          <!-- Résultats-->
+                      <div class="relative z-10 flex items-baseline justify-between border-b border-gray-200 md:hidden sm:hidden lg:inline-flex  hidden">
+                        <h1 class=" text-base md:text-2xl  font-bold tracking-tight text-gray-900 truncate">139 Résultats</h1>
                 
                         <div class="flex items-center">
-                          <h3 class="mr-2">Afficher par</h3>
-                          <div class="relative inline-block text-left">
+                          <h3 class="mr-2 truncate">Afficher par</h3>
+                          <div class="relative  text-left">
                             <div>
                               <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
                                 Pertinance
@@ -415,119 +413,685 @@
               
                         </div>
                       </div>
-                      <!-- Replace with your content -->
-                      <div class="rounded-lg h-96 lg:h-full" >
-                        <ul role="list" class=" mt-1 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-3 xl:gap-x-8">
-                            <li class="relative">
-                              <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                                <button type="button" class="absolute inset-0 focus:outline-none">
-                                  <span class="sr-only">View details for IMG_4985.HEIC</span>
-                                </button>
+                      <!-- Résultats-->
+                      <div class="relative z-10 flex items-baseline justify-between border-b border-gray-200 lg:hidden md:inline-flex sm:inline-flex block " >
+                        <h1 class=" text-base md:text-2xl  font-bold tracking-tight text-gray-900 truncate">178 Résultats</h1>
+                
+                        <div class="flex items-center">
+                          <h3 class="mr-2 truncate">Afficher par</h3>
+                          <div class="relative  text-left">
+                            <div>
+                              <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                                Pertinance
+                                <!-- Heroicon name: solid/chevron-down -->
+                                <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                              </button>
+                            </div>
+                
+                         
+                          <!-- <div class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-2xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                              <div class="py-1" role="none">
+                               
+                                <a href="#" class="font-medium text-gray-900 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">
+                                  Most Popular
+                                </a>
+                
+                                <a href="#" class="text-gray-500 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">
+                                  Best Rating
+                                </a>
+                
+                                <a href="#" class="text-gray-500 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">
+                                  Newest
+                                </a>
+                
+                                <a href="#" class="text-gray-500 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-3">
+                                  Price: Low to High
+                                </a>
+                
+                                <a href="#" class="text-gray-500 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-4">
+                                  Price: High to Low
+                                </a>
                               </div>
-                              <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                              <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                            </li>
-                            <li class="relative">
-                                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                                  <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                                  <button type="button" class="absolute inset-0 focus:outline-none">
-                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
-                                  </button>
+                            </div>  -->
+                          </div>
+              
+                        </div>
+                      </div>
+                    
+                    
+                    
+                      <!-- Replace with your content -->
+                      <div class="rounded-lg h-full lg:h-full" >
+                        <ul role="list" class=" mt-1 grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-1 sm:gap-x-6 lg:grid-cols-3 xl:gap-x-4">
+                          
+                          <div class="bg-gray-4  rounded-2xl pb-10">
+                            <div class="space-y-4">
+                                <div class="aspect-h-2 relative">
+                                    <img class="object-cover shadow-lg w-full rounded-lg" src="../../../../assets/images/bien1.png" alt="">
+                                    <div class="flex flex-row justify-between items-end px-5 pb-5">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
+                                            Appartement
+                                        </span>
+                                        <img  src="../../../../assets/images/b-profil.png" alt="">
+
+                              
+                                    </div>
                                 </div>
-                                <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                                <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                              </li>
-                              <li class="relative">
-                                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                                  <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                                  <button type="button" class="absolute inset-0 focus:outline-none">
-                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
-                                  </button>
+                        
+                                <div class="px-3">
+                                    <div class=" leading-6 popping font-semibold space-y-2">
+                                        <h3 class="text-lg truncate">Magnifique appartement</h3>
+                                        <p class="text-base popping font-semibold	">CHF 1400.- / mois</p>
+                                        <div class="flex flex-row items-center">
+                                            <img src="../../../../assets/images/location-good.png" class="h-4 mr-2" alt="">
+                                            <span class="text-blue-2">Genève</span>
+                                        </div>
+                                    
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <div class="flex flex-row items-center">
+                                                <img src="../../../../assets/images/good-superificie.png" class="mx-2" alt="">
+                                                <span class="lg:text-xs truncate">1000 m2</span>
+                                            </div>
+                                            <div class="flex flex-row items-center">
+                                                <img src="../../../../assets/images/good-beds.png" class="mx-2" alt="">
+                                                <span class="lg:text-xs truncate">4 chambres</span>
+                                            </div>
+                                            <div class="flex flex-row items-center">
+                                                <img src="../../../../assets/images/good-toilets.png" class="mx-1" alt="">
+                                                <span class="lg:text-xs truncate">2 salles de bain</span>
+                                            </div>
+                                            <div class="flex flex-row items-center">
+                                              <img src="../../../../assets/images/good-toilets.png" class="mx-2" alt="">
+                                              <span class="lg:text-xs truncate">1 Garage</span>
+                                          </div>
+                        
+                                        </div>
+                                    </div>
                                 </div>
-                                <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                                <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                              </li>
-                              <li class="relative">
-                                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                                  <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                                  <button type="button" class="absolute inset-0 focus:outline-none">
-                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
-                                  </button>
+                        
+                            </div>
+                        </div>
+                        <div class="bg-gray-4  rounded-2xl pb-10">
+                          <div class="space-y-4">
+                              <div class="aspect-h-2 relative">
+                                  <img class="object-cover shadow-lg w-full rounded-lg" src="../../../../assets/images/bien1.png" alt="">
+                                  <div class="flex flex-row justify-between items-end px-5 pb-5">
+                                      <span
+                                          class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
+                                          Appartement
+                                      </span>
+                                      <img  src="../../../../assets/images/b-profil.png" alt="">
+
+                            
+                                  </div>
+                              </div>
+                      
+                              <div class="px-3">
+                                  <div class=" leading-6 popping font-semibold space-y-2">
+                                      <h3 class="text-lg truncate">Magnifique appartement</h3>
+                                      <p class="text-base popping font-semibold	">CHF 1400.- / mois</p>
+                                      <div class="flex flex-row items-center">
+                                          <img src="../../../../assets/images/location-good.png" class="h-4 mr-2" alt="">
+                                          <span class="text-blue-2">Genève</span>
+                                      </div>
+                                  
+                                      <div class="grid grid-cols-2 gap-4">
+                                          <div class="flex flex-row items-center">
+                                              <img src="../../../../assets/images/good-superificie.png" class="mx-2" alt="">
+                                              <span class="lg:text-xs truncate">1000 m2</span>
+                                          </div>
+                                          <div class="flex flex-row items-center">
+                                              <img src="../../../../assets/images/good-beds.png" class="mx-2" alt="">
+                                              <span class="lg:text-xs truncate">4 chambres</span>
+                                          </div>
+                                          <div class="flex flex-row items-center">
+                                              <img src="../../../../assets/images/good-toilets.png" class="mx-1" alt="">
+                                              <span class="lg:text-xs truncate">2 salles de bain</span>
+                                          </div>
+                                          <div class="flex flex-row items-center">
+                                            <img src="../../../../assets/images/good-toilets.png" class="mx-2" alt="">
+                                            <span class="lg:text-xs truncate">1 Garage</span>
+                                        </div>
+                      
+                                      </div>
+                                  </div>
+                              </div>
+                      
+                          </div>
+                      </div>
+                      <div class="bg-gray-4  rounded-2xl pb-10">
+                        <div class="space-y-4">
+                            <div class="aspect-h-2 relative">
+                                <img class="object-cover shadow-lg w-full rounded-lg" src="../../../../assets/images/bien1.png" alt="">
+                                <div class="flex flex-row justify-between items-end px-5 pb-5">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
+                                        Appartement
+                                    </span>
+                                    <img  src="../../../../assets/images/b-profil.png" alt="">
+
+                          
                                 </div>
-                                <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                                <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                              </li>
-                              <li class="relative">
-                                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                                  <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                                  <button type="button" class="absolute inset-0 focus:outline-none">
-                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
-                                  </button>
+                            </div>
+                    
+                            <div class="px-3">
+                                <div class=" leading-6 popping font-semibold space-y-2">
+                                    <h3 class="text-lg truncate">Magnifique appartement</h3>
+                                    <p class="text-base popping font-semibold	">CHF 1400.- / mois</p>
+                                    <div class="flex flex-row items-center">
+                                        <img src="../../../../assets/images/location-good.png" class="h-4 mr-2" alt="">
+                                        <span class="text-blue-2">Genève</span>
+                                    </div>
+                                
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div class="flex flex-row items-center">
+                                            <img src="../../../../assets/images/good-superificie.png" class="mx-2" alt="">
+                                            <span class="lg:text-xs truncate">1000 m2</span>
+                                        </div>
+                                        <div class="flex flex-row items-center">
+                                            <img src="../../../../assets/images/good-beds.png" class="mx-2" alt="">
+                                            <span class="lg:text-xs truncate">4 chambres</span>
+                                        </div>
+                                        <div class="flex flex-row items-center">
+                                            <img src="../../../../assets/images/good-toilets.png" class="mx-1" alt="">
+                                            <span class="lg:text-xs truncate">2 salles de bain</span>
+                                        </div>
+                                        <div class="flex flex-row items-center">
+                                          <img src="../../../../assets/images/good-toilets.png" class="mx-2" alt="">
+                                          <span class="lg:text-xs truncate">1 Garage</span>
+                                      </div>
+                    
+                                    </div>
                                 </div>
-                                <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                                <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                              </li>
-                              <li class="relative">
-                                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                                  <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                                  <button type="button" class="absolute inset-0 focus:outline-none">
-                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
-                                  </button>
+                            </div>
+                    
+                        </div>
+                    </div>
+                    <div class="bg-gray-4  rounded-2xl pb-10">
+                      <div class="space-y-4">
+                          <div class="aspect-h-2 relative">
+                              <img class="object-cover shadow-lg w-full rounded-lg" src="../../../../assets/images/bien1.png" alt="">
+                              <div class="flex flex-row justify-between items-end px-5 pb-5">
+                                  <span
+                                      class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
+                                      Appartement
+                                  </span>
+                                  <img  src="../../../../assets/images/b-profil.png" alt="">
+
+                        
+                              </div>
+                          </div>
+                  
+                          <div class="px-3">
+                              <div class=" leading-6 popping font-semibold space-y-2">
+                                  <h3 class="text-lg truncate">Magnifique appartement</h3>
+                                  <p class="text-base popping font-semibold	">CHF 1400.- / mois</p>
+                                  <div class="flex flex-row items-center">
+                                      <img src="../../../../assets/images/location-good.png" class="h-4 mr-2" alt="">
+                                      <span class="text-blue-2">Genève</span>
+                                  </div>
+                              
+                                  <div class="grid grid-cols-2 gap-4">
+                                      <div class="flex flex-row items-center">
+                                          <img src="../../../../assets/images/good-superificie.png" class="mx-2" alt="">
+                                          <span class="lg:text-xs truncate">1000 m2</span>
+                                      </div>
+                                      <div class="flex flex-row items-center">
+                                          <img src="../../../../assets/images/good-beds.png" class="mx-2" alt="">
+                                          <span class="lg:text-xs truncate">4 chambres</span>
+                                      </div>
+                                      <div class="flex flex-row items-center">
+                                          <img src="../../../../assets/images/good-toilets.png" class="mx-1" alt="">
+                                          <span class="lg:text-xs truncate">2 salles de bain</span>
+                                      </div>
+                                      <div class="flex flex-row items-center">
+                                        <img src="../../../../assets/images/good-toilets.png" class="mx-2" alt="">
+                                        <span class="lg:text-xs truncate">1 Garage</span>
+                                    </div>
+                  
+                                  </div>
+                              </div>
+                          </div>
+                  
+                      </div>
+                  </div>
+                  <div class="bg-gray-4  rounded-2xl pb-10">
+                    <div class="space-y-4">
+                        <div class="aspect-h-2 relative">
+                            <img class="object-cover shadow-lg w-full rounded-lg" src="../../../../assets/images/bien1.png" alt="">
+                            <div class="flex flex-row justify-between items-end px-5 pb-5">
+                                <span
+                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
+                                    Appartement
+                                </span>
+                                <img  src="../../../../assets/images/b-profil.png" alt="">
+
+                      
+                            </div>
+                        </div>
+                
+                        <div class="px-3">
+                            <div class=" leading-6 popping font-semibold space-y-2">
+                                <h3 class="text-lg truncate">Magnifique appartement</h3>
+                                <p class="text-base popping font-semibold	">CHF 1400.- / mois</p>
+                                <div class="flex flex-row items-center">
+                                    <img src="../../../../assets/images/location-good.png" class="h-4 mr-2" alt="">
+                                    <span class="text-blue-2">Genève</span>
                                 </div>
-                                <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                                <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                              </li>
-                              <li class="relative">
-                                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                                  <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                                  <button type="button" class="absolute inset-0 focus:outline-none">
-                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
-                                  </button>
+                            
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="flex flex-row items-center">
+                                        <img src="../../../../assets/images/good-superificie.png" class="mx-2" alt="">
+                                        <span class="lg:text-xs truncate">1000 m2</span>
+                                    </div>
+                                    <div class="flex flex-row items-center">
+                                        <img src="../../../../assets/images/good-beds.png" class="mx-2" alt="">
+                                        <span class="lg:text-xs truncate">4 chambres</span>
+                                    </div>
+                                    <div class="flex flex-row items-center">
+                                        <img src="../../../../assets/images/good-toilets.png" class="mx-1" alt="">
+                                        <span class="lg:text-xs truncate">2 salles de bain</span>
+                                    </div>
+                                    <div class="flex flex-row items-center">
+                                      <img src="../../../../assets/images/good-toilets.png" class="mx-2" alt="">
+                                      <span class="lg:text-xs truncate">1 Garage</span>
+                                  </div>
+                
                                 </div>
-                                <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                                <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                              </li>
-                              <li class="relative">
-                                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                                  <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                                  <button type="button" class="absolute inset-0 focus:outline-none">
-                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
-                                  </button>
+                            </div>
+                        </div>
+                
+                    </div>
+                </div>
+                <div class="bg-gray-4  rounded-2xl pb-10">
+                  <div class="space-y-4">
+                      <div class="aspect-h-2 relative">
+                          <img class="object-cover shadow-lg w-full rounded-lg" src="../../../../assets/images/bien1.png" alt="">
+                          <div class="flex flex-row justify-between items-end px-5 pb-5">
+                              <span
+                                  class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
+                                  Appartement
+                              </span>
+                              <img  src="../../../../assets/images/b-profil.png" alt="">
+
+                    
+                          </div>
+                      </div>
+              
+                      <div class="px-3">
+                          <div class=" leading-6 popping font-semibold space-y-2">
+                              <h3 class="text-lg truncate">Magnifique appartement</h3>
+                              <p class="text-base popping font-semibold	">CHF 1400.- / mois</p>
+                              <div class="flex flex-row items-center">
+                                  <img src="../../../../assets/images/location-good.png" class="h-4 mr-2" alt="">
+                                  <span class="text-blue-2">Genève</span>
+                              </div>
+                          
+                              <div class="grid grid-cols-2 gap-4">
+                                  <div class="flex flex-row items-center">
+                                      <img src="../../../../assets/images/good-superificie.png" class="mx-2" alt="">
+                                      <span class="lg:text-xs truncate">1000 m2</span>
+                                  </div>
+                                  <div class="flex flex-row items-center">
+                                      <img src="../../../../assets/images/good-beds.png" class="mx-2" alt="">
+                                      <span class="lg:text-xs truncate">4 chambres</span>
+                                  </div>
+                                  <div class="flex flex-row items-center">
+                                      <img src="../../../../assets/images/good-toilets.png" class="mx-1" alt="">
+                                      <span class="lg:text-xs truncate">2 salles de bain</span>
+                                  </div>
+                                  <div class="flex flex-row items-center">
+                                    <img src="../../../../assets/images/good-toilets.png" class="mx-2" alt="">
+                                    <span class="lg:text-xs truncate">1 Garage</span>
                                 </div>
-                                <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                                <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                              </li>
-                              <li class="relative">
-                                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                                  <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                                  <button type="button" class="absolute inset-0 focus:outline-none">
-                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
-                                  </button>
+              
+                              </div>
+                          </div>
+                      </div>
+              
+                  </div>
+              </div>
+              <div class="bg-gray-4  rounded-2xl pb-10">
+                <div class="space-y-4">
+                    <div class="aspect-h-2 relative">
+                        <img class="object-cover shadow-lg w-full rounded-lg" src="../../../../assets/images/bien1.png" alt="">
+                        <div class="flex flex-row justify-between items-end px-5 pb-5">
+                            <span
+                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
+                                Appartement
+                            </span>
+                            <img  src="../../../../assets/images/b-profil.png" alt="">
+
+                  
+                        </div>
+                    </div>
+            
+                    <div class="px-3">
+                        <div class=" leading-6 popping font-semibold space-y-2">
+                            <h3 class="text-lg truncate">Magnifique appartement</h3>
+                            <p class="text-base popping font-semibold	">CHF 1400.- / mois</p>
+                            <div class="flex flex-row items-center">
+                                <img src="../../../../assets/images/location-good.png" class="h-4 mr-2" alt="">
+                                <span class="text-blue-2">Genève</span>
+                            </div>
+                        
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="flex flex-row items-center">
+                                    <img src="../../../../assets/images/good-superificie.png" class="mx-2" alt="">
+                                    <span class="lg:text-xs truncate">1000 m2</span>
                                 </div>
-                                <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                                <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                              </li>
-                              <li class="relative">
-                                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                                  <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                                  <button type="button" class="absolute inset-0 focus:outline-none">
-                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
-                                  </button>
+                                <div class="flex flex-row items-center">
+                                    <img src="../../../../assets/images/good-beds.png" class="mx-2" alt="">
+                                    <span class="lg:text-xs truncate">4 chambres</span>
                                 </div>
-                                <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                                <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                              </li>
-                              <li class="relative">
-                                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                                  <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                                  <button type="button" class="absolute inset-0 focus:outline-none">
-                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
-                                  </button>
+                                <div class="flex flex-row items-center">
+                                    <img src="../../../../assets/images/good-toilets.png" class="mx-1" alt="">
+                                    <span class="lg:text-xs truncate">2 salles de bain</span>
                                 </div>
-                                <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
-                                <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
-                              </li>
+                                <div class="flex flex-row items-center">
+                                  <img src="../../../../assets/images/good-toilets.png" class="mx-2" alt="">
+                                  <span class="lg:text-xs truncate">1 Garage</span>
+                              </div>
+            
+                            </div>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+            <div class="bg-gray-4  rounded-2xl pb-10">
+              <div class="space-y-4">
+                  <div class="aspect-h-2 relative">
+                      <img class="object-cover shadow-lg w-full rounded-lg" src="../../../../assets/images/bien1.png" alt="">
+                      <div class="flex flex-row justify-between items-end px-5 pb-5">
+                          <span
+                              class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
+                              Appartement
+                          </span>
+                          <img  src="../../../../assets/images/b-profil.png" alt="">
+
+                
+                      </div>
+                  </div>
+          
+                  <div class="px-3">
+                      <div class=" leading-6 popping font-semibold space-y-2">
+                          <h3 class="text-lg truncate">Magnifique appartement</h3>
+                          <p class="text-base popping font-semibold	">CHF 1400.- / mois</p>
+                          <div class="flex flex-row items-center">
+                              <img src="../../../../assets/images/location-good.png" class="h-4 mr-2" alt="">
+                              <span class="text-blue-2">Genève</span>
+                          </div>
+                      
+                          <div class="grid grid-cols-2 gap-4">
+                              <div class="flex flex-row items-center">
+                                  <img src="../../../../assets/images/good-superificie.png" class="mx-2" alt="">
+                                  <span class="lg:text-xs truncate">1000 m2</span>
+                              </div>
+                              <div class="flex flex-row items-center">
+                                  <img src="../../../../assets/images/good-beds.png" class="mx-2" alt="">
+                                  <span class="lg:text-xs truncate">4 chambres</span>
+                              </div>
+                              <div class="flex flex-row items-center">
+                                  <img src="../../../../assets/images/good-toilets.png" class="mx-1" alt="">
+                                  <span class="lg:text-xs truncate">2 salles de bain</span>
+                              </div>
+                              <div class="flex flex-row items-center">
+                                <img src="../../../../assets/images/good-toilets.png" class="mx-2" alt="">
+                                <span class="lg:text-xs truncate">1 Garage</span>
+                            </div>
+          
+                          </div>
+                      </div>
+                  </div>
+          
+              </div>
+          </div>
+          <div class="bg-gray-4  rounded-2xl pb-10">
+            <div class="space-y-4">
+                <div class="aspect-h-2 relative">
+                    <img class="object-cover shadow-lg w-full rounded-lg" src="../../../../assets/images/bien1.png" alt="">
+                    <div class="flex flex-row justify-between items-end px-5 pb-5">
+                        <span
+                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
+                            Appartement
+                        </span>
+                        <img  src="../../../../assets/images/b-profil.png" alt="">
+
+              
+                    </div>
+                </div>
+        
+                <div class="px-3">
+                    <div class=" leading-6 popping font-semibold space-y-2">
+                        <h3 class="text-lg truncate">Magnifique appartement</h3>
+                        <p class="text-base popping font-semibold	">CHF 1400.- / mois</p>
+                        <div class="flex flex-row items-center">
+                            <img src="../../../../assets/images/location-good.png" class="h-4 mr-2" alt="">
+                            <span class="text-blue-2">Genève</span>
+                        </div>
+                    
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="flex flex-row items-center">
+                                <img src="../../../../assets/images/good-superificie.png" class="mx-2" alt="">
+                                <span class="lg:text-xs truncate">1000 m2</span>
+                            </div>
+                            <div class="flex flex-row items-center">
+                                <img src="../../../../assets/images/good-beds.png" class="mx-2" alt="">
+                                <span class="lg:text-xs truncate">4 chambres</span>
+                            </div>
+                            <div class="flex flex-row items-center">
+                                <img src="../../../../assets/images/good-toilets.png" class="mx-1" alt="">
+                                <span class="lg:text-xs truncate">2 salles de bain</span>
+                            </div>
+                            <div class="flex flex-row items-center">
+                              <img src="../../../../assets/images/good-toilets.png" class="mx-2" alt="">
+                              <span class="lg:text-xs truncate">1 Garage</span>
+                          </div>
+        
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+        <div class="bg-gray-4  rounded-2xl pb-10">
+          <div class="space-y-4">
+              <div class="aspect-h-2 relative">
+                  <img class="object-cover shadow-lg w-full rounded-lg" src="../../../../assets/images/bien1.png" alt="">
+                  <div class="flex flex-row justify-between items-end px-5 pb-5">
+                      <span
+                          class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
+                          Appartement
+                      </span>
+                      <img  src="../../../../assets/images/b-profil.png" alt="">
+
+            
+                  </div>
+              </div>
+      
+              <div class="px-3">
+                  <div class=" leading-6 popping font-semibold space-y-2">
+                      <h3 class="text-lg truncate">Magnifique appartement</h3>
+                      <p class="text-base popping font-semibold	">CHF 1400.- / mois</p>
+                      <div class="flex flex-row items-center">
+                          <img src="../../../../assets/images/location-good.png" class="h-4 mr-2" alt="">
+                          <span class="text-blue-2">Genève</span>
+                      </div>
+                  
+                      <div class="grid grid-cols-2 gap-4">
+                          <div class="flex flex-row items-center">
+                              <img src="../../../../assets/images/good-superificie.png" class="mx-2" alt="">
+                              <span class="lg:text-xs truncate">1000 m2</span>
+                          </div>
+                          <div class="flex flex-row items-center">
+                              <img src="../../../../assets/images/good-beds.png" class="mx-2" alt="">
+                              <span class="lg:text-xs truncate">4 chambres</span>
+                          </div>
+                          <div class="flex flex-row items-center">
+                              <img src="../../../../assets/images/good-toilets.png" class="mx-1" alt="">
+                              <span class="lg:text-xs truncate">2 salles de bain</span>
+                          </div>
+                          <div class="flex flex-row items-center">
+                            <img src="../../../../assets/images/good-toilets.png" class="mx-2" alt="">
+                            <span class="lg:text-xs truncate">1 Garage</span>
+                        </div>
+      
+                      </div>
+                  </div>
+              </div>
+      
+          </div>
+      </div>
+      <div class="bg-gray-4  rounded-2xl pb-10">
+        <div class="space-y-4">
+            <div class="aspect-h-2 relative">
+                <img class="object-cover shadow-lg w-full rounded-lg" src="../../../../assets/images/bien1.png" alt="">
+                <div class="flex flex-row justify-between items-end px-5 pb-5">
+                    <span
+                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
+                        Appartement
+                    </span>
+                    <img  src="../../../../assets/images/b-profil.png" alt="">
+
+          
+                </div>
+            </div>
+    
+            <div class="px-3">
+                <div class=" leading-6 popping font-semibold space-y-2">
+                    <h3 class="text-lg truncate">Magnifique appartement</h3>
+                    <p class="text-base popping font-semibold	">CHF 1400.- / mois</p>
+                    <div class="flex flex-row items-center">
+                        <img src="../../../../assets/images/location-good.png" class="h-4 mr-2" alt="">
+                        <span class="text-blue-2">Genève</span>
+                    </div>
+                
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex flex-row items-center">
+                            <img src="../../../../assets/images/good-superificie.png" class="mx-2" alt="">
+                            <span class="lg:text-xs truncate">1000 m2</span>
+                        </div>
+                        <div class="flex flex-row items-center">
+                            <img src="../../../../assets/images/good-beds.png" class="mx-2" alt="">
+                            <span class="lg:text-xs truncate">4 chambres</span>
+                        </div>
+                        <div class="flex flex-row items-center">
+                            <img src="../../../../assets/images/good-toilets.png" class="mx-1" alt="">
+                            <span class="lg:text-xs truncate">2 salles de bain</span>
+                        </div>
+                        <div class="flex flex-row items-center">
+                          <img src="../../../../assets/images/good-toilets.png" class="mx-2" alt="">
+                          <span class="lg:text-xs truncate">1 Garage</span>
+                      </div>
+    
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    <div class="bg-gray-4  rounded-2xl pb-10">
+      <div class="space-y-4">
+          <div class="aspect-h-2 relative">
+              <img class="object-cover shadow-lg w-full rounded-lg" src="../../../../assets/images/bien1.png" alt="">
+              <div class="flex flex-row justify-between items-end px-5 pb-5">
+                  <span
+                      class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
+                      Appartement
+                  </span>
+                  <img  src="../../../../assets/images/b-profil.png" alt="">
+
+        
+              </div>
+          </div>
+  
+          <div class="px-3">
+              <div class=" leading-6 popping font-semibold space-y-2">
+                  <h3 class="text-lg truncate">Magnifique appartement</h3>
+                  <p class="text-base popping font-semibold	">CHF 1400.- / mois</p>
+                  <div class="flex flex-row items-center">
+                      <img src="../../../../assets/images/location-good.png" class="h-4 mr-2" alt="">
+                      <span class="text-blue-2">Genève</span>
+                  </div>
+              
+                  <div class="grid grid-cols-2 gap-4">
+                      <div class="flex flex-row items-center">
+                          <img src="../../../../assets/images/good-superificie.png" class="mx-2" alt="">
+                          <span class="lg:text-xs truncate">1000 m2</span>
+                      </div>
+                      <div class="flex flex-row items-center">
+                          <img src="../../../../assets/images/good-beds.png" class="mx-2" alt="">
+                          <span class="lg:text-xs truncate">4 chambres</span>
+                      </div>
+                      <div class="flex flex-row items-center">
+                          <img src="../../../../assets/images/good-toilets.png" class="mx-1" alt="">
+                          <span class="lg:text-xs truncate">2 salles de bain</span>
+                      </div>
+                      <div class="flex flex-row items-center">
+                        <img src="../../../../assets/images/good-toilets.png" class="mx-2" alt="">
+                        <span class="lg:text-xs truncate">1 Garage</span>
+                    </div>
+  
+                  </div>
+              </div>
+          </div>
+  
+      </div>
+  </div>
+  <div class="bg-gray-4  rounded-2xl pb-10">
+    <div class="space-y-4">
+        <div class="aspect-h-2 relative">
+            <img class="object-cover shadow-lg w-full rounded-lg" src="../../../../assets/images/bien1.png" alt="">
+            <div class="flex flex-row justify-between items-end px-5 pb-5">
+                <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
+                    Appartement
+                </span>
+                <img  src="../../../../assets/images/b-profil.png" alt="">
+
+      
+            </div>
+        </div>
+
+        <div class="px-3">
+            <div class=" leading-6 popping font-semibold space-y-2">
+                <h3 class="text-lg truncate">Magnifique appartement</h3>
+                <p class="text-base popping font-semibold	">CHF 1400.- / mois</p>
+                <div class="flex flex-row items-center">
+                    <img src="../../../../assets/images/location-good.png" class="h-4 mr-2" alt="">
+                    <span class="text-blue-2">Genève</span>
+                </div>
+            
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex flex-row items-center">
+                        <img src="../../../../assets/images/good-superificie.png" class="mx-2" alt="">
+                        <span class="lg:text-xs truncate">1000 m2</span>
+                    </div>
+                    <div class="flex flex-row items-center">
+                        <img src="../../../../assets/images/good-beds.png" class="mx-2" alt="">
+                        <span class="lg:text-xs truncate">4 chambres</span>
+                    </div>
+                    <div class="flex flex-row items-center">
+                        <img src="../../../../assets/images/good-toilets.png" class="mx-1" alt="">
+                        <span class="lg:text-xs truncate">2 salles de bain</span>
+                    </div>
+                    <div class="flex flex-row items-center">
+                      <img src="../../../../assets/images/good-toilets.png" class="mx-2" alt="">
+                      <span class="lg:text-xs truncate">1 Garage</span>
+                  </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+                       
                           
                             <!-- More files... -->
                           </ul>
