@@ -20,6 +20,11 @@ const routes: Routes = [
       { path: '', redirectTo: 'mygoods' }
     ]
   },
+  {
+    path: 'add-good',
+    loadChildren: () =>
+      import('./add-good/add-good.module').then((m) => m.AddGoodModule)
+  },
 ];
 
 @NgModule({
