@@ -7,6 +7,12 @@ import { SharedModule } from 'src/app/modules/shared/shared.module';
 import { VerticalStepComponent } from './components/vertical-step/vertical-step.component';
 import { InformationComponent } from './information/information.component';
 import { HorizontalStepComponent } from './components/horizontal-step/horizontal-step.component';
+import { DetailsComponent } from './details/details.component';
+import { PriceComponent } from './price/price.component';
+import { DescriptionComponent } from './description/description.component';
+import { MediaComponent } from './media/media.component';
+import { DisponibilityComponent } from './disponibility/disponibility.component';
+import { PostComponent } from './post/post.component';
 
 
 @NgModule({
@@ -14,7 +20,13 @@ import { HorizontalStepComponent } from './components/horizontal-step/horizontal
     AddGoodHomeComponent,
     VerticalStepComponent,
     InformationComponent,
-    HorizontalStepComponent
+    HorizontalStepComponent,
+    DetailsComponent,
+    PriceComponent,
+    DescriptionComponent,
+    MediaComponent,
+    DisponibilityComponent,
+    PostComponent
   ],
   imports: [
     CommonModule,
