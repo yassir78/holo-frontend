@@ -13,6 +13,7 @@ import { DescriptionComponent } from './description/description.component';
 import { MediaComponent } from './media/media.component';
 import { DisponibilityComponent } from './disponibility/disponibility.component';
 import { PostComponent } from './post/post.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 @NgModule({
@@ -29,9 +30,11 @@ import { PostComponent } from './post/post.component';
     PostComponent
   ],
   imports: [
+    CKEditorModule,
     CommonModule,
     AddGoodRoutingModule,
-    SharedModule
+    SharedModule,
+
   ]
 })
 export class AddGoodModule { }

@@ -1,11 +1,11 @@
 <nav class="fixed bottom-0 left-0 right-0 w-full z-50  bg-white   rounded-md shadow-lg block md:hidden"
-    aria-label="Navbar">
+    [@slideInOut]="navbarState" aria-label="Navbar">
     <div class="flex flex-row justify-around">
         <!-- Current: " z-10 bg-indigo-50 border-indigo-500 text-indigo-600",
         Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
         <a [routerLink]="['/dashboard/bailleur/applications']"
             [routerLinkActive]="['border-t-4', 'border-blue-400','text-indigo-600']"
-            class="bg-white border-gray-300 border-indigo-500 text-indigo-600  relative inline-flex items-center px-4 py-4  text-sm font-medium">
+            class="bg-white border-gray-300 w-full justify-center relative inline-flex items-center px-4 py-4  text-sm font-medium">
             <svg [routerLinkActive]="['text-blue-700']" class="text-gray-400  active:text-indigo-600  h-6 w-6"
                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                 aria-hidden="true">
@@ -14,7 +14,7 @@
             </svg>
         </a>
         <a
-            class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-4  text-sm font-medium">
+            class="bg-white border-gray-300 w-full text-gray-500 hover:bg-gray-50 relative inline-flex justify-center items-center px-4 py-4  text-sm font-medium">
             <svg class="text-gray-400 flex-shrink-0 active:text-indigo-600 -ml-1 mr-3 h-6 w-6"
                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                 aria-hidden="true">
@@ -24,7 +24,7 @@
         </a>
         <a [routerLink]="['/dashboard/bailleur/mygoods']"
             [routerLinkActive]="['border-t-4', 'border-blue-400','text-indigo-600']"
-            class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50  md:inline-flex relative items-center px-4 py-4  text-sm font-medium">
+            class="bg-white border-gray-300 w-full justify-center relative inline-flex items-center px-4 py-4  text-sm font-medium">
             <svg class="text-gray-400 flex-shrink-0 active:text-indigo-600 h-6 w-6"
                 [routerLinkActive]="['text-blue-700']" xmlns="http://www.w3.org/2000/svg" fill="none"
                 viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -34,7 +34,7 @@
         </a>
 
         <a
-            class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50  md:inline-flex relative items-center px-4 py-4  text-sm font-medium">
+            class="bg-white border-gray-300 w-full text-gray-500 hover:bg-gray-50  justify-center md:inline-flex relative items-center px-4 py-4  text-sm font-medium">
             <svg class="text-gray-400 flex-shrink-0 active:text-indigo-600 -ml-1 mr-3 h-6 w-6"
                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                 aria-hidden="true">
@@ -44,7 +44,7 @@
         </a>
 
         <a
-            class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-4  text-sm font-medium">
+            class="bg-white border-gray-300 w-full text-center text-gray-500 hover:bg-gray-50 justify-center relative inline-flex items-center px-4 py-4  text-sm font-medium">
             <svg class="text-gray-3 flex-shrink-0 active:text-indigo-600 -ml-1 mr-3 h-6 w-6"
                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                 aria-hidden="true">

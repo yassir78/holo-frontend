@@ -1,3 +1,17 @@
 <div class=" bg-white shadow-xl pt-3 pb-10 px-3 md:px-6 pr-3 rounded-2xl ">
-    <span>Implementation of description page</span>
+    <div class="py-5 border-b-2">
+        <h1 class="popping text-xl font-bold ">Description</h1>
+    </div>
+    <div class="my-5">
+        <label for="nomBien" class="popping font-semibold">Nom du bien</label>
+        <input type="text" name="nomBien" id="nomBien"
+            class="shadow-sm mt-3  px-4 placeholder-size-2 w-full focus:border-indigo-500 block  sm:text-sm border-gray-300 rounded-md py-3 "
+            placeholder="Nom de votre bien" aria-describedby="email-description">
+    </div>
+    <div class="mt-5">
+        <ckeditor [editor]="Editor" [data]="descriptionBien" (change)="onChangeText($event)"></ckeditor>
+    </div>
+    <div>
+
+    </div>
 </div>
