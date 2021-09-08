@@ -66,6 +66,7 @@
 }
 .bg-blue1{
     background-color: $bordure_champ;
+    
 }
 .bg-red-light{
    @include bgColor($red_light) 
