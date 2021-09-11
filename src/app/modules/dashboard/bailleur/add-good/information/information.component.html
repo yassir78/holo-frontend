@@ -9,11 +9,14 @@
         <h2 class="popping text-base font-semibold">Voulez-vous</h2>
         <div class="flex flex-row mt-3">
             <button type="button "
-                class="flex justify-center w-28	 mr-2	 items-center px-4 py-2 border border-blue-300	 shadow-sm text-base font-semibold popping rounded-xl text-blue-400	 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                [ngClass]=" venteOuLocation == 'Vente' ? 'text-blue-400 border-blue-300' : 'border-gray-300 text-gray-200 bg-white'"
+                (click)="venteOuLocation = 'Vente'"
+                class="flex justify-center w-28	 mr-2	 items-center px-4 py-2 border 	 shadow-sm text-base font-semibold popping rounded-xl 	 bg-white hover:bg-gray-50 active:-translate-y-2 transition-all duration-100">
                 Vendre
             </button>
-            <button type="button"
-                class="flex justify-center w-28	      items-center px-4 py-2 border border-gray-300 shadow-sm text-base font-medium rounded-xl text-gray-200 bg-white">
+            <button type="button" (click)="venteOuLocation = 'Location'"
+                [ngClass]=" venteOuLocation == 'Location' ? 'text-blue-400 border-blue-300' : 'border-gray-300 text-gray-200 bg-white'"
+                class="flex justify-center w-28	  items-center px-4 py-2 border  shadow-sm text-base font-medium rounded-xl  active:-translate-y-2 transition-all duration-100">
                 Louer
             </button>
         </div>
@@ -21,33 +24,33 @@
     <div class="mt-5 px-3">
         <h1 class="popping text-base font-semibold mb-3">Nom de la régie</h1>
         <div class="relative">
-            <button type="button" (click)="selectDropDown = !selectDropDown"
+            <button type="button" (click)="selectRegieDropDown = !selectRegieDropDown"
                 class="flex items-center  justify-between w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
                 id="menu-button" aria-expanded="true" aria-haspopup="true">
-                <span class=" text-lg">Comptimmo</span>
+                <span class=" text-lg">{{selectedRegieValue}}</span>
                 <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7 9L0.0717961 0.750001L13.9282 0.749998L7 9Z" fill="#6FB4E1" />
                 </svg>
             </button>
-            <ul [@selectInput]="selectDropDown ? false : true"
+            <ul [@selectInput]="selectRegieDropDown ? false : true"
                 class="origin-top-right absolute z-10 left-0 w-full mt-2     rounded-md shadow-lg overflow-hidden bg-white divide-y divide-gray-200 ring-1 ring-black ring-opacity-5 focus:outline-none"
                 tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-0">
-                <li class="text-gray-900 cursor-default select-none relative p-4 text-sm" id="listbox-option-0"
-                    role="option">
-                    <p class="font-normal">
-                        Published
+                <li class="text-gray-900  select-none relative p-4 text-base cursor-pointer hover:bg-gray-400 hover:text-white"
+                    id="listbox-option-0" role="option" (click)="managementDropDown('Régie 1')">
+                    <p class="font-medium">
+                        Régie 1
                     </p>
                 </li>
-                <li class="text-gray-900 cursor-default select-none relative p-4 text-sm" id="listbox-option-0"
-                    role="option">
-                    <p class="font-normal">
-                        Published
+                <li class="text-gray-900  select-none relative p-4 text-base cursor-pointer hover:bg-gray-400 hover:text-white"
+                    id="listbox-option-0" role="option" (click)="managementDropDown('Régie 2')">
+                    <p class="font-medium">
+                        Régie 2
                     </p>
                 </li>
-                <li class="text-gray-900 cursor-default select-none relative p-4 text-sm" id="listbox-option-0"
-                    role="option">
-                    <p class="font-normal">
-                        Published
+                <li class="text-gray-900  select-none relative p-4 text-base cursor-pointer hover:bg-gray-400 hover:text-white"
+                    id="listbox-option-0" role="option" (click)="managementDropDown('Régie 3')">
+                    <p class="font-medium">
+                        Régie 3
                     </p>
                 </li>
             </ul>
@@ -56,80 +59,38 @@
     <div class="mt-5 px-3">
         <h1 class="popping text-base font-semibold">Formulaire de votre régie</h1>
         <div class="flex flex-row mt-2">
-            <span class="popping text-base text-gray-300 mr-3">Document 1:</span>
-            <span class="cursor-pointer	text-blue-2">+ Ajouter</span>
+            <span class="popping text-base text-gray-300 mr-3">Importer votre document:</span>
+            <span class="cursor-pointer	" (click)="file.click()"
+                [ngClass]="document=='+ Ajouter' ? 'text-blue-2' : 'text-gray-700'">
+                {{document}}</span>
+            <span class="font-medium mx-3 " *ngIf="document != '+ Ajouter'">{{progress$|async}} %</span>
+            <input type="file" id="upload0" (change)="documentUpload($event)" style="display:none" #file>
         </div>
     </div>
     <div class="mt-5 px-3">
         <h1 class="popping text-base font-semibold">Type de bien</h1>
-        <div class="flex flex-row flex-wrap md:flex-nowrap">
-            <fieldset class="space-y-5 w-full">
-                <legend class="sr-only">Appartements</legend>
+        <div class="flex flex-row flex-wrap ">
+            <fieldset class="space-y-5 mr-3" *ngFor="let bien of biens">
+                <legend class="sr-only">{{bien}}</legend>
                 <div class="relative flex items-start">
                     <div class="flex items-end h-5">
-                        <input id="comments" aria-describedby="comments-description" name="comments" type="checkbox"
-                            class=" h-4 w-4  active:border-4 border-blue-300 rounded-2xl">
+                        <input id="logtVacances" aria-describedby="comments-description" name="comments" type="checkbox"
+                            class=" form-checkbox text-blue-2 focus:ring-0 border-gray-300 p-2 rounded-md "
+                            (change)="typeDeBienValue(bien,$event)">
                     </div>
                     <div class="ml-3 ">
-                        <label for="comments" class="popping text-base font-medium	 text-gray-500">Appartements</label>
+                        <label for="comments" class="popping text-base font-medium	 text-gray-500">{{bien}}</label>
                     </div>
                 </div>
-
-
             </fieldset>
-            <fieldset class="space-y-5 w-full">
-                <legend class="sr-only">Appartements</legend>
-                <div class="relative flex items-start">
-                    <div class="flex items-end h-5">
-                        <input id="comments" aria-describedby="comments-description" name="comments" type="checkbox"
-                            class=" h-4 w-4  active:border-4 border-blue-300 rounded-2xl">
-                    </div>
-                    <div class="ml-3 ">
-                        <label for="comments" class="popping text-base font-medium	 text-gray-500">Meublé </label>
-                    </div>
-                </div>
-
-
-            </fieldset>
-            <fieldset class="space-y-5 w-full">
-                <legend class="sr-only">Appartements</legend>
-                <div class="relative flex items-start">
-                    <div class="flex items-end h-5">
-                        <input id="comments" aria-describedby="comments-description" name="comments" type="checkbox"
-                            class=" h-4 w-4  active:border-4 border-blue-300 rounded-2xl">
-                    </div>
-                    <div class="ml-3 ">
-                        <label for="comments" class="popping text-base font-medium	 text-gray-500">Villas /
-                            Maison</label>
-                    </div>
-                </div>
-
-
-            </fieldset>
-            <fieldset class="space-y-5 w-full">
-                <legend class="sr-only">Appartements</legend>
-                <div class="relative flex items-start">
-                    <div class="flex items-end h-5">
-                        <input id="commerciaux" aria-describedby="commerciaux" name="commerciaux" type="checkbox"
-                            class=" h-4 w-4  active:border-4 border-blue-300 rounded-2xl">
-                    </div>
-                    <div class="ml-3">
-                        <label for="commerciaux"
-                            class="popping text-base font-medium  text-gray-500">Commerciaux</label>
-                    </div>
-                </div>
-
-
-            </fieldset>
-
         </div>
-        <div class="flex flex-row flex-wrap md:flex-nowrap">
+        <!--      <div class="flex flex-row flex-wrap md:flex-nowrap">
             <fieldset class="space-y-5 w-full">
                 <legend class="sr-only">Terrain</legend>
                 <div class="relative flex items-start">
                     <div class="flex items-end h-5">
-                        <input id="terrain" aria-describedby="comments-description" name="comments" type="checkbox"
-                            class=" h-4 w-4  active:border-4 border-blue-300 rounded-2xl">
+                        <input id="logtVacances" aria-describedby="comments-description" name="comments" type="checkbox"
+                            class=" form-checkbox text-blue-2 focus:ring-0 border-gray-300 p-2 rounded-md ">
                     </div>
                     <div class="ml-3 ">
                         <label for="terrain" class="popping text-base font-medium	 text-gray-500">Terrain</label>
@@ -142,8 +103,8 @@
                 <legend class="sr-only">Immeuble</legend>
                 <div class="relative flex items-start">
                     <div class="flex items-end h-5">
-                        <input id="immeuble" aria-describedby="comments-description" name="comments" type="checkbox"
-                            class=" h-4 w-4  active:border-4 border-blue-300 rounded-2xl">
+                        <input id="logtVacances" aria-describedby="comments-description" name="comments" type="checkbox"
+                            class=" form-checkbox text-blue-2 focus:ring-0 border-gray-300 p-2 rounded-md ">
                     </div>
                     <div class="ml-3 ">
                         <label for="immeuble" class="popping text-base font-medium	 text-gray-500">Immeuble </label>
@@ -157,7 +118,7 @@
                 <div class="relative flex items-start">
                     <div class="flex items-end h-5">
                         <input id="logtVacances" aria-describedby="comments-description" name="comments" type="checkbox"
-                            class=" h-4 w-4  active:border-4 border-blue-300 rounded-2xl">
+                            class=" form-checkbox text-blue-2 focus:ring-0 border-gray-300 p-2 rounded-md ">
                     </div>
                     <div class="ml-3 ">
                         <label for="logtVacances" class="popping text-base font-medium	 text-gray-500">Logt
@@ -171,19 +132,15 @@
                 <legend class="sr-only">Appartements</legend>
                 <div class="relative flex items-start">
                     <div class="flex items-end h-5">
-                        <input id="parkings" aria-describedby="commerciaux" name="commerciaux" type="checkbox"
-                            class=" h-4 w-4  active:border-4 border-blue-300 rounded-2xl">
+                        <input id="logtVacances" aria-describedby="comments-description" name="comments" type="checkbox"
+                            class=" form-checkbox text-blue-2 focus:ring-0 border-gray-300 p-2 rounded-md ">
                     </div>
                     <div class="ml-3">
                         <label for="parkings" class="popping text-base font-medium  text-gray-500">Parkings</label>
                     </div>
                 </div>
-
-
             </fieldset>
-
-        </div>
-
+        </div> -->
     </div>
     <div class="mt-5 px-3">
         <h1 class="popping text-base font-semibold mb-3">Date de disponibilité</h1>
@@ -204,7 +161,7 @@
             <div class="w-full">
                 <h1 class="popping text-base font-semibold mb-3">Region </h1>
                 <div class="relative">
-                    <button type="button" (click)="selectDropDown = !selectDropDown"
+                    <button type="button" (click)="selectRegionDropDown = !selectRegionDropDown"
                         class="flex items-center  justify-between w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
                         id="menu-button" aria-expanded="true" aria-haspopup="true">
                         <span class=" text-lg">Comptimmo</span>
@@ -212,7 +169,7 @@
                             <path d="M7 9L0.0717961 0.750001L13.9282 0.749998L7 9Z" fill="#6FB4E1" />
                         </svg>
                     </button>
-                    <ul [@selectInput]="selectDropDown ? false : true"
+                    <ul [@selectInput]="selectRegionDropDown ? false : true"
                         class="origin-top-right absolute z-10 left-0 w-full mt-2     rounded-md shadow-lg overflow-hidden bg-white divide-y divide-gray-200 ring-1 ring-black ring-opacity-5 focus:outline-none"
                         tabindex="-1" role="listbox" aria-labelledby="listbox-label"
                         aria-activedescendant="listbox-option-0">
@@ -291,7 +248,7 @@
 
     </div>
     <div class="  w-full md:w-1/2 px-3 mt-5">
-        <h1 class="popping text-base font-semibold mb-3">Surface terrasse/balcon </h1>
+        <h1 class="popping text-base font-semibold mb-3">Surface jardin </h1>
         <div class="relative">
             <input type="text" name="email" id="email"
                 class="shadow-sm  px-4 placeholder-size-2 w-full focus:border-indigo-500 block  sm:text-sm border-gray-300 rounded-md py-3 "
