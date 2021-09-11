@@ -66,6 +66,7 @@
 }
 .bg-blue1{
     background-color: $bordure_champ;
+    
 }
 .bg-red-light{
    @include bgColor($red_light) 
@@ -160,6 +161,9 @@
 }
 .text-green-3{
     color: $green_3;
+}
+.bg-green-3{
+    @include bgColor($green_3);
 }
 .text-orange-1{
     color: $orange_1;

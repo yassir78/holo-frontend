@@ -1,0 +1,25 @@
+<navbar></navbar>
+<div class="bg-blue1 pb-[250px]">
+    <div class="px-3 md:px-8 lg:mx-5 grid grid-cols-12  gap-4 pt-32 ">
+        <div class="hidden md:block md:col-span-1 text-center"><button type="button"
+                class="inline-flex items-center p-1 border border-transparent rounded-full shadow-sm text-white bg-white shadow  focus:outline-none active:-translate-y-2 ">
+                <!-- Heroicon name: outline/plus -->
+                <svg width="42" height="43" viewBox="0 0 42 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.2529 11.2471L30.759 31.7532" stroke="#45545F" stroke-width="5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M10.2529 31.7529L30.759 11.2468" stroke="#45545F" stroke-width="5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+
+            </button> </div>
+        <div class="hidden md:block md:col-span-3 ">
+            <vertical-step></vertical-step>
+        </div>
+        <div class="block md:hidden col-span-12 mx-auto">
+            <horizontal-step></horizontal-step>
+        </div>
+        <div class="col-span-12 md:col-span-8 mb-10">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
