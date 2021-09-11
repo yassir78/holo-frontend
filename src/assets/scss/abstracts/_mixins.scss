@@ -15,3 +15,9 @@
  @mixin inter(){
 font-family: 'Inter', sans-serif;
  }
+ 
+ @mixin fold() {
+  @media (max-width: 280px) {
+  display: none;
+  }
+}

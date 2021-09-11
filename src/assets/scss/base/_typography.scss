@@ -183,3 +183,7 @@
 .scroll::-webkit-scrollbar-thumb:hover {
   background: $blue_1; 
 } 
+
+.fold{
+    @include fold();
+}
