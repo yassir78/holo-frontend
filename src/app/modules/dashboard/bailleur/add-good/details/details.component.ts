@@ -53,6 +53,55 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
+  get  numberOfPieces(){
+    return this.detailsForm.get("numberOfPieces");
+  }
+
+  get  numberOfRooms(){
+    return this.detailsForm.get("numberOfRooms");
+  }
+
+  get  numberOfWC(){
+    return this.detailsForm.get("numberOfWC");
+  }
+
+  get  numberOfBathRooms(){
+    return this.detailsForm.get("numberOfBathRooms");
+  }
+
+  get  numberOfFloors(){
+    return this.detailsForm.get("numberOfFloors");
+  }
+  get  FloorOfTheApartment(){
+    return this.detailsForm.get("FloorOfTheApartment");
+  }
+  get  yearOfBuilding(){
+    return this.detailsForm.get("yearOfBuilding");
+  }
+  get  yearOfRenovation(){
+    return this.detailsForm.get("yearOfRenovation");
+  }
+  get  view(){
+    return this.detailsForm.get("view");
+  }
+  get  orientation(){
+    return this.detailsForm.get("orientation");
+  }
+  get  heatingTypeSystem(){
+    return this.detailsForm.get("heatingTypeSystem");
+  }
+  get  environment(){
+    return this.detailsForm.get("environment");
+  }
+  get  proximity(){
+    return this.detailsForm.get("proximity");
+  }
+  get  extra(){
+    return this.detailsForm.get("extra");
+  }
+  
   managementOrientationDropDown(value: string) {
     this.detailsForm.get('orientation')?.setValue(value);
     this.selectedOrientationValue = value;
@@ -103,5 +152,25 @@ export class DetailsComponent implements OnInit {
     console.log(typeExtra.controls)
 
   }
+  formSubmit(){
+    
 
+    console.log({
+      numberOfPieces: this.numberOfPieces?.value ,
+      numberOfRooms: this.numberOfRooms?.value,
+      numberOfWC: this.numberOfWC?.value,
+      numberOfBathRooms: this.numberOfBathRooms?.value,
+      numberOfFloors: this.numberOfFloors?.value,
+      FloorOfTheApartment: this.FloorOfTheApartment?.value,
+      yearOfBuilding: this.yearOfBuilding?.value,
+      yearOfRenovation: this.yearOfRenovation?.value,
+    
+      view:   this.selectedViewValue ,
+      orientation: this.selectedOrientationValue,
+      heatingTypeSystem: this.selectedHeatingTypeSystemValue,
+      environment: this.selectedEnvironmentValue,
+      proximity:  this.proximity?.value,
+      extra: this.extra?.value,
+    })
+  }
 }

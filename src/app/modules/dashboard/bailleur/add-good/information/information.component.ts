@@ -21,28 +21,75 @@ export class InformationComponent implements OnInit {
   selectRegionDropDown: boolean = false;
   biens: String[] = ['Appartements', 'Meublé', 'Villas / Maison', 'Commerciaux', 'Terrain', 'Immeuble', 'Logt vacances', 'Parkings']
   selectedRegieValue: string = 'Choisissez une régie';
+  selectedRegionValue: string = 'Choisissez une région';
+
   document: string = "+ Ajouter";
   progress$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   informationForm: FormGroup = new FormGroup({
-    saleOrRental: new FormControl('Vente', Validators.required),
-    disponibilityDate: new FormControl('', Validators.required),
-    management: new FormControl('', Validators.required),
-    typeOfGood: new FormArray([], Validators.required),
-    zipCode: new FormControl('', Validators.required),
-    address: new FormControl('', Validators.required),
-    livingArea: new FormControl('', Validators.required),
-    terraceBalconyArea: new FormControl('', Validators.required),
-    gardenArea: new FormControl('', Validators.required)
+  status:new FormControl('', Validators.required),
+  agencyName:new FormControl('', Validators.required),
+  agencyForm: new FormControl('', Validators.required),
+  propertyType:new FormArray([], Validators.required),
+  availablity: new FormControl('', Validators.required),
+  state: new FormControl('', Validators.required),
+  zipCode:new FormControl('', Validators.required),
+  address: new FormControl('', Validators.required),
+  livingSpace: new FormControl('', Validators.required),
+  terraceArea: new FormControl('', Validators.required),
+  gardenArea:new FormControl('', Validators.required),
+   
   })
   constructor() { }
+  ngOnInit(): void {
+  }
+
+  get  status(){
+    return this.informationForm.get("status");
+  }
+
+  get  agencyName(){
+    return this.informationForm.get("agencyName");
+  }
+
+
+  get  agencyForm(){
+    return this.informationForm.get("agencyForm");
+  }
+  get  propertyType(){
+    return this.informationForm.get("propertyType");
+  }
+  get  availablity(){
+    return this.informationForm.get("availablity");
+  }
+  get  address(){
+    return this.informationForm.get("address");
+  }
+  get  state(){
+    return this.informationForm.get("state");
+  }
+  get  zipCode(){
+    return this.informationForm.get("zipCode");
+  }
+  get  terraceArea(){
+    return this.informationForm.get("terraceArea");
+  }
+
+  get  gardenArea(){
+    return this.informationForm.get("gardenArea");
+  }
+
+  get livingSpace () {
+    return this.informationForm.get("livingSpace");
+  }
+ 
   documentUpload(event: any) {
     console.log(event)
     this.document = event.target.files[0].name;
     // upload process
   }
   typeDeBienValue(value: String, event: any) {
-    const typeDeBienArray = <FormArray>this.informationForm.controls.typeOfGood;
+    const typeDeBienArray = <FormArray>this.informationForm.controls.propertyType;
     const checked: boolean = event.target.checked;
     if (checked) {
       typeDeBienArray.push(new FormControl(value))
@@ -53,13 +100,35 @@ export class InformationComponent implements OnInit {
     console.log(typeDeBienArray.controls)
 
   }
-  managementDropDown(value: string) {
-    this.informationForm.get('management')?.setValue(value);
+  managementRegieDropDown(value: string) {
+    this.informationForm.get('agencyName')?.setValue(value);
     this.selectedRegieValue = value;
     this.selectRegieDropDown = false;
-    console.log(this.informationForm.get('management')?.value)
-  }
-  ngOnInit(): void {
+    console.log(this.informationForm.get('agencyName')?.value)
   }
 
+
+  managementRegionDropDown(value: string) {
+    this.informationForm.get('state')?.setValue(value);
+    this.selectedRegionValue = value;
+    this.selectRegionDropDown = false;
+    console.log(this.informationForm.get('state')?.value)
+  }
+
+
+  formSubmit(){
+    console.log({
+      status: this.venteOuLocation,
+      agencyName: this.agencyName?.value,
+      agencyForm: this.agencyName?.value,
+      propertyType: this.propertyType?.value,
+      availablity: this.availablity?.value,
+      state: this.state?.value,
+      zipCode: this.zipCode?.value,
+      address: this.address?.value,
+      livingSpace: this.livingSpace?.value,
+      terraceArea: this.terraceArea?.value,
+      gardenArea: this.gardenArea?.value,
+    })
+  }
 }
