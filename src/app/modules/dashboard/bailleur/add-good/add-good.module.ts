@@ -14,6 +14,7 @@ import { MediaComponent } from './media/media.component';
 import { DisponibilityComponent } from './disponibility/disponibility.component';
 import { PostComponent } from './post/post.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -34,6 +35,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     CommonModule,
     AddGoodRoutingModule,
     SharedModule,
+    ReactiveFormsModule,
+    FormsModule,
 
   ]
 })
