@@ -21,6 +21,14 @@ export class UploadFileService {
     //return this.http.post(this.API+'/upload/image', data);
 
   }
+  uploadVideo(file: File) {
+    const data: FormData = new FormData();
+    data.append('file', file);
+    const newRequest = new HttpRequest('POST', this.API + '/upload/video', data, {
+      reportProgress: true
+    });
+    return this.http.request(newRequest);
+  }
   uploadFile(file: File) {
     const data: FormData = new FormData();
     data.append('file', file);
