@@ -1,17 +1,30 @@
 <div class=" bg-white shadow-xl pt-3 pb-10 px-3 md:px-6 pr-3 rounded-2xl h-full ">
+    <form  [formGroup] ="descForm" (ngSubmit)="formSubmit()">
     <div class="py-5 border-b-2">
         <h1 class="popping text-xl font-bold ">Description</h1>
     </div>
     <div class="my-5">
         <label for="nomBien" class="popping font-semibold">Nom du bien</label>
-        <input type="text" name="nomBien" id="nomBien"
+        <input type="text" name="propertyName" id="propertyName"  formControlName="propertyName"
             class="shadow-sm mt-3  px-4 placeholder-size-2 w-full focus:border-indigo-500 block  sm:text-sm border-gray-300 rounded-md py-3 "
             placeholder="Nom de votre bien" aria-describedby="email-description">
     </div>
     <div class="mt-5">
-        <ckeditor [editor]="Editor" [data]="descriptionBien" (change)="onChangeText($event)"></ckeditor>
+        <ckeditor [editor]="Editor"  [data]="descriptionBien" (change)="onChangeText($event)"></ckeditor>
     </div>
-    <div>
 
+    <div class="px-3 mt-5 flex flex-col md:flex-row justify-between">
+        <button
+            class="text-blue-2 px-6 py-2 rounded-md shadow font-700  text-base bg-white   btnhover font-semibold flex flex-row items-center justify-center">
+            <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M3.825 6.46933L7.071 9.62524L5.657 11L4.72849e-07 5.5L5.657 -1.36883e-07L7.071 1.37476L3.832 4.52484L15 4.52484L15 6.46933L3.825 6.46933Z"
+                    fill="#6FB4E1" />
+            </svg>
+            <span class="ml-2">Précédent</span>
+        </button>
+        <button type="submit"
+            class="text-white px-6 py-2 rounded-md mt-5 md:mt-0 font-700 text-base bg-blue-2 btnhover font-semibold flex flex-row items-center justify-center">Suivant</button>
     </div>
+   </form>
 </div>
