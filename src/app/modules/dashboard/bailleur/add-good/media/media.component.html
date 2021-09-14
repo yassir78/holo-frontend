@@ -25,7 +25,7 @@
 
     </div>
 
-    <input type='file' class="hidden" (change)="onSelectFile($event)" #file [disabled]="!upload" />
+    <input type='file' class="hidden" (change)="onSelectFile($event)" #file [disabled]="upload" />
     <progress-bar [width]="progress$" *ngIf="upload"></progress-bar>
     <div class="px-3 mt-5 text-center w-full">
         <h1 class="text-xl text-blue-2 font-semibold popping "
@@ -45,7 +45,7 @@
             </svg>
             <span class="ml-2">Précédent</span>
         </button>
-        <button (click) ="formSubmit()"
+        <button (click)="formSubmit()"
             class="text-white px-6 py-2 rounded-md mt-5 md:mt-0 font-700 text-base bg-blue-2 btnhover font-semibold flex flex-row items-center justify-center">Suivant</button>
     </div>
     <div *ngIf="backgroundSwitch == 'in'" class="fixed z-50 inset-0 overflow-y-auto" aria-labelledby="modal-title"
