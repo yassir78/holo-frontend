@@ -28,6 +28,10 @@
     <input type='file' class="hidden" (change)="onSelectFile($event)" #file [disabled]="upload" />
     <progress-bar [width]="progress$" *ngIf="upload"></progress-bar>
     <div class="rounded-xl px-6 pb-6 flex border-2 border-gray-200 mt-5 flex-wrap " #image>
+        <div class="px-3 mt-5 text-center w-full">
+            <h1 class="text-xl text-blue-2 font-semibold popping "
+                *ngIf="videoUrls.length == 0 && imageUrls.length == 0">Importer vos vidéos et images...</h1>
+        </div>
         <!--  <div class="mr-3 relative mt-5  ">
             <video [src]="url" class="inline-block h-28 w-28 rounded-md"></video>
             <span class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
@@ -73,7 +77,7 @@
         </div> -->
     </div>
     <div class="px-3 mt-5 flex flex-col md:flex-row justify-between">
-        <button
+        <button [routerLink]="'/dashboard/bailleur/add-good/description'"
             class="text-blue-2 px-6 py-2 rounded-md shadow font-700  text-base bg-white   btnhover font-semibold flex flex-row items-center justify-center">
             <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -82,7 +86,7 @@
             </svg>
             <span class="ml-2">Précédent</span>
         </button>
-        <button
+        <button [routerLink]="'/dashboard/bailleur/add-good/post'"
             class="text-white px-6 py-2 rounded-md mt-5 md:mt-0 font-700 text-base bg-blue-2 btnhover font-semibold flex flex-row items-center justify-center">Suivant</button>
     </div>
 </div>
