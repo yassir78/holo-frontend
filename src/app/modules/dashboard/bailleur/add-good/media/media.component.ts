@@ -1,6 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, NgZone, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { UploadFileService } from 'src/app/services/uploadFileService';
 
 @Component({
@@ -21,9 +22,14 @@ import { UploadFileService } from 'src/app/services/uploadFileService';
 export class MediaComponent implements OnInit {
   url: any;
   format: any;
+  upload: boolean = false;
+  videoUrls: string[] = [];
+  imageUrls: string[] = [];
+  _progress: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  progress$: Observable<number> = this._progress.asObservable();
   /* @ts-ignore */
   @ViewChild('image', { static: false }) imageCont: ElementRef;
-  constructor(private renderer: Renderer2, private uploadService: UploadFileService
+  constructor(private renderer: Renderer2, private uploadService: UploadFileService, private zone: NgZone
   ) { }
 
   ngOnInit(): void {
@@ -33,31 +39,55 @@ export class MediaComponent implements OnInit {
     if (file) {
       var reader = new FileReader();
       reader.readAsDataURL(file);
+      this.upload = true;
+
       const type = file.type.indexOf('image') > -1 ? 'image' : (file.type.indexOf('video') > -1 ? 'video' : 'unknown');
       reader.onload = (event) => {
         if (type == 'video') {
           this.addVideoToDom((<FileReader>event.target).result);
-          this.uploadService.uploadVideo(file).subscribe(evt => {
-            console.log(evt)
-            if (evt.type === HttpEventType.UploadProgress) {
-              if (evt.total != undefined) {
-                console.log(Math.round(100 * evt.loaded / evt.total))
-                // this.progress1$.next(Math.round(100 * evt.loaded / evt.total));
-              }
-            }
-            else if (evt instanceof HttpResponse) {
-                console.log("****************")
-                /* @ts-ignore*/
-                console.log(evt.body.Location)
-            }
-          }, error => console.log(error))
+          this.uploadVideo(file);
         } else if (type == 'image') {
           this.addImageToDom((<FileReader>event.target).result);
         }
       }
     }
   }
-  addVideoToDom(url: any) {
+  uploadImage(file: File) {
+    this.zone.run(() => {
+      this.uploadService.uploadImage(file).subscribe(evt => {
+        if (evt.type === HttpEventType.UploadProgress) {
+          if (evt.total != undefined) {
+            this._progress.next(Math.round(100 * evt.loaded / evt.total));
+          }
+        }
+        else if (evt instanceof HttpResponse) {
+          this.upload = false;
+          /* @ts-ignore*/
+          this.imageUrls.push(evt.body.Location)
+          this._progress.next(0);
+        }
+      }, error => console.log(error))
+    })
+  }
+  uploadVideo(file: File) {
+    this.zone.run(() => {
+      this.uploadService.uploadVideo(file).subscribe(evt => {
+        if (evt.type === HttpEventType.UploadProgress) {
+          if (evt.total != undefined) {
+            this._progress.next(Math.round(100 * evt.loaded / evt.total));
+          }
+        }
+        else if (evt instanceof HttpResponse) {
+          this.upload = false;
+          /* @ts-ignore*/
+          this.videoUrls.push(evt.body.Location)
+          this._progress.next(0);
+        }
+      }, error => console.log(error))
+    })
+
+  }
+  async addVideoToDom(url: any) {
     let div = this.renderer.createElement('div');
     this.renderer.setAttribute(div, 'class', 'mr-3 relative mt-5');
     let video = this.renderer.createElement('video');
@@ -81,6 +111,7 @@ export class MediaComponent implements OnInit {
     this.renderer.appendChild(div, span);
     this.renderer.appendChild(this.imageCont.nativeElement, div);
     span.addEventListener('click', () => this.renderer.removeChild(this.imageCont.nativeElement, div))
+
   }
   addImageToDom(url: any) {
     let div = this.renderer.createElement('div');

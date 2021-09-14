@@ -5,17 +5,33 @@
     <div class="rounded-xl p-24  hover:cursor-pointer border-2 border-blue-300 border-dashed "
         (click)="file.click()   ">
         <div class=" flex flex-col  items-center justify-center pulse">
-            <svg width="92" height="67" viewBox="0 0 92 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg *ngIf="upload" width="92" height="67" viewBox="0 0 92 67" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M87.389 37.3774C84.7396 34.0623 81.3539 31.9136 77.229 30.93C78.5307 28.9633 79.1797 26.7742 79.1797 24.3634C79.1797 21.0005 77.9898 18.1298 75.6115 15.7502C73.2326 13.3715 70.3617 12.1817 66.9988 12.1817C63.985 12.1817 61.3522 13.1652 59.1004 15.1322C57.2295 10.5638 54.2385 6.89994 50.1307 4.14039C46.023 1.38002 41.4943 0 36.5449 0C29.8199 0 24.0777 2.37987 19.3191 7.13844C14.5602 11.8958 12.1815 17.6384 12.1815 24.3639C12.1815 24.7762 12.2133 25.4584 12.2767 26.4097C8.53346 28.1546 5.55175 30.7716 3.33055 34.2608C1.11018 37.7511 0 41.5571 0 45.682C0 51.5511 2.0862 56.5703 6.25743 60.7419C10.4288 64.9148 15.4492 67 21.318 67H73.0914C78.1347 67 82.4409 65.2148 86.0103 61.6466C89.5792 58.0784 91.3639 53.7721 91.3639 48.7271C91.3634 44.4762 90.0385 40.6934 87.389 37.3774ZM60.4557 36.0934C60.1536 36.394 59.7976 36.5445 59.3857 36.5445H48.7267V53.2951C48.7267 53.707 48.5762 54.064 48.2749 54.3651C47.9727 54.6673 47.6167 54.817 47.2049 54.817H38.0671C37.6547 54.817 37.2979 54.6675 36.9966 54.3651C36.6959 54.064 36.5445 53.707 36.5445 53.2951V36.5445H25.8854C25.4417 36.5445 25.0765 36.402 24.7915 36.1174C24.506 35.8317 24.3635 35.4667 24.3635 35.023C24.3635 34.642 24.5219 34.261 24.8389 33.8805L41.5413 17.1786C41.8268 16.8929 42.1918 16.7502 42.6358 16.7502C43.0801 16.7502 43.4451 16.8929 43.7303 17.1786L60.4804 33.928C60.7661 34.2133 60.9074 34.5782 60.9074 35.0232C60.9072 35.4347 60.7567 35.7929 60.4557 36.0934Z"
+                    fill="#81939E" />
+            </svg>
+
+            <svg *ngIf="!upload" width="92" height="67" viewBox="0 0 92 67" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M87.389 37.3774C84.7396 34.0623 81.3539 31.9136 77.229 30.93C78.5307 28.9633 79.1797 26.7742 79.1797 24.3634C79.1797 21.0005 77.9898 18.1298 75.6115 15.7502C73.2326 13.3715 70.3617 12.1817 66.9988 12.1817C63.985 12.1817 61.3522 13.1652 59.1004 15.1322C57.2295 10.5638 54.2385 6.89994 50.1307 4.14039C46.023 1.38002 41.4943 0 36.5449 0C29.8199 0 24.0777 2.37987 19.3191 7.13844C14.5602 11.8958 12.1815 17.6384 12.1815 24.3639C12.1815 24.7762 12.2133 25.4584 12.2767 26.4097C8.53346 28.1546 5.55175 30.7716 3.33055 34.2608C1.11018 37.7511 0 41.5571 0 45.682C0 51.5511 2.0862 56.5703 6.25743 60.7419C10.4288 64.9148 15.4492 67 21.318 67H73.0914C78.1347 67 82.4409 65.2148 86.0103 61.6466C89.5792 58.0784 91.3639 53.7721 91.3639 48.7271C91.3634 44.4762 90.0385 40.6934 87.389 37.3774ZM60.4557 36.0934C60.1536 36.394 59.7976 36.5445 59.3857 36.5445H48.7267V53.2951C48.7267 53.707 48.5762 54.064 48.2749 54.3651C47.9727 54.6673 47.6167 54.817 47.2049 54.817H38.0671C37.6547 54.817 37.2979 54.6675 36.9966 54.3651C36.6959 54.064 36.5445 53.707 36.5445 53.2951V36.5445H25.8854C25.4417 36.5445 25.0765 36.402 24.7915 36.1174C24.506 35.8317 24.3635 35.4667 24.3635 35.023C24.3635 34.642 24.5219 34.261 24.8389 33.8805L41.5413 17.1786C41.8268 16.8929 42.1918 16.7502 42.6358 16.7502C43.0801 16.7502 43.4451 16.8929 43.7303 17.1786L60.4804 33.928C60.7661 34.2133 60.9074 34.5782 60.9074 35.0232C60.9072 35.4347 60.7567 35.7929 60.4557 36.0934Z"
                     fill="#6FB4E1" />
             </svg>
-            <span class="text-blue-2 mt-3 popping font-semibold">Séléctionner une photo ou video à partager</span>
+            <span class=" mt-3 popping font-semibold" [ngClass]="!upload ? 'text-blue-2' : 'text-gray-700'">
+                Séléctionner une photo ou video à
+                partager</span>
         </div>
 
     </div>
-    <input type='file' class="hidden" (change)="onSelectFile($event)" #file />
+
+    <input type='file' class="hidden" (change)="onSelectFile($event)" #file [disabled]="upload" />
+    <progress-bar [width]="progress$" *ngIf="upload"></progress-bar>
     <div class="rounded-xl px-6 pb-6 flex border-2 border-gray-200 mt-5 flex-wrap " #image>
+        <div class="px-3 mt-5 text-center w-full">
+            <h1 class="text-xl text-blue-2 font-semibold popping "
+                *ngIf="videoUrls.length == 0 && imageUrls.length == 0">Importer vos vidéos et images...</h1>
+        </div>
         <!--  <div class="mr-3 relative mt-5  ">
             <video [src]="url" class="inline-block h-28 w-28 rounded-md"></video>
             <span class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
@@ -61,7 +77,7 @@
         </div> -->
     </div>
     <div class="px-3 mt-5 flex flex-col md:flex-row justify-between">
-        <button
+        <button [routerLink]="'/dashboard/bailleur/add-good/description'"
             class="text-blue-2 px-6 py-2 rounded-md shadow font-700  text-base bg-white   btnhover font-semibold flex flex-row items-center justify-center">
             <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -70,7 +86,7 @@
             </svg>
             <span class="ml-2">Précédent</span>
         </button>
-        <button
+        <button [routerLink]="'/dashboard/bailleur/add-good/post'"
             class="text-white px-6 py-2 rounded-md mt-5 md:mt-0 font-700 text-base bg-blue-2 btnhover font-semibold flex flex-row items-center justify-center">Suivant</button>
     </div>
 </div>

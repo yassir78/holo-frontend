@@ -6,6 +6,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { GoodcardComponent } from './goodcard/goodcard.component';
 import { ResponsivenavComponent } from './responsivenav/responsivenav.component';
 import { RouterModule } from '@angular/router';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
     NavbarComponent,
     SidenavComponent,
     GoodcardComponent,
-    ResponsivenavComponent
+    ResponsivenavComponent,
+    ProgressBarComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { RouterModule } from '@angular/router';
     NavbarComponent,
     SidenavComponent,
     GoodcardComponent,
-    ResponsivenavComponent
+    ResponsivenavComponent,
+    ProgressBarComponent
   ]
 })
 export class SharedModule { }

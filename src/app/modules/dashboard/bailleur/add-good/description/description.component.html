@@ -14,7 +14,7 @@
     </div>
 
     <div class="px-3 mt-5 flex flex-col md:flex-row justify-between">
-        <button
+        <button [routerLink]="'/dashboard/bailleur/add-good/price'"
             class="text-blue-2 px-6 py-2 rounded-md shadow font-700  text-base bg-white   btnhover font-semibold flex flex-row items-center justify-center">
             <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -23,7 +23,7 @@
             </svg>
             <span class="ml-2">Précédent</span>
         </button>
-        <button type="submit"
+        <button type="submit" [routerLink]="'/dashboard/bailleur/add-good/media'"
             class="text-white px-6 py-2 rounded-md mt-5 md:mt-0 font-700 text-base bg-blue-2 btnhover font-semibold flex flex-row items-center justify-center">Suivant</button>
     </div>
    </form>
