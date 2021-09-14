@@ -48,7 +48,7 @@ export class MediaComponent implements OnInit {
           this.addVideoToDom((<FileReader>event.target).result, file);
 
         } else if (type == 'image') {
-          this.addImageToDom((<FileReader>event.target).result);
+          this.addImageToDom((<FileReader>event.target).result, file);
         }
       }
     }
@@ -71,7 +71,6 @@ export class MediaComponent implements OnInit {
         this.upload = false;
         this.errorModalShow = 'in';
         this.backgroundSwitch = 'in'
-        console.log(error);
       })
     })
   }
@@ -104,7 +103,6 @@ export class MediaComponent implements OnInit {
         this.upload = false;
         this.errorModalShow = 'in';
         this.backgroundSwitch = 'in'
-        console.log(error);
       })
     })
 
@@ -136,7 +134,7 @@ export class MediaComponent implements OnInit {
     this.uploadVideo(file);
 
   }
-  async addImageToDom(url: any) {
+  async addImageToDom(url: any, file: any) {
     let div = this.renderer.createElement('div');
     this.renderer.setAttribute(div, 'class', 'mr-3 relative mt-5');
     let img = this.renderer.createElement('img');
@@ -160,5 +158,6 @@ export class MediaComponent implements OnInit {
     this.renderer.appendChild(div, span);
     this.renderer.appendChild(this.imageCont.nativeElement, div);
     span.addEventListener('click', () => this.renderer.removeChild(this.imageCont.nativeElement, div))
+    this.uploadImage(file);
   }
 }
