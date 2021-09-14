@@ -62,7 +62,7 @@ export const addGoodReducer = createReducer(
     on(BailleurdbActions.media, (state, action) => {
         return {
             ...state, good: { ...state.good,  
-                mediaFiles:action.mediaFiles
+                mediaFiles:action.mediaFiles, videoFiles:action.videoFiles
             }
         }
     }),

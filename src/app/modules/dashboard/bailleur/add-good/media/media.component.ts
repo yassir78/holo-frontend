@@ -1,4 +1,4 @@
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, ElementRef, NgZone, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
@@ -11,23 +11,25 @@ import { bailleurDashboardState } from '../../state/bailleurdb.state';
   selector: 'app-media',
   templateUrl: './media.component.html',
   styleUrls: ['./media.component.scss'],
-  animations: [trigger('modalAnimation', [
-    transition('void => *', [
-      style({ transform: 'translateY(1rem),scale(.9)', opacity: 0 }),
-      animate('300ms')
-    ]),
-    transition('* => void', [
-      style({ transform: 'translateY(0),scale(1)', opacity: 10 }),
-      animate('300ms')
-    ])
+  animations: [trigger('openModal', [
+    state('out', style({ transform: 'translateY(1rem),scale(.9)', opacity: 0 })),
+    state('in', style({ transform: 'translateY(0),scale(1)', opacity: 1 })),
+    transition('false <=> true', animate(300))
+  ]),
+  trigger('backgroundSwitch', [
+    state('out', style({ opacity: 0 })),
+    state('in', style({ opacity: 1 })),
+    transition('false <=> true', animate(300))
   ])]
 })
 export class MediaComponent implements OnInit {
   url: any;
   format: any;
+  errorModalShow: string = 'out';
+  backgroundSwitch: string = 'out';
   upload: boolean = false;
-  videoUrls: [] = [];
-  imageUrls: [] = [];
+  videoUrls: [] = [] as any;
+  imageUrls: [] = [] as any;
   _progress: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   progress$: Observable<number> = this._progress.asObservable();
   /* @ts-ignore */
@@ -43,14 +45,13 @@ export class MediaComponent implements OnInit {
       var reader = new FileReader();
       reader.readAsDataURL(file);
       this.upload = true;
-
       const type = file.type.indexOf('image') > -1 ? 'image' : (file.type.indexOf('video') > -1 ? 'video' : 'unknown');
       reader.onload = (event) => {
         if (type == 'video') {
-          this.addVideoToDom((<FileReader>event.target).result);
-          this.uploadVideo(file);
+          this.addVideoToDom((<FileReader>event.target).result, file);
+
         } else if (type == 'image') {
-          this.addImageToDom((<FileReader>event.target).result);
+          this.addImageToDom((<FileReader>event.target).result, file);
         }
       }
     }
@@ -69,18 +70,33 @@ export class MediaComponent implements OnInit {
           this.imageUrls.push(evt.body.Location)
           this._progress.next(0);
         }
-      }, error => console.log(error))
+      }, error => {
+        this.upload = false;
+        this.errorModalShow = 'in';
+        this.backgroundSwitch = 'in'
+      })
     })
   }
 
   formSubmit(){
     this.store.dispatch(BailleurdbActions.media({
-     mediaFiles: this.imageUrls
+     mediaFiles: this.imageUrls,
+     videoFiles: this.videoUrls
     }))
 
     this.router.navigate(['/dashboard/bailleur/add-good/post'])
 
   }
+  
+  continueOnError() {
+    const element = this.imageCont.nativeElement;
+    while (element.firstChild) {
+      this.renderer.removeChild(element, element.lastChild);
+    }
+    this.errorModalShow = 'out';
+    this.backgroundSwitch = 'out';
+  }
+
   uploadVideo(file: File) {
     this.zone.run(() => {
       this.uploadService.uploadVideo(file).subscribe(evt => {
@@ -90,16 +106,23 @@ export class MediaComponent implements OnInit {
           }
         }
         else if (evt instanceof HttpResponse) {
+          console.log("************************************")
           this.upload = false;
           /* @ts-ignore*/
           this.videoUrls.push(evt.body.Location)
+          /* @ts-ignore*/
+          console.log(evt.body.Location)
           this._progress.next(0);
         }
-      }, error => console.log(error))
+      }, error => {
+        this.upload = false;
+        this.errorModalShow = 'in';
+        this.backgroundSwitch = 'in'
+      })
     })
 
   }
-  async addVideoToDom(url: any) {
+  async addVideoToDom(url: any, file: any) {
     let div = this.renderer.createElement('div');
     this.renderer.setAttribute(div, 'class', 'mr-3 relative mt-5');
     let video = this.renderer.createElement('video');
@@ -123,9 +146,10 @@ export class MediaComponent implements OnInit {
     this.renderer.appendChild(div, span);
     this.renderer.appendChild(this.imageCont.nativeElement, div);
     span.addEventListener('click', () => this.renderer.removeChild(this.imageCont.nativeElement, div))
+    this.uploadVideo(file);
 
   }
-  addImageToDom(url: any) {
+  async addImageToDom(url: any, file: any) {
     let div = this.renderer.createElement('div');
     this.renderer.setAttribute(div, 'class', 'mr-3 relative mt-5');
     let img = this.renderer.createElement('img');
@@ -149,5 +173,6 @@ export class MediaComponent implements OnInit {
     this.renderer.appendChild(div, span);
     this.renderer.appendChild(this.imageCont.nativeElement, div);
     span.addEventListener('click', () => this.renderer.removeChild(this.imageCont.nativeElement, div))
+    this.uploadImage(file);
   }
 }
