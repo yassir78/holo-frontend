@@ -1,4 +1,4 @@
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, ElementRef, NgZone, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -8,20 +8,22 @@ import { UploadFileService } from 'src/app/services/uploadFileService';
   selector: 'app-media',
   templateUrl: './media.component.html',
   styleUrls: ['./media.component.scss'],
-  animations: [trigger('modalAnimation', [
-    transition('void => *', [
-      style({ transform: 'translateY(1rem),scale(.9)', opacity: 0 }),
-      animate('300ms')
-    ]),
-    transition('* => void', [
-      style({ transform: 'translateY(0),scale(1)', opacity: 10 }),
-      animate('300ms')
-    ])
+  animations: [trigger('openModal', [
+    state('out', style({ transform: 'translateY(1rem),scale(.9)', opacity: 0 })),
+    state('in', style({ transform: 'translateY(0),scale(1)', opacity: 1 })),
+    transition('false <=> true', animate(300))
+  ]),
+  trigger('backgroundSwitch', [
+    state('out', style({ opacity: 0 })),
+    state('in', style({ opacity: 1 })),
+    transition('false <=> true', animate(300))
   ])]
 })
 export class MediaComponent implements OnInit {
   url: any;
   format: any;
+  errorModalShow: string = 'out';
+  backgroundSwitch: string = 'out';
   upload: boolean = false;
   videoUrls: string[] = [];
   imageUrls: string[] = [];
@@ -40,12 +42,11 @@ export class MediaComponent implements OnInit {
       var reader = new FileReader();
       reader.readAsDataURL(file);
       this.upload = true;
-
       const type = file.type.indexOf('image') > -1 ? 'image' : (file.type.indexOf('video') > -1 ? 'video' : 'unknown');
       reader.onload = (event) => {
         if (type == 'video') {
-          this.addVideoToDom((<FileReader>event.target).result);
-          this.uploadVideo(file);
+          this.addVideoToDom((<FileReader>event.target).result, file);
+
         } else if (type == 'image') {
           this.addImageToDom((<FileReader>event.target).result);
         }
@@ -61,13 +62,26 @@ export class MediaComponent implements OnInit {
           }
         }
         else if (evt instanceof HttpResponse) {
-          this.upload = false;
+          this.upload = true;
           /* @ts-ignore*/
           this.imageUrls.push(evt.body.Location)
           this._progress.next(0);
         }
-      }, error => console.log(error))
+      }, error => {
+        this.upload = false;
+        this.errorModalShow = 'in';
+        this.backgroundSwitch = 'in'
+        console.log(error);
+      })
     })
+  }
+  continueOnError() {
+    const element = this.imageCont.nativeElement;
+    while (element.firstChild) {
+      this.renderer.removeChild(element, element.lastChild);
+    }
+    this.errorModalShow = 'out';
+    this.backgroundSwitch = 'out';
   }
   uploadVideo(file: File) {
     this.zone.run(() => {
@@ -78,16 +92,24 @@ export class MediaComponent implements OnInit {
           }
         }
         else if (evt instanceof HttpResponse) {
-          this.upload = false;
+          console.log("************************************")
+          this.upload = true;
           /* @ts-ignore*/
           this.videoUrls.push(evt.body.Location)
+          /* @ts-ignore*/
+          console.log(evt.body.Location)
           this._progress.next(0);
         }
-      }, error => console.log(error))
+      }, error => {
+        this.upload = false;
+        this.errorModalShow = 'in';
+        this.backgroundSwitch = 'in'
+        console.log(error);
+      })
     })
 
   }
-  async addVideoToDom(url: any) {
+  async addVideoToDom(url: any, file: any) {
     let div = this.renderer.createElement('div');
     this.renderer.setAttribute(div, 'class', 'mr-3 relative mt-5');
     let video = this.renderer.createElement('video');
@@ -111,9 +133,10 @@ export class MediaComponent implements OnInit {
     this.renderer.appendChild(div, span);
     this.renderer.appendChild(this.imageCont.nativeElement, div);
     span.addEventListener('click', () => this.renderer.removeChild(this.imageCont.nativeElement, div))
+    this.uploadVideo(file);
 
   }
-  addImageToDom(url: any) {
+  async addImageToDom(url: any) {
     let div = this.renderer.createElement('div');
     this.renderer.setAttribute(div, 'class', 'mr-3 relative mt-5');
     let img = this.renderer.createElement('img');
