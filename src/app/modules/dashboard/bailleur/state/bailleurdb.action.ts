@@ -4,9 +4,8 @@ import { Good } from "src/app/models/good";
 import { Payslip } from "src/app/models/payslip";
 import { User } from "src/app/models/user";
 
-
-export const good = createAction(
-    '[Add Good components] add good infos to state',
+export const information = createAction(
+    '[Information component] add good infos to state',
     props<{
         status: string;
         agencyName: string;
@@ -19,6 +18,15 @@ export const good = createAction(
         livingSpace: number;
         terraceArea: number;
         gardenArea: number;
+       
+    }>()
+)
+
+
+export const details = createAction(
+    '[Details component] add good infos to state',
+    props<{
+      
         numberOfPieces: number;
         numberOfRooms: number;
         numberOfWC: number;
@@ -33,22 +41,51 @@ export const good = createAction(
         orientation: string;
         proximity: string;
         extra: string;
+        
+    }>()
+)
+
+
+export const price = createAction(
+    '[Price component add good infos to state',
+    props<{
+      
         grossPrice: string;
+        grossPriceType: string;
         expenses: string;
         netPrice: number;
         accessoryFees: number;
         parking: string;
         interior: number;
         exterior: number;
-        propertyName: string;
-        description: string;
-        mediaFiles: [];
-        availabilityOfVisit: Date;
+      
     }>()
 )
 
 
+export const description = createAction(
+    '[Description component] add good infos to state',
+    props<{
+        propertyName: string;
+        description: string;
+      
+    }>()
+)
 
+export const media = createAction(
+    '[Media component] add good infos to state',
+    props<{
+    
+        mediaFiles: [];
+    }>()
+)
+
+export const disponibility = createAction(
+    '[Disponibility component] add good infos to state',
+    props<{
+        availabilityOfVisit: Date;
+    }>()
+)
 export const addGood = createAction(
     '[Good components] add good process',
     props<{ good: Good }>()

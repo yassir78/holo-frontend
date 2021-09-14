@@ -25,6 +25,7 @@ export interface Good {
   proximity?: string;
   extra?: string;
   grossPrice?: string;
+  grossPriceType?:string;
   expenses?: string;
   netPrice?: number;
   accessoryFees?: number;

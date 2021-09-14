@@ -1,9 +1,12 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, ElementRef, NgZone, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UploadFileService } from 'src/app/services/uploadFileService';
-
+import * as BailleurdbActions from "../../state/bailleurdb.action";
+import { bailleurDashboardState } from '../../state/bailleurdb.state';
 @Component({
   selector: 'app-media',
   templateUrl: './media.component.html',
@@ -23,13 +26,13 @@ export class MediaComponent implements OnInit {
   url: any;
   format: any;
   upload: boolean = false;
-  videoUrls: string[] = [];
-  imageUrls: string[] = [];
+  videoUrls: [] = [];
+  imageUrls: [] = [];
   _progress: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   progress$: Observable<number> = this._progress.asObservable();
   /* @ts-ignore */
   @ViewChild('image', { static: false }) imageCont: ElementRef;
-  constructor(private renderer: Renderer2, private uploadService: UploadFileService, private zone: NgZone
+  constructor(private renderer: Renderer2, private router:Router,private uploadService: UploadFileService, private store: Store<bailleurDashboardState>,private zone: NgZone
   ) { }
 
   ngOnInit(): void {
@@ -68,6 +71,15 @@ export class MediaComponent implements OnInit {
         }
       }, error => console.log(error))
     })
+  }
+
+  formSubmit(){
+    this.store.dispatch(BailleurdbActions.media({
+     mediaFiles: this.imageUrls
+    }))
+
+    this.router.navigate(['/dashboard/bailleur/add-good/post'])
+
   }
   uploadVideo(file: File) {
     this.zone.run(() => {

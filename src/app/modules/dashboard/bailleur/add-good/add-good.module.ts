@@ -15,6 +15,10 @@ import { DisponibilityComponent } from './disponibility/disponibility.component'
 import { PostComponent } from './post/post.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { addGoodReducer } from '../state/bailleurdb.reducer';
+import { BailleurDBEffect } from '../state/bailleurdb.effect';
+import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({
@@ -37,6 +41,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     ReactiveFormsModule,
     FormsModule,
+    StoreModule.forFeature(
+      "good", addGoodReducer
+    ),
+    EffectsModule.forFeature([BailleurDBEffect]),
 
   ]
 })

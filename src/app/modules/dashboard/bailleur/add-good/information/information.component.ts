@@ -1,8 +1,11 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { BehaviorSubject } from 'rxjs';
-
+import * as BailleurdbActions from "../../state/bailleurdb.action";
+import { bailleurDashboardState } from '../../state/bailleurdb.state';
 @Component({
   selector: 'information',
   templateUrl: './information.component.html',
@@ -40,7 +43,7 @@ export class InformationComponent implements OnInit {
   gardenArea:new FormControl('', Validators.required),
    
   })
-  constructor() { }
+  constructor( private store: Store<bailleurDashboardState>, private router:Router) { }
   ngOnInit(): void {
   }
 
@@ -130,5 +133,23 @@ export class InformationComponent implements OnInit {
       terraceArea: this.terraceArea?.value,
       gardenArea: this.gardenArea?.value,
     })
+
+
+    this.store.dispatch(BailleurdbActions.information({
+      status: this.venteOuLocation,
+      agencyName: this.agencyName?.value,
+      agencyForm: this.agencyName?.value,
+      propertyType: this.propertyType?.value,
+      availablity: this.availablity?.value,
+      state: this.state?.value,
+      zipCode: this.zipCode?.value,
+      address: this.address?.value,
+      livingSpace: this.livingSpace?.value,
+      terraceArea: this.terraceArea?.value,
+      gardenArea: this.gardenArea?.value,
+    }))
+
+    this.router.navigate(['/dashboard/bailleur/add-good/details'])
+
   }
 }

@@ -1,8 +1,11 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { BehaviorSubject } from 'rxjs';
-
+import * as BailleurdbActions from "../../state/bailleurdb.action";
+import { bailleurDashboardState } from '../../state/bailleurdb.state';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -49,7 +52,7 @@ export class DetailsComponent implements OnInit {
   proximity:new FormArray([], Validators.required),
   extra: new FormArray([], Validators.required),
   })
-  constructor() { }
+  constructor(private store: Store<bailleurDashboardState>, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -172,5 +175,26 @@ export class DetailsComponent implements OnInit {
       proximity:  this.proximity?.value,
       extra: this.extra?.value,
     })
+
+    this.store.dispatch(BailleurdbActions.details({
+      numberOfPieces: this.numberOfPieces?.value ,
+      numberOfRooms: this.numberOfRooms?.value,
+      numberOfWC: this.numberOfWC?.value,
+      numberOfBathRooms: this.numberOfBathRooms?.value,
+      numberOfFloors: this.numberOfFloors?.value,
+      FloorOfTheApartment: this.FloorOfTheApartment?.value,
+      yearOfBuilding: this.yearOfBuilding?.value,
+      yearOfRenovation: this.yearOfRenovation?.value,
+    
+      view:   this.selectedViewValue ,
+      orientation: this.selectedOrientationValue,
+      heatingTypeSystem: this.selectedHeatingTypeSystemValue,
+      environment: this.selectedEnvironmentValue,
+      proximity:  this.proximity?.value,
+      extra: this.extra?.value,
+    }))
+
+    this.router.navigate(['/dashboard/bailleur/add-good/price'])
+
   }
 }

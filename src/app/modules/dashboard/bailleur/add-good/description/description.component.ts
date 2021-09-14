@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ChangeEvent } from '@ckeditor/ckeditor5-angular';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-
+import { Store } from '@ngrx/store';
+import * as BailleurdbActions from "../../state/bailleurdb.action";
+import { bailleurDashboardState } from '../../state/bailleurdb.state';
 @Component({
   selector: 'app-description',
   templateUrl: './description.component.html',
@@ -16,7 +19,7 @@ export class DescriptionComponent implements OnInit {
     description: new FormControl('', Validators.required)
 
   })
-  constructor() {
+  constructor(private store: Store<bailleurDashboardState>, private router:Router) {
 
   }
   ngOnInit(): void {
@@ -40,6 +43,15 @@ export class DescriptionComponent implements OnInit {
       propertyName: this.propertyName?.value,
       description: this.descriptionBien
     })
+
+    this.store.dispatch(BailleurdbActions.description({
+      propertyName: this.propertyName?.value,
+      description: this.descriptionBien
+    }))
+
+    this.router.navigate(['/dashboard/bailleur/add-good/media'])
+
+  
   }
 
 }

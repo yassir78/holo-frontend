@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import * as BailleurdbActions from "../../state/bailleurdb.action";
+import { bailleurDashboardState } from '../../state/bailleurdb.state';
+import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-price',
   templateUrl: './price.component.html',
@@ -29,7 +33,7 @@ export class PriceComponent implements OnInit {
   exterior: new FormControl('', Validators.required),
  
   })
-  constructor() { }
+  constructor(private store: Store<bailleurDashboardState>, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -89,6 +93,19 @@ export class PriceComponent implements OnInit {
   exterior: this.exterior?.value,
  
   })
+
+  this.store.dispatch(BailleurdbActions.price({
+    grossPrice: this.grossPrice?.value,
+    grossPriceType: this.selectedTypeOfBrutSalaryValue,
+    expenses: this.expenses?.value,
+    netPrice:this.netPrice?.value,
+    accessoryFees: this.accessoryFees?.value,
+    parking: this.parking?.value,
+    interior: this.interior?.value,
+    exterior: this.exterior?.value,
+  }))
+
+  this.router.navigate(['/dashboard/bailleur/add-good/description'])
   }
 
 }
