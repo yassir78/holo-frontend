@@ -28,13 +28,13 @@ export class MediaComponent implements OnInit {
   errorModalShow: string = 'out';
   backgroundSwitch: string = 'out';
   upload: boolean = false;
-  videoUrls: [] = [] as any;
-  imageUrls: [] = [] as any;
+  videoUrls: string[] = [];
+  imageUrls: string[] = [];
   _progress: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   progress$: Observable<number> = this._progress.asObservable();
   /* @ts-ignore */
   @ViewChild('image', { static: false }) imageCont: ElementRef;
-  constructor(private renderer: Renderer2, private router:Router,private uploadService: UploadFileService, private store: Store<bailleurDashboardState>,private zone: NgZone
+  constructor(private renderer: Renderer2, private router: Router, private uploadService: UploadFileService, private store: Store<bailleurDashboardState>, private zone: NgZone
   ) { }
 
   ngOnInit(): void {
@@ -49,7 +49,6 @@ export class MediaComponent implements OnInit {
       reader.onload = (event) => {
         if (type == 'video') {
           this.addVideoToDom((<FileReader>event.target).result, file);
-
         } else if (type == 'image') {
           this.addImageToDom((<FileReader>event.target).result, file);
         }
@@ -61,48 +60,50 @@ export class MediaComponent implements OnInit {
       this.uploadService.uploadImage(file).subscribe(evt => {
         if (evt.type === HttpEventType.UploadProgress) {
           if (evt.total != undefined) {
-            this._progress.next(Math.round(100 * evt.loaded / evt.total));
+            this._progress.next(Math.round(95 * evt.loaded / evt.total));
           }
         }
         else if (evt instanceof HttpResponse) {
           this.upload = false;
           /* @ts-ignore*/
           this.imageUrls.push(evt.body.Location)
-          this._progress.next(0);
+          /* @ts-ignore*/
+          console.log(evt.body.Location)
+          this._progress.next(100);
         }
       }, error => {
+        console.log("error")
         this.upload = false;
         this.errorModalShow = 'in';
-        this.backgroundSwitch = 'in'
+        this.backgroundSwitch = 'in';
       })
     })
   }
 
-  formSubmit(){
+  formSubmit() {
     this.store.dispatch(BailleurdbActions.media({
-     mediaFiles: this.imageUrls,
-     videoFiles: this.videoUrls
+      mediaFiles: this.imageUrls,
+      videoFiles: this.videoUrls
     }))
-
     this.router.navigate(['/dashboard/bailleur/add-good/post'])
-
   }
-  
   continueOnError() {
     const element = this.imageCont.nativeElement;
     while (element.firstChild) {
       this.renderer.removeChild(element, element.lastChild);
     }
+    this.imageUrls = [];
+    this.videoUrls = [];
     this.errorModalShow = 'out';
     this.backgroundSwitch = 'out';
   }
-
   uploadVideo(file: File) {
     this.zone.run(() => {
       this.uploadService.uploadVideo(file).subscribe(evt => {
+        console.log("hey hey")
         if (evt.type === HttpEventType.UploadProgress) {
           if (evt.total != undefined) {
-            this._progress.next(Math.round(100 * evt.loaded / evt.total));
+            this._progress.next(Math.round(95 * evt.loaded / evt.total));
           }
         }
         else if (evt instanceof HttpResponse) {
@@ -112,12 +113,12 @@ export class MediaComponent implements OnInit {
           this.videoUrls.push(evt.body.Location)
           /* @ts-ignore*/
           console.log(evt.body.Location)
-          this._progress.next(0);
+          this._progress.next(100);
         }
       }, error => {
         this.upload = false;
         this.errorModalShow = 'in';
-        this.backgroundSwitch = 'in'
+        this.backgroundSwitch = 'in';
       })
     })
 
@@ -145,9 +146,28 @@ export class MediaComponent implements OnInit {
     this.renderer.appendChild(span, svg);
     this.renderer.appendChild(div, span);
     this.renderer.appendChild(this.imageCont.nativeElement, div);
-    span.addEventListener('click', () => this.renderer.removeChild(this.imageCont.nativeElement, div))
+    span.addEventListener('click', () => {
+      // delete video from the dom
+      this.renderer.removeChild(this.imageCont.nativeElement, div);
+      // delete video from cloud if it exists
+      this.deleteVideoFromCloud(file);
+
+    })
     this.uploadVideo(file);
 
+  }
+  deleteVideoFromCloud(file: File) {
+    console.log(this.imageUrls)
+    const name = file.name.split('.')[0];
+    this.videoUrls = this.imageUrls.filter(videoUrl => !videoUrl.includes(name))
+    console.log(this.imageUrls)
+
+  }
+  deleteImageFromCloud(file: any) {
+    console.log(this.imageUrls)
+    const name = file.name.split('.')[0];
+    this.imageUrls = this.imageUrls.filter(imageUrl => !imageUrl.includes(name))
+    console.log(this.imageUrls)
   }
   async addImageToDom(url: any, file: any) {
     let div = this.renderer.createElement('div');
@@ -172,7 +192,12 @@ export class MediaComponent implements OnInit {
     this.renderer.appendChild(span, svg);
     this.renderer.appendChild(div, span);
     this.renderer.appendChild(this.imageCont.nativeElement, div);
-    span.addEventListener('click', () => this.renderer.removeChild(this.imageCont.nativeElement, div))
+    span.addEventListener('click', () => {
+      // delete image from the dom
+      this.renderer.removeChild(this.imageCont.nativeElement, div);
+      // delete image from cloud if it exists
+      this.deleteImageFromCloud(file);
+    })
     this.uploadImage(file);
   }
 }

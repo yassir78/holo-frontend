@@ -3,7 +3,7 @@
         <h1 class="popping text-xl font-bold ">Photo / Video</h1>
     </div>
     <div class="rounded-xl p-24  hover:cursor-pointer border-2 border-blue-300 border-dashed "
-        (click)="file.click()   ">
+        (click)="$event.stopPropagation();file.click()   ">
         <div class=" flex flex-col  items-center justify-center pulse">
             <svg *ngIf="upload" width="92" height="67" viewBox="0 0 92 67" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
@@ -26,7 +26,7 @@
     </div>
 
     <input type='file' class="hidden" (change)="onSelectFile($event)" #file [disabled]="upload" />
-    <progress-bar [width]="progress$" *ngIf="upload"></progress-bar>
+    <progress-bar [width]="progress$" *ngIf="upload && (_progress|async) != 0"></progress-bar>
     <div class="px-3 mt-5 text-center w-full">
         <h1 class="text-xl text-blue-2 font-semibold popping "
             *ngIf="videoUrls.length == 0 && imageUrls.length == 0 && !upload">
