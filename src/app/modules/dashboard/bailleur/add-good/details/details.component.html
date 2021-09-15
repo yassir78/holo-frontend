@@ -108,10 +108,15 @@
                         <h1 class="popping text-base font-semibold mb-3">Etage de l’appartement </h1>
                         <div class="relative">
                             <input type="number" name="FloorOfTheApartment" id="FloorOfTheApartment"
+                                [ngClass]="(FloorOfTheApartment?.dirty || FloorOfTheApartment?.touched) && FloorOfTheApartment?.invalid && FloorOfTheApartment?.errors?.required ? 'border-red-600' : 'border-gray-300'"
                                 formControlName="FloorOfTheApartment"
                                 class="shadow-sm  px-4 placeholder-size-2 w-full focus:border-indigo-500 block  sm:text-sm border-gray-300 rounded-md py-3 "
                                 placeholder="0" aria-describedby="email-description">
                         </div>
+                        <span class="text-red-600 text-base"
+                            *ngIf="(FloorOfTheApartment?.dirty || FloorOfTheApartment?.touched) && FloorOfTheApartment?.invalid && numberOfFloors?.errors?.required">
+                            Champ obligatoire.
+                        </span>
                     </div>
                 </div>
 
@@ -172,7 +177,8 @@
                     <h1 class="popping text-base font-semibold mb-3">Vue</h1>
 
                     <div class="relative">
-                        <button type="button" (click)="selectViewDropDown = !selectViewDropDown"
+                        <button type="button" (click)="switchSelectedView()"
+                            [ngClass]="view?.errors?.invalid ? 'border-red-600' : 'border-gray-300'"
                             class="flex items-center  justify-between w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
                             id="menu-button" aria-expanded="true" aria-haspopup="true">
                             <span class=" text-lg">{{selectedViewValue}}</span>
@@ -181,7 +187,7 @@
                                 <path d="M7 9L0.0717961 0.750001L13.9282 0.749998L7 9Z" fill="#6FB4E1" />
                             </svg>
                         </button>
-                        <ul [@selectInput]="selectViewDropDown ? false : true"
+                        <ul [@selectInput]="(selectViewDropDown$|async) ? false : true"
                             class="origin-top-right absolute z-10 left-0 w-full mt-2     rounded-md shadow-lg overflow-hidden bg-white divide-y divide-gray-200 ring-1 ring-black ring-opacity-5 focus:outline-none"
                             tabindex="-1" role="listbox" aria-labelledby="listbox-label"
                             aria-activedescendant="listbox-option-0">
@@ -205,12 +211,15 @@
                             </li>
                         </ul>
                     </div>
+                    <div class="text-red-600" *ngIf="view?.errors?.invalid">
+                        Champ obligatoire</div>
                 </div>
 
                 <div class="ml-0 md:ml-2 mt-3 md:mt-0 w-full">
                     <h1 class="popping text-base font-semibold mb-3">Orientation</h1>
                     <div class="relative">
-                        <button type="button" (click)="selectOrientationDropDown = !selectOrientationDropDown"
+                        <button type="button" (click)="switchSelectedOrientation()"
+                            [ngClass]="orientation?.errors?.invalid ? 'border-red-600' : 'border-gray-300'"
                             class="flex items-center  justify-between w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
                             id="menu-button" aria-expanded="true" aria-haspopup="true">
                             <span class=" text-lg">{{selectedOrientationValue}}</span>
@@ -219,7 +228,7 @@
                                 <path d="M7 9L0.0717961 0.750001L13.9282 0.749998L7 9Z" fill="#6FB4E1" />
                             </svg>
                         </button>
-                        <ul [@selectInput]="selectOrientationDropDown ? false : true"
+                        <ul [@selectInput]="(selectOrientationDropDown$|async) ? false : true"
                             class="origin-top-right absolute z-10 left-0 w-full mt-2     rounded-md shadow-lg overflow-hidden bg-white divide-y divide-gray-200 ring-1 ring-black ring-opacity-5 focus:outline-none"
                             tabindex="-1" role="listbox" aria-labelledby="listbox-label"
                             aria-activedescendant="listbox-option-0">
@@ -243,6 +252,8 @@
                             </li>
                         </ul>
                     </div>
+                    <div class="text-red-600" *ngIf="orientation?.errors?.invalid">
+                        Champ obligatoire</div>
                 </div>
             </div>
 
@@ -257,8 +268,8 @@
                         <h1 class="popping text-base font-semibold mb-3">Type de chauffage </h1>
 
                         <div class="relative">
-                            <button type="button"
-                                (click)="selectHeatingTypeSystemDropDown = !selectHeatingTypeSystemDropDown"
+                            <button type="button" (click)="switchHeatingTypeSystem()"
+                                [ngClass]="heatingTypeSystem?.errors?.invalid ? 'border-red-600' : 'border-gray-300'"
                                 class="flex items-center  justify-between w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
                                 id="menu-button" aria-expanded="true" aria-haspopup="true">
                                 <span class=" text-lg">{{selectedHeatingTypeSystemValue}}</span>
@@ -267,7 +278,7 @@
                                     <path d="M7 9L0.0717961 0.750001L13.9282 0.749998L7 9Z" fill="#6FB4E1" />
                                 </svg>
                             </button>
-                            <ul [@selectInput]="selectHeatingTypeSystemDropDown ? false : true"
+                            <ul [@selectInput]="(selectHeatingTypeSystemDropDown$|async) ? false : true"
                                 class="origin-top-right absolute z-10 left-0 w-full mt-2     rounded-md shadow-lg overflow-hidden bg-white divide-y divide-gray-200 ring-1 ring-black ring-opacity-5 focus:outline-none"
                                 tabindex="-1" role="listbox" aria-labelledby="listbox-label"
                                 aria-activedescendant="listbox-option-0">
@@ -294,12 +305,16 @@
                                 </li>
                             </ul>
                         </div>
+                        <div class="text-red-600" *ngIf="heatingTypeSystem?.errors?.invalid">
+                            Champ obligatoire</div>
+
                     </div>
 
                     <div class="ml-0 md:ml-2 mt-3 md:mt-0 w-full">
                         <h1 class="popping text-base font-semibold mb-3">Environnement</h1>
                         <div class="relative">
-                            <button type="button" (click)="selectEnvironmentDropDown = !selectEnvironmentDropDown"
+                            <button type="button" (click)="switchSelectEnvironment()"
+                                [ngClass]="environment?.errors?.invalid ? 'border-red-600' : 'border-gray-300'"
                                 class="flex items-center  justify-between w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
                                 id="menu-button" aria-expanded="true" aria-haspopup="true">
                                 <span class=" text-lg">{{selectedEnvironmentValue}}</span>
@@ -308,7 +323,7 @@
                                     <path d="M7 9L0.0717961 0.750001L13.9282 0.749998L7 9Z" fill="#6FB4E1" />
                                 </svg>
                             </button>
-                            <ul [@selectInput]="selectEnvironmentDropDown ? false : true"
+                            <ul [@selectInput]="(selectEnvironmentDropDown$|async) ? false : true"
                                 class="origin-top-right absolute z-10 left-0 w-full mt-2     rounded-md shadow-lg overflow-hidden bg-white divide-y divide-gray-200 ring-1 ring-black ring-opacity-5 focus:outline-none"
                                 tabindex="-1" role="listbox" aria-labelledby="listbox-label"
                                 aria-activedescendant="listbox-option-0">
@@ -335,6 +350,8 @@
                                 </li>
                             </ul>
                         </div>
+                        <div class="text-red-600" *ngIf="environment?.errors?.invalid">
+                            Champ obligatoire</div>
                     </div>
                 </div>
             </div>
@@ -347,7 +364,7 @@
                             <div class="flex items-end h-5">
                                 <input id="comments" aria-describedby="comments-description" name="comments"
                                     (change)="typeDeProximiteValue(prox,$event)" type="checkbox"
-                                    class=" h-3 w-4  active:border-4 border-blue-300 rounded-2xl">
+                                    class=" form-checkbox text-blue-2 focus:ring-0 border-gray-300 p-2 rounded-md ">
                             </div>
                             <div class="ml-3 ">
                                 <label for="comments"
@@ -360,65 +377,6 @@
 
 
                 </div>
-                <!--
-                <div class="flex flex-row flex-wrap md:flex-nowrap">
-                    <fieldset class="space-y-5 w-full">
-                        <legend class="sr-only">Ecole secondaire</legend>
-                        <div class="relative flex items-start">
-                            <div class="flex items-end h-5">
-                                <input id="terrain" aria-describedby="comments-description" name="comments"
-                                    type="checkbox" class=" h-4 w-4  active:border-4 border-blue-300 rounded-2xl">
-                            </div>
-                            <div class="ml-3 ">
-                                <label for="terrain" class="popping text-base font-medium	 text-gray-500">Ecole
-                                    secondaire</label>
-                            </div>
-                        </div>
-
-
-                    </fieldset>
-                    <fieldset class="space-y-5 w-full">
-                        <legend class="sr-only">Commerces</legend>
-                        <div class="relative flex items-start">
-                            <div class="flex items-end h-5">
-                                <input id="immeuble" aria-describedby="comments-description" name="comments"
-                                    type="checkbox" class=" h-4 w-4  active:border-4 border-blue-300 rounded-2xl">
-                            </div>
-                            <div class="ml-3 ">
-                                <label for="immeuble" class="popping text-base font-medium	 text-gray-500">Commerces
-                                </label>
-                            </div>
-                        </div>
-
-
-                    </fieldset>
-                    <fieldset class="space-y-5 w-full">
-                        <legend class="sr-only">Trans. public</legend>
-                        <div class="relative flex items-start">
-                            <div class="flex items-end h-5">
-                                <input id="logtVacances" aria-describedby="comments-description" name="comments"
-                                    type="checkbox" class=" h-4 w-4  active:border-4 border-blue-300 rounded-2xl">
-                            </div>
-                            <div class="ml-3 ">
-                                <label for="logtVacances" class="popping text-base font-medium	 text-gray-500">Trans.
-                                    public</label>
-                            </div>
-                        </div>
-
-
-                    </fieldset>
-
-                    <fieldset class="space-y-5 w-full">
-
-                        <div class="relative flex items-start">
-                            <div class="flex items-end h-5">
-                            </div>
-                        </div>
-                    </fieldset>
-
-
-                </div>-->
-
             </div>
 
             <div class="mt-14 px-3 ">
@@ -430,7 +388,7 @@
                             <div class="flex items-end h-5">
                                 <input id="comments" aria-describedby="comments-description" name="comments"
                                     (change)="typeExtraValue(extra,$event)" type="checkbox"
-                                    class=" h-3 w-4  active:border-4 border-blue-300 rounded-2xl">
+                                    class=" form-checkbox text-blue-2 focus:ring-0 border-gray-300 p-2 rounded-md ">
                             </div>
                             <div class="ml-3 ">
                                 <label for="comments"
@@ -452,7 +410,9 @@
                 <span class="ml-2">Précédent</span>
             </button>
             <button type="submit"
-                class="text-white px-6 py-2 rounded-md mt-5 md:mt-0 font-700 text-base bg-blue-2 btnhover font-semibold flex flex-row items-center justify-center">Suivant</button>
+                [ngClass]="detailsForm.invalid ? 'bg-gray-500 cursor-not-allowed':'bg-blue-2 btnhover'"
+                [disabled]="detailsForm.invalid"
+                class="text-white px-6 py-2 rounded-md mt-5 md:mt-0 font-700 text-base  font-semibold flex flex-row items-center justify-center">Suivant</button>
         </div>
     </form>
 </div>

@@ -51,7 +51,6 @@ export class InformationComponent implements OnInit {
   constructor(private store: Store<bailleurDashboardState>, private router: Router, private uploadService: UploadFileService) { }
   ngOnInit(): void {
     this.selectRegieDropDown$.subscribe(value => {
-      console.log(value)
       if (!value) {
         if (this.selectedRegieValue == "Choisissez une régie") {
           this.agencyName?.setErrors({ 'invalid': true })

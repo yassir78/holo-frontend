@@ -247,6 +247,7 @@
         <div class="px-3 mt-5 flex justify-end">
             <button type="submit"
                 [ngClass]="informationForm.invalid ? 'bg-gray-500 cursor-not-allowed':'bg-blue-2 btnhover'"
+                [disabled]="informationForm.invalid"
                 class="text-white px-6 py-2 rounded-md font-700 text-xs md:text-base  font-semibold flex flex-row items-center justify-between">Suivant</button>
         </div>
     </form>
