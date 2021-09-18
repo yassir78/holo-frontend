@@ -1,9 +1,11 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { UploadFileService } from 'src/app/services/uploadFileService';
 import * as BailleurdbActions from "../../state/bailleurdb.action";
 import { bailleurDashboardState } from '../../state/bailleurdb.state';
 @Component({
@@ -20,76 +22,130 @@ import { bailleurDashboardState } from '../../state/bailleurdb.state';
 })
 export class InformationComponent implements OnInit {
   venteOuLocation: string = 'Vente';
-  selectRegieDropDown: boolean = false;
-  selectRegionDropDown: boolean = false;
+  _selectRegieDropDown: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  selectRegieDropDown$: Observable<boolean> = this._selectRegieDropDown.asObservable();
+  _selectRegionDropDown: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  selectRegionDropDown$: Observable<boolean> = this._selectRegionDropDown.asObservable();
   biens: String[] = ['Appartements', 'Meublé', 'Villas / Maison', 'Commerciaux', 'Terrain', 'Immeuble', 'Logt vacances', 'Parkings']
   selectedRegieValue: string = 'Choisissez une régie';
   selectedRegionValue: string = 'Choisissez une région';
-
+  /* @ts-ignore */
+  documentUrl: string;
   document: string = "+ Ajouter";
   progress$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   informationForm: FormGroup = new FormGroup({
-  status:new FormControl('', Validators.required),
-  agencyName:new FormControl('', Validators.required),
-  agencyForm: new FormControl('', Validators.required),
-  propertyType:new FormArray([], Validators.required),
-  availablity: new FormControl('', Validators.required),
-  state: new FormControl('', Validators.required),
-  zipCode:new FormControl('', Validators.required),
-  address: new FormControl('', Validators.required),
-  livingSpace: new FormControl('', Validators.required),
-  terraceArea: new FormControl('', Validators.required),
-  gardenArea:new FormControl('', Validators.required),
-   
-  })
-  constructor( private store: Store<bailleurDashboardState>, private router:Router) { }
-  ngOnInit(): void {
-  }
+    status: new FormControl('', null),
+    agencyName: new FormControl('', Validators.required),
+    agencyForm: new FormControl('', Validators.required),
+    propertyType: new FormArray([], Validators.required),
+    availablity: new FormControl('', Validators.required),
+    state: new FormControl('', Validators.required),
+    zipCode: new FormControl('', Validators.required),
+    address: new FormControl('', Validators.required),
+    livingSpace: new FormControl('', Validators.required),
+    terraceArea: new FormControl('', Validators.required),
+    gardenArea: new FormControl('', Validators.required),
 
-  get  status(){
+  })
+  constructor(private store: Store<bailleurDashboardState>, private router: Router, private uploadService: UploadFileService) { }
+  ngOnInit(): void {
+    this.selectRegieDropDown$.subscribe(value => {
+      if (!value) {
+        if (this.selectedRegieValue == "Choisissez une régie") {
+          this.agencyName?.setErrors({ 'invalid': true })
+        } else {
+          if (this.agencyName?.hasError('invalid')) {
+            /* @ts-ignore */
+            delete this.agencyName?.errors['invalid'];
+            this.agencyName?.updateValueAndValidity();
+          }
+        }
+      }
+    });
+    this.selectRegionDropDown$.subscribe(value => {
+      if (!value) {
+        if (this.selectedRegionValue == "Choisissez une région") {
+          this.state?.setErrors({ 'invalid': true })
+        } else {
+          if (this.state?.hasError('invalid')) {
+            /* @ts-ignore */
+            delete this.state?.errors['invalid'];
+            this.state?.updateValueAndValidity();
+          }
+        }
+      }
+    });
+  }
+  switchRegieDropDown() {
+    this._selectRegieDropDown.next(!this._selectRegieDropDown.getValue());
+  }
+  switchRegionDropDown() {
+    this._selectRegionDropDown.next(!this._selectRegionDropDown.getValue());
+
+  }
+  get status() {
     return this.informationForm.get("status");
   }
 
-  get  agencyName(){
+  get agencyName() {
     return this.informationForm.get("agencyName");
   }
 
 
-  get  agencyForm(){
+  get agencyForm() {
     return this.informationForm.get("agencyForm");
   }
-  get  propertyType(){
+  get propertyType() {
     return this.informationForm.get("propertyType");
   }
-  get  availablity(){
+  get availablity() {
     return this.informationForm.get("availablity");
   }
-  get  address(){
+  get address() {
     return this.informationForm.get("address");
   }
-  get  state(){
+  get state() {
     return this.informationForm.get("state");
   }
-  get  zipCode(){
+  get zipCode() {
     return this.informationForm.get("zipCode");
   }
-  get  terraceArea(){
+  get terraceArea() {
     return this.informationForm.get("terraceArea");
   }
 
-  get  gardenArea(){
+  get gardenArea() {
     return this.informationForm.get("gardenArea");
   }
 
-  get livingSpace () {
+  get livingSpace() {
     return this.informationForm.get("livingSpace");
   }
- 
+
+
   documentUpload(event: any) {
-    console.log(event)
+    this.progress$.next(0);
     this.document = event.target.files[0].name;
-    // upload process
+    const file: File = event.target.files[0];
+    this.uploadService.uploadFile(file).subscribe(evt => {
+      if (evt.type === HttpEventType.UploadProgress) {
+        if (evt.total != undefined) {
+          console.log(Math.round(90 * evt.loaded / evt.total))
+          this.progress$.next(Math.round(90 * evt.loaded / evt.total));
+        }
+
+      }
+      else if (evt instanceof HttpResponse) {
+        /* @ts-ignore*/
+        this.documentUrl = evt.body.Location;
+        console.log(this.documentUrl);
+        this.progress$.next(100);
+
+      }
+    }, error => {
+      console.log(error)
+    })
   }
   typeDeBienValue(value: String, event: any) {
     const typeDeBienArray = <FormArray>this.informationForm.controls.propertyType;
@@ -104,9 +160,9 @@ export class InformationComponent implements OnInit {
 
   }
   managementRegieDropDown(value: string) {
-    this.informationForm.get('agencyName')?.setValue(value);
+    this.agencyName?.setValue(value);
     this.selectedRegieValue = value;
-    this.selectRegieDropDown = false;
+    this._selectRegieDropDown.next(false);
     console.log(this.informationForm.get('agencyName')?.value)
   }
 
@@ -114,25 +170,12 @@ export class InformationComponent implements OnInit {
   managementRegionDropDown(value: string) {
     this.informationForm.get('state')?.setValue(value);
     this.selectedRegionValue = value;
-    this.selectRegionDropDown = false;
+    this._selectRegionDropDown.next(false);
     console.log(this.informationForm.get('state')?.value)
   }
 
 
-  formSubmit(){
-    console.log({
-      status: this.venteOuLocation,
-      agencyName: this.agencyName?.value,
-      agencyForm: this.agencyName?.value,
-      propertyType: this.propertyType?.value,
-      availablity: this.availablity?.value,
-      state: this.state?.value,
-      zipCode: this.zipCode?.value,
-      address: this.address?.value,
-      livingSpace: this.livingSpace?.value,
-      terraceArea: this.terraceArea?.value,
-      gardenArea: this.gardenArea?.value,
-    })
+  formSubmit() {
 
 
     this.store.dispatch(BailleurdbActions.information({
@@ -150,6 +193,7 @@ export class InformationComponent implements OnInit {
     }))
 
     this.router.navigate(['/dashboard/bailleur/add-good/details'])
+
 
   }
 }

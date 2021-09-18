@@ -11,11 +11,11 @@
             <div class="flex flex-row mt-3">
                 <button type="button "
                     [ngClass]=" venteOuLocation == 'Vente' ? 'text-blue-400 border-blue-300' : 'border-gray-300 text-gray-200 bg-white'"
-                    (click)="venteOuLocation = 'Vente'"
+                    (click)="$event.stopPropagation();venteOuLocation = 'Vente'"
                     class="flex justify-center w-28	 mr-2	 items-center px-4 py-2 border 	 shadow-sm text-base font-semibold popping rounded-xl 	 bg-white hover:bg-gray-50 active:-translate-y-2 transition-all duration-100">
                     Vendre
                 </button>
-                <button type="button" (click)="venteOuLocation = 'Location'"
+                <button type="button" (click)="$event.stopPropagation();venteOuLocation = 'Location'"
                     [ngClass]=" venteOuLocation == 'Location' ? 'text-blue-400 border-blue-300' : 'border-gray-300 text-gray-200 bg-white'"
                     class="flex justify-center w-28	  items-center px-4 py-2 border  shadow-sm text-base font-medium rounded-xl  active:-translate-y-2 transition-all duration-100">
                     Louer
@@ -25,7 +25,8 @@
         <div class="mt-5 px-3">
             <h1 class="popping text-base font-semibold mb-3">Nom de la régie</h1>
             <div class="relative">
-                <button type="button" (click)="selectRegieDropDown = !selectRegieDropDown"
+                <button type="button" (click)="switchRegieDropDown()"
+                    [ngClass]="agencyName?.errors?.invalid ? 'border-red-600' : 'border-gray-300'"
                     class="flex items-center  justify-between w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
                     id="menu-button" aria-expanded="true" aria-haspopup="true">
                     <span class=" text-lg">{{selectedRegieValue}}</span>
@@ -33,7 +34,7 @@
                         <path d="M7 9L0.0717961 0.750001L13.9282 0.749998L7 9Z" fill="#6FB4E1" />
                     </svg>
                 </button>
-                <ul [@selectInput]="selectRegieDropDown ? false : true"
+                <ul [@selectInput]="(selectRegieDropDown$|async) ? false : true"
                     class="origin-top-right absolute z-10 left-0 w-full mt-2     rounded-md shadow-lg overflow-hidden bg-white divide-y divide-gray-200 ring-1 ring-black ring-opacity-5 focus:outline-none"
                     tabindex="-1" role="listbox" aria-labelledby="listbox-label"
                     aria-activedescendant="listbox-option-0">
@@ -57,6 +58,8 @@
                     </li>
                 </ul>
             </div>
+            <div class="text-red-600" *ngIf="agencyName?.errors?.invalid">
+                Champ obligatoire</div>
         </div>
         <div class="mt-5 px-3">
             <h1 class="popping text-base font-semibold">Formulaire de votre régie</h1>
@@ -71,7 +74,9 @@
             </div>
         </div>
         <div class="mt-5 px-3">
-            <h1 class="popping text-base font-semibold">Type de bien</h1>
+            <h1 class="popping text-base font-semibold">Type de bien <span class="text-red-600 text-base"
+                    *ngIf="(propertyType?.dirty || propertyType?.touched) && propertyType?.invalid && propertyType?.errors?.required ">
+                    Champ Obligatoire</span></h1>
             <div class="flex flex-row flex-wrap ">
                 <fieldset class="space-y-5 mr-3" *ngFor="let bien of biens">
                     <legend class="sr-only">{{bien}}</legend>
@@ -88,69 +93,18 @@
                     </div>
                 </fieldset>
             </div>
-            <!--      <div class="flex flex-row flex-wrap md:flex-nowrap">
-            <fieldset class="space-y-5 w-full">
-                <legend class="sr-only">Terrain</legend>
-                <div class="relative flex items-start">
-                    <div class="flex items-end h-5">
-                        <input id="logtVacances" aria-describedby="comments-description" name="comments" type="checkbox"
-                            class=" form-checkbox text-blue-2 focus:ring-0 border-gray-300 p-2 rounded-md ">
-                    </div>
-                    <div class="ml-3 ">
-                        <label for="terrain" class="popping text-base font-medium	 text-gray-500">Terrain</label>
-                    </div>
-                </div>
 
-
-            </fieldset>
-            <fieldset class="space-y-5 w-full">
-                <legend class="sr-only">Immeuble</legend>
-                <div class="relative flex items-start">
-                    <div class="flex items-end h-5">
-                        <input id="logtVacances" aria-describedby="comments-description" name="comments" type="checkbox"
-                            class=" form-checkbox text-blue-2 focus:ring-0 border-gray-300 p-2 rounded-md ">
-                    </div>
-                    <div class="ml-3 ">
-                        <label for="immeuble" class="popping text-base font-medium	 text-gray-500">Immeuble </label>
-                    </div>
-                </div>
-
-
-            </fieldset>
-            <fieldset class="space-y-5 w-full">
-                <legend class="sr-only">Appartements</legend>
-                <div class="relative flex items-start">
-                    <div class="flex items-end h-5">
-                        <input id="logtVacances" aria-describedby="comments-description" name="comments" type="checkbox"
-                            class=" form-checkbox text-blue-2 focus:ring-0 border-gray-300 p-2 rounded-md ">
-                    </div>
-                    <div class="ml-3 ">
-                        <label for="logtVacances" class="popping text-base font-medium	 text-gray-500">Logt
-                            vacances</label>
-                    </div>
-                </div>
-
-
-            </fieldset>
-            <fieldset class="space-y-5 w-full">
-                <legend class="sr-only">Appartements</legend>
-                <div class="relative flex items-start">
-                    <div class="flex items-end h-5">
-                        <input id="logtVacances" aria-describedby="comments-description" name="comments" type="checkbox"
-                            class=" form-checkbox text-blue-2 focus:ring-0 border-gray-300 p-2 rounded-md ">
-                    </div>
-                    <div class="ml-3">
-                        <label for="parkings" class="popping text-base font-medium  text-gray-500">Parkings</label>
-                    </div>
-                </div>
-            </fieldset>
-        </div> -->
         </div>
-        <div class="mt-5 px-3">
+        <div class="mt-8 mb-8 px-3">
             <h1 class="popping text-base font-semibold mb-3">Date de disponibilité</h1>
             <input type="date" name="availablity" id="availablity" formControlName="availablity"
                 autocomplete="availablity"
-                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 shadow-sm sm:text-sm  rounded-md">
+                [ngClass]="(availablity?.dirty || availablity?.touched) && availablity?.invalid && availablity?.errors?.required ? 'border-red-600' : 'border-gray-300'"
+                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block  shadow-sm sm:text-sm  rounded-md">
+            <span class="text-red-600 text-base"
+                *ngIf="(availablity?.dirty || availablity?.touched) && availablity?.invalid && availablity?.errors?.required">
+                Champ obligatoire.
+            </span>
         </div>
         <div class="py-5 px-3 bg-gray-4">
             <h1 class="popping text-xl font-semibold ">Adresse</h1>
@@ -166,8 +120,9 @@
                 <div class="w-full">
                     <h1 class="popping text-base font-semibold mb-3">Region </h1>
                     <div class="relative">
-                        <button type="button" (click)="selectRegionDropDown = !selectRegionDropDown"
-                            class="flex items-center  justify-between w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
+                        <button type="button" (click)="switchRegionDropDown()"
+                            [ngClass]="state?.errors?.invalid ? 'border-red-600' : 'border-gray-300'"
+                            class="flex items-center  justify-between w-full rounded-md border  shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
                             id="menu-button" aria-expanded="true" aria-haspopup="true">
                             <span class=" text-lg">{{selectedRegionValue}}</span>
                             <svg width="14" height="9" viewBox="0 0 14 9" fill="none"
@@ -175,37 +130,44 @@
                                 <path d="M7 9L0.0717961 0.750001L13.9282 0.749998L7 9Z" fill="#6FB4E1" />
                             </svg>
                         </button>
-                        <ul [@selectInput]="selectRegionDropDown ? false : true"
+                        <ul [@selectInput]="(selectRegionDropDown$|async) ? false : true"
                             class="origin-top-right absolute z-10 left-0 w-full mt-2     rounded-md shadow-lg overflow-hidden bg-white divide-y divide-gray-200 ring-1 ring-black ring-opacity-5 focus:outline-none"
                             tabindex="-1" role="listbox" aria-labelledby="listbox-label"
                             aria-activedescendant="listbox-option-0">
-                            <li class="text-gray-900 cursor-default select-none relative p-4 text-sm"
+                            <li class="text-gray-900  select-none relative p-4 text-base cursor-pointer hover:bg-gray-400 hover:text-white"
                                 id="listbox-option-0" role="option" (click)="managementRegionDropDown(' Region 1')">
-                                <p class="font-normal">
+                                <p class="font-medium">
                                     Region 1
                                 </p>
                             </li>
-                            <li class="text-gray-900 cursor-default select-none relative p-4 text-sm"
+                            <li class="text-gray-900  select-none relative p-4 text-base cursor-pointer hover:bg-gray-400 hover:text-white"
                                 id="listbox-option-0" role="option" (click)="managementRegionDropDown(' Region 2')">
-                                <p class="font-normal">
+                                <p class="font-medium">
                                     Region 2
                                 </p>
                             </li>
-                            <li class="text-gray-900 cursor-default select-none relative p-4 text-sm"
+                            <li class="text-gray-900  select-none relative p-4 text-base cursor-pointer hover:bg-gray-400 hover:text-white"
                                 id="listbox-option-0" role="option" (click)="managementRegionDropDown('Region 3')">
-                                <p class="font-normal">
+                                <p class="font-medium">
                                     Region 3
                                 </p>
                             </li>
                         </ul>
                     </div>
+                    <div class="text-red-600" *ngIf="state?.errors?.invalid">
+                        Champ obligatoire</div>
                 </div>
 
                 <div class="ml-0 md:ml-2 w-full">
                     <h1 class="popping text-base font-semibold mb-3 mt-5 md:mt-0">Code postal </h1>
                     <input type="text" name="zipCode" id="zipCode" formControlName="zipCode"
-                        class="shadow-sm  px-4 placeholder-size-2 w-full focus:border-indigo-500 block  sm:text-sm border-gray-300 rounded-md px-4 py-3 "
+                        [ngClass]="(zipCode?.dirty || zipCode?.touched) && zipCode?.invalid && zipCode?.errors?.required ? 'border-red-600' : 'border-gray-300'"
+                        class="shadow-sm  px-4 placeholder-size-2 w-full focus:border-indigo-500 block  sm:text-sm rounded-md px-4 py-3 "
                         placeholder="Votre code postal" aria-describedby="email-description">
+                    <span class="text-red-600 text-base"
+                        *ngIf="(zipCode?.dirty || zipCode?.touched) && zipCode?.invalid && zipCode?.errors?.required">
+                        Champ obligatoire.
+                    </span>
                 </div>
 
             </div>
@@ -213,8 +175,13 @@
         <div class="px-3 mt-5">
             <h1 class="popping text-base font-semibold mb-3">Adresse </h1>
             <input type="text" name="address" id="address" formControlName="address"
-                class="shadow-sm  px-4 placeholder-size-2 w-full focus:border-indigo-500 block  sm:text-sm border-gray-300 rounded-md px-4 py-3 "
+                [ngClass]="(address?.dirty || address?.touched) && address?.invalid && address?.errors?.required ? 'border-red-600' : 'border-gray-300'"
+                class="shadow-sm  px-4 placeholder-size-2 w-full focus:border-indigo-500 block  sm:text-sm  rounded-md px-4 py-3 "
                 placeholder="Votre adresse" aria-describedby="email-description">
+            <span class="text-red-600 text-base"
+                *ngIf="(address?.dirty || address?.touched) && address?.invalid && address?.errors?.required">
+                Champ obligatoire.
+            </span>
             <div class="relative flex items-start mt-5">
                 <div class="flex items-center h-5">
                     <input id="comments" aria-describedby="comments-description" name="comments" type="checkbox"
@@ -224,7 +191,7 @@
                     <p class="text-gray-400">Ne pas afficher le numéro de rue</p>
                 </div>
             </div>
-            <div class="py-5 px-3 bg-gray-4">
+            <div class="py-5 px-3 mt-8 bg-gray-4">
                 <h1 class="popping text-xl font-semibold ">Surface</h1>
             </div>
 
@@ -235,20 +202,30 @@
                     <h1 class="popping text-base font-semibold mb-3">Surface habitable </h1>
                     <div class="relative">
                         <input type="text" name="livingSpace" id="livingSpace" formControlName="livingSpace"
-                            class="shadow-sm  px-4 placeholder-size-2 w-full focus:border-indigo-500 block  sm:text-sm border-gray-300 rounded-md py-3 "
+                            [ngClass]="(livingSpace?.dirty || livingSpace?.touched) && livingSpace?.invalid && livingSpace?.errors?.required ? 'border-red-600' : 'border-gray-300'"
+                            class="shadow-sm  px-4 placeholder-size-2 w-full focus:border-indigo-500 block  sm:text-sm  rounded-md py-3 "
                             placeholder="0" aria-describedby="email-description">
                         <span class="absolute top-2 text-lg	 right-2 text-gray-500">m2</span>
                     </div>
+                    <span class="text-red-600 text-base"
+                        *ngIf="(livingSpace?.dirty || livingSpace?.touched) && livingSpace?.invalid && livingSpace?.errors?.required">
+                        Champ obligatoire.
+                    </span>
                 </div>
 
                 <div class="ml-0 md:ml-2 mt-3 md:mt-0 w-full">
                     <h1 class="popping text-base font-semibold mb-3">Surface terrasse/balcon </h1>
                     <div class="relative">
                         <input type="text" name="terraceArea" id="terraceArea" formControlName="terraceArea"
-                            class="shadow-sm  px-4 placeholder-size-2 w-full focus:border-indigo-500 block  sm:text-sm border-gray-300 rounded-md py-3 "
+                            [ngClass]="(terraceArea?.dirty || terraceArea?.touched) && terraceArea?.invalid && terraceArea?.errors?.required ? 'border-red-600' : 'border-gray-300'"
+                            class="shadow-sm  px-4 placeholder-size-2 w-full focus:border-indigo-500 block  sm:text-sm  rounded-md py-3 "
                             placeholder="0" aria-describedby="email-description">
                         <span class="absolute top-2 text-lg	 right-2 text-gray-500">m2</span>
                     </div>
+                    <span class="text-red-600 text-base"
+                        *ngIf="(terraceArea?.dirty || terraceArea?.touched) && terraceArea?.invalid && terraceArea?.errors?.required">
+                        Champ obligatoire.
+                    </span>
                 </div>
             </div>
 
@@ -257,15 +234,21 @@
             <h1 class="popping text-base font-semibold mb-3">Surface jardin </h1>
             <div class="relative">
                 <input type="text" name="gardenArea" id="gardenArea" formControlName="gardenArea"
-                    class="shadow-sm  px-4 placeholder-size-2 w-full focus:border-indigo-500 block  sm:text-sm border-gray-300 rounded-md py-3 "
+                    [ngClass]="(gardenArea?.dirty || gardenArea?.touched) && gardenArea?.invalid && gardenArea?.errors?.required? 'border-red-600' : 'border-gray-300'"
+                    class="shadow-sm  px-4 placeholder-size-2 w-full focus:border-indigo-500 block  sm:text-sm rounded-md py-3 "
                     placeholder="0" aria-describedby="email-description">
                 <span class="absolute top-2 text-lg	 right-2 text-gray-500">m2</span>
             </div>
+            <span class="text-red-600 text-base"
+                *ngIf="(gardenArea?.dirty || gardenArea?.touched) && gardenArea?.invalid && gardenArea?.errors?.required">
+                Champ obligatoire.
+            </span>
         </div>
         <div class="px-3 mt-5 flex justify-end">
             <button type="submit"
-                class="text-white px-6 py-2 rounded-md font-700 text-xs md:text-base bg-blue-2 btnhover font-semibold flex flex-row items-center justify-between"
-               >Suivant</button>
+                [ngClass]="informationForm.invalid ? 'bg-gray-500 cursor-not-allowed':'bg-blue-2 btnhover'"
+                [disabled]="informationForm.invalid"
+                class="text-white px-6 py-2 rounded-md font-700 text-xs md:text-base  font-semibold flex flex-row items-center justify-between">Suivant</button>
         </div>
     </form>
 

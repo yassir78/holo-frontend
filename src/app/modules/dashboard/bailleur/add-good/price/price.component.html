@@ -11,10 +11,18 @@
                                 charges)</span> </h1>
                         <div class="relative">
                             <input type="number" name="grossPrice" id="grossPrice" formControlName="grossPrice"
+                                [ngClass]="(grossPrice?.dirty || grossPrice?.touched) && grossPrice?.invalid &&
+                        grossPrice?.errors?.required ?
+                        'border-red-600' : 'border-gray-300'"
                                 class="shadow-sm  px-4 placeholder-size-2 w-full focus:border-indigo-500 block  sm:text-sm border-gray-300 rounded-md py-3 "
                                 placeholder="0" aria-describedby="email-description">
                             <span class="absolute top-2 text-lg	 right-2 text-gray-500">CHF</span>
                         </div>
+
+                        <span class="text-red-600 text-base"
+                            *ngIf="(grossPrice?.dirty || grossPrice?.touched) && grossPrice?.invalid && grossPrice?.errors?.required">
+                            Champ obligatoire.
+                        </span>
                     </div>
 
                     <div class="ml-0 md:ml-2 mt-3 md:mt-[2.2rem] w-full">
@@ -70,11 +78,17 @@
                         <h1 class="popping text-base font-semibold mb-3">Charges
                         </h1>
                         <div class="relative">
-                            <input type="number" name="expenses" id="expenses" formControlName="expenses"
+                            <input type="number" name="expenses" id="expenses" formControlName="expenses" [ngClass]="(expenses?.dirty || expenses?.touched) && expenses?.invalid &&
+                        expenses?.errors?.required ?
+                        'border-red-600' : 'border-gray-300'"
                                 class="shadow-sm  px-4 placeholder-size-2 w-full focus:border-indigo-500 block  sm:text-sm border-gray-300 rounded-md py-3 "
                                 placeholder="0" aria-describedby="expenses-description">
                             <span class="absolute top-2 text-lg	 right-2 text-gray-500">CHF</span>
                         </div>
+                        <span class="text-red-600 text-base"
+                            *ngIf="(expenses?.dirty || expenses?.touched) && expenses?.invalid && expenses?.errors?.required">
+                            Champ obligatoire.
+                        </span>
                     </div>
 
                     <div class="ml-0 md:ml-2 mt-3 md:mt-[2.2rem] w-full">
@@ -90,11 +104,18 @@
                         <h1 class="popping text-base font-semibold mb-3">Prix net <span class="font-extralight"> (avec
                                 charges)</span> </h1>
                         <div class="relative">
-                            <input type="number" name="netPrice" id="netPrice" formControlName="netPrice"
+                            <input type="number" name="netPrice" id="netPrice" formControlName="netPrice" [ngClass]="(netPrice?.dirty || netPrice?.touched) && netPrice?.invalid &&
+                        netPrice?.errors?.required ?
+                        'border-red-600' : 'border-gray-300'"
                                 class="shadow-sm  px-4 placeholder-size-2 w-full focus:border-indigo-500 block  sm:text-sm border-gray-300 rounded-md py-3 "
                                 placeholder="0" aria-describedby="netPrice-description">
                             <span class="absolute top-2 text-lg	 right-2 text-gray-500">CHF</span>
+
                         </div>
+                        <span class="text-red-600 text-base"
+                            *ngIf="(netPrice?.dirty || netPrice?.touched) && netPrice?.invalid && expenses?.errors?.required">
+                            Champ obligatoire.
+                        </span>
                     </div>
 
                     <div class="ml-0 md:ml-2 mt-3 md:mt-[2.2rem] w-full">
@@ -114,10 +135,17 @@
                                 charges)</span> </h1>
                         <div class="relative">
                             <input type="number" name="accessoryFees" id="accessoryFees" formControlName="accessoryFees"
+                                [ngClass]="(accessoryFees?.dirty || accessoryFees?.touched) && accessoryFees?.invalid &&
+                        accessoryFees?.errors?.required ?
+                        'border-red-600' : 'border-gray-300'"
                                 class="shadow-sm  px-4 placeholder-size-2 w-full focus:border-indigo-500 block  sm:text-sm border-gray-300 rounded-md py-3 "
                                 placeholder="0" aria-describedby="accessoryFees-description">
                             <span class="absolute top-2 text-lg	 right-2 text-gray-500">CHF</span>
                         </div>
+                        <span class="text-red-600 text-base"
+                            *ngIf="(accessoryFees?.dirty || accessoryFees?.touched) && accessoryFees?.invalid && accessoryFees?.errors?.required">
+                            Champ obligatoire.
+                        </span>
                     </div>
 
                     <div class="ml-0 md:ml-2 mt-3 md:mt-[2.2rem] w-full">
@@ -168,11 +196,17 @@
                                 inclu dans le prix)
                             </span> </h1>
                         <div class="relative">
-                            <input type="number" name="interior" id="interior" formControlName="interior"
+                            <input type="number" name="interior" id="interior" formControlName="interior" [ngClass]="(interior?.dirty || interior?.touched) && interior?.invalid &&
+                        interior?.errors?.required ?
+                        'border-red-600' : 'border-gray-300'"
                                 class="shadow-sm  px-4 placeholder-size-2 w-full focus:border-indigo-500 block  sm:text-sm border-gray-300 rounded-md py-3 "
                                 placeholder="0" aria-describedby="email-description">
-                            <span class="absolute top-2 text-lg	 interior-2 text-gray-500">CHF</span>
+                            <span class="absolute top-2 text-lg right-2	 interior-2 text-gray-500">CHF</span>
                         </div>
+                        <span class="text-red-600 text-base"
+                            *ngIf="(interior?.dirty || interior?.touched) && interior?.invalid && interior?.errors?.required">
+                            Champ obligatoire.
+                        </span>
                     </div>
 
                     <div class="ml-0 md:ml-2 mt-3 md:mt-0 w-full">
@@ -184,11 +218,17 @@
                                     inclu dans le prix)
                                 </span> </h1>
                             <div class="relative">
-                                <input type="number" name="exterior" id="exterior" formControlName="exterior"
+                                <input type="number" name="exterior" id="exterior" formControlName="exterior" [ngClass]="(exterior?.dirty || exterior?.touched) && exterior?.invalid &&
+                        exterior?.errors?.required ?
+                        'border-red-600' : 'border-gray-300'"
                                     class="shadow-sm  px-4 placeholder-size-2 w-full focus:border-indigo-500 block  sm:text-sm border-gray-300 rounded-md py-3 "
                                     placeholder="0" aria-describedby="email-description">
                                 <span class="absolute top-2 text-lg	 right-2 text-gray-500">CHF</span>
                             </div>
+                            <span class="text-red-600 text-base"
+                                *ngIf="(exterior?.dirty || exterior?.touched) && exterior?.invalid && exterior?.errors?.required">
+                                Champ obligatoire.
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -204,7 +244,7 @@
                 </svg>
                 <span class="ml-2">Précédent</span>
             </button>
-            <button type="submit" 
+            <button type="submit"
                 class="text-white px-6 py-2 rounded-md mt-5 md:mt-0 font-700 text-base bg-blue-2 btnhover font-semibold flex flex-row items-center justify-center">Suivant</button>
         </div>
     </form>

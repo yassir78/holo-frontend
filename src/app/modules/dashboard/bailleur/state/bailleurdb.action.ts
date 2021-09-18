@@ -18,7 +18,7 @@ export const information = createAction(
         livingSpace: number;
         terraceArea: number;
         gardenArea: number;
-       
+
     }>()
 )
 
@@ -26,7 +26,7 @@ export const information = createAction(
 export const details = createAction(
     '[Details component] add good infos to state',
     props<{
-      
+
         numberOfPieces: number;
         numberOfRooms: number;
         numberOfWC: number;
@@ -41,7 +41,7 @@ export const details = createAction(
         orientation: string;
         proximity: string;
         extra: string;
-        
+
     }>()
 )
 
@@ -49,7 +49,7 @@ export const details = createAction(
 export const price = createAction(
     '[Price component add good infos to state',
     props<{
-      
+
         grossPrice: string;
         grossPriceType: string;
         expenses: string;
@@ -58,7 +58,7 @@ export const price = createAction(
         parking: string;
         interior: number;
         exterior: number;
-      
+
     }>()
 )
 
@@ -68,16 +68,16 @@ export const description = createAction(
     props<{
         propertyName: string;
         description: string;
-      
+
     }>()
 )
 
 export const media = createAction(
     '[Media component] add good infos to state',
     props<{
-    
-        mediaFiles: [];
-        videoFiles:  [];
+
+        mediaFiles: string[];
+        videoFiles: string[];
     }>()
 )
 

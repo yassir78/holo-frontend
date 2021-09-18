@@ -1,5 +1,5 @@
 export interface Good {
- status?: string;
+  status?: string;
   agencyName?: string;
   agencyForm?: string;
   propertyType?: string;
@@ -25,7 +25,7 @@ export interface Good {
   proximity?: string;
   extra?: string;
   grossPrice?: string;
-  grossPriceType?:string;
+  grossPriceType?: string;
   expenses?: string;
   netPrice?: number;
   accessoryFees?: number;
@@ -34,7 +34,7 @@ export interface Good {
   exterior?: number;
   propertyName?: string;
   description?: string;
-  mediaFiles?: [];
+  mediaFiles?: string[];
   availabilityOfVisit?: Date;
 
 }
