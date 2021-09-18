@@ -19,12 +19,14 @@ import { StoreModule } from '@ngrx/store';
 import { addGoodReducer } from '../state/bailleurdb.reducer';
 import { BailleurDBEffect } from '../state/bailleurdb.effect';
 import { EffectsModule } from '@ngrx/effects';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+
 @NgModule({
   declarations: [
     AddGoodHomeComponent,
@@ -53,6 +55,7 @@ import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-mom
       "good", addGoodReducer
     ),
     EffectsModule.forFeature([BailleurDBEffect]),
+    NgxMaterialTimepickerModule.setLocale('fr-FR')
 
   ],
   providers: [

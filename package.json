@@ -33,6 +33,7 @@
     "aws-sdk": "^2.977.0",
     "lodash": "^4.17.21",
     "multiple-date-picker": "^2.1.6",
+    "ngx-material-timepicker": "^5.5.3",
     "rxjs": "~6.6.0",
     "sweetalert2": "^11.1.4",
     "tslib": "^2.0.0",
