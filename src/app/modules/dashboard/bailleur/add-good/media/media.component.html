@@ -25,7 +25,7 @@
 
     </div>
 
-    <input type='file' class="hidden" (change)="onSelectFile($event)" #file [disabled]="!upload" />
+    <input type='file' class="hidden" (change)="onSelectFile($event)" #file [disabled]="upload" />
     <progress-bar [width]="progress$" *ngIf="upload"></progress-bar>
     <div class="px-3 mt-5 text-center w-full">
         <h1 class="text-xl text-blue-2 font-semibold popping "

@@ -35,7 +35,7 @@ const routes: Routes = [
         component: MediaComponent
       },
       {
-        path: 'disponibilty',
+        path: 'disponibility',
         component: DisponibilityComponent
       },
       {
