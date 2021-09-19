@@ -7,6 +7,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { UploadFileService } from 'src/app/services/uploadFileService';
 import * as BailleurdbActions from "../../state/bailleurdb.action";
 import { bailleurDashboardState } from '../../state/bailleurdb.state';
+import { Good } from 'src/app/models/good';
+
+import { getGood } from '../../state/bailleurdb.selector';
 @Component({
   selector: 'app-media',
   templateUrl: './media.component.html',
@@ -23,6 +26,8 @@ import { bailleurDashboardState } from '../../state/bailleurdb.state';
   ])]
 })
 export class MediaComponent implements OnInit {
+    /* @ts-ignore */
+ good: Observable<Good>;
   url: any;
   format: any;
   errorModalShow: string = 'out';
@@ -38,6 +43,8 @@ export class MediaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.good = this.store.select(getGood);
+
   }
   onSelectFile(event: any) {
     const file = event.target.files && event.target.files[0];
@@ -85,6 +92,12 @@ export class MediaComponent implements OnInit {
       mediaFiles: this.imageUrls,
       videoFiles: this.videoUrls
     }))
+
+    this.good.subscribe(good => {
+      this.store.dispatch(BailleurdbActions.addGood({ good: good }))
+    })
+
+    this.router.navigate(['/good-success'])
     this.router.navigate(['/dashboard/bailleur/add-good/post'])
   }
   continueOnError() {

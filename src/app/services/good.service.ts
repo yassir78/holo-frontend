@@ -12,6 +12,8 @@ export class GoodService {
   constructor(private http: HttpClient) { }
 
   addGood(good:Good){
-    return this.http.post(`${this.API}/good/add`, good);
+    console.log("Good Service")
+    console.log(good)
+    return this.http.post(`${this.API}/good/create`, good);
   }
 }
