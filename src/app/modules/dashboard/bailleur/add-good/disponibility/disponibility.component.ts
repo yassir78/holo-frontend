@@ -25,9 +25,10 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 export class DisponibilityComponent implements OnInit {
   dates: moment.Moment[] = []
   /* @ts-ignore */
-  datesAndHours: { date: moment.Moment, hour: string }[] = [];
+  datesAndHours: { date: moment.Moment, startHour: string, finishHour?: string }[] = [];
   selectedDate: any;
-  selectedHour: any;
+  selectedStartHour: any;
+  selectedFinishHour: any;
   constructor(private store: Store<bailleurDashboardState>, private _adapter: DateAdapter<any>) { }
   timePickerModalShow: string = 'out';
   backgroundSwitch: string = 'out';
@@ -41,11 +42,12 @@ export class DisponibilityComponent implements OnInit {
     this.timePickerModalShow = 'in';
     const date: moment.Moment = event;
     const indexHour = this.datesAndHours.findIndex(dateAndHour => (dateAndHour.date.format("dddd Do MMMM YYYY")) == date.format("dddd Do MMMM YYYY"));
-    this.selectedHour = indexHour > -1 ? this.datesAndHours[indexHour].hour : null;
-    console.log(this.selectedHour)
+    this.selectedStartHour = indexHour > -1 ? this.datesAndHours[indexHour].startHour : null;
+    this.selectedFinishHour = indexHour > -1 ? this.datesAndHours[indexHour].finishHour : null;
+    console.log(this.selectedStartHour)
     this.selectedDate = date;
     const index = this.datesAndHours.map(dateAndHour => dateAndHour.date).findIndex(x => x.format("dddd Do MMMM YYYY") == date.format("dddd Do MMMM YYYY"));
-    if (index < 0) this.datesAndHours.push({ date: date, hour: '' });
+    if (index < 0) this.datesAndHours.push({ date: date, startHour: '', finishHour: '' });
     else {
       //this.datesAndHours.splice(index, 1)
     };
@@ -53,8 +55,7 @@ export class DisponibilityComponent implements OnInit {
   }
   dateClass() {
     return (date: any): MatCalendarCellCssClasses => {
-      return (this.datesAndHours.find(x => (x.date.format("dddd Do MMMM YYYY") == date.format("dddd Do MMMM YYYY") || (x.date.format("dddd Do MMMM YYYY") == date.format("dddd Do MMMM YYYY") && this.selectedHour == x.hour)))) ? "selected" : '';
-
+      return (this.datesAndHours.find(x => (x.date.format("dddd Do MMMM YYYY") == date.format("dddd Do MMMM YYYY") || (x.date.format("dddd Do MMMM YYYY") == date.format("dddd Do MMMM YYYY") && this.selectedStartHour == x.startHour)))) ? "selected" : '';
     };
   }
   pickDisponibily() {
@@ -62,11 +63,16 @@ export class DisponibilityComponent implements OnInit {
     this.timePickerModalShow = 'out';
     console.log(this.selectedDate.format("dddd Do MMMM YYYY"))
     const index = this.datesAndHours.findIndex(dateAndHour => dateAndHour.date.format("dddd Do MMMM YYYY") == this.selectedDate.format("dddd Do MMMM YYYY"));
-    index > -1 ? this.datesAndHours[index].hour = this.selectedHour : false;
-    this.selectedHour = null;
+    if (index > -1) {
+      this.datesAndHours[index].startHour = this.selectedStartHour;
+      this.datesAndHours[index].finishHour = this.selectedFinishHour;
+    }
+    this.selectedStartHour = null;
   }
-  timeChanged(event: any) {
-    this.selectedHour = event;
+  startTimeChanged(event: any) {
+    this.selectedStartHour = event;
   }
-
+  finishTimeChanged(event: any) {
+    this.selectedFinishHour = event;
+  }
 }
