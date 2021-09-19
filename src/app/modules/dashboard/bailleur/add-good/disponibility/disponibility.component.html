@@ -1,5 +1,5 @@
 <div class=" bg-white shadow-xl pt-3 pb-10 px-3 md:px-6 pr-3 rounded-2xl ">
-  <h1>Selected Dates:</h1>
+  <!--  <h1>Selected Dates:</h1>
   <div class="results">
     <div *ngFor="let date of datesAndHours">
       {{ date.date.zone("+09:00").format('YYYY/MM/DD') }}
@@ -8,7 +8,7 @@
       ///
       {{date.finishHour}}
     </div>
-  </div>
+  </div> -->
   <div class="py-5 border-b-2">
     <h1 class="popping text-xl font-bold ">Disponibilité</h1>
   </div>
@@ -22,25 +22,25 @@
         aria-hidden="true"></div>
       <!-- This element is to trick the browser into centering the modal contents. -->
       <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-      <div [@openModal]="timePickerModalShow"
-        class="inline-block align-bottom bg-white rounded-lg  py-8 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:p-6">
+      <div [@openModal]="timePickerModalShow" #modal
+        class="inline-block  bg-white rounded-lg  py-8 text-left overflow-hidden shadow-xl transform transition-all my-8 align-middle p-6">
         <div class="flex justify-center mt-2">
-          <h1>De</h1>
+          <h1 class="mr-3">De</h1>
           <div class="text-center sm:mt-0 sm:ml-4 sm:text-left">
-             <div class="ngx-timepicker-field-example">
-              <ngx-timepicker-field [format]="24" [buttonAlign]="'left'" [defaultTime]="selectedStartHour"
-                (timeChanged)="startTimeChanged($event)">
+            <div class="ngx-timepicker-field-example">
+              <ngx-timepicker-field [format]="24" [controlOnly]="true" [buttonAlign]="'left'"
+                [defaultTime]="selectedStartHour" (timeChanged)="startTimeChanged($event)">
               </ngx-timepicker-field>
             </div>
           </div>
 
         </div>
         <div class="flex  justify-center mt-2">
-          <h1>à</h1>
+          <h1 class="mr-3">à</h1>
           <div class="text-center sm:mt-0 sm:ml-4 sm:text-left">
             <div class="ngx-timepicker-field-example">
-              <ngx-timepicker-field [format]="24" [buttonAlign]="'left'" [defaultTime]="selectedFinishHour"
-                (timeChanged)="finishTimeChanged($event)">
+              <ngx-timepicker-field [format]="24" [controlOnly]="true" [buttonAlign]="'left'"
+                [defaultTime]="selectedFinishHour" (timeChanged)="finishTimeChanged($event)">
               </ngx-timepicker-field>
             </div>
           </div>

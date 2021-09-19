@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as BailleurdbActions from "../../state/bailleurdb.action";
 import { bailleurDashboardState } from '../../state/bailleurdb.state';
@@ -26,6 +26,11 @@ export class DisponibilityComponent implements OnInit {
   dates: moment.Moment[] = []
   /* @ts-ignore */
   datesAndHours: { date: moment.Moment, startHour: string, finishHour?: string }[] = [];
+  /* @ts-ignore */
+  @ViewChild('modal') modal: ElementRef;
+  /* @ts-ignore */
+  @ViewChild('calendar') calendar: ElementRef;
+
   selectedDate: any;
   selectedStartHour: any;
   selectedFinishHour: any;
@@ -36,7 +41,19 @@ export class DisponibilityComponent implements OnInit {
     this._adapter.setLocale('fr');
   }
 
-
+  @HostListener('document:click', ['$event'])
+  clickout(event: any) {
+    console.log("host listenner")
+    if (!this.modal.nativeElement.contains(event.target)) {
+      console.log("click")
+      this.backgroundSwitch = 'out';
+      this.timePickerModalShow = 'out';
+      if (!this.selectedStartHour)
+        this.datesAndHours = this.datesAndHours.filter(dateAndHour => dateAndHour.date != this.selectedDate)
+      /* @ts-ignore */
+      this.calendar.updateTodaysDate()
+    }
+  }
   select(event: any, calendar: any) {
     this.backgroundSwitch = 'in';
     this.timePickerModalShow = 'in';
