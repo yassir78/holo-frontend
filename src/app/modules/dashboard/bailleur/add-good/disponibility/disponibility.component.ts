@@ -48,7 +48,7 @@ export class DisponibilityComponent implements OnInit {
       console.log("click")
       this.backgroundSwitch = 'out';
       this.timePickerModalShow = 'out';
-      if (!this.selectedStartHour)
+      if (!this.selectedStartHour && !this.selectedFinishHour)
         this.datesAndHours = this.datesAndHours.filter(dateAndHour => dateAndHour.date != this.selectedDate)
       /* @ts-ignore */
       this.calendar.updateTodaysDate()
@@ -91,5 +91,10 @@ export class DisponibilityComponent implements OnInit {
   }
   finishTimeChanged(event: any) {
     this.selectedFinishHour = event;
+  }
+  submit(){
+    if(this.datesAndHours?.length == 0){
+      
+    }
   }
 }
