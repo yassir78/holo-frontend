@@ -1,72 +1,66 @@
 <div class=" bg-white shadow-xl pt-3 pb-10 px-3 md:px-6 pr-3 rounded-2xl ">
-  <!--  <h1>Selected Dates:</h1>
-  <div class="results">
-    <div *ngFor="let date of datesAndHours">
-      {{ date.date.zone("+09:00").format('YYYY/MM/DD') }}
-      ///
-      {{date.startHour}}
-      ///
-      {{date.finishHour}}
+  <form (ngSubmit) ="submit()">
+    <div class="py-5 border-b-2">
+      <h1 class="popping text-xl font-bold ">Disponibilité</h1>
     </div>
-  </div> -->
-  <div class="py-5 border-b-2">
-    <h1 class="popping text-xl font-bold ">Disponibilité</h1>
-  </div>
-  <div (click)="$event.stopPropagation()" class="drop-calendar">
-    <mat-calendar #calendar (selectedChange)="select($event,calendar)" [dateClass]="dateClass()"></mat-calendar>
-  </div>
-  <div *ngIf="backgroundSwitch == 'in'" class="fixed z-50 inset-0 overflow-y-auto" aria-labelledby="modal-title"
-    role="dialog" aria-modal="true">
-    <div class="flex items-end justify-center min-h-screen pt-4  pb-20 text-center sm:block sm:p-0">
-      <div [@backgroundSwitch]="backgroundSwitch" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-        aria-hidden="true"></div>
-      <!-- This element is to trick the browser into centering the modal contents. -->
-      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-      <div [@openModal]="timePickerModalShow" #modal
-        class="inline-block  bg-white rounded-lg  py-8 text-left overflow-hidden shadow-xl transform transition-all my-8 align-middle p-6">
-        <div class="flex justify-center mt-2">
-          <h1 class="mr-3">De</h1>
-          <div class="text-center sm:mt-0 sm:ml-4 sm:text-left">
-            <div class="ngx-timepicker-field-example">
-              <ngx-timepicker-field [format]="24" [controlOnly]="true" [buttonAlign]="'left'"
-                [defaultTime]="selectedStartHour" (timeChanged)="startTimeChanged($event)">
-              </ngx-timepicker-field>
+    <div (click)="$event.stopPropagation()" class="drop-calendar">
+      <mat-calendar #calendar (selectedChange)="select($event,calendar)" [dateClass]="dateClass()"></mat-calendar>
+    </div>
+    <div *ngIf="backgroundSwitch == 'in'" class="fixed z-50 inset-0 overflow-y-auto" aria-labelledby="modal-title"
+      role="dialog" aria-modal="true">
+      <div class="flex items-end justify-center min-h-screen pt-4  pb-20 text-center sm:block sm:p-0">
+        <div [@backgroundSwitch]="backgroundSwitch" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+          aria-hidden="true"></div>
+        <!-- This element is to trick the browser into centering the modal contents. -->
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+        <div [@openModal]="timePickerModalShow" #modal
+          class="inline-block  bg-white rounded-lg  py-8 text-left overflow-hidden shadow-xl transform transition-all my-8 align-middle p-6">
+          <div class="flex justify-center mt-2">
+            <h1 class="mr-3">De</h1>
+            <div class="text-center sm:mt-0 sm:ml-4 sm:text-left">
+              <div class="ngx-timepicker-field-example">
+                <ngx-timepicker-field [format]="24" [controlOnly]="true" [buttonAlign]="'left'"
+                  [defaultTime]="selectedStartHour" (timeChanged)="startTimeChanged($event)">
+                </ngx-timepicker-field>
+              </div>
             </div>
+  
           </div>
-
-        </div>
-        <div class="flex  justify-center mt-2">
-          <h1 class="mr-3">à</h1>
-          <div class="text-center sm:mt-0 sm:ml-4 sm:text-left">
-            <div class="ngx-timepicker-field-example">
-              <ngx-timepicker-field [format]="24" [controlOnly]="true" [buttonAlign]="'left'"
-                [defaultTime]="selectedFinishHour" (timeChanged)="finishTimeChanged($event)">
-              </ngx-timepicker-field>
+          <div class="flex  justify-center mt-2">
+            <h1 class="mr-3">à</h1>
+            <div class="text-center sm:mt-0 sm:ml-4 sm:text-left">
+              <div class="ngx-timepicker-field-example">
+                <ngx-timepicker-field [format]="24" [controlOnly]="true" [buttonAlign]="'left'"
+                  [defaultTime]="selectedFinishHour" (timeChanged)="finishTimeChanged($event)">
+                </ngx-timepicker-field>
+              </div>
             </div>
+  
           </div>
-
-        </div>
-        <div class="mt-5 w-full">
-          <button type="button" (click)="pickDisponibily()" [disabled]="!this.selectedStartHour"
-            [ngClass]="!this.selectedStartHour ? 'bg-gray-500 text-gray-200' : 'bg-blue-300 text-base  text-white hover:bg-blue-600'"
-            class="w-full inline-flex justify-center rounded-md border border-transparent font-medium shadow-sm px-4 py-2  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200  sm:w-full sm:text-sm">
-            Choisir
-          </button>
+          <div class="mt-5 w-full">
+            <button type="button" (click)="pickDisponibily()" [disabled]="!this.selectedStartHour"
+              [ngClass]="!this.selectedStartHour ? 'bg-gray-500 text-gray-200' : 'bg-blue-300 text-base  text-white hover:bg-blue-600'"
+              class="w-full inline-flex justify-center rounded-md border border-transparent font-medium shadow-sm px-4 py-2  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200  sm:w-full sm:text-sm">
+              Choisir
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="px-3 mt-5 flex flex-col md:flex-row justify-between">
-    <button [routerLink]="'/dashboard/bailleur/add-good/details'"
-      class="text-blue-2 px-6 py-2 rounded-md shadow font-700  text-base bg-white   btnhover font-medium flex flex-row items-center justify-center">
-      <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M3.825 6.46933L7.071 9.62524L5.657 11L4.72849e-07 5.5L5.657 -1.36883e-07L7.071 1.37476L3.832 4.52484L15 4.52484L15 6.46933L3.825 6.46933Z"
-          fill="#6FB4E1" />
-      </svg>
-      <span class="ml-2">Précédent</span>
-    </button>
-    <button type="submit"
-      class="text-white px-6 py-2 rounded-md mt-5 md:mt-0 font-700 text-base bg-blue-2 btnhover font-medium flex flex-row items-center justify-center">Suivant</button>
-  </div>
+    <div class="px-3 mt-5 flex flex-col md:flex-row justify-between">
+      <button [routerLink]="'/dashboard/bailleur/add-good/details'"
+        class="text-blue-2 px-6 py-2 rounded-md shadow font-700  text-base bg-white   btnhover font-medium flex flex-row items-center justify-center">
+        <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M3.825 6.46933L7.071 9.62524L5.657 11L4.72849e-07 5.5L5.657 -1.36883e-07L7.071 1.37476L3.832 4.52484L15 4.52484L15 6.46933L3.825 6.46933Z"
+            fill="#6FB4E1" />
+        </svg>
+        <span class="ml-2">Précédent</span>
+      </button>
+      <button type="submit"
+        class="text-white px-6 py-2 rounded-md mt-5 md:mt-0 font-700 text-base bg-blue-2 btnhover font-medium flex flex-row items-center justify-center">Suivant</button>
+    </div>
+  </form>
+ 
+  
 </div>

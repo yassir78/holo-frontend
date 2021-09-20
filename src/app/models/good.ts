@@ -1,3 +1,5 @@
+import { DateAndHours } from "./datesAndHours";
+
 export interface Good {
   status?: string;
   agencyName?: string;
@@ -35,6 +37,6 @@ export interface Good {
   propertyName?: string;
   description?: string;
   mediaFiles?: string[];
-  availabilityOfVisit?: Date;
+  availabilityOfVisit?: DateAndHours[];
 
 }
