@@ -58,11 +58,18 @@ export const addGoodReducer = createReducer(
                 description:action.description
             }
         }
-    }),
+    }),  
     on(BailleurdbActions.media, (state, action) => {
         return {
             ...state, good: { ...state.good,  
                 mediaFiles:action.mediaFiles, videoFiles:action.videoFiles
+            }
+        }
+    }),
+    on(BailleurdbActions.disponibility, (state, action) => {
+        return {
+            ...state, good: { ...state.good,  
+                availabilityOfVisit:action.availabilityOfVisit
             }
         }
     }),

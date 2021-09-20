@@ -14,20 +14,20 @@ import { Router } from '@angular/router';
 })
 export class PostComponent implements OnInit {
    /* @ts-ignore */
- good: Observable<Good>;
+ good$: Observable<Good>;
+good:Good = {};
   constructor(private store: Store<bailleurDashboardState>, private router:Router) { }
  
   ngOnInit(): void {
-    this.good = this.store.select(getGood);
-
+    this.good$ = this.store.select(getGood);
+    this.good$.subscribe(good => {
+      this.good = good;
+      console.log(this.good)
+    })
   }
    
   addGood(){
-  
-    this.good.subscribe(good => {
-      this.store.dispatch(BailleurdbActions.addGood({ good: good }))
-    })
-
-    this.router.navigate(['/good-success'])
+    this.store.dispatch(BailleurdbActions.addGood({ good: this.good }))
+    this.router.navigate(['/'])
   }
 }

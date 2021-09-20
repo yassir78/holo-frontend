@@ -1,5 +1,6 @@
 import { createAction, props } from "@ngrx/store";
 import { ModifyInstanceAttributeRequest } from "aws-sdk/clients/ec2";
+import { DateAndHours } from "src/app/models/datesAndHours";
 import { Good } from "src/app/models/good";
 import { Payslip } from "src/app/models/payslip";
 import { User } from "src/app/models/user";
@@ -84,7 +85,7 @@ export const media = createAction(
 export const disponibility = createAction(
     '[Disponibility component] add good infos to state',
     props<{
-        availabilityOfVisit: Date;
+        availabilityOfVisit:  DateAndHours[];
     }>()
 )
 export const addGood = createAction(

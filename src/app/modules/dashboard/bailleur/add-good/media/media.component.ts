@@ -43,7 +43,6 @@ export class MediaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.good = this.store.select(getGood);
 
   }
   onSelectFile(event: any) {
@@ -92,13 +91,8 @@ export class MediaComponent implements OnInit {
       mediaFiles: this.imageUrls,
       videoFiles: this.videoUrls
     }))
-
-    this.good.subscribe(good => {
-      this.store.dispatch(BailleurdbActions.addGood({ good: good }))
-    })
-
-    this.router.navigate(['/good-success'])
-    this.router.navigate(['/dashboard/bailleur/add-good/post'])
+    
+    this.router.navigate(['/dashboard/bailleur/add-good/disponibility'])
   }
   continueOnError() {
     const element = this.imageCont.nativeElement;

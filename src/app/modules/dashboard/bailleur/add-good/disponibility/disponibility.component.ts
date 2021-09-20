@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { DateAdapter } from '@angular/material/core';
 import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-disponibility',
   templateUrl: './disponibility.component.html',
@@ -25,7 +26,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 export class DisponibilityComponent implements OnInit {
   dates: moment.Moment[] = []
   /* @ts-ignore */
-  datesAndHours: { date: moment.Moment, startHour: string, finishHour?: string }[] = [];
+  datesAndHours: DateAndHours[] = [];
   /* @ts-ignore */
   @ViewChild('modal') modal: ElementRef;
   /* @ts-ignore */
@@ -34,7 +35,7 @@ export class DisponibilityComponent implements OnInit {
   selectedDate: any;
   selectedStartHour: any;
   selectedFinishHour: any;
-  constructor(private store: Store<bailleurDashboardState>, private _adapter: DateAdapter<any>) { }
+  constructor(private store: Store<bailleurDashboardState>, private _adapter: DateAdapter<any>, private router:Router) { }
   timePickerModalShow: string = 'out';
   backgroundSwitch: string = 'out';
   ngOnInit(): void {
@@ -44,7 +45,7 @@ export class DisponibilityComponent implements OnInit {
   @HostListener('document:click', ['$event'])
   clickout(event: any) {
     console.log("host listenner")
-    if (!this.modal.nativeElement.contains(event.target)) {
+    if (!this.modal?.nativeElement?.contains(event.target)) {
       console.log("click")
       this.backgroundSwitch = 'out';
       this.timePickerModalShow = 'out';
@@ -93,8 +94,21 @@ export class DisponibilityComponent implements OnInit {
     this.selectedFinishHour = event;
   }
   submit(){
-    if(this.datesAndHours?.length == 0){
-      
+    console.log( "In submit ")  
+    if(this.datesAndHours?.length != 0){
+      this.store.dispatch(BailleurdbActions.disponibility({
+        availabilityOfVisit: this.datesAndHours.map(dateAndHour=>{
+          return{ 
+            date: dateAndHour.date.format("dddd Do MMMM YYYY"),
+            startHour: dateAndHour.startHour, 
+            finishHour: dateAndHour.finishHour
+          }
+        })
+      }))
+      this.router.navigate(['/dashboard/bailleur/add-good/post'])
+
     }
+   
+
   }
 }
