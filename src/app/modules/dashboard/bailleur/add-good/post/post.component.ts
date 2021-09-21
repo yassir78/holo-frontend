@@ -16,6 +16,7 @@ export class PostComponent implements OnInit {
    /* @ts-ignore */
  good$: Observable<Good>;
 good:Good = {};
+imageUrl:string = '../../../../assets/images/bien1.png';
   constructor(private store: Store<bailleurDashboardState>, private router:Router) { }
  
   ngOnInit(): void {
@@ -23,6 +24,11 @@ good:Good = {};
     this.good$.subscribe(good => {
       this.good = good;
       console.log(this.good)
+        /* @ts-ignore */
+      if(this.good.mediaFiles[0]){
+              /* @ts-ignore */
+             this.imageUrl = this.good?.mediaFiles[0];
+      }
     })
   }
    
