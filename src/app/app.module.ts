@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { UploadFileService } from './services/uploadFileService';
+import { LazyLoadImageModule } from 'ng-lazyload-image'; // <-- import it
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { UploadFileService } from './services/uploadFileService';
       maxAge: 10
     }),
     HttpClientModule,
+    LazyLoadImageModule
   ],
 
   providers: [UploadFileService],

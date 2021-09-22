@@ -44,16 +44,21 @@ export class PriceComponent implements OnInit {
     
     this.good$ = this.store.select(getGood);
     this.good$.subscribe((good: Good) => {
-      this.good = good;
       console.log(this.good)
-      this.grossPrice?.setValue(this.good.grossPrice)
-      this.grossPriceType?.setValue(this.good.grossPriceType)
-      this.expenses?.setValue(this.good.expenses)
-      this.netPrice?.setValue(this.good.netPrice)
-      this.accessoryFees?.setValue(this.good.accessoryFees)
-      this.parking?.setValue(this.good.parking)
-      this.interior?.setValue(this.good.interior)
-      this.exterior?.setValue(this.good.exterior)
+      if(Object.keys(good).length !== 0 && good.constructor === Object){
+        this.good = good;
+        this.grossPrice?.setValue(this.good.grossPrice)
+        this.grossPriceType?.setValue(this.good.grossPriceType)
+        this.expenses?.setValue(this.good.expenses)
+        this.netPrice?.setValue(this.good.netPrice)
+        this.accessoryFees?.setValue(this.good.accessoryFees)
+        this.parking?.setValue(this.good.parking)
+        this.interior?.setValue(this.good.interior)
+        this.exterior?.setValue(this.good.exterior)
+                    /* @ts-ignore */
+        this.selectedTypeOfBrutSalaryValue  = this.good.grossPriceType
+      }
+ 
     })
   }
 

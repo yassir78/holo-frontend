@@ -11,132 +11,230 @@
                 <!-- Complete Step -->
                 <a href="#" class="relative flex items-center group">
                     <span class="h-9 flex items-center">
-                        <span class="relative z-10 w-8 h-8 flex items-center justify-center bg-blue-2 rounded-full ">
+                        <span *ngIf="!good.agencyName" routerLink="/dashboard/bailleur/add-good/information"
+                            [routerLinkActive]="['bg-blue-2','border-none']"
+                            class="relative z-10 w-8 h-8 flex items-center justify-center bg-white  rounded-full  border-2 border-gray-400">
                             <!-- Heroicon name: solid/check -->
-                            <span class="text-white text-base popping font-bold">1</span>
+                            <span routerLink="/dashboard/bailleur/add-good/information"
+                                [routerLinkActive]="['text-white']"
+                                class="text-gray-400 text-base popping font-bold">1</span>
+                        </span>
+                        <span *ngIf="good.agencyName" routerLink="/dashboard/bailleur/add-good/information"
+                            [routerLinkActive]="['bg-blue-2','border-none']"
+                            class="relative z-10 w-8 h-8 flex items-center justify-center bg-white  rounded-full  border-2 bg-green-3">
+                            <!-- Heroicon name: solid/check -->
+                            <svg width="15" height="12" viewBox="0 0 15 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.8538 1.85378L13.8535 1.85355L13.8538 1.85378ZM13.8538 1.85378L13.854 1.85401L13.8538 1.85378ZM12.7929 0.792864L12.7929 0.792888L5.04147 8.54431L2.20715 5.70996C2.20713 5.70995 2.20712 5.70993 2.2071 5.70992C1.81657 5.31934 1.18339 5.31942 0.792887 5.70992C0.402358 6.10045 0.402391 6.73358 0.792864 7.12411L0.792887 7.12413L4.3344 10.6656C4.72481 11.0561 5.35809 11.0562 5.74862 10.6656L5.39506 10.3121L5.74862 10.6656L14.2071 2.2071L14.2071 2.20708C14.5976 1.81656 14.5976 1.18344 14.2071 0.79291C13.8166 0.402338 13.1834 0.402404 12.7929 0.792864Z"
+                                    fill="white" stroke="white" />
+                            </svg>
+
                         </span>
                     </span>
                     <span class="ml-4 min-w-0 flex flex-col">
-                        <span
-                            class=" text-base  font-semibold tracking-wide uppercase text-blue-2 popping truncate">INFORMATIONS</span>
+                        <span routerLink="/dashboard/bailleur/add-good/information" [routerLinkActive]="['text-blue-2']"
+                            class=" text-base  font-semibold tracking-wide uppercase text-gray-400 popping truncate">INFORMATIONS</span>
                     </span>
                 </a>
             </li>
 
             <li class="relative pb-10">
-                <div class="-ml-px absolute mt-0.5 top-4 left-4 w-0.5 h-full border-dashed	  border-l-2 border-gray-400	"
+                <div class="-ml-px absolute mt-0.5 top-2 left-4 w-0.5 h-full border-dashed	  border-l-2 border-gray-400	"
                     aria-hidden="true"></div>
-                <!-- Current Step -->
-                <a href="#" class="relative flex items-center group" aria-current="step">
+                <!-- Complete Step -->
+                <a class="relative flex items-center group">
                     <span class="h-9 flex items-center">
-                        <span
-                            class="relative z-10 w-8 h-8 flex items-center justify-center bg-white rounded-full border-2 border-gray-400 ">
+                        <span *ngIf="!good.numberOfPieces" routerLink="/dashboard/bailleur/add-good/details"
+                            [routerLinkActive]="['bg-blue-2','border-none']"
+                            class="relative z-10 w-8 h-8 flex items-center justify-center bg-white  rounded-full  border-2 border-gray-400">
                             <!-- Heroicon name: solid/check -->
-                            <span class="text-gray-400 text-base popping font-bold">2</span>
+                            <span routerLink="/dashboard/bailleur/add-good/details" [routerLinkActive]="['text-white']"
+                                class="text-gray-400 text-base popping font-bold">2</span>
+                        </span>
+                        <span *ngIf="good.numberOfPieces" routerLink="/dashboard/bailleur/add-good/information"
+                            [routerLinkActive]="['bg-blue-2','border-none']"
+                            class="relative z-10 w-8 h-8 flex items-center justify-center bg-white  rounded-full  border-2 bg-green-3">
+                            <!-- Heroicon name: solid/check -->
+                            <svg width="15" height="12" viewBox="0 0 15 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.8538 1.85378L13.8535 1.85355L13.8538 1.85378ZM13.8538 1.85378L13.854 1.85401L13.8538 1.85378ZM12.7929 0.792864L12.7929 0.792888L5.04147 8.54431L2.20715 5.70996C2.20713 5.70995 2.20712 5.70993 2.2071 5.70992C1.81657 5.31934 1.18339 5.31942 0.792887 5.70992C0.402358 6.10045 0.402391 6.73358 0.792864 7.12411L0.792887 7.12413L4.3344 10.6656C4.72481 11.0561 5.35809 11.0562 5.74862 10.6656L5.39506 10.3121L5.74862 10.6656L14.2071 2.2071L14.2071 2.20708C14.5976 1.81656 14.5976 1.18344 14.2071 0.79291C13.8166 0.402338 13.1834 0.402404 12.7929 0.792864Z"
+                                    fill="white" stroke="white" />
+                            </svg>
+
                         </span>
                     </span>
                     <span class="ml-4 min-w-0 flex flex-col">
-                        <span
-                            class="text-base font-semibold tracking-wide uppercase text-gray-400 popping truncate">DETAILS</span>
+                        <span routerLink="/dashboard/bailleur/add-good/details" [routerLinkActive]="['text-blue-2']"
+                            class=" text-base  font-semibold tracking-wide uppercase text-gray-400 popping truncate">DETAILS</span>
                     </span>
                 </a>
             </li>
 
             <li class="relative pb-10">
-                <div class="-ml-px absolute mt-0.5 top-4 left-4 w-0.5 h-full border-dashed	  border-l-2 border-gray-400	"
+                <div class="-ml-px absolute mt-0.5 top-2 left-4 w-0.5 h-full border-dashed	  border-l-2 border-gray-400	"
                     aria-hidden="true"></div>
-                <!-- Upcoming Step -->
-                <a href="#" class="relative flex items-center group">
+                <!-- Complete Step -->
+                <a class="relative flex items-center group">
                     <span class="h-9 flex items-center">
-                        <span
-                            class="relative z-10 w-8 h-8 flex items-center justify-center bg-white rounded-full border-2 border-gray-400 ">
+                        <span *ngIf="!good.netPrice" routerLink="/dashboard/bailleur/add-good/price"
+                            [routerLinkActive]="['bg-blue-2','border-none']"
+                            class="relative z-10 w-8 h-8 flex items-center justify-center bg-white  rounded-full  border-2 border-gray-400">
                             <!-- Heroicon name: solid/check -->
-                            <span class="text-gray-400 text-base popping font-bold">3</span>
+                            <span routerLink="/dashboard/bailleur/add-good/price" [routerLinkActive]="['text-white']"
+                                class="text-gray-400 text-base popping font-bold">3</span>
+                        </span>
+                        <span *ngIf="good.netPrice" routerLink="/dashboard/bailleur/add-good/information"
+                            [routerLinkActive]="['bg-blue-2','border-none']"
+                            class="relative z-10 w-8 h-8 flex items-center justify-center bg-white  rounded-full  border-2 bg-green-3">
+                            <!-- Heroicon name: solid/check -->
+                            <svg width="15" height="12" viewBox="0 0 15 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.8538 1.85378L13.8535 1.85355L13.8538 1.85378ZM13.8538 1.85378L13.854 1.85401L13.8538 1.85378ZM12.7929 0.792864L12.7929 0.792888L5.04147 8.54431L2.20715 5.70996C2.20713 5.70995 2.20712 5.70993 2.2071 5.70992C1.81657 5.31934 1.18339 5.31942 0.792887 5.70992C0.402358 6.10045 0.402391 6.73358 0.792864 7.12411L0.792887 7.12413L4.3344 10.6656C4.72481 11.0561 5.35809 11.0562 5.74862 10.6656L5.39506 10.3121L5.74862 10.6656L14.2071 2.2071L14.2071 2.20708C14.5976 1.81656 14.5976 1.18344 14.2071 0.79291C13.8166 0.402338 13.1834 0.402404 12.7929 0.792864Z"
+                                    fill="white" stroke="white" />
+                            </svg>
+
                         </span>
                     </span>
                     <span class="ml-4 min-w-0 flex flex-col">
-                        <span
-                            class="text-base font-semibold tracking-wide uppercase text-gray-400 popping truncate">Prix</span>
+                        <span routerLink="/dashboard/bailleur/add-good/price" [routerLinkActive]="['text-blue-2']"
+                            class=" text-base  font-semibold tracking-wide uppercase text-gray-400 popping truncate">PRIX</span>
                     </span>
                 </a>
             </li>
 
+
             <li class="relative pb-10">
-                <div class="-ml-px absolute mt-0.5 top-4 left-4 w-0.5 h-full border-dashed	  border-l-2 border-gray-400	"
+                <div class="-ml-px absolute mt-0.5 top-2 left-4 w-0.5 h-full border-dashed	  border-l-2 border-gray-400	"
                     aria-hidden="true"></div>
-                <!-- Upcoming Step -->
-                <a href="#" class="relative flex items-center group">
+                <!-- Complete Step -->
+                <a class="relative flex items-center group">
                     <span class="h-9 flex items-center">
-                        <span
-                            class="relative z-10 w-8 h-8 flex items-center justify-center bg-white rounded-full border-2 border-gray-400 ">
+                        <span *ngIf="!good.propertyName" routerLink="/dashboard/bailleur/add-good/description"
+                            [routerLinkActive]="['bg-blue-2','border-none']"
+                            class="relative z-10 w-8 h-8 flex items-center justify-center bg-white  rounded-full  border-2 border-gray-400">
                             <!-- Heroicon name: solid/check -->
-                            <span class="text-gray-400 text-base popping font-bold">4</span>
+                            <span routerLink="/dashboard/bailleur/add-good/description"
+                                [routerLinkActive]="['text-white']"
+                                class="text-gray-400 text-base popping font-bold">4</span>
+                        </span>
+                        <span *ngIf="good.propertyName" routerLink="/dashboard/bailleur/add-good/information"
+                            [routerLinkActive]="['bg-blue-2','border-none']"
+                            class="relative z-10 w-8 h-8 flex items-center justify-center bg-white  rounded-full  border-2 bg-green-3">
+                            <!-- Heroicon name: solid/check -->
+                            <svg width="15" height="12" viewBox="0 0 15 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.8538 1.85378L13.8535 1.85355L13.8538 1.85378ZM13.8538 1.85378L13.854 1.85401L13.8538 1.85378ZM12.7929 0.792864L12.7929 0.792888L5.04147 8.54431L2.20715 5.70996C2.20713 5.70995 2.20712 5.70993 2.2071 5.70992C1.81657 5.31934 1.18339 5.31942 0.792887 5.70992C0.402358 6.10045 0.402391 6.73358 0.792864 7.12411L0.792887 7.12413L4.3344 10.6656C4.72481 11.0561 5.35809 11.0562 5.74862 10.6656L5.39506 10.3121L5.74862 10.6656L14.2071 2.2071L14.2071 2.20708C14.5976 1.81656 14.5976 1.18344 14.2071 0.79291C13.8166 0.402338 13.1834 0.402404 12.7929 0.792864Z"
+                                    fill="white" stroke="white" />
+                            </svg>
+
                         </span>
                     </span>
                     <span class="ml-4 min-w-0 flex flex-col">
-                        <span
-                            class="text-base font-semibold tracking-wide uppercase text-gray-400 popping truncate">DESCRIPTION</span>
+                        <span routerLink="/dashboard/bailleur/add-good/media" [routerLinkActive]="['text-blue-2']"
+                            class=" text-base  font-semibold tracking-wide uppercase text-gray-400 popping truncate">DESCRIPTION</span>
                     </span>
                 </a>
             </li>
             <li class="relative pb-10">
-                <div class="-ml-px absolute mt-0.5 top-4 left-4 w-0.5 h-full border-dashed	  border-l-2 border-gray-400	"
+                <div class="-ml-px absolute mt-0.5 top-2 left-4 w-0.5 h-full border-dashed	  border-l-2 border-gray-400	"
                     aria-hidden="true"></div>
-                <!-- Upcoming Step -->
-                <a href="#" class="relative flex items-center group">
+                <!-- Complete Step -->
+                <a class="relative flex items-center group">
                     <span class="h-9 flex items-center">
-                        <span
-                            class="relative z-10 w-8 h-8 flex items-center justify-center bg-white rounded-full border-2 border-gray-400 ">
+                        <span *ngIf="!good?.mediaFiles" routerLink="/dashboard/bailleur/add-good/media"
+                            [routerLinkActive]="['bg-blue-2','border-none']"
+                            class="relative z-10 w-8 h-8 flex items-center justify-center bg-white  rounded-full  border-2 border-gray-400">
                             <!-- Heroicon name: solid/check -->
-                            <span class="text-gray-400 text-base popping font-bold">5</span>
+                            <span routerLink="/dashboard/bailleur/add-good/media" [routerLinkActive]="['text-white']"
+                                class="text-gray-400 text-base popping font-bold">5</span>
+                        </span>
+                        <span *ngIf="good?.mediaFiles" routerLink="/dashboard/bailleur/add-good/information"
+                            [routerLinkActive]="['bg-blue-2','border-none']"
+                            class="relative z-10 w-8 h-8 flex items-center justify-center bg-white  rounded-full  border-2 bg-green-3">
+                            <!-- Heroicon name: solid/check -->
+                            <svg width="15" height="12" viewBox="0 0 15 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.8538 1.85378L13.8535 1.85355L13.8538 1.85378ZM13.8538 1.85378L13.854 1.85401L13.8538 1.85378ZM12.7929 0.792864L12.7929 0.792888L5.04147 8.54431L2.20715 5.70996C2.20713 5.70995 2.20712 5.70993 2.2071 5.70992C1.81657 5.31934 1.18339 5.31942 0.792887 5.70992C0.402358 6.10045 0.402391 6.73358 0.792864 7.12411L0.792887 7.12413L4.3344 10.6656C4.72481 11.0561 5.35809 11.0562 5.74862 10.6656L5.39506 10.3121L5.74862 10.6656L14.2071 2.2071L14.2071 2.20708C14.5976 1.81656 14.5976 1.18344 14.2071 0.79291C13.8166 0.402338 13.1834 0.402404 12.7929 0.792864Z"
+                                    fill="white" stroke="white" />
+                            </svg>
+
                         </span>
                     </span>
                     <span class="ml-4 min-w-0 flex flex-col">
-                        <span
-                            class="text-base font-semibold tracking-wide uppercase text-gray-400 popping truncate">PHOTO
-                            / VIDEO</span>
+                        <span routerLink="/dashboard/bailleur/add-good/media" [routerLinkActive]="['text-blue-2']"
+                            class=" text-base  font-semibold tracking-wide uppercase text-gray-400 popping truncate">PHOTO
+                            / VIDEO </span>
                     </span>
                 </a>
             </li>
             <li class="relative pb-10">
-                <div class="-ml-px absolute mt-0.5 top-4 left-4 w-0.5 h-full border-dashed	  border-l-2 border-gray-400	"
+                <div class="-ml-px absolute mt-0.5 top-2 left-4 w-0.5 h-full border-dashed	  border-l-2 border-gray-400	"
                     aria-hidden="true"></div>
-                <!-- Upcoming Step -->
-                <a href="#" class="relative flex items-center group">
+                <!-- Complete Step -->
+                <a class="relative flex items-center group">
                     <span class="h-9 flex items-center">
-                        <span
-                            class="relative z-10 w-8 h-8 flex items-center justify-center bg-white rounded-full border-2 border-gray-400 ">
+                        <span *ngIf="!good?.availabilityOfVisit" routerLink="/dashboard/bailleur/add-good/disponibility"
+                            [routerLinkActive]="['bg-blue-2','border-none']"
+                            class="relative z-10 w-8 h-8 flex items-center justify-center bg-white  rounded-full  border-2 border-gray-400">
                             <!-- Heroicon name: solid/check -->
-                            <span class="text-gray-400 text-base popping font-bold">6</span>
+                            <span routerLink="/dashboard/bailleur/add-good/disponibility"
+                                [routerLinkActive]="['text-white']"
+                                class="text-gray-400 text-base popping font-bold">6</span>
+                        </span>
+                        <span *ngIf="good.availabilityOfVisit" routerLink="/dashboard/bailleur/add-good/information"
+                            [routerLinkActive]="['bg-blue-2','border-none']"
+                            class="relative z-10 w-8 h-8 flex items-center justify-center bg-white  rounded-full  border-2 bg-green-3">
+                            <!-- Heroicon name: solid/check -->
+                            <svg width="15" height="12" viewBox="0 0 15 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.8538 1.85378L13.8535 1.85355L13.8538 1.85378ZM13.8538 1.85378L13.854 1.85401L13.8538 1.85378ZM12.7929 0.792864L12.7929 0.792888L5.04147 8.54431L2.20715 5.70996C2.20713 5.70995 2.20712 5.70993 2.2071 5.70992C1.81657 5.31934 1.18339 5.31942 0.792887 5.70992C0.402358 6.10045 0.402391 6.73358 0.792864 7.12411L0.792887 7.12413L4.3344 10.6656C4.72481 11.0561 5.35809 11.0562 5.74862 10.6656L5.39506 10.3121L5.74862 10.6656L14.2071 2.2071L14.2071 2.20708C14.5976 1.81656 14.5976 1.18344 14.2071 0.79291C13.8166 0.402338 13.1834 0.402404 12.7929 0.792864Z"
+                                    fill="white" stroke="white" />
+                            </svg>
+
                         </span>
                     </span>
                     <span class="ml-4 min-w-0 flex flex-col">
-                        <span
-                            class="text-base font-semibold tracking-wide uppercase text-gray-400 popping truncate">DISPONIBILITé
+                        <span routerLink="/dashboard/bailleur/add-good/disponibility"
+                            [routerLinkActive]="['text-blue-2']"
+                            class=" text-base  font-semibold tracking-wide uppercase text-gray-400 popping truncate">DISPONIBILITé
                             DE LA
                             VISITE</span>
                     </span>
                 </a>
             </li>
             <li class="relative pb-10">
-                <!-- Upcoming Step -->
-                <a href="#" class="relative flex items-center group">
+                <a class="relative flex items-center group">
                     <span class="h-9 flex items-center">
-                        <span
-                            class="relative z-10 w-8 h-8 flex items-center justify-center bg-white rounded-full border-2 border-gray-400 ">
+                        <span *ngIf="router.url != '/dashboard/bailleur/add-good/post'"
+                            class="relative z-10 w-8 h-8 flex items-center justify-center  bg-white  rounded-full  border-2 border-gray-400">
                             <!-- Heroicon name: solid/check -->
-                            <span class="text-gray-400 text-base popping font-bold">7</span>
+                            <span routerLink="/dashboard/bailleur/add-good/post"
+                                class="text-gray-400  text-base popping font-bold">7</span>
+                        </span>
+                        <span *ngIf="router.url === '/dashboard/bailleur/add-good/post'"
+                            class="relative z-10 w-8 h-8 flex items-center justify-center bg-white  rounded-full  border-2 bg-green-3">
+                            <!-- Heroicon name: solid/check -->
+                            <svg width="15" height="12" viewBox="0 0 15 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.8538 1.85378L13.8535 1.85355L13.8538 1.85378ZM13.8538 1.85378L13.854 1.85401L13.8538 1.85378ZM12.7929 0.792864L12.7929 0.792888L5.04147 8.54431L2.20715 5.70996C2.20713 5.70995 2.20712 5.70993 2.2071 5.70992C1.81657 5.31934 1.18339 5.31942 0.792887 5.70992C0.402358 6.10045 0.402391 6.73358 0.792864 7.12411L0.792887 7.12413L4.3344 10.6656C4.72481 11.0561 5.35809 11.0562 5.74862 10.6656L5.39506 10.3121L5.74862 10.6656L14.2071 2.2071L14.2071 2.20708C14.5976 1.81656 14.5976 1.18344 14.2071 0.79291C13.8166 0.402338 13.1834 0.402404 12.7929 0.792864Z"
+                                    fill="white" stroke="white" />
+                            </svg>
+
                         </span>
                     </span>
                     <span class="ml-4 min-w-0 flex flex-col">
-                        <span
-                            class="text-base  tracking-wide uppercase text-gray-400 popping font-semibold truncate">PUBLICATION</span>
+                        <span routerLink="/dashboard/bailleur/add-good/post" [routerLinkActive]="['text-blue-2']"
+                            class=" text-base  font-semibold tracking-wide uppercase text-gray-400 popping truncate">PUBLICATION</span>
                     </span>
                 </a>
             </li>
-
-
-
         </ol>
     </div>
 </div>

@@ -44,15 +44,19 @@ export class MediaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
+    this.videoUrls = [];
+    this.imageUrls  = [];
     this.good$ = this.store.select(getGood);
     this.good$.subscribe(good => {
-      this.good = good;
       console.log(this.good)
+      if(Object.keys(good).length !== 0 && good.constructor === Object){
+        this.good = good;
         /* @ts-ignore */
       this.imageUrls = this.good.mediaFiles;
               /* @ts-ignore */
       this.videoUrls = this.good.videoFiles
+
+      }
     })
 
   }
@@ -217,5 +221,9 @@ export class MediaComponent implements OnInit {
       this.deleteImageFromCloud(file);
     })
     this.uploadImage(file);
+  }
+
+  goToDesc(){
+    this.router.navigate(['/dashboard/bailleur/add-good/description'])
   }
 }

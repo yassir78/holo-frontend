@@ -1,7 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -31,7 +31,7 @@ export class InformationComponent implements OnInit {
   selectRegieDropDown$: Observable<boolean> = this._selectRegieDropDown.asObservable();
   _selectRegionDropDown: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   selectRegionDropDown$: Observable<boolean> = this._selectRegionDropDown.asObservable();
-  biens: String[] = ['Appartements', 'Meublé', 'Villas / Maison', 'Commerciaux', 'Terrain', 'Immeuble', 'Logt vacances', 'Parkings']
+  biens: string[] = ['Appartements', 'Meublé', 'Villas / Maison', 'Commerciaux', 'Terrain', 'Immeuble', 'Logt vacances', 'Parkings']
   selectedRegieValue: string = 'Choisissez une régie';
   selectedRegionValue: string = 'Choisissez une région';
   /* @ts-ignore */
@@ -53,7 +53,7 @@ export class InformationComponent implements OnInit {
     gardenArea: new FormControl('', Validators.required),
 
   })
-  constructor(private store: Store<bailleurDashboardState>, private router: Router, private uploadService: UploadFileService) { }
+  constructor(  public fb: FormBuilder,private store: Store<bailleurDashboardState>, private router: Router, private uploadService: UploadFileService) { }
   ngOnInit(): void {
     this.selectRegieDropDown$.subscribe(value => {
       if (!value) {
@@ -84,20 +84,36 @@ export class InformationComponent implements OnInit {
 
     this.good$ = this.store.select(getGood);
     this.good$.subscribe(good => {
-      this.good = good;
       console.log(this.good)
-     
-      this.status?.setValue(this.good.status)
-      this.agencyName?.setValue(this.agencyName)
-      this.agencyForm?.setValue(this.good.agencyForm)
-      //this.propertyType?.setValue(this.good.propertyType)
-      this.availablity?.setValue(this.availablity)
-      this.state?.setValue(this.good.state)
-      this.zipCode?.setValue(this.good.zipCode)
-      this.address?.setValue(this.address)
-      this.livingSpace?.setValue(this.good.livingSpace)
-      this.terraceArea?.setValue(this.good.terraceArea)
-      this.gardenArea?.setValue(this.gardenArea)
+      if(Object.keys(good).length !== 0 && good.constructor === Object){
+        this.good = good;
+          this.status?.setValue(this.good.status)
+          this.agencyName?.setValue(this.good.agencyName)
+          this.agencyForm?.setValue(this.good.agencyForm)
+           
+                                          /* @ts-ignore */
+          console.log( JSON.stringify(this.good.propertyType));
+          const typeDeBienArray = <FormArray>this.informationForm.controls.propertyType;
+                   /* @ts-ignore */
+          this.good.propertyType.forEach(value => {
+            typeDeBienArray.push(new FormControl(value))
+          })
+                                /* @ts-ignore */
+         // this.propertyType?.setValue(JSON.stringify(this.good.propertyType))
+          this.availablity?.setValue(this.good.availablity)
+          this.state?.setValue(this.good.state)
+          this.zipCode?.setValue(this.good.zipCode)
+          this.address?.setValue(this.good.address)
+          this.livingSpace?.setValue(this.good.livingSpace)
+          this.terraceArea?.setValue(this.good.terraceArea)
+          this.gardenArea?.setValue(this.good.gardenArea)
+                      /* @ts-ignore */
+          this.selectedRegionValue = this.good.state;
+                            /* @ts-ignore */
+          this.selectedRegieValue = this.good.agencyName;
+                                  /* @ts-ignore */
+          this.venteOuLocation = this.good.status;
+        }
       
     })
   }

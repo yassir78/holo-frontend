@@ -26,6 +26,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @NgModule({
   declarations: [
@@ -55,8 +56,8 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
       "good", addGoodReducer
     ),
     EffectsModule.forFeature([BailleurDBEffect]),
-    NgxMaterialTimepickerModule.setLocale('fr-FR')
-
+    NgxMaterialTimepickerModule.setLocale('fr-FR'),
+    LazyLoadImageModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },

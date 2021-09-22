@@ -363,7 +363,7 @@
                         <div class="relative flex items-start">
                             <div class="flex items-end h-5">
                                 <input id="comments" aria-describedby="comments-description" name="comments"
-                                    (change)="typeDeProximiteValue(prox,$event)" type="checkbox"
+                                    (change)="typeDeProximiteValue(prox,$event)" type="checkbox" [checked]="this.good.proximity?.includes(prox)"
                                     class=" form-checkbox text-blue-2 focus:ring-0 border-gray-300 p-2 rounded-md ">
                             </div>
                             <div class="ml-3 ">
@@ -387,7 +387,7 @@
                         <div class="relative flex items-start">
                             <div class="flex items-end h-5">
                                 <input id="comments" aria-describedby="comments-description" name="comments"
-                                    (change)="typeExtraValue(extra,$event)" type="checkbox"
+                                    (change)="typeExtraValue(extra,$event)" type="checkbox"  [checked]="this.good.extra?.includes(extra)"
                                     class=" form-checkbox text-blue-2 focus:ring-0 border-gray-300 p-2 rounded-md ">
                             </div>
                             <div class="ml-3 ">

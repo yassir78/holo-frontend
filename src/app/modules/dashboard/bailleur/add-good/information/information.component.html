@@ -82,8 +82,8 @@
                     <legend class="sr-only">{{bien}}</legend>
                     <div class="relative flex items-start">
                         <div class="flex items-end h-5">
-                            <input id="logtVacances" aria-describedby="comments-description" name="comments"
-                                type="checkbox"
+                            <input id="logtVacances" aria-describedby="comments-description" name="comments" 
+                                type="checkbox" [checked]="this.good.propertyType?.includes(bien)"
                                 class=" form-checkbox text-blue-2 focus:ring-0 border-gray-300 p-2 rounded-md "
                                 (change)="typeDeBienValue(bien,$event)">
                         </div>

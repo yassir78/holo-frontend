@@ -24,8 +24,8 @@ export class DetailsComponent implements OnInit {
  /* @ts-ignore */
  good$: Observable<Good>;
 good:Good = {};
-  proximites: String[] = ['Autoroute', 'Gare', 'Aéroport', 'Jardin d’enfants', 'Ecole secondaire', 'Commerces', 'Trans. public']
-  extras: String[] = ['Lumineux', 'Véranda/terrasse', 'Ascenseur', 'Accès handicapés', 'Cheminée', 'Air conditionné', 'Piscine', 'Jardin', 'Neuf', 'Ascenseur', 'Attique', 'Baignoire', 'Cuisine équipée', 'Douche', 'Jardin', 'Meublé']
+  proximites: string[] = ['Autoroute', 'Gare', 'Aéroport', 'Jardin d’enfants', 'Ecole secondaire', 'Commerces', 'Trans. public']
+  extras: string[] = ['Lumineux', 'Véranda/terrasse', 'Ascenseur', 'Accès handicapés', 'Cheminée', 'Air conditionné', 'Piscine', 'Jardin', 'Neuf', 'Ascenseur', 'Attique', 'Baignoire', 'Cuisine équipée', 'Douche', 'Jardin', 'Meublé']
 
   _selectViewDropDown: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   selectViewDropDown$: Observable<boolean> = this._selectViewDropDown.asObservable();
@@ -42,7 +42,7 @@ good:Good = {};
   _selectEnvironmentDropDown: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   selectEnvironmentDropDown$: Observable<boolean> = this._selectEnvironmentDropDown.asObservable()
   selectedEnvironmentValue: string = 'Choisissez un environment';
-
+  
 
   detailsForm: FormGroup = new FormGroup({
     numberOfPieces: new FormControl('', Validators.required),
@@ -119,22 +119,45 @@ good:Good = {};
 
     this.good$ = this.store.select(getGood);
     this.good$.subscribe(good => {
-      this.good = good;
       console.log(this.good)
-      this.numberOfPieces?.setValue(this.good.numberOfPieces)
-      this.numberOfRooms?.setValue(this.good.numberOfRooms)
-      this.numberOfWC?.setValue(this.good.numberOfWC)
-      this.numberOfFloors?.setValue(this.good.numberOfFloors)
-      this.FloorOfTheApartment?.setValue(this.good.FloorOfTheApartment)
-      this.yearOfBuilding?.setValue(this.good.yearOfBuilding)
-      this.yearOfRenovation?.setValue(this.good.yearOfRenovation)
-      this.view?.setValue(this.good.view)
-      this.orientation?.setValue(this.good.orientation)
-      this.heatingTypeSystem?.setValue(this.good.heatingTypeSystem)
-      this.environment?.setValue(this.good.environment)
-      this.proximity?.setValue(this.good.proximity)
-      this.extra?.setValue(this.good.extra)
-      
+      if(Object.keys(good).length !== 0 && good.constructor === Object){
+        this.good = good;
+        this.numberOfPieces?.setValue(this.good.numberOfPieces)
+        this.numberOfRooms?.setValue(this.good.numberOfRooms)
+        this.numberOfBathRooms?.setValue(this.good.numberOfBathRooms)
+        this.numberOfWC?.setValue(this.good.numberOfWC)
+        this.numberOfFloors?.setValue(this.good.numberOfFloors)
+        this.FloorOfTheApartment?.setValue(this.good.FloorOfTheApartment)
+        this.yearOfBuilding?.setValue(this.good.yearOfBuilding)
+        this.yearOfRenovation?.setValue(this.good.yearOfRenovation)
+        this.view?.setValue(this.good.view)
+        this.orientation?.setValue(this.good.orientation)
+        this.heatingTypeSystem?.setValue(this.good.heatingTypeSystem)
+        this.environment?.setValue(this.good.environment)
+        //this.proximity?.setValue(this.good.proximity)
+        //this.extra?.setValue(this.good.extra)
+                    /* @ts-ignore */
+        this.selectedViewValue = this.good.view
+                    /* @ts-ignore */
+        this.selectedOrientationValue = this.good.orientation
+                    /* @ts-ignore */
+        this.selectedHeatingTypeSystemValue = this.good.heatingTypeSystem
+                    /* @ts-ignore */
+        this.selectedEnvironmentValue = this.good.environment
+  
+        const typeProx = <FormArray>this.detailsForm.controls.proximity;
+              /* @ts-ignore */
+        this.good.proximity.forEach(value => {
+          typeProx.push(new FormControl(value))
+        })
+        const typeExtra = <FormArray>this.detailsForm.controls.extra;
+              /* @ts-ignore */
+        this.good.extra.forEach(value => {
+          typeExtra.push(new FormControl(value))
+        })
+        
+      }
+ 
     })
   }
 

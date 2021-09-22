@@ -22,7 +22,7 @@ export class DescriptionComponent implements OnInit, OnDestroy {
   descriptionBien: string = "<p style='color:red'>Description de votre bien . . .</p>";
   descForm: FormGroup = new FormGroup({
     propertyName: new FormControl('', Validators.required),
-    description: new FormControl('', Validators.required)
+    description: new FormControl("", Validators.required)
 
   })
   constructor(private store: Store<bailleurDashboardState>, private router: Router) {
@@ -34,10 +34,16 @@ export class DescriptionComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.good$ = this.store.select(getGood);
     this.good$.subscribe((good: Good) => {
-      this.good = good;
+
       console.log(this.good)
+      if(Object.keys(good).length !== 0 && good.constructor === Object){
+        this.good = good;
       this.propertyName?.setValue(this.good.propertyName)
       this.description?.setValue(this.good.description)
+                          /* @ts-ignore */
+      this.descriptionBien = this.good.description;
+
+      }
     })
   }
 
