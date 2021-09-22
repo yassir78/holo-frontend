@@ -7,6 +7,7 @@ import { GoodcardComponent } from './goodcard/goodcard.component';
 import { ResponsivenavComponent } from './responsivenav/responsivenav.component';
 import { RouterModule } from '@angular/router';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { GetValuesPipePipe } from './pipes/get-values-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
     SidenavComponent,
     GoodcardComponent,
     ResponsivenavComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    GetValuesPipePipe
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
     SidenavComponent,
     GoodcardComponent,
     ResponsivenavComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    GetValuesPipePipe
   ]
 })
 export class SharedModule { }

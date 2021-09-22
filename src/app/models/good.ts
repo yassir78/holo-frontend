@@ -38,5 +38,5 @@ export interface Good {
   description?: string;
   mediaFiles?: string[];
   availabilityOfVisit?: DateAndHours[];
-
+  videoFiles?: string[];
 }
