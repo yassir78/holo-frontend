@@ -5,6 +5,8 @@ import * as BailleurdbActions from "../../state/bailleurdb.action";
 import { bailleurDashboardState } from '../../state/bailleurdb.state';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
+import { Good } from 'src/app/models/good';
+import { getGood } from '../../state/bailleurdb.selector';
 @Component({
   selector: 'app-price',
   templateUrl: './price.component.html',
@@ -18,6 +20,9 @@ import { Router } from '@angular/router';
   ]
 })
 export class PriceComponent implements OnInit {
+   /* @ts-ignore */
+ good$: Observable<Good>;
+ good:Good = {};
   selectTypeOfBrutSalaryDropDown: boolean = false;
   selectedTypeOfBrutSalaryValue: string = 'Par mois';
 
@@ -36,6 +41,20 @@ export class PriceComponent implements OnInit {
   constructor(private store: Store<bailleurDashboardState>, private router: Router) { }
 
   ngOnInit(): void {
+    
+    this.good$ = this.store.select(getGood);
+    this.good$.subscribe((good: Good) => {
+      this.good = good;
+      console.log(this.good)
+      this.grossPrice?.setValue(this.good.grossPrice)
+      this.grossPriceType?.setValue(this.good.grossPriceType)
+      this.expenses?.setValue(this.good.expenses)
+      this.netPrice?.setValue(this.good.netPrice)
+      this.accessoryFees?.setValue(this.good.accessoryFees)
+      this.parking?.setValue(this.good.parking)
+      this.interior?.setValue(this.good.interior)
+      this.exterior?.setValue(this.good.exterior)
+    })
   }
 
   get grossPrice(){

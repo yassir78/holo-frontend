@@ -7,6 +7,8 @@ import { DateAdapter } from '@angular/material/core';
 import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Router } from '@angular/router';
+import { Good } from 'src/app/models/good';
+import { getGood } from '../../state/bailleurdb.selector';
 @Component({
   selector: 'app-disponibility',
   templateUrl: './disponibility.component.html',
@@ -24,6 +26,9 @@ import { Router } from '@angular/router';
   ])]
 })
 export class DisponibilityComponent implements OnInit {
+   /* @ts-ignore */
+ good$: Observable<Good>;
+ good:Good = {};
   dates: moment.Moment[] = []
   /* @ts-ignore */
   datesAndHours: DateAndHours[] = [];
@@ -40,6 +45,15 @@ export class DisponibilityComponent implements OnInit {
   backgroundSwitch: string = 'out';
   ngOnInit(): void {
     this._adapter.setLocale('fr');
+    
+    this.good$ = this.store.select(getGood);
+    this.good$.subscribe((good: Good) => {
+      this.good = good;
+      console.log(this.good)
+        /* @ts-ignore */
+      this.datesAndHours = this.good.availabilityOfVisit
+      
+    })
   }
 
   @HostListener('document:click', ['$event'])

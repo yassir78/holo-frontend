@@ -26,8 +26,9 @@ import { getGood } from '../../state/bailleurdb.selector';
   ])]
 })
 export class MediaComponent implements OnInit {
-    /* @ts-ignore */
- good: Observable<Good>;
+  /* @ts-ignore */
+  good$: Observable<Good>;
+  good:Good = {};
   url: any;
   format: any;
   errorModalShow: string = 'out';
@@ -43,6 +44,16 @@ export class MediaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
+    this.good$ = this.store.select(getGood);
+    this.good$.subscribe(good => {
+      this.good = good;
+      console.log(this.good)
+        /* @ts-ignore */
+      this.imageUrls = this.good.mediaFiles;
+              /* @ts-ignore */
+      this.videoUrls = this.good.videoFiles
+    })
 
   }
   onSelectFile(event: any) {

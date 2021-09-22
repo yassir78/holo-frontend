@@ -4,7 +4,9 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Good } from 'src/app/models/good';
 import * as BailleurdbActions from "../../state/bailleurdb.action";
+import { getGood } from '../../state/bailleurdb.selector';
 import { bailleurDashboardState } from '../../state/bailleurdb.state';
 @Component({
   selector: 'app-details',
@@ -19,6 +21,9 @@ import { bailleurDashboardState } from '../../state/bailleurdb.state';
   ]
 })
 export class DetailsComponent implements OnInit {
+ /* @ts-ignore */
+ good$: Observable<Good>;
+good:Good = {};
   proximites: String[] = ['Autoroute', 'Gare', 'Aéroport', 'Jardin d’enfants', 'Ecole secondaire', 'Commerces', 'Trans. public']
   extras: String[] = ['Lumineux', 'Véranda/terrasse', 'Ascenseur', 'Accès handicapés', 'Cheminée', 'Air conditionné', 'Piscine', 'Jardin', 'Neuf', 'Ascenseur', 'Attique', 'Baignoire', 'Cuisine équipée', 'Douche', 'Jardin', 'Meublé']
 
@@ -111,6 +116,26 @@ export class DetailsComponent implements OnInit {
         }
       }
     });
+
+    this.good$ = this.store.select(getGood);
+    this.good$.subscribe(good => {
+      this.good = good;
+      console.log(this.good)
+      this.numberOfPieces?.setValue(this.good.numberOfPieces)
+      this.numberOfRooms?.setValue(this.good.numberOfRooms)
+      this.numberOfWC?.setValue(this.good.numberOfWC)
+      this.numberOfFloors?.setValue(this.good.numberOfFloors)
+      this.FloorOfTheApartment?.setValue(this.good.FloorOfTheApartment)
+      this.yearOfBuilding?.setValue(this.good.yearOfBuilding)
+      this.yearOfRenovation?.setValue(this.good.yearOfRenovation)
+      this.view?.setValue(this.good.view)
+      this.orientation?.setValue(this.good.orientation)
+      this.heatingTypeSystem?.setValue(this.good.heatingTypeSystem)
+      this.environment?.setValue(this.good.environment)
+      this.proximity?.setValue(this.good.proximity)
+      this.extra?.setValue(this.good.extra)
+      
+    })
   }
 
   switchSelectedView() {

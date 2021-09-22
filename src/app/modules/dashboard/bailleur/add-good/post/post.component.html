@@ -36,7 +36,9 @@
                     </ul>
                     <div class=" mt-5">
                         <div class="popping font-normal px-5">
-                           {{good.description}}:
+                            <div [innerHTML]="good.description">
+
+                            </div>
 
                             <ul class="list-disc ">
                                 <li>Cuisine ouverte (sans lave-vaisselle)</li>
@@ -44,8 +46,9 @@
                                 <li>Salle de bain: {{good.numberOfBathRooms}}</li>
                             </ul>
 
+                            <div [innerHTML]="good.description">
 
-                            {{good.description}}
+                            </div>
 
                         </div>
                     </div>

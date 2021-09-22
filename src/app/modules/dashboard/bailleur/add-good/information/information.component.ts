@@ -5,8 +5,10 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Good } from 'src/app/models/good';
 import { UploadFileService } from 'src/app/services/uploadFileService';
 import * as BailleurdbActions from "../../state/bailleurdb.action";
+import { getGood } from '../../state/bailleurdb.selector';
 import { bailleurDashboardState } from '../../state/bailleurdb.state';
 @Component({
   selector: 'information',
@@ -21,6 +23,9 @@ import { bailleurDashboardState } from '../../state/bailleurdb.state';
   ]
 })
 export class InformationComponent implements OnInit {
+   /* @ts-ignore */
+ good$: Observable<Good>;
+ good:Good = {};
   venteOuLocation: string = 'Vente';
   _selectRegieDropDown: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   selectRegieDropDown$: Observable<boolean> = this._selectRegieDropDown.asObservable();
@@ -76,6 +81,25 @@ export class InformationComponent implements OnInit {
         }
       }
     });
+
+    this.good$ = this.store.select(getGood);
+    this.good$.subscribe(good => {
+      this.good = good;
+      console.log(this.good)
+     
+      this.status?.setValue(this.good.status)
+      this.agencyName?.setValue(this.agencyName)
+      this.agencyForm?.setValue(this.good.agencyForm)
+      //this.propertyType?.setValue(this.good.propertyType)
+      this.availablity?.setValue(this.availablity)
+      this.state?.setValue(this.good.state)
+      this.zipCode?.setValue(this.good.zipCode)
+      this.address?.setValue(this.address)
+      this.livingSpace?.setValue(this.good.livingSpace)
+      this.terraceArea?.setValue(this.good.terraceArea)
+      this.gardenArea?.setValue(this.gardenArea)
+      
+    })
   }
   switchRegieDropDown() {
     this._selectRegieDropDown.next(!this._selectRegieDropDown.getValue());
@@ -181,7 +205,7 @@ export class InformationComponent implements OnInit {
     this.store.dispatch(BailleurdbActions.information({
       status: this.venteOuLocation,
       agencyName: this.agencyName?.value,
-      agencyForm: this.agencyName?.value,
+      agencyForm: this.documentUrl,
       propertyType: this.propertyType?.value,
       availablity: this.availablity?.value,
       state: this.state?.value,
