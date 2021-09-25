@@ -91,7 +91,7 @@ export class InformationComponent implements OnInit {
         this.agencyName?.setValue(this.good.agencyName)
         this.agencyForm?.setValue(this.good.agencyForm)
         /* @ts-ignore */
-        this.document = this.good.agencyForm?.split('/')[3].split("%")[0];
+        this.document = this.good.agencyForm?.split('/')[3].replaceAll('%', '');
         this.progress$.next(100);
         /* @ts-ignore */
         console.log(JSON.stringify(this.good.propertyType));
