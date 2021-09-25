@@ -47,6 +47,10 @@ export class MediaComponent implements OnInit {
     this.videoUrls = [];
     this.imageUrls  = [];
     this.good$ = this.store.select(getGood);
+  
+  }
+
+  ngAfterViewInit() {
     this.good$.subscribe(good => {
       console.log(this.good)
       if(Object.keys(good).length !== 0 && good.constructor === Object){
@@ -55,11 +59,25 @@ export class MediaComponent implements OnInit {
       this.imageUrls = this.good.mediaFiles;
               /* @ts-ignore */
       this.videoUrls = this.good.videoFiles
+   
+       if(this.imageUrls.length > 0){
+        this.imageUrls.forEach(url=>{
+          console.log(url)
+          this.addImageUrlToDom(url);
+        })
 
+       }
+      if(this.videoUrls.length > 0){
+        this.videoUrls.forEach(url=>{
+          console.log(url)
+          this.addVideoUrlToDom(url);
+        })
+      }
+    
       }
     })
 
-  }
+}
   onSelectFile(event: any) {
     const file = event.target.files && event.target.files[0];
     if (file) {
@@ -222,6 +240,72 @@ export class MediaComponent implements OnInit {
     })
     this.uploadImage(file);
   }
+
+
+  async addImageUrlToDom(url: any) {
+    let div = this.renderer.createElement('div');
+    this.renderer.setAttribute(div, 'class', 'mr-3 relative mt-5');
+    let img = this.renderer.createElement('img');
+    this.renderer.setAttribute(img, 'class', 'inline-block h-36 w-60	 rounded-md');
+    this.renderer.setAttribute(img, 'src', url);
+    this.renderer.appendChild(div, img);
+
+    let span = this.renderer.createElement('span');
+    this.renderer.setAttribute(span, 'class', 'absolute bg-white rounded-full p-2 top-1 right-1 cursor-pointer');
+    let svg = this.renderer.createElement('svg', 'svg');
+    this.renderer.setAttribute(svg, 'width', "6");
+    this.renderer.setAttribute(svg, 'height', "6");
+    this.renderer.setAttribute(svg, 'viewBox', "0 0 6 6");
+    this.renderer.setAttribute(svg, 'fill', "none");
+    this.renderer.setAttribute(svg, 'xmlns', "http://www.w3.org/2000/svg");
+    let path = this.renderer.createElement('path', 'svg');
+    this.renderer.setAttribute(path, 'd', "M3.66083 3.00127L5.90415 0.757855C5.96585 0.696099 5.9999 0.613709 6 0.525855C6 0.437953 5.96595 0.355465 5.90415 0.293806L5.70756 0.0972697C5.64576 0.0353673 5.56337 0.00146484 5.47541 0.00146484C5.38761 0.00146484 5.30522 0.0353673 5.24341 0.0972697L3.0001 2.34054L0.756683 0.0972697C0.694976 0.0353673 0.612537 0.00146484 0.524634 0.00146484C0.436829 0.00146484 0.35439 0.0353673 0.292683 0.0972697L0.096 0.293806C-0.032 0.421806 -0.032 0.630001 0.096 0.757855L2.33937 3.00127L0.096 5.24459C0.0342439 5.30644 0.000243902 5.38883 0.000243902 5.47668C0.000243902 5.56454 0.0342439 5.64693 0.096 5.70873L0.292634 5.90527C0.354341 5.96712 0.436829 6.00107 0.524585 6.00107C0.612488 6.00107 0.694927 5.96712 0.756634 5.90527L3.00005 3.66195L5.24337 5.90527C5.30517 5.96712 5.38756 6.00107 5.47537 6.00107H5.47546C5.56332 6.00107 5.64571 5.96712 5.70751 5.90527L5.9041 5.70873C5.9658 5.64698 5.99985 5.56454 5.99985 5.47668C5.99985 5.38883 5.9658 5.30644 5.9041 5.24464L3.66083 3.00127Z");
+    this.renderer.setAttribute(path, 'fill', "#E53A24");
+    this.renderer.appendChild(svg, path);
+    this.renderer.appendChild(span, svg);
+    this.renderer.appendChild(div, span);
+    this.renderer.appendChild(this.imageCont.nativeElement, div);
+    span.addEventListener('click', () => {
+      // delete image from the dom
+      this.renderer.removeChild(this.imageCont.nativeElement, div);
+      // delete image from cloud if it exists
+      //this.deleteImageFromCloud(file);
+    })
+  }
+
+
+  async addVideoUrlToDom(url: any) {
+    let div = this.renderer.createElement('div');
+    this.renderer.setAttribute(div, 'class', 'mr-3 relative mt-5');
+    let video = this.renderer.createElement('video');
+    this.renderer.setAttribute(video, 'class', 'inline-block h-36 w-60	 rounded-md');
+    this.renderer.setAttribute(video, 'src', url);
+    this.renderer.setAttribute(video, 'controls', '');
+    this.renderer.appendChild(div, video);
+    let span = this.renderer.createElement('span');
+    this.renderer.setAttribute(span, 'class', 'absolute bg-white rounded-full p-2 top-1 right-1 cursor-pointer');
+    let svg = this.renderer.createElement('svg', 'svg');
+    this.renderer.setAttribute(svg, 'width', "6");
+    this.renderer.setAttribute(svg, 'height', "6");
+    this.renderer.setAttribute(svg, 'viewBox', "0 0 6 6");
+    this.renderer.setAttribute(svg, 'fill', "none");
+    this.renderer.setAttribute(svg, 'xmlns', "http://www.w3.org/2000/svg");
+    let path = this.renderer.createElement('path', 'svg');
+    this.renderer.setAttribute(path, 'd', "M3.66083 3.00127L5.90415 0.757855C5.96585 0.696099 5.9999 0.613709 6 0.525855C6 0.437953 5.96595 0.355465 5.90415 0.293806L5.70756 0.0972697C5.64576 0.0353673 5.56337 0.00146484 5.47541 0.00146484C5.38761 0.00146484 5.30522 0.0353673 5.24341 0.0972697L3.0001 2.34054L0.756683 0.0972697C0.694976 0.0353673 0.612537 0.00146484 0.524634 0.00146484C0.436829 0.00146484 0.35439 0.0353673 0.292683 0.0972697L0.096 0.293806C-0.032 0.421806 -0.032 0.630001 0.096 0.757855L2.33937 3.00127L0.096 5.24459C0.0342439 5.30644 0.000243902 5.38883 0.000243902 5.47668C0.000243902 5.56454 0.0342439 5.64693 0.096 5.70873L0.292634 5.90527C0.354341 5.96712 0.436829 6.00107 0.524585 6.00107C0.612488 6.00107 0.694927 5.96712 0.756634 5.90527L3.00005 3.66195L5.24337 5.90527C5.30517 5.96712 5.38756 6.00107 5.47537 6.00107H5.47546C5.56332 6.00107 5.64571 5.96712 5.70751 5.90527L5.9041 5.70873C5.9658 5.64698 5.99985 5.56454 5.99985 5.47668C5.99985 5.38883 5.9658 5.30644 5.9041 5.24464L3.66083 3.00127Z");
+    this.renderer.setAttribute(path, 'fill', "#E53A24");
+    this.renderer.appendChild(svg, path);
+    this.renderer.appendChild(span, svg);
+    this.renderer.appendChild(div, span);
+    this.renderer.appendChild(this.imageCont.nativeElement, div);
+    span.addEventListener('click', () => {
+      // delete video from the dom
+      this.renderer.removeChild(this.imageCont.nativeElement, div);
+      // delete video from cloud if it exists
+     // this.deleteVideoFromCloud(file);
+
+    })
+  }
+
 
   goToDesc(){
     this.router.navigate(['/dashboard/bailleur/add-good/description'])

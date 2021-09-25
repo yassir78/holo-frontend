@@ -32,6 +32,8 @@ export class DisponibilityComponent implements OnInit {
   dates: moment.Moment[] = []
   /* @ts-ignore */
   datesAndHours: DateAndHours[] = [];
+   /* @ts-ignore */
+   datesAndHours2: DateAndHours[] = [];
   /* @ts-ignore */
   @ViewChild('modal') modal: ElementRef;
   /* @ts-ignore */
@@ -40,18 +42,28 @@ export class DisponibilityComponent implements OnInit {
   selectedDate: any;
   selectedStartHour: any;
   selectedFinishHour: any;
+  dateCls:any;
   constructor(private store: Store<bailleurDashboardState>, private _adapter: DateAdapter<any>, private router:Router) { }
   timePickerModalShow: string = 'out';
   backgroundSwitch: string = 'out';
   ngOnInit(): void {
     this._adapter.setLocale('fr');
-    
+    this.dateCls = this.dateClass();
     this.good$ = this.store.select(getGood);
     this.good$.subscribe((good: Good) => {
-      this.good = good;
       console.log(this.good)
-        /* @ts-ignore */
-      this.datesAndHours = this.good.availabilityOfVisit
+      if(Object.keys(good).length !== 0 && good.constructor === Object){
+        this.good = good;
+              /* @ts-ignore */
+        if( this.good.availabilityOfVisit?.length > 0)
+        {
+      /* @ts-ignore */
+      this.datesAndHours2 = this.good.availabilityOfVisit
+      this.dateCls = this.dateClass2();
+        }
+     
+
+      }
       
     })
   }
@@ -70,6 +82,7 @@ export class DisponibilityComponent implements OnInit {
     }
   }
   select(event: any, calendar: any) {
+    this.dateCls = this.dateClass();
     this.backgroundSwitch = 'in';
     this.timePickerModalShow = 'in';
     const date: moment.Moment = event;
@@ -88,6 +101,11 @@ export class DisponibilityComponent implements OnInit {
   dateClass() {
     return (date: any): MatCalendarCellCssClasses => {
       return (this.datesAndHours.find(x => (x.date.format("dddd Do MMMM YYYY") == date.format("dddd Do MMMM YYYY") || (x.date.format("dddd Do MMMM YYYY") == date.format("dddd Do MMMM YYYY") && this.selectedStartHour == x.startHour)))) ? "selected" : '';
+    };
+  }
+  dateClass2() {
+    return (date: any): MatCalendarCellCssClasses => {
+      return (this.datesAndHours2.find(x => (x.date == date.format("dddd Do MMMM YYYY")))) ? "selected" : '';
     };
   }
   pickDisponibily() {
