@@ -11,7 +11,7 @@
             <div class="flex flex-row mt-3">
                 <button type="button "
                     [ngClass]=" venteOuLocation == 'Vente' ? 'text-blue-400 border-blue-300' : 'border-gray-300 text-gray-200 bg-white'"
-                    (click)="$event.stopPropagation();venteOuLocation = 'Vente'"
+                    type="button" (click)="$event.stopPropagation();venteOuLocation = 'Vente'"
                     class="flex justify-center w-28	 mr-2	 items-center px-4 py-2 border 	 shadow-sm text-base font-semibold popping rounded-xl 	 bg-white hover:bg-gray-50 active:-translate-y-2 transition-all duration-100">
                     Vendre
                 </button>
@@ -82,7 +82,7 @@
                     <legend class="sr-only">{{bien}}</legend>
                     <div class="relative flex items-start">
                         <div class="flex items-end h-5">
-                            <input id="logtVacances" aria-describedby="comments-description" name="comments" 
+                            <input id="logtVacances" aria-describedby="comments-description" name="comments"
                                 type="checkbox" [checked]="this.good.propertyType?.includes(bien)"
                                 class=" form-checkbox text-blue-2 focus:ring-0 border-gray-300 p-2 rounded-md "
                                 (change)="typeDeBienValue(bien,$event)">

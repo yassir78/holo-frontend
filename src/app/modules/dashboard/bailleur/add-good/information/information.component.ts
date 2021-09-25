@@ -23,9 +23,9 @@ import { bailleurDashboardState } from '../../state/bailleurdb.state';
   ]
 })
 export class InformationComponent implements OnInit {
-   /* @ts-ignore */
- good$: Observable<Good>;
- good:Good = {};
+  /* @ts-ignore */
+  good$: Observable<Good>;
+  good: Good = {};
   venteOuLocation: string = 'Vente';
   _selectRegieDropDown: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   selectRegieDropDown$: Observable<boolean> = this._selectRegieDropDown.asObservable();
@@ -53,7 +53,7 @@ export class InformationComponent implements OnInit {
     gardenArea: new FormControl('', Validators.required),
 
   })
-  constructor(  public fb: FormBuilder,private store: Store<bailleurDashboardState>, private router: Router, private uploadService: UploadFileService) { }
+  constructor(public fb: FormBuilder, private store: Store<bailleurDashboardState>, private router: Router, private uploadService: UploadFileService) { }
   ngOnInit(): void {
     this.selectRegieDropDown$.subscribe(value => {
       if (!value) {
@@ -85,36 +85,38 @@ export class InformationComponent implements OnInit {
     this.good$ = this.store.select(getGood);
     this.good$.subscribe(good => {
       console.log(this.good)
-      if(Object.keys(good).length !== 0 && good.constructor === Object){
+      if (Object.keys(good).length !== 0 && good.constructor === Object) {
         this.good = good;
-          this.status?.setValue(this.good.status)
-          this.agencyName?.setValue(this.good.agencyName)
-          this.agencyForm?.setValue(this.good.agencyForm)
-           
-                                          /* @ts-ignore */
-          console.log( JSON.stringify(this.good.propertyType));
-          const typeDeBienArray = <FormArray>this.informationForm.controls.propertyType;
-                   /* @ts-ignore */
-          this.good.propertyType.forEach(value => {
-            typeDeBienArray.push(new FormControl(value))
-          })
-                                /* @ts-ignore */
-         // this.propertyType?.setValue(JSON.stringify(this.good.propertyType))
-          this.availablity?.setValue(this.good.availablity)
-          this.state?.setValue(this.good.state)
-          this.zipCode?.setValue(this.good.zipCode)
-          this.address?.setValue(this.good.address)
-          this.livingSpace?.setValue(this.good.livingSpace)
-          this.terraceArea?.setValue(this.good.terraceArea)
-          this.gardenArea?.setValue(this.good.gardenArea)
-                      /* @ts-ignore */
-          this.selectedRegionValue = this.good.state;
-                            /* @ts-ignore */
-          this.selectedRegieValue = this.good.agencyName;
-                                  /* @ts-ignore */
-          this.venteOuLocation = this.good.status;
-        }
-      
+        this.status?.setValue(this.good.status)
+        this.agencyName?.setValue(this.good.agencyName)
+        this.agencyForm?.setValue(this.good.agencyForm)
+        /* @ts-ignore */
+        this.document = this.good.agencyForm?.split('/')[3].split("%")[0];
+        this.progress$.next(100);
+        /* @ts-ignore */
+        console.log(JSON.stringify(this.good.propertyType));
+        const typeDeBienArray = <FormArray>this.informationForm.controls.propertyType;
+        /* @ts-ignore */
+        this.good.propertyType.forEach(value => {
+          typeDeBienArray.push(new FormControl(value))
+        })
+        /* @ts-ignore */
+        // this.propertyType?.setValue(JSON.stringify(this.good.propertyType))
+        this.availablity?.setValue(this.good.availablity)
+        this.state?.setValue(this.good.state)
+        this.zipCode?.setValue(this.good.zipCode)
+        this.address?.setValue(this.good.address)
+        this.livingSpace?.setValue(this.good.livingSpace)
+        this.terraceArea?.setValue(this.good.terraceArea)
+        this.gardenArea?.setValue(this.good.gardenArea)
+        /* @ts-ignore */
+        this.selectedRegionValue = this.good.state;
+        /* @ts-ignore */
+        this.selectedRegieValue = this.good.agencyName;
+        /* @ts-ignore */
+        this.venteOuLocation = this.good.status;
+      }
+
     })
   }
   switchRegieDropDown() {
@@ -217,7 +219,7 @@ export class InformationComponent implements OnInit {
 
   formSubmit() {
 
-
+    console.log("stop it")
     this.store.dispatch(BailleurdbActions.information({
       status: this.venteOuLocation,
       agencyName: this.agencyName?.value,
