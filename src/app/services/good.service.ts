@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Good } from '../models/good';
 
@@ -15,5 +16,10 @@ export class GoodService {
     console.log("Good Service")
     console.log(good)
     return this.http.post(`${this.API}/good/create`, good);
+  }
+
+  
+  findAll():Observable<Good[]>{
+    return this.http.get<Good[]>(`${this.API}/good/all`);
   }
 }
