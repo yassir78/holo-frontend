@@ -5,15 +5,19 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { LocataireComponent } from './locataire/locataire.component';
 import { SharedModule } from '../shared/shared.module';
 import { BailleurComponent } from './bailleur/bailleur.component';
+import { GoodDetailComponent } from './locataire/good-detail/good-detail.component';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 
 @NgModule({
   declarations: [
     LocataireComponent,
-    BailleurComponent
+    BailleurComponent,
+    GoodDetailComponent
   ],
   imports: [
     CommonModule,
+    LazyLoadImageModule,
     DashboardRoutingModule,
     SharedModule
   ]

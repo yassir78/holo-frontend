@@ -10,18 +10,9 @@ import { Good } from 'src/app/models/good';
   styleUrls: ['./locataire.component.scss']
 })
 export class LocataireComponent implements OnInit {
-     /* @ts-ignore */
-  goods$: Observable<Good[]>;
-  goods: Good[] = [];
-  constructor(private store: Store<locataireDashboardState>) { }
+  constructor() { }
 
   ngOnInit(): void {
-
-    this.goods$ = this.store.select(getGoods);
-    this.goods$.subscribe((goods: Good[]) => {
-      this.goods = goods;
-      console.log(this.goods[0])
-    });
   }
 
 }

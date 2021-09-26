@@ -6,12 +6,15 @@ import { initialLocataireDashboardState } from "./locatairedb.state";
 
 export const goodsReducer = createReducer(
     initialLocataireDashboardState,
-  
+
     on(LocatairedbActions.getAllGoodsSuccess, (state, action) => {
-        return { ...state,  goods: action.goods, isLoading: true }
+        return { ...state, goods: action.goods, isLoading: true }
     }),
     on(LocatairedbActions.getAllGoodsFailure, (state, action) => {
         return { ...state, isLoading: true, error: action.error }
     }),
+    on(LocatairedbActions.selectGood, (state, action) => {
+        return { ...state, selectedGood: action.good }
+    })
 
 )

@@ -4,6 +4,7 @@ import { Good } from "src/app/models/good";
 
 export interface locataireDashboardState {
     goods: Good[];
+    selectedGood:Good;
     isLoading: boolean;
     error: string;
 }
@@ -11,4 +12,6 @@ export const initialLocataireDashboardState: locataireDashboardState = {
     goods: [],
     isLoading: false,
     error: '', 
+    selectedGood:{}
+  
 };

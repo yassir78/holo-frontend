@@ -9,9 +9,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { goodsReducer } from './state/locatairedb.reducer';
 import { LocataireDBEffect } from './state/locatairedb.effect';
 import { GoodsResolver } from './state/goods.resolver';
+import { LocataireHomeComponent } from './locataire-home/locataire-home.component';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    LocataireHomeComponent,
+  ],
   imports: [
     CommonModule,
     LocataireRoutingModule,
@@ -20,6 +24,7 @@ import { GoodsResolver } from './state/goods.resolver';
       "goods", goodsReducer
     ),
     EffectsModule.forFeature([LocataireDBEffect]),
+
   ],
   providers: [GoodService, GoodsResolver]
 })
