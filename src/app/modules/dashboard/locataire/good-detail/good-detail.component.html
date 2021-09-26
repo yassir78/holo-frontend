@@ -1,1 +1,337 @@
-<p>good-detail works!</p>
+<div class=" pt-5 md:pt-10 lg:mx-10 grid grid-cols-12 gap-6">
+    <div class="col-span-3 	border-black lg:block	hidden">
+        <sidenav></sidenav>
+    </div>
+    <div class="col-span-12 md:col-span-6	mx-3 md:mx-0">
+        <div class="bg-gray-4 pt-5 px-5 rounded-2xl pb-10 ">
+            <div class="space-y-4">
+                <div class="aspect-w-2  relative  aspect-h-1 ">
+                    <div class="absolute inset-0 transition-all ease-in-out duration-1000 transform translate-x-0 slide"
+                        *ngFor="let media of medias ;let i = index">
+                        <img class="object-cover 	 shadow-lg rounded-lg w-full h-full"
+                            *ngIf="i == counter && medias[counter].type == 'image'" @fade
+                            [defaultImage]="'../../../../../../assets/images/blank.png'"
+                            [lazyLoad]="medias[counter].url" />
+                        <video class="object-cover z-50  shadow-lg rounded-lg w-full h-full" autoplay
+                            *ngIf="i == counter && medias[counter].type == 'video'" [src]="medias[counter].url"
+                            frameborder="0" allowfullscreen></video>
+                    </div>
+
+                    <div
+                        class="absolute inset-0 z-50 transition-all ease-in-out duration-1000 transform translate-x-0 slide">
+                    </div>
+                    <div
+                        class="absolute aspect-w-1 z-50	 w-16 h-16 left-auto right-0  top-1/2 -translate-y-1/2 cursor-pointer  ">
+                        <svg width="41" height="58" viewBox="0 0 41 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g filter="url(#filter0_d)">
+                                <path
+                                    d="M26.6766 30.1363L16.2739 43.8017C16.0461 44.1034 15.7251 44.2872 15.3813 44.3128C15.0376 44.3384 14.6992 44.2038 14.4404 43.9384C14.182 43.6724 14.0246 43.2975 14.0026 42.8962C13.9807 42.4948 14.096 42.0996 14.3233 41.7974L23.9589 29.1341L14.3233 16.4708C14.1132 16.1661 14.0118 15.7785 14.0405 15.3887C14.0691 14.9988 14.2255 14.637 14.477 14.3785C14.7285 14.12 15.0558 13.9849 15.3906 14.0013C15.7253 14.0177 16.0418 14.1844 16.2739 14.4666L26.6766 28.132C26.8851 28.4091 27.0001 28.7653 27.0001 29.1341C27.0001 29.503 26.8851 29.8592 26.6766 30.1363Z"
+                                    fill="white" />
+                            </g>
+                            <defs>
+                                <filter id="filter0_d" x="0.819167" y="0.819167" width="39.3617" height="56.6776"
+                                    filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                    <feColorMatrix in="SourceAlpha" type="matrix"
+                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                    <feOffset />
+                                    <feGaussianBlur stdDeviation="6.59042" />
+                                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.55 0" />
+                                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+                                </filter>
+                            </defs>
+                        </svg>
+
+
+                    </div>
+                    <div
+                        class=" px-5 aspect-w-1 z-50 left-0	top-1/2 -translate-y-1/2 w-16 h-16 mr-16 justify-center  cursor-pointer">
+                        <svg width="41" height="58" viewBox="0 0 41 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g filter="url(#filter0_d)">
+                                <path
+                                    d="M14.3234 27.8637L24.7261 14.1983C24.9539 13.8966 25.2749 13.7128 25.6187 13.6872C25.9624 13.6616 26.3008 13.7962 26.5596 14.0616C26.818 14.3276 26.9754 14.7025 26.9974 15.1038C27.0193 15.5052 26.904 15.9004 26.6767 16.2026L17.0411 28.8659L26.6767 41.5292C26.8868 41.8339 26.9882 42.2215 26.9595 42.6113C26.9309 43.0012 26.7745 43.363 26.523 43.6215C26.2715 43.88 25.9442 44.0151 25.6094 43.9987C25.2747 43.9823 24.9582 43.8156 24.7261 43.5334L14.3234 29.868C14.1149 29.5909 13.9999 29.2347 13.9999 28.8659C13.9999 28.497 14.1149 28.1408 14.3234 27.8637Z"
+                                    fill="white" />
+                            </g>
+                            <defs>
+                                <filter id="filter0_d" x="0.819167" y="0.503737" width="39.3617" height="56.6776"
+                                    filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                    <feColorMatrix in="SourceAlpha" type="matrix"
+                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                    <feOffset />
+                                    <feGaussianBlur stdDeviation="6.59042" />
+                                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.55 0" />
+                                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+                                </filter>
+                            </defs>
+                        </svg>
+
+                    </div>
+                    <div class="flex flex-row justify-between items-end px-5 pb-5">
+                        <span
+                            class="inline-flex items-center  px-3 py-1 rounded-full text-xs font-medium bg-red-400 text-white popping">
+                            Appartement
+                        </span>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="pt-5">
+                <div class=" leading-6 popping font-semibold space-y-2">
+                    <h3 class="text-base md:text-3xl  leading-6 md:leading-9 	">
+                        Magnifique appartement T2 situé au coeur de Genève
+                    </h3>
+                    <div class="flex flex-row items-center">
+                        <img src="../../../../assets/images/location-good.png" class="h-4 mr-2" alt="">
+                        <span class="text-blue-2 popping font-normal text-sm md:text-xl  truncate ">
+                            Medan, Sumatera Utara - ID
+                        </span>
+                    </div>
+                    <ul class="flex pt-5 flex-row items-center flex-wrap list-disc	 ">
+                        <li class="ml-5">
+                            <span class="truncate ">Appartement</span>
+                        </li>
+                        <li class="ml-6">
+                            <span class="truncate ">à louer</span>
+                        </li>
+                        <li class="ml-6">
+                            <span class="truncate ">Disponible le 19/05/2021</span>
+                        </li>
+                    </ul>
+                    <p class="pt-3 leading-10 font-normal">
+                        Charmant et confortable appartement idéalement situé pour profiter de la ville: il est à la fois
+                        très central, à 5 min à
+                        pied de la gare et à 2 min à pied (200 mètres) du lac Léman! Vous pouvez marcher partout dans la
+                        ville depuis la maison.
+                    </p>
+                    <div class="py-5 px-3 bg-gray-4">
+                        <h1 class="popping text-xl font-semibold ">Details du bien</h1>
+                    </div>
+                    <dl class="divide-y px-3 divide-gray-400">
+                        <div class="py-4 sm:py-5 grid grid-cols-12  gap-4 border-b border-gray-200">
+                            <dt class="text-sm md:text-base font-normal col-span-8 md:col-span-6">
+                                Nombre de pièces
+                            </dt>
+                            <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
+                                <span class="flex-grow">6</span>
+                            </dd>
+                        </div>
+                    </dl>
+                    <dl class="divide-y px-3 divide-gray-400">
+                        <div class="py-4 sm:py-5 grid grid-cols-12  gap-4 border-b border-gray-200">
+                            <dt class="text-sm md:text-base font-normal col-span-8 md:col-span-6">
+                                Nombre de chambres à coucher </dt>
+                            <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
+                                <span class="flex-grow">6</span>
+                            </dd>
+                        </div>
+                    </dl>
+                    <dl class="divide-y px-3 divide-gray-400">
+                        <div class="py-4 sm:py-5 grid grid-cols-12  gap-4 border-b border-gray-200">
+                            <dt class="text-sm md:text-base font-normal col-span-8 md:col-span-6 ">
+                                Nombre de WC
+                            </dt>
+                            <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
+                                <span class="flex-grow">6</span>
+                            </dd>
+                        </div>
+                    </dl>
+                    <dl class="divide-y px-3 divide-gray-400">
+                        <div class="py-4 sm:py-5 grid grid-cols-12  gap-4 border-b border-gray-200">
+                            <dt class="text-sm md:text-base font-normal col-span-8 md:col-span-6">
+                                Nombre de salle de bains
+                            </dt>
+                            <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
+                                <span class="flex-grow">6</span>
+                            </dd>
+                        </div>
+                    </dl>
+                    <dl class="divide-y px-3 divide-gray-400">
+                        <div class="py-4 sm:py-5 grid grid-cols-12  gap-4 border-b border-gray-200">
+                            <dt class="text-sm md:text-base font-normal col-span-8 md:col-span-6">
+                                Nombre d’étage dans l’immeuble
+                            </dt>
+                            <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
+                                <span class="flex-grow">6</span>
+                            </dd>
+                        </div>
+                    </dl>
+                    <dl class="divide-y px-3 divide-gray-400">
+                        <div class="py-4 sm:py-5 grid grid-cols-12  gap-4 border-b border-gray-200">
+                            <dt class="text-sm md:text-base font-normal col-span-8 md:col-span-6">
+                                Etage de l’appartement
+                            </dt>
+                            <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
+                                <span class="flex-grow">6</span>
+                            </dd>
+                        </div>
+                    </dl>
+                    <dl class="divide-y px-3 divide-gray-400">
+                        <div class="py-4 sm:py-5 grid grid-cols-12  gap-4 border-b border-gray-200">
+                            <dt class="text-sm md:text-base font-normal col-span-8 md:col-span-6">
+                                Année de construction
+                            </dt>
+                            <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
+                                <span class="flex-grow">6</span>
+                            </dd>
+                        </div>
+                    </dl>
+                    <dl class="divide-y px-3 divide-gray-400">
+                        <div class="py-4 sm:py-5 grid grid-cols-12  gap-4 border-b border-gray-200">
+                            <dt class="text-sm md:text-base font-normal col-span-8 md:col-span-6">
+                                Année de rénovation
+                            </dt>
+                            <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
+                                <span class="flex-grow">6</span>
+                            </dd>
+                        </div>
+                    </dl>
+                    <dl class="divide-y px-3 divide-gray-400">
+                        <div class="py-4 sm:py-5 grid grid-cols-12  gap-4 border-b border-gray-2000">
+                            <dt class="text-sm md:text-base font-normal col-span-8 md:col-span-6">
+                                Type de chaufage </dt>
+                            <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
+                                <span class="flex-grow">6</span>
+                            </dd>
+                        </div>
+                    </dl>
+                    <dl class="divide-y px-3 divide-gray-400">
+                        <div class="py-4 sm:py-5 grid grid-cols-12  gap-4 border-b border-gray-200">
+                            <dt class="text-sm md:text-base font-normal col-span-8 md:col-span-6">
+                                Environnement
+                            </dt>
+                            <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
+                                <span class="flex-grow">6</span>
+                            </dd>
+                        </div>
+                    </dl>
+                    <dl class="divide-y px-3 divide-gray-400">
+                        <div class="py-4 sm:py-5 grid grid-cols-12  gap-4 border-b border-gray-200">
+                            <dt class="text-sm md:text-base font-normal col-span-8 md:col-span-6">
+                                Vue
+                            </dt>
+                            <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
+                                <span class="flex-grow">6</span>
+                            </dd>
+                        </div>
+                    </dl>
+                    <dl class="divide-y px-3 divide-gray-400">
+                        <div class="py-4 sm:py-5 grid grid-cols-12  gap-4 border-b border-gray-200">
+                            <dt class="text-sm md:text-base font-normal col-span-8 md:col-span-6">
+                                Orientation
+                            </dt>
+                            <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
+                                <span class="flex-grow">6</span>
+                            </dd>
+                        </div>
+                    </dl>
+                    <dl class="divide-y px-3 divide-gray-400">
+                        <div class="py-4 sm:py-5 grid grid-cols-12  gap-4 border-b border-gray-200">
+                            <dt class="text-sm md:text-base font-normal col-span-8 md:col-span-6">
+                                Proximité
+                            </dt>
+                            <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
+                                <span class="flex-grow">6</span>
+                            </dd>
+                        </div>
+                    </dl>
+                    <dl class="divide-y px-3 divide-gray-400">
+                        <div class="py-4 sm:py-5 grid grid-cols-12  gap-4 border-b border-gray-200">
+                            <dt class="text-sm md:text-base font-normal col-span-8 md:col-span-6">
+                                Extra
+                            </dt>
+                            <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
+                                <span class="flex-grow">6</span>
+                            </dd>
+                        </div>
+                    </dl>
+                    <dl class="divide-y px-3 divide-gray-400">
+                        <div class="py-4 sm:py-5 grid grid-cols-12  gap-4 border-b border-gray-200">
+                            <dt class="text-sm md:text-base font-normal col-span-8 md:col-span-6">
+                                Nombre de pièces
+                            </dt>
+                            <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
+                                <span class="flex-grow">6</span>
+                            </dd>
+                        </div>
+                    </dl>
+                    <div class="py-5 px-3 bg-gray-4">
+                        <h1 class="popping text-xl font-semibold ">Surface</h1>
+                    </div>
+                    <dl class="divide-y px-3 divide-gray-400">
+                        <div class="py-4 sm:py-5 grid grid-cols-12  gap-4 border-b border-gray-200">
+                            <dt class="text-sm md:text-base font-normal col-span-8 md:col-span-6">
+                                Surface habitable
+                            </dt>
+                            <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
+                                <span class="flex-grow">612 m2</span>
+                            </dd>
+                        </div>
+                    </dl>
+                    <dl class="divide-y px-3 divide-gray-400">
+                        <div class="py-4 sm:py-5 grid grid-cols-12  gap-4 border-b border-gray-200">
+                            <dt class="text-sm md:text-base font-normal col-span-8 md:col-span-6">
+                                Surface terrain/balcon
+                            </dt>
+                            <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
+                                <span class="flex-grow">134 m2</span>
+                            </dd>
+                        </div>
+                    </dl>
+                    <dl class="divide-y px-3 divide-gray-400">
+                        <div class="py-4 sm:py-5 grid grid-cols-12  gap-4 border-b border-gray-200">
+                            <dt class="text-sm md:text-base font-normal col-span-8 md:col-span-6">
+                                Surface jardin
+                            </dt>
+                            <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
+                                <span class="flex-grow">259 m2</span>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-span-12 md:col-span-3 mx-3 md:mx-0">
+
+        <div class="px-5  bg-white shadow-xl py-3 pr-3 rounded-2xl ">
+            <div class="my-3">
+                <span class="text-base text-gray-500 font-semibold">Publié par</span>
+            </div>
+            <div
+                class="relative  pb-5  shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 border-b border-gray-300 ">
+                <div class="flex-shrink-0">
+                    <img class="inline-block h-14 w-14 rounded-2xl"
+                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt="">
+                </div>
+                <div class="flex-1 min-w-0 flex flex-row justify-between items-center">
+                    <a class="focus:outline-none">
+                        <span class="absolute inset-0" aria-hidden="true"></span>
+                        <p class="text-base popping font-semibold text-gray-900">
+                            Haley Snyder
+                        </p>
+                        <p class="text-base  truncate">
+                            <span class="text-blue-2 popping font-medium">Entrepreneur </span>
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="my-5 text-center md:text-left">
+                <span class="text-base text-gray-500 font-semibold">Loyer</span>
+            </div>
+            <div class="my-3 text-center md:text-left">
+                <span class="text-2xl font-bold mr-3">34.000 CHF</span>
+                <span class="text-2xl">par mois</span>
+            </div>
+            <button
+                class="text-white w-full text-center mt-5 px-6 py-4 rounded-xl font-medium bg-blue-2 text-xl btnhover">Postuler</button>
+            <button
+                class="text-white w-full text-center mt-5 px-6 py-4 rounded-xl font-medium text-xl bg-gray-700  btnhover">visiter</button>
+        </div>
+    </div>
+</div>
