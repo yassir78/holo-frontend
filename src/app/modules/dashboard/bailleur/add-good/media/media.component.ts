@@ -1,6 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
-import { Component, ElementRef, NgZone, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, NgZone, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -28,7 +28,7 @@ import { getGood } from '../../state/bailleurdb.selector';
 export class MediaComponent implements OnInit {
   /* @ts-ignore */
   good$: Observable<Good>;
-  good:Good = {};
+  good: Good = {};
   url: any;
   format: any;
   errorModalShow: string = 'out';
@@ -40,44 +40,42 @@ export class MediaComponent implements OnInit {
   progress$: Observable<number> = this._progress.asObservable();
   /* @ts-ignore */
   @ViewChild('image', { static: false }) imageCont: ElementRef;
-  constructor(private renderer: Renderer2, private router: Router, private uploadService: UploadFileService, private store: Store<bailleurDashboardState>, private zone: NgZone
+  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef, private router: Router, private uploadService: UploadFileService, private store: Store<bailleurDashboardState>, private zone: NgZone
   ) { }
 
   ngOnInit(): void {
+    console
     this.videoUrls = [];
-    this.imageUrls  = [];
+    this.imageUrls = [];
     this.good$ = this.store.select(getGood);
-  
+    this.good$.subscribe(good => {
+      this.good = good;
+    })
   }
 
   ngAfterViewInit() {
-    this.good$.subscribe(good => {
-      console.log(this.good)
-      if(Object.keys(good).length !== 0 && good.constructor === Object){
-        this.good = good;
-        /* @ts-ignore */
+
+    if (this.good.mediaFiles && this.good.videoFiles) {
+      /* @ts-ignore */
       this.imageUrls = this.good.mediaFiles;
-              /* @ts-ignore */
+      /* @ts-ignore */
       this.videoUrls = this.good.videoFiles
-   
-       if(this.imageUrls.length > 0){
-        this.imageUrls.forEach(url=>{
+      console.log("i'm done")
+      if (this.imageUrls.length > 0) {
+        this.imageUrls.forEach(url => {
           console.log(url)
           this.addImageUrlToDom(url);
         })
-
-       }
-      if(this.videoUrls.length > 0){
-        this.videoUrls.forEach(url=>{
+      }
+      if (this.videoUrls.length > 0) {
+        this.videoUrls.forEach(url => {
           console.log(url)
           this.addVideoUrlToDom(url);
         })
       }
-    
-      }
-    })
-
-}
+    }
+    this.cdr.detectChanges();
+  }
   onSelectFile(event: any) {
     const file = event.target.files && event.target.files[0];
     if (file) {
@@ -120,11 +118,12 @@ export class MediaComponent implements OnInit {
   }
 
   formSubmit() {
+    console.log(this.imageUrls)
     this.store.dispatch(BailleurdbActions.media({
       mediaFiles: this.imageUrls,
       videoFiles: this.videoUrls
     }))
-    
+
     this.router.navigate(['/dashboard/bailleur/add-good/disponibility'])
   }
   continueOnError() {
@@ -301,13 +300,14 @@ export class MediaComponent implements OnInit {
       // delete video from the dom
       this.renderer.removeChild(this.imageCont.nativeElement, div);
       // delete video from cloud if it exists
-     // this.deleteVideoFromCloud(file);
+      // this.deleteVideoFromCloud(file);
 
     })
   }
 
 
-  goToDesc(){
-    this.router.navigate(['/dashboard/bailleur/add-good/description'])
+  goToDesc() {
+    //this.router.navigate(['/dashboard/bailleur/add-good/description'])
+    console.log(this.imageUrls)
   }
 }

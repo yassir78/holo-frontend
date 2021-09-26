@@ -29,14 +29,14 @@
     <progress-bar [width]="progress$" *ngIf="upload && (_progress|async) != 0"></progress-bar>
     <div class="px-3 mt-5 text-center w-full">
         <h1 class="text-xl text-blue-2 font-semibold popping "
-            *ngIf="videoUrls.length == 0 && imageUrls.length == 0 && !upload">
+            *ngIf="(videoUrls && videoUrls.length == 0) && (imageUrls && videoUrls.length == 0)  && !upload">
             Importer vos vidéos et images...</h1>
     </div>
-    <div [ngClass]="videoUrls.length == 0 && imageUrls.length == 0 && !upload ? 'border-none' : 'border-gray-200'"
+    <div [ngClass]="videoUrls && videoUrls.length == 0 && imageUrls && imageUrls?.length == 0 && !upload ? 'border-none' : 'border-gray-200'"
         class="rounded-xl px-6 pb-6 flex border-2 border-gray-200 mt-5  flex-wrap " #image>
     </div>
     <div class="px-3 mt-5 flex flex-col md:flex-row justify-between">
-        <button (click) = "goToDesc()"
+        <button (click)="goToDesc()"
             class="text-blue-2 px-6 py-2 rounded-md shadow font-700  text-base bg-white   btnhover font-semibold flex flex-row items-center justify-center">
             <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path

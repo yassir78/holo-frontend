@@ -13,9 +13,9 @@ const routes: Routes = [
       {
         path: 'home',
         component: LocataireHomeComponent,
-        resolve: {
+       /*  resolve: {
           goods: GoodsResolver
-        }
+        } */
       },
       {
         path: 'good-details',
