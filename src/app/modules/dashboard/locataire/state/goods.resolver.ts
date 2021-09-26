@@ -10,7 +10,7 @@ import { getAllGoods, getAllGoodsSuccess } from './locatairedb.action';
 
 @Injectable()
 export class GoodsResolver implements Resolve<Observable<any>> {
-
+  loading = false;
   constructor(private store: Store<locataireDashboardState>) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
@@ -18,13 +18,14 @@ export class GoodsResolver implements Resolve<Observable<any>> {
     .pipe(
         select(areGoodsLoaded),
         tap((goodsLoaded) => {
-          if (!goodsLoaded) {
+          if(!this.loading && !goodsLoaded) {
+            this.loading = true;
             this.store.dispatch(getAllGoods());
           }
-
         }),
         filter(goodsLoaded => goodsLoaded),
-        first()
+        first(),
+        finalize(() => (this.loading = false))
     );
   }
 }
