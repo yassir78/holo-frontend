@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BailleurComponent } from './bailleur/bailleur.component';
+import { GoodDetailComponent } from './locataire/good-detail/good-detail.component';
 import { LocataireComponent } from './locataire/locataire.component';
 
 const routes: Routes = [
@@ -11,8 +12,15 @@ const routes: Routes = [
   },
   {
     path: 'locataire',
-    component: LocataireComponent
+    component: LocataireComponent,
+    children: [
+      {
+        path: 'good-details',
+        component: GoodDetailComponent
+      }
+    ]
   }
+
 ];
 
 @NgModule({
