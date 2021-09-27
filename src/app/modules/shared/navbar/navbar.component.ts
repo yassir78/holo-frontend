@@ -39,20 +39,7 @@ export class NavbarComponent implements OnInit {
       this.addMenu = 'true';
     }
   }
-  @HostListener('window:scroll', ['$event.target']) // for window scroll events
-  scroll(e: any) {
-    let scroll = e.scrollingElement.scrollTop;
-    if (scroll == 0) {
-      this.navbarState = 'in';
-    } else
-      if (scroll > this.currentPosition) {
-        if (this.currentPosition != 0)
-          this.navbarState = 'in';
-      } else {
-        this.navbarState = 'out';
-      }
-    this.currentPosition = scroll;
-  }
+
   openNotificationMenu() {
     this.addMenu = 'true';
     this.notification = this.notification == 'true' ? 'false' : 'true';

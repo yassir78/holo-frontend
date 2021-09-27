@@ -7,13 +7,15 @@ import { SharedModule } from '../shared/shared.module';
 import { BailleurComponent } from './bailleur/bailleur.component';
 import { GoodDetailComponent } from './locataire/good-detail/good-detail.component';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { SplitPipe } from '../shared/pipes/split.pipe';
 
 
 @NgModule({
   declarations: [
     LocataireComponent,
     BailleurComponent,
-    GoodDetailComponent
+    GoodDetailComponent,
+    
   ],
   imports: [
     CommonModule,

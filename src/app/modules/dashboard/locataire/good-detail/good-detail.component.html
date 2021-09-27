@@ -72,7 +72,7 @@
                     <div class="flex flex-row justify-between items-end px-5 pb-5">
                         <span
                             class="inline-flex items-center  px-3 py-1 rounded-full text-xs font-medium bg-red-400 text-white popping">
-                            Appartement
+                            {{(good.propertyType |split:',')[0]}}
                         </span>
 
                     </div>
@@ -88,26 +88,23 @@
                     <div class="flex flex-row items-center">
                         <img src="../../../../assets/images/location-good.png" class="h-4 mr-2" alt="">
                         <span class="text-blue-2 popping font-normal text-sm md:text-xl  truncate ">
-                            Medan, Sumatera Utara - ID
+                            {{good.propertyName}}
                         </span>
                     </div>
                     <ul class="flex pt-5 flex-row items-center flex-wrap list-disc	 ">
-                        <li class="ml-5">
-                            <span class="truncate ">Appartement</span>
+                        <li class="ml-5" *ngFor="let property of (good.propertyType |split:',')">
+                            <span class="truncate ">{{property}}</span>
                         </li>
                         <li class="ml-6">
-                            <span class="truncate ">à louer</span>
+                            <span class="truncate "><span *ngIf="good.status == 'Location'">à louer</span> </span>
                         </li>
                         <li class="ml-6">
-                            <span class="truncate ">Disponible le 19/05/2021</span>
+                            <span class="truncate ">Disponible le {{good.availablity|date}}</span>
                         </li>
                     </ul>
-                    <p class="pt-3 leading-10 font-normal">
-                        Charmant et confortable appartement idéalement situé pour profiter de la ville: il est à la fois
-                        très central, à 5 min à
-                        pied de la gare et à 2 min à pied (200 mètres) du lac Léman! Vous pouvez marcher partout dans la
-                        ville depuis la maison.
-                    </p>
+                    <div class="pt-3 leading-10 font-normal">
+                        <div [innerHtml]="good.description"></div>
+                    </div>
                     <div class="py-5 px-3 bg-gray-4">
                         <h1 class="popping text-xl font-semibold ">Details du bien</h1>
                     </div>
@@ -117,7 +114,7 @@
                                 Nombre de pièces
                             </dt>
                             <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
-                                <span class="flex-grow">6</span>
+                                <span class="flex-grow">{{good.numberOfPieces}}</span>
                             </dd>
                         </div>
                     </dl>
@@ -126,7 +123,7 @@
                             <dt class="text-sm md:text-base font-normal col-span-8 md:col-span-6">
                                 Nombre de chambres à coucher </dt>
                             <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
-                                <span class="flex-grow">6</span>
+                                <span class="flex-grow">{{good.numberOfRooms}}</span>
                             </dd>
                         </div>
                     </dl>
@@ -136,7 +133,7 @@
                                 Nombre de WC
                             </dt>
                             <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
-                                <span class="flex-grow">6</span>
+                                <span class="flex-grow">{{good.numberOfWC}}</span>
                             </dd>
                         </div>
                     </dl>
@@ -146,7 +143,7 @@
                                 Nombre de salle de bains
                             </dt>
                             <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
-                                <span class="flex-grow">6</span>
+                                <span class="flex-grow">{{good.numberOfBathRooms}}</span>
                             </dd>
                         </div>
                     </dl>
@@ -156,7 +153,7 @@
                                 Nombre d’étage dans l’immeuble
                             </dt>
                             <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
-                                <span class="flex-grow">6</span>
+                                <span class="flex-grow">{{good.FloorOfTheApartment}}</span>
                             </dd>
                         </div>
                     </dl>
@@ -166,7 +163,7 @@
                                 Etage de l’appartement
                             </dt>
                             <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
-                                <span class="flex-grow">6</span>
+                                <span class="flex-grow">{{good.FloorOfTheApartment}}</span>
                             </dd>
                         </div>
                     </dl>
@@ -176,7 +173,7 @@
                                 Année de construction
                             </dt>
                             <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
-                                <span class="flex-grow">6</span>
+                                <span class="flex-grow">{{good.yearOfBuilding}}</span>
                             </dd>
                         </div>
                     </dl>
@@ -186,7 +183,7 @@
                                 Année de rénovation
                             </dt>
                             <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
-                                <span class="flex-grow">6</span>
+                                <span class="flex-grow">{{good.yearOfRenovation}}</span>
                             </dd>
                         </div>
                     </dl>
@@ -195,7 +192,7 @@
                             <dt class="text-sm md:text-base font-normal col-span-8 md:col-span-6">
                                 Type de chaufage </dt>
                             <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
-                                <span class="flex-grow">6</span>
+                                <span class="flex-grow">{{good.heatingTypeSystem}}</span>
                             </dd>
                         </div>
                     </dl>
@@ -205,7 +202,7 @@
                                 Environnement
                             </dt>
                             <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
-                                <span class="flex-grow">6</span>
+                                <span class="flex-grow">{{good.environment}}</span>
                             </dd>
                         </div>
                     </dl>
@@ -215,7 +212,7 @@
                                 Vue
                             </dt>
                             <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
-                                <span class="flex-grow">6</span>
+                                <span class="flex-grow">{{good.view}}</span>
                             </dd>
                         </div>
                     </dl>
@@ -225,7 +222,7 @@
                                 Orientation
                             </dt>
                             <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
-                                <span class="flex-grow">6</span>
+                                <span class="flex-grow">{{good.orientation}}</span>
                             </dd>
                         </div>
                     </dl>
@@ -235,7 +232,7 @@
                                 Proximité
                             </dt>
                             <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
-                                <span class="flex-grow">6</span>
+                                <span class="flex-grow">{{good.proximity}}</span>
                             </dd>
                         </div>
                     </dl>
@@ -245,20 +242,20 @@
                                 Extra
                             </dt>
                             <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
-                                <span class="flex-grow">6</span>
+                                <span class="flex-grow">{{good.extra}}</span>
                             </dd>
                         </div>
                     </dl>
-                    <dl class="divide-y px-3 divide-gray-400">
+                    <!--      <dl class="divide-y px-3 divide-gray-400">
                         <div class="py-4 sm:py-5 grid grid-cols-12  gap-4 border-b border-gray-200">
                             <dt class="text-sm md:text-base font-normal col-span-8 md:col-span-6">
                                 Nombre de pièces
                             </dt>
                             <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
-                                <span class="flex-grow">6</span>
+                                <span class="flex-grow">{{good.numberOfWC}}</span>
                             </dd>
                         </div>
-                    </dl>
+                    </dl> -->
                     <div class="py-5 px-3 bg-gray-4">
                         <h1 class="popping text-xl font-semibold ">Surface</h1>
                     </div>
@@ -268,7 +265,7 @@
                                 Surface habitable
                             </dt>
                             <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
-                                <span class="flex-grow">612 m2</span>
+                                <span class="flex-grow">{{good.livingSpace}} m2</span>
                             </dd>
                         </div>
                     </dl>
@@ -278,7 +275,7 @@
                                 Surface terrain/balcon
                             </dt>
                             <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
-                                <span class="flex-grow">134 m2</span>
+                                <span class="flex-grow">{{good.terraceArea}} m2</span>
                             </dd>
                         </div>
                     </dl>
@@ -288,7 +285,7 @@
                                 Surface jardin
                             </dt>
                             <dd class="mt-1 flex  text-sm md:text-base font-normal sm:mt-0 col-span-4   md:col-span-6">
-                                <span class="flex-grow">259 m2</span>
+                                <span class="flex-grow">{{good.gardenArea}} m2</span>
                             </dd>
                         </div>
                     </dl>

@@ -22,7 +22,9 @@ export class GoodDetailComponent implements OnInit {
   medias: { type: string, url: string }[] = [];
   counter = 0;
 
-  constructor(private store: Store<locataireDashboardState>) { }
+  constructor(private store: Store<locataireDashboardState>) {
+    
+   }
 
   ngOnInit(): void {
     this.good$ = this.store.select(getSelectedGood);

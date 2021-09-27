@@ -24,16 +24,5 @@ export class ResponsivenavComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  currentPosition = window.pageYOffset;
-  @HostListener('window:scroll', ['$event.target']) // for window scroll events
-  scroll(e: any) {
-    let scroll = e.scrollingElement.scrollTop;
-    if (scroll > this.currentPosition) {
-      if (this.currentPosition != 0)
-        this.navbarState = 'out';
-    } else {
-      this.navbarState = 'in';
-    }
-    this.currentPosition = scroll;
-  }
+
 }

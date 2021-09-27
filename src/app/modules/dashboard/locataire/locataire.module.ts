@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { LocataireRoutingModule } from './locataire-routing.module';
@@ -11,7 +11,10 @@ import { LocataireDBEffect } from './state/locatairedb.effect';
 import { GoodsResolver } from './state/goods.resolver';
 import { LocataireHomeComponent } from './locataire-home/locataire-home.component';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
-
+import { SplitPipe } from '../../shared/pipes/split.pipe';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
 @NgModule({
   declarations: [
     LocataireHomeComponent,
@@ -19,6 +22,7 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
   imports: [
     CommonModule,
     LocataireRoutingModule,
+    LazyLoadImageModule,
     SharedModule,
     StoreModule.forFeature(
       "goods", goodsReducer
@@ -26,6 +30,6 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
     EffectsModule.forFeature([LocataireDBEffect]),
 
   ],
-  providers: [GoodService, GoodsResolver]
+  providers: [GoodService, GoodsResolver, { provide: LOCALE_ID, useValue: 'fr' }]
 })
 export class LocataireModule { }
