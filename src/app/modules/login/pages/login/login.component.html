@@ -17,47 +17,49 @@
         <div class="login__left__title mt-10 ">
             <span class="login__left__title__text mt-20 sm:text-5xl text-3xl font-extrabold ">Se connecter </span>
         </div>
-        <div class="login__left__form mt-10">
-            <div class="login__left__form__group ">
-                <label for="email" class="font-medium text-warm-gray-900 login__left__form__group__label">Email</label>
-                <input type="email" name="email" id="email" placeholder="Votre email"
-                    class="py-3 mt-2 px-4 w-full block shadow-sm text-warm-gray-900 focus:ring-blue-300	 focus:border-blue-100 border-warm-gray-200 rounded-xl placeholder-200">
-            </div>
-            <div class="login__left__form__group mt-5">
-                <label for="password" class="font-medium text-warm-gray-900 login__left__form__group__label">Mot de
-                    passe</label>
-                <div class="relative ">
-                    <input type="password" name="password" id="password" placeholder="Votre mot de passe"
-                        class="py-3 mt-2 px-4 w-full block shadow-sm text-warm-gray-900 focus:ring-blue-500	 focus:border-blue-100 border-warm-gray-200 rounded-xl placeholder-200">
-                    <img class="absolute bottom-3 right-3 hover:cursor-pointer active:-translate-y-1 transition		"
-                        src="../../../../../assets/images/eye.png" alt="">
+        <form [formGroup]="loginForm">
+            <div class="login__left__form mt-10">
+                <div class="login__left__form__group ">
+                    <label for="email" class="font-medium text-warm-gray-900 login__left__form__group__label">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Votre email" formControlName="email"
+                        class="py-3 mt-2 px-4 w-full block shadow-sm text-warm-gray-900 focus:ring-blue-300	 focus:border-blue-100 border-warm-gray-200 rounded-xl placeholder-200">
+                </div>
+                <div class="login__left__form__group mt-5">
+                    <label for="password" class="font-medium text-warm-gray-900 login__left__form__group__label">Mot de
+                        passe</label>
+                    <div class="relative ">
+                        <input type="password" name="password" id="password" placeholder="Votre mot de passe" formControlName="password"
+                            class="py-3 mt-2 px-4 w-full block shadow-sm text-warm-gray-900 focus:ring-blue-500	 focus:border-blue-100 border-warm-gray-200 rounded-xl placeholder-200">
+                        <img class="absolute bottom-3 right-3 hover:cursor-pointer active:-translate-y-1 transition		"
+                            src="../../../../../assets/images/eye.png" alt="">
+                    </div>
+                </div>
+                <div class="text-right my-4 ">
+                    <span class="inter text-gray-400 font-medium">Mot de passe oublié ?</span>
+                </div>
+                <div class="my-3">
+                    <button
+                        class="w-full text-white py-4  popping bg_blue_button hover:bg-blue-600 rounded-xl active:-translate-y-1"
+                        (click)="login()">Se
+                        connecter</button>
+                </div>
+                <div class="text-center">
+                    <span>Ou</span>
+                </div>
+                <div class="my-3">
+                    <button type="button"
+                        class="w-full inline-flex justify-center items-center popping  py-4 border border-blue-300 shadow-sm text-base font-medium rounded-xl text-black bg-white focus:outline-none hover:bg-blue-300 hover:text-white active:-translate-y-1">
+                        <!-- Heroicon name: solid/mail -->
+                        <img src="../../../../../assets/images/google.svg" class="mr-3" height="20px" width="20px" alt="">
+                        Se connecter avec Google
+                    </button>
+                </div>
+                <div class="mt-5 text-center text-base">
+                    <span class="inter text-gray-400">Pas encore inscrit(e) ? </span><span
+                        class="popping text--blue hover:cursor-pointer active:-translate-y-1" routerLink="/register">
+                        S'inscrire</span>
                 </div>
             </div>
-            <div class="text-right my-4 ">
-                <span class="inter text-gray-400 font-medium">Mot de passe oublié ?</span>
-            </div>
-            <div class="my-3">
-                <button
-                    class="w-full text-white py-4  popping bg_blue_button hover:bg-blue-600 rounded-xl active:-translate-y-1"
-                    (click)="login()">Se
-                    connecter</button>
-            </div>
-            <div class="text-center">
-                <span>Ou</span>
-            </div>
-            <div class="my-3">
-                <button type="button"
-                    class="w-full inline-flex justify-center items-center popping  py-4 border border-blue-300 shadow-sm text-base font-medium rounded-xl text-black bg-white focus:outline-none hover:bg-blue-300 hover:text-white active:-translate-y-1">
-                    <!-- Heroicon name: solid/mail -->
-                    <img src="../../../../../assets/images/google.svg" class="mr-3" height="20px" width="20px" alt="">
-                    Se connecter avec Google
-                </button>
-            </div>
-            <div class="mt-5 text-center text-base">
-                <span class="inter text-gray-400">Pas encore inscrit(e) ? </span><span
-                    class="popping text--blue hover:cursor-pointer active:-translate-y-1" routerLink="/register">
-                    S'inscrire</span>
-            </div>
-        </div>
+        </form>
     </div>
 </section>

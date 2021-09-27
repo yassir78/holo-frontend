@@ -29,7 +29,9 @@ export class LocataireRegisterComponent implements OnInit {
     birth: new FormControl('', Validators.required),
     profileImage: new FormControl(''),
     phoneNumber: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required)
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
+
 
   })
   constructor(private uploadFileService:UploadFileService, private store: Store<RemetteurRegisterState>, private router:Router) { }
@@ -38,6 +40,11 @@ export class LocataireRegisterComponent implements OnInit {
   get genre() {
     return this.registerForm.get('genre');
   }
+
+  get password() {
+    return this.registerForm.get('password');
+  }
+
   get firstName() {
     return this.registerForm.get('firstName');
   }
@@ -99,7 +106,8 @@ export class LocataireRegisterComponent implements OnInit {
       firstName: this.firstName?.value,
       lastName: this.lastName?.value,
       profileImage: this.profileImgUrl,
-      phoneNumber: this.phoneNumber?.value
+      phoneNumber: this.phoneNumber?.value,
+      password: this.password?.value
     }))
     this.user.subscribe(user => {
       this.store.dispatch(RemetteurActions.remetteurRegister({ user: user }))

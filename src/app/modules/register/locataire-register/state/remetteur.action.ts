@@ -9,7 +9,8 @@ export const register = createAction(
         birth: Date,
         phoneNumber: string,
         profileImage: string,
-        email: string
+        email: string,
+        password: string
     }>()
 )
 

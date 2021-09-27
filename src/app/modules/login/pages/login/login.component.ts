@@ -14,13 +14,13 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   constructor(private store: Store<loginState>, private fb: FormBuilder) {
     this.loginForm = this.fb.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required],
     })
   }
 
-  get username() {
-    return this.loginForm.get('username')?.value;
+  get email() {
+    return this.loginForm.get('email')?.value;
   }
   get password() {
     return this.loginForm.get('password')?.value;
@@ -28,6 +28,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   login() {
-    this.store.dispatch(LoginActions.login({ username: "salim", password: "azerty" }))
+    this.store.dispatch(LoginActions.login({ email: this.email, password: this.password}))
   }
 }
