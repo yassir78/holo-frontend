@@ -47,5 +47,19 @@ export class GoodDetailComponent implements OnInit {
       }
     });
   }
+  nextSlide() {
+    if (this.counter < this.medias.length - 1) {
+      this.counter += 1;
+    } else {
+      this.counter = 0;
+    }
+  }
+  previousSlide() {
+    if (this.counter >= 1) {
+      this.counter = this.counter - 1;
+    } else {
+      this.counter = this.medias.length - 1;
+    }
+  }
 
 }
