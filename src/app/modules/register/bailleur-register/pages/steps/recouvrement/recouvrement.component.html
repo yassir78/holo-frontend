@@ -1,65 +1,73 @@
-
-  <div class="mt-5 md:mt-0 md:col-span-2 bg-white ">
-    <div class="text-gray-700 text-2xl  font-medium text-gray-700 mb-6">Système de récouvrement</div>
-    <form action="#" method="POST">
-      <div class="grid grid-cols-6 gap-6">
-        <div class="col-span-6 sm:col-span-6">
-            <label for="last-name" class="block text-sm font-medium text-gray-700">Nom de la banque</label>
-            <input type="text" placeholder="Nom de votre banque" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-          </div>
-          <div class="col-span-6 sm:col-span-3">
-            <label for="last-name" class="block text-sm font-medium text-gray-700">Compte bancaire N°</label>
-            <input type="text" placeholder="Numéro de compte" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-          </div>
-           <div class="col-span-6 sm:col-span-3">
-            <label for="last-name" class="block text-sm font-medium text-gray-700">Code postal N°</label>
-            <input type="text" placeholder="Votre code postal" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-          </div>
-      
-
-            <div class="col-span-6 sm:col-span-6">
-                <label for="last-name" class="block text-sm font-medium text-gray-700">Titulaire du compte</label>
-                <input type="text" placeholder="Titulaire de votre compte" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-              </div> 
-               <div class="col-span-6 sm:col-span-6">
-                <label for="last-name" class="block text-sm mb-1 font-medium text-gray-700">Termes</label>
-                <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    <p class="text-gray-500">En règle générale, la garantie de loyer s'élève à max. 3 mois de loyer brut. Par sa signature, le candidat locataire autorise la gérance à prendre des renseignements auprès du bailleur précédent, de l'employeur et de l'office des poursuites, et confirme aussi avoir répondu avec véracité à tous les renseignements. 
-
-                        Si le candidat dépose une demande de location et renonce ensuite à la signature du bail qui lui est envoyé après avoir donné son accord verbal ou écrit à l’acceptation de sa candidature par la régie, « la gérance » facturera un montant lié aux frais administratifs occasionnés par l’annulation.
-                    </p>
-                  </div>
-            
-              </div>
-              <div class="col-span-6 sm:col-span-6">
-              <div class="relative flex items-start">
-                <div class="flex items-center h-5">
-                  <input id="offers" aria-describedby="offers-description" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                </div>
-                <div class="ml-3 text-sm">
-                  <span id="offers-description" class="text-gray-00">J’ai lu et accepté les termes et conditions.</span>
-                </div>
-              </div>
-            </div>
-           </div>
-
-           <div class="grid grid-rows-6 grid-flow-col gap-2">
-            <div class="px-4 py-3 text-left sm:px-6 row-span-6 sm:row-span-6">
-                <a (click)="returnToProperty()" class="inline-flex items-center px-3 py-2  text-sm text-blue-2 cursor-pointer hover:bg-blue-2">
-                    <img src="../../../../../../assets/images/precedent.svg"  />
-                </a>
-              
-              </div>
-               <div class="px-4 py-3 text-right sm:px-6 row-span-6 sm:row-span-6">
-                
-                <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-blue-2 hover:bg-blue-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-blue-2">
-                    Commencer à postuler
-                  </button>
-              </div>
-          </div>
-
-          
-           </form>
-           </div>
+<div class=" text-2xl  font-medium text-gray-700 mb-6">Système de récouvrement</div>
+<form action="#" method="POST">
+  <div class="grid grid-cols-6 gap-6">
+    <div class="col-span-6 sm:col-span-6">
+      <label for="last-name" class="block text-sm font-medium text-gray-700">Nom de la banque</label>
+      <input type="text" placeholder="Nom de votre banque" name="last-name" id="last-name" autocomplete="family-name"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="last-name" class="block text-sm font-medium text-gray-700">Compte bancaire N°</label>
+      <input type="text" placeholder="Numéro de compte" name="last-name" id="last-name" autocomplete="family-name"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="last-name" class="block text-sm font-medium text-gray-700">Code postal N°</label>
+      <input type="text" placeholder="Votre code postal" name="last-name" id="last-name" autocomplete="family-name"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+    </div>
 
 
+    <div class="col-span-6 sm:col-span-6">
+      <label for="last-name" class="block text-sm font-medium text-gray-700">Titulaire du compte</label>
+      <input type="text" placeholder="Titulaire de votre compte" name="last-name" id="last-name"
+        autocomplete="family-name"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+    </div>
+    <div class="col-span-6 sm:col-span-6">
+      <label for="last-name" class="block text-sm mb-1 font-medium text-gray-700">Termes</label>
+      <div class="mt-1 sm:mt-0 sm:col-span-2">
+        <p class="text-gray-500">En règle générale, la garantie de loyer s'élève à max. 3 mois de loyer brut. Par sa
+          signature, le candidat locataire autorise la gérance à prendre des renseignements auprès du bailleur
+          précédent, de l'employeur et de l'office des poursuites, et confirme aussi avoir répondu avec véracité à
+          tous les renseignements.
+
+          Si le candidat dépose une demande de location et renonce ensuite à la signature du bail qui lui est envoyé
+          après avoir donné son accord verbal ou écrit à l’acceptation de sa candidature par la régie, « la gérance »
+          facturera un montant lié aux frais administratifs occasionnés par l’annulation.
+        </p>
+      </div>
+
+    </div>
+    <div class="col-span-6 sm:col-span-6">
+      <div class="relative flex items-start">
+        <div class="flex items-center h-5">
+          <input id="offers" aria-describedby="offers-description" name="offers" type="checkbox"
+            class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+        </div>
+        <div class="ml-3 text-sm">
+          <span id="offers-description" class="text-gray-00">J’ai lu et accepté les termes et conditions.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-rows-6 grid-flow-col gap-2">
+    <div class="px-4 py-3 text-left sm:px-6 row-span-6 sm:row-span-6">
+      <a (click)="returnToProperty()"
+        class="inline-flex items-center px-3 py-2  text-sm text-blue-2 cursor-pointer hover:bg-blue-2">
+        <img src="../../../../../../assets/images/precedent.svg" />
+      </a>
+
+    </div>
+    <div class="px-4 py-3 text-right sm:px-6 row-span-6 sm:row-span-6">
+
+      <button type="button"
+        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-blue-2 hover:bg-blue-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-blue-2">
+        Commencer à postuler
+      </button>
+    </div>
+  </div>
+
+
+</form>

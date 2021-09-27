@@ -1,170 +1,185 @@
-<div class="mt-5 md:mt-0 md:col-span-2 bg-white ">
-  <div class="text-black text-3xl font-extrabold mt-20 mb-10">A propos de vous</div>
-  <form [formGroup]="aboutForm">
-    <div class="grid grid-cols-6 gap-6">
-      <!--    <div class="col-span-6 sm:col-span-6">
-        <label for="country" class="block text-sm font-medium text-gray-700">Vous rejoigner en tant que</label>
-        <select id="country" name="country" autocomplete="country"
-          class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-          <option>Remeteur</option>
-          <option>Locataire</option>
-          <option>Bailleur</option>
-        </select>
-      </div> -->
-      <div class="col-span-6 sm:col-span-6">
-        <label for="genre" class="block text-sm font-medium text-gray-700">Genre</label>
-        <select id="genre" name="genre" autocomplete="genre" formControlName="genre"
-          class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-          <option>Monsieur</option>
-          <option>Madame</option>
-        </select>
-      </div>
-      <div class="col-span-6 sm:col-span-3">
-        <label for="firstName" class="block text-sm font-medium text-gray-700">Nom</label>
-        <input type="text" name="firstName"
-          [ngClass]=" (firstName?.invalid && firstName?.touched) ? 'border-red-500' : 'border-blue-100'"
-          placeholder="Votre nom" id="firstName" autocomplete="firstName" formControlName="firstName"
-          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
-        <span class="text-red-600"
-          *ngIf="(firstName?.dirty || firstName?.touched) && firstName?.invalid && firstName?.errors?.required">
-          Nom Obligatoire.
-        </span>
-      </div>
+<div class="text-black text-3xl font-extrabold  mb-5">A propos de vous</div>
+<div *ngIf=" password?.invalid" class="text-left mt-1 mb-5">
+  <div class="text-red-600 text-2xl" *ngIf="password?.errors?.inv">Les deux mots de passe ne sont pas identiques </div>
+</div>
+<form [formGroup]="aboutForm">
+  <div class="grid grid-cols-6 gap-6">
+    <div class="col-span-6 sm:col-span-6">
+      <label for="genre" class="block text-sm font-medium text-gray-700">Genre</label>
+      <select id="genre" name="genre" autocomplete="genre" formControlName="genre"
+        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        <option>Monsieur</option>
+        <option>Madame</option>
+      </select>
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="firstName" class="block text-sm font-medium text-gray-700">Nom</label>
+      <input type="text" name="firstName"
+        [ngClass]=" (firstName?.invalid && firstName?.touched) ? 'border-red-500' : 'border-blue-100'"
+        placeholder="Votre nom" id="firstName" autocomplete="firstName" formControlName="firstName"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
+      <span class="text-red-600"
+        *ngIf="(firstName?.dirty || firstName?.touched) && firstName?.invalid && firstName?.errors?.required">
+        Nom Obligatoire.
+      </span>
+    </div>
 
-      <div class="col-span-6 sm:col-span-3">
-        <label for="lastName" class="block text-sm font-medium text-gray-700">Prénom</label>
-        <input
-          [ngClass]=" (lastName?.dirty || lastName?.touched) && lastName?.invalid && lastName?.errors?.required ? 'border-red-500' : 'border-blue-100'"
-          type="text" name="lastName" placeholder="Votre prénom" id="lastName" autocomplete="lastName"
-          formControlName="lastName"
-          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
-        <span class="text-red-600"
-          *ngIf="(lastName?.dirty || lastName?.touched) && lastName?.invalid && lastName?.errors?.required">
-          Prénom Obligatoire.
-        </span>
-      </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="lastName" class="block text-sm font-medium text-gray-700">Prénom</label>
+      <input
+        [ngClass]=" (lastName?.dirty || lastName?.touched) && lastName?.invalid && lastName?.errors?.required ? 'border-red-500' : 'border-blue-100'"
+        type="text" name="lastName" placeholder="Votre prénom" id="lastName" autocomplete="lastName"
+        formControlName="lastName"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+      <span class="text-red-600"
+        *ngIf="(lastName?.dirty || lastName?.touched) && lastName?.invalid && lastName?.errors?.required">
+        Prénom Obligatoire.
+      </span>
+    </div>
 
-      <div class="col-span-6 sm:col-span-3">
-        <label for="birth" class="block text-sm font-medium text-gray-700">Date de naissance</label>
-        <input
-          [ngClass]="(birth?.dirty || birth?.touched) && birth?.invalid && birth?.errors?.required ? 'border-red-500' : 'border-blue-100'"
-          type="date" name="birth" id="birth" autocomplete="birth" formControlName="birth"
-          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
-        <span class="text-red-600"
-          *ngIf="(birth?.dirty || birth?.touched) && birth?.invalid && birth?.errors?.required">
-          Date de Naissance Obligatoire.
-        </span>
-      </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="birth" class="block text-sm font-medium text-gray-700">Date de naissance</label>
+      <input
+        [ngClass]="(birth?.dirty || birth?.touched) && birth?.invalid && birth?.errors?.required ? 'border-red-500' : 'border-blue-100'"
+        type="date" name="birth" id="birth" autocomplete="birth" formControlName="birth"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+      <span class="text-red-600" *ngIf="(birth?.dirty || birth?.touched) && birth?.invalid && birth?.errors?.required">
+        Date de Naissance Obligatoire.
+      </span>
+    </div>
 
-      <div class="col-span-6 sm:col-span-3">
-        <label for="locality" class="block text-sm font-medium text-gray-700">NPA/Localité</label>
-        <input
-          [ngClass]=" (locality?.dirty || locality?.touched) && locality?.invalid && locality?.errors?.required ? 'border-red-500' : 'border-blue-100'"
-          type="text" name="locality" id="locality" autocomplete="locality" placeholder="NPA/Localité"
-          formControlName="locality"
-          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
-        <span class="text-red-600"
-          *ngIf="(locality?.dirty || locality?.touched) && locality?.invalid && locality?.errors?.required">
-          Localité Obligatoire.
-        </span>
-      </div>
-      <div class="col-span-6 sm:col-span-3">
-        <label for="address" class="block text-sm font-medium text-gray-700">Adresse actuelle</label>
-        <input
-          [ngClass]=" (address?.dirty || address?.touched) && address?.invalid && address?.errors?.required? 'border-red-500' : 'border-blue-100'"
-          type="text" name="address" id="address" autocomplete="address" placeholder="Adresse" formControlName="address"
-          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
-        <span class="text-red-600"
-          *ngIf="(address?.dirty || address?.touched) && address?.invalid && address?.errors?.required">
-          Adresse Obligatoire.
-        </span>
-      </div>
-      <div class="col-span-6 sm:col-span-3">
-        <label for="domiciledSince" class="block text-sm font-medium text-gray-700">Domicilié depuis</label>
-        <input
-          [ngClass]=" (domiciledSince?.dirty || domiciledSince?.touched) && domiciledSince?.invalid && domiciledSince?.errors?.required ? 'border-red-500' : 'border-blue-100'"
-          type="date" name="domiciledSince" id="domiciledSince" autocomplete="domiciledSince"
-          formControlName="domiciledSince"
-          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
-        <span class="text-red-600"
-          *ngIf="(domiciledSince?.dirty || domiciledSince?.touched) && domiciledSince?.invalid && domiciledSince?.errors?.required">
-          Date Obligatoire.
-        </span>
-      </div>
-      <div class="col-span-6 sm:col-span-6">
-        <label for="last-name" class="block text-sm font-medium mb-3 text-gray-700">Photo de profil</label>
-        <div class="grid grid-rows-6 grid-flow-col gap-2">
-          <div class="row-span-6 sm:row-span-6 ">
-            <div class="mt-1 sm:mt-0 sm:col-span-2">
-              <div class="flex items-center">
+    <div class="col-span-6 sm:col-span-3">
+      <label for="locality" class="block text-sm font-medium text-gray-700">NPA/Localité</label>
+      <input
+        [ngClass]=" (locality?.dirty || locality?.touched) && locality?.invalid && locality?.errors?.required ? 'border-red-500' : 'border-blue-100'"
+        type="text" name="locality" id="locality" autocomplete="locality" placeholder="NPA/Localité"
+        formControlName="locality"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
+      <span class="text-red-600"
+        *ngIf="(locality?.dirty || locality?.touched) && locality?.invalid && locality?.errors?.required">
+        Localité Obligatoire.
+      </span>
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="address" class="block text-sm font-medium text-gray-700">Adresse actuelle</label>
+      <input
+        [ngClass]=" (address?.dirty || address?.touched) && address?.invalid && address?.errors?.required? 'border-red-500' : 'border-blue-100'"
+        type="text" name="address" id="address" autocomplete="address" placeholder="Adresse" formControlName="address"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+      <span class="text-red-600"
+        *ngIf="(address?.dirty || address?.touched) && address?.invalid && address?.errors?.required">
+        Adresse Obligatoire.
+      </span>
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="domiciledSince" class="block text-sm font-medium text-gray-700">Domicilié depuis</label>
+      <input
+        [ngClass]=" (domiciledSince?.dirty || domiciledSince?.touched) && domiciledSince?.invalid && domiciledSince?.errors?.required ? 'border-red-500' : 'border-blue-100'"
+        type="date" name="domiciledSince" id="domiciledSince" autocomplete="domiciledSince"
+        formControlName="domiciledSince"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+      <span class="text-red-600"
+        *ngIf="(domiciledSince?.dirty || domiciledSince?.touched) && domiciledSince?.invalid && domiciledSince?.errors?.required">
+        Date Obligatoire.
+      </span>
+    </div>
+    <div class="col-span-6 sm:col-span-6">
+      <label for="last-name" class="block text-sm font-medium mb-3 text-gray-700">Photo de profil</label>
+      <div class="grid grid-rows-6 grid-flow-col gap-2">
+        <div class="row-span-6 sm:row-span-6 ">
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="flex items-center">
 
-                <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100 ">
-                  <label>
-                    <img [src]="imageUrl" alt="..." class="img-thumbnail circle"
-                      [ngClass]="{'circle-success': (progress$|async) == 100}"
-                      [ngClass]="{'border-pulsate': (progress$|async) != 100 && (progress$|async) != 0}">
-                    <input type="file" id="upload" style="display:none" (change)="onFileSelected($event)" #file>
-                  </label>
-                </span>
-                <button type="button" (click)="file.click()"
-                  class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  Choisir
-                </button>
-                <button type="button"
-                  class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  Supprimer
-                </button>
-              </div>
+              <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100 ">
+                <label>
+                  <img [src]="imageUrl" alt="..." class="img-thumbnail circle"
+                    [ngClass]="{'circle-success': (progress$|async) == 100}"
+                    [ngClass]="{'border-pulsate': (progress$|async) != 100 && (progress$|async) != 0}">
+                  <input type="file" id="upload" style="display:none" (change)="onFileSelected($event)" #file>
+                </label>
+              </span>
+              <button type="button" (click)="file.click()"
+                class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Choisir
+              </button>
+              <button type="button"
+                class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Supprimer
+              </button>
             </div>
           </div>
-          <div class="row-span-6 sm:row-span-6">
-          </div>
         </div>
-
-      </div>
-      <div class="col-span-6 sm:col-span-6">
-        <label for="maritalStatus" class="block text-sm font-medium text-gray-700">Etat civil</label>
-        <select id="maritalStatus" name="maritalStatus" autocomplete="maritalStatus" formControlName="maritalStatus"
-          class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-          <option>Célibataire</option>
-          <option>Marié</option>
-        </select>
-      </div>
-      <div class="col-span-6 sm:col-span-3">
-        <label for="phoneNumber" class="block text-sm font-medium text-gray-700">Téléphone</label>
-        <input
-          [ngClass]=" (phoneNumber?.dirty || phoneNumber?.touched) && phoneNumber?.invalid && phoneNumber?.errors?.required ? 'border-red-500' : 'border-blue-100'"
-          type="text" name="phoneNumber" placeholder="Votre numéro de téléphone" id="phoneNumber"
-          autocomplete="phoneNumber" formControlName="phoneNumber"
-          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
-        <span class="text-red-600"
-          *ngIf="(phoneNumber?.dirty || phoneNumber?.touched) && phoneNumber?.invalid && phoneNumber?.errors?.required">
-          Téléphone Obligatoire.
-        </span>
+        <div class="row-span-6 sm:row-span-6">
+        </div>
       </div>
 
-      <div class="col-span-6 sm:col-span-3">
-        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-        <input
-          [ngClass]=" (email?.dirty || email?.touched) && email?.invalid && email?.errors?.required ? 'border-red-500' : 'border-blue-100'"
-          type="email" placeholder="Votre adresse email" name="email" id="email" autocomplete="email"
-          formControlName="email"
-          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
-        <span class="text-red-600"
-          *ngIf="(email?.dirty || email?.touched) && email?.invalid && email?.errors?.required">
-          Email Obligatoire.
-        </span>
-      </div>
     </div>
-    <div>
-      <div class="flex mt-10 justify-end">
-       
-          <button type="button" (click)="goToActivity()" [disabled]="!aboutForm.valid"
-            class="inline-flex  items-center px-8 py-2 border border-transparent text-sm leading-4 font-xl rounded-md shadow-sm text-white bg-blue-2 hover:bg-blue-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-blue-2">
-            Suivant
-          </button>
-     
-      </div>
+    <div class="col-span-6 sm:col-span-6">
+      <label for="maritalStatus" class="block text-sm font-medium text-gray-700">Etat civil</label>
+      <select id="maritalStatus" name="maritalStatus" autocomplete="maritalStatus" formControlName="maritalStatus"
+        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        <option>Célibataire</option>
+        <option>Marié</option>
+      </select>
     </div>
-  </form>
-</div>
+
+    <div class="col-span-6 sm:col-span-3">
+      <label for="phoneNumber" class="block text-sm font-medium text-gray-700">Téléphone</label>
+      <input
+        [ngClass]=" (phoneNumber?.dirty || phoneNumber?.touched) && phoneNumber?.invalid && phoneNumber?.errors?.required ? 'border-red-500' : 'border-blue-100'"
+        type="text" name="phoneNumber" placeholder="Votre numéro de téléphone" id="phoneNumber"
+        autocomplete="phoneNumber" formControlName="phoneNumber"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
+      <span class="text-red-600"
+        *ngIf="(phoneNumber?.dirty || phoneNumber?.touched) && phoneNumber?.invalid && phoneNumber?.errors?.required">
+        Téléphone Obligatoire.
+      </span>
+    </div>
+
+    <div class="col-span-6 sm:col-span-3">
+      <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+      <input
+        [ngClass]=" (email?.dirty || email?.touched) && email?.invalid && email?.errors?.required ? 'border-red-500' : 'border-blue-100'"
+        type="email" placeholder="Votre adresse email" name="email" id="email" autocomplete="email"
+        formControlName="email"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
+      <span class="text-red-600" *ngIf="(email?.dirty || email?.touched) && email?.invalid && email?.errors?.required">
+        Email Obligatoire.
+      </span>
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
+      <input
+        [ngClass]=" (password?.dirty || password?.touched) && password?.invalid && password?.errors?.required ? 'border-red-500' : 'border-blue-100'"
+        type="password" name="password" placeholder="Mot de passe" id="password" autocomplete="phoneNumber"
+        formControlName="password"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
+      <span class="text-red-600"
+        *ngIf="(password?.dirty || password?.touched) && password?.invalid && password?.errors?.required">
+        Mot de passe Obligatoire.
+      </span>
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="cpassword" class="block text-sm font-medium text-gray-700">Confirmer votre Mot de passe</label>
+      <input
+        [ngClass]=" (cpassword?.dirty || cpassword?.touched) && cpassword?.invalid && cpassword?.errors?.required ? 'border-red-500' : 'border-blue-100'"
+        type="password" name="cpassword" placeholder="Confirmer votre mot de passe" id="cpassword"
+        autocomplete="cpassword" formControlName="cpassword"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
+      <span class="text-red-600"
+        *ngIf="(cpassword?.dirty || cpassword?.touched) && cpassword?.invalid && cpassword?.errors?.required">
+        Champ obligatoire.
+      </span>
+    </div>
+  </div>
+  <div>
+    <div class="flex mt-10 justify-end">
+
+      <button type="button" (click)="goToActivity()" [disabled]="!aboutForm.valid"
+        class="inline-flex  items-center px-8 py-2 border border-transparent text-sm leading-4 font-xl rounded-md shadow-sm text-white bg-blue-2 hover:bg-blue-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-blue-2">
+        Suivant
+      </button>
+
+    </div>
+  </div>
+</form>

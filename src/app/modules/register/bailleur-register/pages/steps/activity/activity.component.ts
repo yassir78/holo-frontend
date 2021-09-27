@@ -49,7 +49,7 @@ export class ActivityComponent implements OnInit {
   /* @ts-ignore */
   gross: number;
   /* @ts-ignore */
-  user: Observable<User>;
+  user$: Observable<User>;
   activityForm: FormGroup = new FormGroup({
     profession: new FormControl('', Validators.required),
     professionDate: new FormControl('', Validators.required),
@@ -70,8 +70,7 @@ export class ActivityComponent implements OnInit {
     this.payslipProcessEndedSuccessfuly$ = this.store.select(getpayslipProcessEndedSuccessfuly);
     this.payslipProcessErrorMsg$ = this.store.select(getpayslipProcessErrorMsg);
     this.payslipProcessLoading$ = this.store.select(getpayslipProcessLoading);
-    this.user = this.store.select(getUser);
-
+    this.user$ = this.store.select(getUser);
     this.gross$ = this.store.select(getGross)
     this.net$ = this.store.select(getNet)
     this.net$.subscribe(net => this.net = net);
@@ -80,14 +79,14 @@ export class ActivityComponent implements OnInit {
       if (value) {
         const netMonthlyIncome = this.netMonthlyIncome?.value;
         const grossMonthlyIncome = this.grossMonthlyIncome?.value;
-        console.log(netMonthlyIncome);
         if (parseInt(netMonthlyIncome) != this.net) {
+          this.netMonthlyIncome?.setValue(this.net);
           this.netMonthlyIncome?.setErrors({ 'inv': true })
         }
         if (parseInt(grossMonthlyIncome) != this.gross) {
+          this.grossMonthlyIncome?.setValue(this.gross);
           this.grossMonthlyIncome?.setErrors({ 'inv': true })
         }
-
       }
     })
   }
@@ -144,7 +143,7 @@ export class ActivityComponent implements OnInit {
         thirdMonthSalary: this.thirdMonthSalaryUrl,
       }
     }))
-    this.user.subscribe(user => {
+    this.user$.subscribe(user => {
       this.store.dispatch(BailleurActions.register({ user: user }))
     })
 

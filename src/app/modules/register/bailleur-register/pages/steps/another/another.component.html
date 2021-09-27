@@ -1,94 +1,115 @@
+<div class="text-black text-3xl font-extrabold  mb-10">Autres informations</div>
+<form [formGroup]="otherForm">
+  <div class="grid grid-cols-6 gap-6">
+    <div class="col-span-6 sm:col-span-6">
+      <label for="last-name" class="block text-sm font-medium text-gray-700">Etes-vous fumeur?</label>
+      <div class="grid grid-rows-6 grid-flow-col gap-2">
+        <div class="row-span-6 sm:row-span-6 ">
+          <select id="smoker" name="smoker" autocomplete="smoker" formControlName="smoker"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <option>Oui</option>
+            <option>Non</option>
+          </select>
+        </div>
+        <div class="row-span-6 sm:row-span-6">
+        </div>
+      </div>
+    </div>
+    <div class="col-span-6 sm:col-span-6">
+      <label for="last-name" class="block text-sm font-medium text-gray-700">Votre contrat de location actuel a-t-il été
+        résilié par le bailleur?</label>
+      <div class="grid grid-rows-6 grid-flow-col gap-2">
+        <div class="row-span-6 sm:row-span-6 ">
+          <select id="contractHasBeenTerminatedByTheLessor"
+            (change)="contractHasBeenTerminatedByTheLessorSelect($event.target)"
+            name="contractHasBeenTerminatedByTheLessor" formControlName="contractHasBeenTerminatedByTheLessor"
+            autocomplete="contractHasBeenTerminatedByTheLessor"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <option>Oui</option>
+            <option>Non</option>
+          </select>
+        </div>
+        <div class="row-span-6 sm:row-span-6" *ngIf="contractHasBeenTerminatedByTheLessorInputShow">
+          <input type="text" name="contractHasBeenTerminatedByTheLessorWhy"
+            formControlName="contractHasBeenTerminatedByTheLessorWhy" id="contractHasBeenTerminatedByTheLessorWhy"
+            placeholder="Pourquoi?" autocomplete="given-name"
+            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+        </div>
+      </div>
+    </div>
 
-  <div class="mt-5 md:mt-0 md:col-span-2 bg-white ">
-    <div class="text-black text-3xl font-extrabold mt-20 mb-10">Autres informations</div>
-    <form [formGroup]= "otherForm">
-      <div class="grid grid-cols-6 gap-6">
-        <div class="col-span-6 sm:col-span-6">
-            <label for="last-name" class="block text-sm font-medium text-gray-700">Etes-vous fumeur?</label>
-            <div class="grid grid-rows-6 grid-flow-col gap-2">
-              <div class="row-span-6 sm:row-span-6 ">
-                <select id="smoker" name="smoker" autocomplete="smoker"  formControlName="smoker" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                  <option>Oui</option>
-                  <option>Non</option>
-                </select>
-              </div>    
-              <div class="row-span-6 sm:row-span-6">
-              </div>
-            </div>
-            </div>
-            <div class="col-span-6 sm:col-span-6">
-                <label for="last-name" class="block text-sm font-medium text-gray-700">Votre contrat de location actuel a-t-il été résilié par le bailleur?</label>
-                <div class="grid grid-rows-6 grid-flow-col gap-2">
-                  <div class="row-span-6 sm:row-span-6 ">
-                    <select id="contractHasBeenTerminatedByTheLessor" name="contractHasBeenTerminatedByTheLessor" formControlName="contractHasBeenTerminatedByTheLessor" autocomplete="contractHasBeenTerminatedByTheLessor" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                      <option>Oui</option>
-                      <option>Non</option>
-                    </select>
-                 </div>    
-                  <div class="row-span-6 sm:row-span-6">
-                    <input type="text" name="contractHasBeenTerminatedByTheLessorWhy" formControlName="contractHasBeenTerminatedByTheLessorWhy" id="contractHasBeenTerminatedByTheLessorWhy" placeholder="Pourquoi?" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                  </div>
-                </div>
-            </div>
-            
-            <div class="col-span-6 sm:col-span-6">
-                <label for="lawsuitsDuringTheLastTwoYears" class="block text-sm font-medium text-gray-700">Avez vous des poursuites durant les 2 dernières années?</label>
-                <div class="grid grid-rows-6 grid-flow-col gap-2">
-                  <div class="row-span-6 sm:row-span-6 ">
-                    <select id="lawsuitsDuringTheLastTwoYears" name="lawsuitsDuringTheLastTwoYears" formControlName="lawsuitsDuringTheLastTwoYears" autocomplete="lawsuitsDuringTheLastTwoYears" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                      <option>Oui</option>
-                      <option>Non</option>
-                    </select>
-                  </div>    
-                  <div class="row-span-6 sm:row-span-6">
-                  </div>
-                </div>
-            </div>
-            <div class="col-span-6 sm:col-span-6">
-                <label for="BeingSubjectOfActsOfDefaultOfGoodsDuringInTheLastFiveYears" class="block text-sm font-medium text-gray-700">Avez vous faits l'objet d'actes de défaut de biens durant dans les 5 dernières années?</label>
-                <div class="grid grid-rows-6 grid-flow-col gap-2">
-                  <div class="row-span-6 sm:row-span-6 ">
-                    <select id="BeingSubjectOfActsOfDefaultOfGoodsDuringInTheLastFiveYears" name="BeingSubjectOfActsOfDefaultOfGoodsDuringInTheLastFiveYears" formControlName="BeingSubjectOfActsOfDefaultOfGoodsDuringInTheLastFiveYears" autocomplete="BeingSubjectOfActsOfDefaultOfGoodsDuringInTheLastFiveYears" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                      <option>Oui</option>
-                      <option>Non</option>
-                    </select>
-                  </div>    
-                  <div class="row-span-6 sm:row-span-6">
-                  </div>
-                </div>
-            </div>
+    <div class="col-span-6 sm:col-span-6">
+      <label for="lawsuitsDuringTheLastTwoYears" class="block text-sm font-medium text-gray-700">Avez vous des
+        poursuites durant les 2 dernières années?</label>
+      <div class="grid grid-rows-6 grid-flow-col gap-2">
+        <div class="row-span-6 sm:row-span-6 ">
+          <select id="lawsuitsDuringTheLastTwoYears" name="lawsuitsDuringTheLastTwoYears"
+            formControlName="lawsuitsDuringTheLastTwoYears" autocomplete="lawsuitsDuringTheLastTwoYears"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <option>Oui</option>
+            <option>Non</option>
+          </select>
+        </div>
+        <div class="row-span-6 sm:row-span-6">
+        </div>
+      </div>
+    </div>
+    <div class="col-span-6 sm:col-span-6">
+      <label for="BeingSubjectOfActsOfDefaultOfGoodsDuringInTheLastFiveYears"
+        class="block text-sm font-medium text-gray-700">Avez vous faits l'objet d'actes de défaut de biens durant dans
+        les 5 dernières années?</label>
+      <div class="grid grid-rows-6 grid-flow-col gap-2">
+        <div class="row-span-6 sm:row-span-6 ">
+          <select id="BeingSubjectOfActsOfDefaultOfGoodsDuringInTheLastFiveYears"
+            name="BeingSubjectOfActsOfDefaultOfGoodsDuringInTheLastFiveYears"
+            formControlName="BeingSubjectOfActsOfDefaultOfGoodsDuringInTheLastFiveYears"
+            autocomplete="BeingSubjectOfActsOfDefaultOfGoodsDuringInTheLastFiveYears"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <option>Oui</option>
+            <option>Non</option>
+          </select>
+        </div>
+        <div class="row-span-6 sm:row-span-6">
+        </div>
+      </div>
+    </div>
 
-            <div class="col-span-6 sm:col-span-6">
-                <label for="civilLiabilityInsurance" class="block text-sm font-medium text-gray-700">Avez-vous une assurance responsabilité  civile (Avec dégats locataire?)</label>
-                <div class="grid grid-rows-6 grid-flow-col gap-2">
-                  <div class="row-span-6 sm:row-span-6 ">
-                    <select id="civilLiabilityInsurance" name="civilLiabilityInsurance" formControlName="civilLiabilityInsurance" autocomplete="civilLiabilityInsurance" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                      <option>Oui</option>
-                      <option>Non</option>
-                    </select>
-                 </div>    
-                  <div class="row-span-6 sm:row-span-6">
-                    <input type="text" name="civilLiabilityInsuranceCompany" formControlName="civilLiabilityInsuranceCompany" id="civilLiabilityInsuranceCompany" placeholder="Compagnie?" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                  </div>
-                </div>
-            </div>
-    
-           </div>
-           <div class="flex justify-between mt-12">
-           
-                <a (click)="returnToAddress()" class="inline-flex items-center px-3 py-2  text-sm text-blue-2 cursor-pointer hover:bg-blue-2">
-                  <img src="../../../../../../assets/images/precedent.svg" />
-                </a>
-              
-       
-        
-                
-                <button type="button" (click)="goToProperty()" class="inline-flex  items-center px-8 py-2 border border-transparent text-sm leading-4 font-xl rounded-md shadow-sm text-white bg-blue-2 hover:bg-blue-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-blue-2">
-                    Suivant
-                  </button>
-        
-          </div>
-           </form>
-           </div>
+    <div class="col-span-6 sm:col-span-6">
+      <label for="civilLiabilityInsurance" class="block text-sm font-medium text-gray-700">Avez-vous une assurance
+        responsabilité civile (Avec dégats locataire?)</label>
+      <div class="grid grid-rows-6 grid-flow-col gap-2">
+        <div class="row-span-6 sm:row-span-6 ">
+          <select id="civilLiabilityInsurance" (change)="civilLiabilityInsuranceSelect($event.target)"
+            name="civilLiabilityInsurance" formControlName="civilLiabilityInsurance"
+            autocomplete="civilLiabilityInsurance"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <option>Oui</option>
+            <option>Non</option>
+          </select>
+        </div>
+        <div class="row-span-6 sm:row-span-6" *ngIf="civilLiabilityInsuranceInputShow">
+          <input type="text" name="civilLiabilityInsuranceCompany" formControlName="civilLiabilityInsuranceCompany"
+            id="civilLiabilityInsuranceCompany" placeholder="Compagnie?" autocomplete="given-name"
+            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="flex justify-between mt-12">
+
+    <a (click)="returnToAddress()"
+      class="inline-flex items-center px-3 py-2  text-sm text-blue-2 cursor-pointer hover:bg-blue-2">
+      <img src="../../../../../../assets/images/precedent.svg" />
+    </a>
 
 
+
+
+    <button type="button" (click)="goToProperty()"
+      class="inline-flex  items-center px-8 py-2 border border-transparent text-sm leading-4 font-xl rounded-md shadow-sm text-white bg-blue-2 hover:bg-blue-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-blue-2">
+      Suivant
+    </button>
+
+  </div>
+</form>

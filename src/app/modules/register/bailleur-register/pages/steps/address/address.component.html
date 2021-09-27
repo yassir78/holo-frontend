@@ -1,140 +1,171 @@
+<div class="text-black text-3xl font-extrabold  mb-10 ">Lieu et adresse</div>
+<form [formGroup]="addressForm">
+  <div class="grid grid-cols-6 gap-6">
 
-  <div class="mt-5 md:mt-0 md:col-span-2 bg-white ">
-    <div class="text-black text-3xl font-extrabold mt-20 mb-10 ">Lieu et adresse</div>
-    <form [formGroup]="addressForm">
-      <div class="grid grid-cols-6 gap-6">
-    
-          <div class="col-span-6 sm:col-span-3">
-            <label for="nationality" class="block text-sm font-medium text-gray-700">Nationalité</label>
-            <select id="nationality" name="nationality" formControlName="nationality" autocomplete="nationality" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-              <option>Suisse</option>
-              <option>Etranger</option>
-       
-            </select>
-          </div>
-        <div class="col-span-6 sm:col-span-3">
-          <label for="placeOfOrigin" class="block text-sm font-medium text-gray-700">Lieu d'origine</label>
-          <input type="text" [ngClass]=" (placeOfOrigin?.invalid && placeOfOrigin?.touched) ? 'border-red-500' : 'border-blue-100'" name="placeOfOrigin" formControlName="placeOfOrigin" placeholder="versoix"  id="placeOfOrigin" autocomplete="placeOfOrigin" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
-          <span class="text-red-600"
-          *ngIf="(placeOfOrigin?.dirty || placeOfOrigin?.touched) && placeOfOrigin?.invalid && placeOfOrigin?.errors?.required"
-        >
+    <div class="col-span-6 sm:col-span-3">
+      <label for="nationality" class="block text-sm font-medium text-gray-700">Nationalité</label>
+      <select id="nationality" name="nationality" formControlName="nationality" autocomplete="nationality"
+        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        <option>Suisse</option>
+        <option>Etranger</option>
+
+      </select>
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="placeOfOrigin" class="block text-sm font-medium text-gray-700">Lieu d'origine</label>
+      <input type="text"
+        [ngClass]=" (placeOfOrigin?.invalid && placeOfOrigin?.touched) ? 'border-red-500' : 'border-blue-100'"
+        name="placeOfOrigin" formControlName="placeOfOrigin" placeholder="versoix" id="placeOfOrigin"
+        autocomplete="placeOfOrigin"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+      <span class="text-red-600"
+        *ngIf="(placeOfOrigin?.dirty || placeOfOrigin?.touched) && placeOfOrigin?.invalid && placeOfOrigin?.errors?.required">
         Lieu d'origine obligatoire.
-        </span>
-         </div>
-        <div class="col-span-6 sm:col-span-6">
-          <label for="typeOfPermit" class="block text-sm font-medium text-gray-700">Votre permis de séjours</label>
-          <select id="typeOfPermit" name="typeOfPermit" formControlName="typeOfPermit" autocomplete="typeOfPermit" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-            <option>Permis A</option>
-            <option>Permis B</option>
-            <option>Permis C</option>
+      </span>
+    </div>
+    <div class="col-span-6 sm:col-span-6">
+      <label for="typeOfPermit" class="block text-sm font-medium text-gray-700">Votre permis de séjours</label>
+      <select id="typeOfPermit" name="typeOfPermit" formControlName="typeOfPermit" autocomplete="typeOfPermit"
+        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        <option>Permis A</option>
+        <option>Permis B</option>
+        <option>Permis C</option>
 
+      </select>
+    </div>
+    <div class="col-span-6 sm:col-span-  ">
+      <label for="last-name" class="block text-sm font-medium text-gray-700">Existe-il une mesure de mise sous
+        tutelle?</label>
+      <div class="grid grid-rows-6 grid-flow-col gap-2">
+        <div class="row-span-6 sm:row-span-6 ">
+          <select id="hasPutUnderGuardianship" name="hasPutUnderGuardianship" formControlName="hasPutUnderGuardianship"
+            autocomplete="hasPutUnderGuardianship" (change)="hasPutUnderGuardianshipSelect($event.target)"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <option>Oui</option>
+            <option>Non</option>
           </select>
         </div>
-        <div class="col-span-6 sm:col-span-  ">
-          <label for="last-name" class="block text-sm font-medium text-gray-700">Existe-il une mesure de mise sous tutelle?</label>
-          <div class="grid grid-rows-6 grid-flow-col gap-2">
-            <div class="row-span-6 sm:row-span-6 ">
-              <select id="hasPutUnderGuardianship" name="hasPutUnderGuardianship" formControlName="hasPutUnderGuardianship" autocomplete="hasPutUnderGuardianship" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <option>Oui</option>
-                <option>Non</option>
-              </select>
-            </div>    
-            <div class="row-span-6 sm:row-span-6">
-              <input type="text" name="putUnderGuardianship" formControlName="putUnderGuardianship" id="putUnderGuardianship" placeholder="Laquelle ?" autocomplete="putUnderGuardianship" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-               
-            </div>
-          </div>
-      
-          </div>
-          <div class="col-span-6 sm:col-span-3">
-            <label for="inSwitzerlandSince" class="block text-sm font-medium text-gray-700">En Suisse depuis</label>
-            <input type="date" [ngClass]=" (inSwitzerlandSince?.invalid && inSwitzerlandSince?.touched) ? 'border-red-500' : 'border-blue-100'" name="inSwitzerlandSince" formControlName="inSwitzerlandSince" placeholder="versoix"  id="inSwitzerlandSince" autocomplete="inSwitzerlandSince" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
-            <span class="text-red-600"
-            *ngIf="(inSwitzerlandSince?.dirty || inSwitzerlandSince?.touched) && inSwitzerlandSince?.invalid && inSwitzerlandSince?.errors?.required"
-          >
-          Date obligatoire.
-          </span>
-          </div>
-          <div class="col-span-6 sm:col-span-3">
-            <label for="familyOrPrimaryAccommodation" class="block text-sm font-medium text-gray-700">Logement familial / principal?</label>
-            <select id="familyOrPrimaryAccommodation" name="familyOrPrimaryAccommodation" formControlName="familyOrPrimaryAccommodation" autocomplete="familyOrPrimaryAccommodation" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-              <option>Oui</option>
-              <option>Non</option>
-            </select>
-          </div>
-  
-        <div class="col-span-6 sm:col-span-6">
-          <label for="numberOfPeopleOccupyingTheFutureAccommodation" class="block text-sm font-medium text-gray-700">Nombre de personnes occupant le future logement</label>
-          <input type="number"  [ngClass]=" (numberOfPeopleOccupyingTheFutureAccommodation?.invalid && numberOfPeopleOccupyingTheFutureAccommodation?.touched) ? 'border-red-500' : 'border-blue-100'" name="numberOfPeopleOccupyingTheFutureAccommodation" formControlName="numberOfPeopleOccupyingTheFutureAccommodation" placeholder="12" id="numberOfPeopleOccupyingTheFutureAccommodation" autocomplete="numberOfPeopleOccupyingTheFutureAccommodation" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
-          <span class="text-red-600"
-          *ngIf="(numberOfPeopleOccupyingTheFutureAccommodation?.dirty || numberOfPeopleOccupyingTheFutureAccommodation?.touched) && numberOfPeopleOccupyingTheFutureAccommodation?.invalid && numberOfPeopleOccupyingTheFutureAccommodation?.errors?.required"
-        >
-         Champ obligatoire.
-        </span>
+        <div class="row-span-6 sm:row-span-6" *ngIf="hasPutUnderGuardianshipInputShow">
+          <input type="text" name="putUnderGuardianship" formControlName="putUnderGuardianship"
+            id="putUnderGuardianship" placeholder="Laquelle ?" autocomplete="putUnderGuardianship"
+            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+
         </div>
-        <div class="col-span-6 sm:col-span-3">
-          <label for="numberOfAdults" class="block text-sm font-medium text-gray-700">Nombre d'adultes</label>
-          <input type="number" [ngClass]=" (numberOfAdults?.invalid && numberOfAdults?.touched) ? 'border-red-500' : 'border-blue-100'" placeholder="6" name="numberOfAdults" formControlName="numberOfAdults" id="numberOfAdults" autocomplete="numberOfAdults" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
-          <span class="text-red-600"
-          *ngIf="(numberOfAdults?.dirty || numberOfAdults?.touched) && numberOfAdults?.invalid && numberOfAdults?.errors?.required"
-        >
+      </div>
+
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="inSwitzerlandSince" class="block text-sm font-medium text-gray-700">En Suisse depuis</label>
+      <input type="date"
+        [ngClass]=" (inSwitzerlandSince?.invalid && inSwitzerlandSince?.touched) ? 'border-red-500' : 'border-blue-100'"
+        name="inSwitzerlandSince" formControlName="inSwitzerlandSince" placeholder="versoix" id="inSwitzerlandSince"
+        autocomplete="inSwitzerlandSince"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+      <span class="text-red-600"
+        *ngIf="(inSwitzerlandSince?.dirty || inSwitzerlandSince?.touched) && inSwitzerlandSince?.invalid && inSwitzerlandSince?.errors?.required">
+        Date obligatoire.
+      </span>
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="familyOrPrimaryAccommodation" class="block text-sm font-medium text-gray-700">Logement familial /
+        principal?</label>
+      <select id="familyOrPrimaryAccommodation" name="familyOrPrimaryAccommodation"
+        formControlName="familyOrPrimaryAccommodation" autocomplete="familyOrPrimaryAccommodation"
+        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        <option selected>Oui</option>
+        <option>Non</option>
+      </select>
+    </div>
+
+    <div class="col-span-6 sm:col-span-6">
+      <label for="numberOfPeopleOccupyingTheFutureAccommodation" class="block text-sm font-medium text-gray-700">Nombre
+        de personnes occupant le future logement</label>
+      <input type="number"
+        [ngClass]=" (numberOfPeopleOccupyingTheFutureAccommodation?.invalid && numberOfPeopleOccupyingTheFutureAccommodation?.touched) ? 'border-red-500' : 'border-blue-100'"
+        name="numberOfPeopleOccupyingTheFutureAccommodation"
+        formControlName="numberOfPeopleOccupyingTheFutureAccommodation" placeholder="12"
+        id="numberOfPeopleOccupyingTheFutureAccommodation" autocomplete="numberOfPeopleOccupyingTheFutureAccommodation"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+      <span class="text-red-600"
+        *ngIf="(numberOfPeopleOccupyingTheFutureAccommodation?.dirty || numberOfPeopleOccupyingTheFutureAccommodation?.touched) && numberOfPeopleOccupyingTheFutureAccommodation?.invalid && numberOfPeopleOccupyingTheFutureAccommodation?.errors?.required">
+        Champ obligatoire.
+      </span>
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="numberOfAdults" class="block text-sm font-medium text-gray-700">Nombre d'adultes</label>
+      <input type="number"
+        [ngClass]=" (numberOfAdults?.invalid && numberOfAdults?.touched) ? 'border-red-500' : 'border-blue-100'"
+        placeholder="6" name="numberOfAdults" formControlName="numberOfAdults" id="numberOfAdults"
+        autocomplete="numberOfAdults"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+      <span class="text-red-600"
+        *ngIf="(numberOfAdults?.dirty || numberOfAdults?.touched) && numberOfAdults?.invalid && numberOfAdults?.errors?.required">
         Nombre d'adultes obligatoire.
-        </span>
-        </div>
-        <div class="col-span-6 sm:col-span-3">
-          <label for="numberOfChildren" class="block text-sm font-medium text-gray-700">Nombre d'enfants</label>
-          <input type="number" [ngClass]=" (numberOfChildren?.invalid && numberOfChildren?.touched) ? 'border-red-500' : 'border-blue-100'" name="numberOfChildren" formControlName="numberOfChildren" placeholder = "6" id="numberOfChildren" autocomplete="numberOfChildren" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
-          <span class="text-red-600"
-          *ngIf="(numberOfChildren?.dirty || numberOfChildren?.touched) && numberOfChildren?.invalid && numberOfChildren?.errors?.required"
-        >
+      </span>
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="numberOfChildren" class="block text-sm font-medium text-gray-700">Nombre d'enfants</label>
+      <input type="number"
+        [ngClass]=" (numberOfChildren?.invalid && numberOfChildren?.touched) ? 'border-red-500' : 'border-blue-100'"
+        name="numberOfChildren" formControlName="numberOfChildren" placeholder="6" id="numberOfChildren"
+        autocomplete="numberOfChildren"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+      <span class="text-red-600"
+        *ngIf="(numberOfChildren?.dirty || numberOfChildren?.touched) && numberOfChildren?.invalid && numberOfChildren?.errors?.required">
         Nombre d'enfants obligatoire.
-        </span>
-         </div>
-        <div class="col-span-6 sm:col-span-6">
-          <label for="last-name" class="block text-sm font-medium text-gray-700">Animaux domestiques</label>
-          <div class="grid grid-rows-6 grid-flow-col gap-2">
-            <div class="row-span-6 sm:row-span-6 ">
-              <select id="hasPets" name="hasPets" formControlName="hasPets" autocomplete="hasPets" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <option>Oui</option>
-                <option>Non</option>
-              </select>
-            </div>    
-            <div class="row-span-6 sm:row-span-6">
-              <input type="text" name="pets" formControlName="pets" id="pets" placeholder="Lesquels ?" autocomplete="pets" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-            </div>
-          </div>
-          </div>
-          <div class="col-span-6 sm:col-span-6">
-            <label for="last-name" class="block text-sm font-medium text-gray-700">Instrument de musique</label>
-            <div class="grid grid-rows-6 grid-flow-col gap-2">
-              <div class="row-span-6 sm:row-span-6 ">
-                <select id="hasMusicInstruments" formControlName="hasMusicInstruments" name="hasMusicInstruments" autocomplete="hasMusicInstruments" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                  <option>Oui</option>
-                  <option>Non</option>
-                </select>
-              </div>    
-              <div class="row-span-6 sm:row-span-6">
-                <input type="text" name="musicInstruments" formControlName="musicInstruments" id="musicInstruments" placeholder="Lequel ?" autocomplete="musicInstruments" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-              </div>
-            </div>
-    
-           </div>
-           </div>
-           <div class="flex justify-between mt-12">
-          
-                <a (click)="returnToAbout()" class="inline-flex items-center px-3 py-2  text-sm text-blue-2 cursor-pointer hover:bg-blue-2">
-                  <img src="../../../../../../assets/images/precedent.svg" />
-                </a>
-              
-           
-              
-                
-                <button type="button"  [disabled]="!addressForm.valid" (click)="goToAnother()" class="inline-flex  items-center px-8 py-2 border border-transparent text-sm leading-4 font-xl rounded-md shadow-sm text-white bg-blue-2 hover:bg-blue-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-blue-2">
-                    Suivant
-                  </button>
-             
-          </div>
-           </form>
-           </div>
+      </span>
+    </div>
+    <div class="col-span-6 sm:col-span-6">
+      <label for="last-name" class="block text-sm font-medium text-gray-700">Animaux domestiques</label>
+      <div class="grid grid-rows-6 grid-flow-col gap-2">
+        <div class="row-span-6 sm:row-span-6 ">
+          <select id="hasPets" name="hasPets" formControlName="hasPets" autocomplete="hasPets"
+            (change)="hasPetsSelect($event.target)"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <option selected>Oui</option>
+            <option>Non</option>
+          </select>
+        </div>
+        <div class="row-span-6 sm:row-span-6" *ngIf="hasPetsInputShow">
+          <input type="text" name="pets" formControlName="pets" id="pets" placeholder="Lesquels ?" autocomplete="pets"
+            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+        </div>
+      </div>
+    </div>
+    <div class="col-span-6 sm:col-span-6">
+      <label for="last-name" class="block text-sm font-medium text-gray-700">Instrument de musique</label>
+      <div class="grid grid-rows-6 grid-flow-col gap-2">
+        <div class="row-span-6 sm:row-span-6 ">
+          <select id="hasMusicInstruments" formControlName="hasMusicInstruments" name="hasMusicInstruments"
+            autocomplete="hasMusicInstruments" (change)="hasMusicInstrumentsSelect($event.target)"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <option>Oui</option>
+            <option>Non</option>
+          </select>
+        </div>
+        <div class="row-span-6 sm:row-span-6" *ngIf="hasMusicInstrumentsInputShow">
+          <input type="text" name="musicInstruments" formControlName="musicInstruments" id="musicInstruments"
+            placeholder="Lequel ?" autocomplete="musicInstruments"
+            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="flex justify-between mt-12">
+
+    <a (click)="returnToAbout()"
+      class="inline-flex items-center px-3 py-2  text-sm text-blue-2 cursor-pointer hover:bg-blue-2">
+      <img src="../../../../../../assets/images/precedent.svg" />
+    </a>
 
 
+
+
+    <button type="button" [disabled]="!addressForm.valid" (click)="goToAnother()"
+      class="inline-flex  items-center px-8 py-2 border border-transparent text-sm leading-4 font-xl rounded-md shadow-sm text-white bg-blue-2 hover:bg-blue-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-blue-2">
+      Suivant
+    </button>
+
+  </div>
+</form>

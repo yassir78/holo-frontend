@@ -17,7 +17,8 @@ export const about = createAction(
         maritalStatus: string,
         phoneNumber: string,
         profileImage: string,
-        email: string
+        email: string,
+        password:string,
     }>()
 )
 

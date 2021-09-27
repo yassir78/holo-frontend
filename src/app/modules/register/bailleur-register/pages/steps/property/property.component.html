@@ -1,128 +1,153 @@
-
-  <div class="mt-5 md:mt-0 md:col-span-2 bg-white ">
-    <div class="text-black text-3xl font-extrabold mt-20 mb-10">Propriété</div>
-    <form [formGroup]="propertyForm">
-      <div class="grid grid-cols-6 gap-6">
-        <div class="col-span-6 sm:col-span-6">
-            <label for="currentDonor" class="block text-sm font-medium text-gray-700">Bailleur actuel</label>
-            <input type="text" [ngClass]=" (currentDonor?.invalid && currentDonor?.touched) ? 'border-red-500' : 'border-blue-100'" placeholder="Votre bailleur actuel" name="currentDonor" formControlName="currentDonor" id="currentDonor" autocomplete="currentDonor" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
-            <span class="text-red-600"
-            *ngIf="(currentDonor?.dirty || currentDonor?.touched) && currentDonor?.invalid && currentDonor?.errors?.required"
-          >
-          Champ Obligatoire.
-          </span>
-          </div>
-          <div class="col-span-6 sm:col-span-3">
-            <label for="numberOfPieces" class="block text-sm font-medium text-gray-700">Nombre de pièces</label>
-            <input type="number" [ngClass]=" (numberOfPieces?.invalid && numberOfPieces?.touched) ? 'border-red-500' : 'border-blue-100'" placeholder="14" name="numberOfPieces" formControlName="numberOfPieces" id="numberOfPieces" autocomplete="numberOfPieces" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
-            <span class="text-red-600"
-            *ngIf="(numberOfPieces?.dirty || numberOfPieces?.touched) && numberOfPieces?.invalid && numberOfPieces?.errors?.required"
-          >
-          Nombre de pièces Obligatoire.
-          </span>
-          </div>
-           <div class="col-span-6 sm:col-span-3">
-            <label for="currentRent" class="block text-sm font-medium text-gray-700">Loyer actuel(charges comprises)</label>
-            <input type="number" [ngClass]=" (currentRent?.invalid && currentRent?.touched) ? 'border-red-500' : 'border-blue-100'" placeholder="0" name="currentRent" formControlName="currentRent" id="currentRent" autocomplete="currentRent" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
-            <span class="text-red-600"
-            *ngIf="(currentRent?.dirty || currentRent?.touched) && currentRent?.invalid && currentRent?.errors?.required"
-          >
-           Champ Obligatoire.
-          </span>
-          </div>
-        <div class="col-span-6 sm:col-span-6">
-            <label for="leaseInYourName" class="block text-sm font-medium text-gray-700">Le bail est-il à votre nom?</label>
-            <div class="grid grid-rows-6 grid-flow-col gap-2">
-              <div class="row-span-6 sm:row-span-6 ">
-                <select id="leaseInYourName" name="leaseInYourName" formControlName="leaseInYourName" autocomplete="leaseInYourName" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                  <option>Oui</option>
-                  <option>Non</option>
-                </select>
-              </div>    
-              <div class="row-span-6 sm:row-span-6">
-              </div>
-            </div>
-            </div>
-            <div class="col-span-6 sm:col-span-6">
-                <label for="ReasonForChange" class="block text-sm font-medium text-gray-700">Raison du changement</label>
-                  <div class="row-span-6 sm:row-span-6 ">
-                    <select id="ReasonForChange" name="ReasonForChange" formControlName="ReasonForChange" autocomplete="ReasonForChange" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                      <option>La raison de votre changement</option>
-                      <option>Non</option>
-                    </select>
-                  </div>    
-            </div>
-            <div class="col-span-6 sm:col-span-6">
-                <label for="howDidYouFindThisObject" class="block text-sm font-medium text-gray-700">Comment avez-vous trouvé ce objet?</label>
-                  <div class="row-span-6 sm:row-span-6 ">
-                    <select id="howDidYouFindThisObject" name="howDidYouFindThisObject" formControlName="howDidYouFindThisObject" autocomplete="howDidYouFindThisObject" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                      <option>Comment avez-vous trouvé ce objet?</option>
-                      <option>Bon</option>
-                    </select>
-                  </div>    
-            </div>
-            <div class="col-span-6 sm:col-span-6">
-                <label for="doYouHaveACar" class="block text-sm font-medium text-gray-700">Avez-vous une voiture?</label>
-                <div class="grid grid-rows-6 grid-flow-col gap-2">
-                  <div class="row-span-6 sm:row-span-6 ">
-                    <select id="doYouHaveACar" name="doYouHaveACar" formControlName="doYouHaveACar" autocomplete="doYouHaveACar" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                      <option>Oui</option>
-                      <option>Nom</option>
-                    </select>
-                 </div>    
-                  <div class="row-span-6 sm:row-span-6">
-                    <input type="number" name="HaveACarHowMuch" formControlName="HaveACarHowMuch" id="HaveACarHowMuch" placeholder="Combien?" autocomplete="HaveACarHowMuch" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                  </div>
-                </div>
-            </div>
-            
-
-            <div class="col-span-6 sm:col-span-6">
-                <label for="areYouInterestedInAParkingSpace" class="block text-sm font-medium text-gray-700">Etes-vous intéressé par une place de parking?</label>
-                <div class="grid grid-rows-6 grid-flow-col gap-2">
-                  <div class="row-span-6 sm:row-span-6 ">
-                    <select id="areYouInterestedInAParkingSpace" name="areYouInterestedInAParkingSpace" formControlName="areYouInterestedInAParkingSpace" autocomplete="areYouInterestedInAParkingSpace" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                      <option>Oui</option>
-                      <option>Non</option>
-                    </select>
-                 </div>    
-                  <div class="row-span-6 sm:row-span-6">
-                    <input type="number" name="InterestedInAParkingSpaceHowMuch" formControlName="InterestedInAParkingSpaceHowMuch" id="InterestedInAParkingSpaceHowMuch" placeholder="Combien?" autocomplete="InterestedInAParkingSpaceHowMuch" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                  </div>
-                </div>
-            </div>
-            <div class="col-span-6 sm:col-span-6">
-                <label for="refrences" class="block text-sm font-medium text-gray-700">Réferences</label>
-                <input type="text" [ngClass]=" (refrences?.invalid && refrences?.touched) ? 'border-red-500' : 'border-blue-100'" placeholder="Réferences" name="refrences" formControlName="refrences" id="refrences" autocomplete="refrences" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
-                <span class="text-red-600"
-                *ngIf="(refrences?.dirty || refrences?.touched) && refrences?.invalid && refrences?.errors?.required"
-              >
-               Champ Obligatoire.
-              </span>
-              </div> 
-               <div class="col-span-6 sm:col-span-6">
-                <label for="possibleRemarks" class="block text-sm mb-1 font-medium text-gray-700">Remarques éventuelles</label>
-                <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    <textarea id="possibleRemarks" name="possibleRemarks" formControlName="possibleRemarks" rows="5" class="max-w-xl shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"></textarea>
-                  </div>
-              </div>
-    
-           </div>
-           <div class="flex justify-between mt-12">
-          
-                <a  (click)="returnToAnother()" class="inline-flex items-center px-3 py-2   text-sm text-blue-2 cursor-pointer hover:bg-blue-2">
-                  <img src="../../../../../../assets/images/precedent.svg" />
-                </a>
-              
-       
-           
-                
-                <button type="button" (click)="goToActivity()" class="inline-flex  items-center px-8 py-2 border border-transparent text-sm leading-4 font-xl rounded-md shadow-sm text-white bg-blue-2 hover:bg-blue-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-blue-2">
-                    Suivant
-                  </button>
-  
-          </div>
-           </form>
-           </div>
+<div class="text-black text-3xl font-extrabold  mb-10">Propriété</div>
+<form [formGroup]="propertyForm">
+  <div class="grid grid-cols-6 gap-6">
+    <div class="col-span-6 sm:col-span-6">
+      <label for="currentDonor" class="block text-sm font-medium text-gray-700">Bailleur actuel</label>
+      <input type="text"
+        [ngClass]=" (currentDonor?.invalid && currentDonor?.touched) ? 'border-red-500' : 'border-blue-100'"
+        placeholder="Votre bailleur actuel" name="currentDonor" formControlName="currentDonor" id="currentDonor"
+        autocomplete="currentDonor"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+      <span class="text-red-600"
+        *ngIf="(currentDonor?.dirty || currentDonor?.touched) && currentDonor?.invalid && currentDonor?.errors?.required">
+        Champ Obligatoire.
+      </span>
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="numberOfPieces" class="block text-sm font-medium text-gray-700">Nombre de pièces</label>
+      <input type="number"
+        [ngClass]=" (numberOfPieces?.invalid && numberOfPieces?.touched) ? 'border-red-500' : 'border-blue-100'"
+        placeholder="14" name="numberOfPieces" formControlName="numberOfPieces" id="numberOfPieces"
+        autocomplete="numberOfPieces"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+      <span class="text-red-600"
+        *ngIf="(numberOfPieces?.dirty || numberOfPieces?.touched) && numberOfPieces?.invalid && numberOfPieces?.errors?.required">
+        Nombre de pièces Obligatoire.
+      </span>
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="currentRent" class="block text-sm font-medium text-gray-700">Loyer actuel(charges comprises)</label>
+      <input type="number"
+        [ngClass]=" (currentRent?.invalid && currentRent?.touched) ? 'border-red-500' : 'border-blue-100'"
+        placeholder="0" name="currentRent" formControlName="currentRent" id="currentRent" autocomplete="currentRent"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
+      <span class="text-red-600"
+        *ngIf="(currentRent?.dirty || currentRent?.touched) && currentRent?.invalid && currentRent?.errors?.required">
+        Champ Obligatoire.
+      </span>
+    </div>
+    <div class="col-span-6 sm:col-span-6">
+      <label for="leaseInYourName" class="block text-sm font-medium text-gray-700">Le bail est-il à votre nom?</label>
+      <div class="grid grid-rows-6 grid-flow-col gap-2">
+        <div class="row-span-6 sm:row-span-6 ">
+          <select id="leaseInYourName" name="leaseInYourName" formControlName="leaseInYourName"
+            autocomplete="leaseInYourName"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <option>Oui</option>
+            <option>Non</option>
+          </select>
+        </div>
+        <div class="row-span-6 sm:row-span-6">
+        </div>
+      </div>
+    </div>
+    <div class="col-span-6 sm:col-span-6">
+      <label for="ReasonForChange" class="block text-sm font-medium text-gray-700">Raison du changement</label>
+      <div class="row-span-6 sm:row-span-6 ">
+        <select id="ReasonForChange" name="ReasonForChange" formControlName="ReasonForChange"
+          autocomplete="ReasonForChange"
+          class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          <option>La raison de votre changement</option>
+          <option>Non</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-span-6 sm:col-span-6">
+      <label for="howDidYouFindThisObject" class="block text-sm font-medium text-gray-700">Comment avez-vous trouvé ce
+        objet?</label>
+      <div class="row-span-6 sm:row-span-6 ">
+        <select id="howDidYouFindThisObject" name="howDidYouFindThisObject" formControlName="howDidYouFindThisObject"
+          autocomplete="howDidYouFindThisObject"
+          class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          <option>Comment avez-vous trouvé ce objet?</option>
+          <option>Bon</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-span-6 sm:col-span-6">
+      <label for="doYouHaveACar" class="block text-sm font-medium text-gray-700">Avez-vous une voiture?</label>
+      <div class="grid grid-rows-6 grid-flow-col gap-2">
+        <div class="row-span-6 sm:row-span-6 ">
+          <select id="doYouHaveACar" (change)="doYouHaveACarSelect($event.target)" name="doYouHaveACar"
+            formControlName="doYouHaveACar" autocomplete="doYouHaveACar"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <option>Oui</option>
+            <option>Non</option>
+          </select>
+        </div>
+        <div class="row-span-6 sm:row-span-6" *ngIf="doYouHaveACarInputShow">
+          <input type="number" name="HaveACarHowMuch" formControlName="HaveACarHowMuch" id="HaveACarHowMuch"
+            placeholder="Combien?" autocomplete="HaveACarHowMuch"
+            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+        </div>
+      </div>
+    </div>
 
 
+    <div class="col-span-6 sm:col-span-6">
+      <label for="areYouInterestedInAParkingSpace" class="block text-sm font-medium text-gray-700">Etes-vous intéressé
+        par une place de parking?</label>
+      <div class="grid grid-rows-6 grid-flow-col gap-2">
+        <div class="row-span-6 sm:row-span-6 ">
+          <select id="areYouInterestedInAParkingSpace" (change)="areYouInterestedInAParkingSpaceSelect($event.target)"
+            name="areYouInterestedInAParkingSpace" formControlName="areYouInterestedInAParkingSpace"
+            autocomplete="areYouInterestedInAParkingSpace"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <option>Oui</option>
+            <option>Non</option>
+          </select>
+        </div>
+        <div class="row-span-6 sm:row-span-6" *ngIf="areYouInterestedInAParkingSpaceInputShow">
+          <input type="number" name="InterestedInAParkingSpaceHowMuch"
+            formControlName="InterestedInAParkingSpaceHowMuch" id="InterestedInAParkingSpaceHowMuch"
+            placeholder="Combien?" autocomplete="InterestedInAParkingSpaceHowMuch"
+            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+        </div>
+      </div>
+    </div>
+    <div class="col-span-6 sm:col-span-6">
+      <label for="refrences" class="block text-sm font-medium text-gray-700">Réferences</label>
+      <input type="text" [ngClass]=" (refrences?.invalid && refrences?.touched) ? 'border-red-500' : 'border-blue-100'"
+        placeholder="Réferences" name="refrences" formControlName="refrences" id="refrences" autocomplete="refrences"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
+      <span class="text-red-600"
+        *ngIf="(refrences?.dirty || refrences?.touched) && refrences?.invalid && refrences?.errors?.required">
+        Champ Obligatoire.
+      </span>
+    </div>
+    <div class="col-span-6 sm:col-span-6">
+      <label for="possibleRemarks" class="block text-sm mb-1 font-medium text-gray-700">Remarques éventuelles</label>
+      <div class="mt-1 sm:mt-0 sm:col-span-2">
+        <textarea id="possibleRemarks" name="possibleRemarks" formControlName="possibleRemarks" rows="5"
+          class="max-w-xl shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"></textarea>
+      </div>
+    </div>
+
+  </div>
+  <div class="flex justify-between mt-12">
+
+    <a (click)="returnToAnother()"
+      class="inline-flex items-center px-3 py-2   text-sm text-blue-2 cursor-pointer hover:bg-blue-2">
+      <img src="../../../../../../assets/images/precedent.svg" />
+    </a>
+
+
+
+
+    <button type="button" (click)="goToActivity()"
+      class="inline-flex  items-center px-8 py-2 border border-transparent text-sm leading-4 font-xl rounded-md shadow-sm text-white bg-blue-2 hover:bg-blue-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-blue-2">
+      Suivant
+    </button>
+
+  </div>
+</form>

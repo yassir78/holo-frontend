@@ -6,7 +6,7 @@ export const bailleurReducer = createReducer(
     initialBailleurRegisterState,
     on(BailleurActions.about, (state, action) => {
         return {
-            ...state, user: { ...state.user, profileImage: action.profileImage, firstName: action.firstName, lastName: action.lastName, gender: action.gender, birth: action.birth, locality: action.locality, simpleAddress: action.address, domiciledSince: action.domiciledSince, maritalStatus: action.maritalStatus, phoneNumber: action.phoneNumber, email: action.email }
+            ...state, user: { ...state.user, profileImage: action.profileImage, firstName: action.firstName, lastName: action.lastName, gender: action.gender, birth: action.birth, locality: action.locality, simpleAddress: action.address, domiciledSince: action.domiciledSince, maritalStatus: action.maritalStatus, phoneNumber: action.phoneNumber, email: action.email, password: action.password }
         }
     }),
     on(BailleurActions.profession, (state, action) => {
@@ -70,8 +70,8 @@ export const bailleurReducer = createReducer(
     on(BailleurActions.property, (state, action) => {
         return {
             ...state, user: {
-                ...state.user, other: {
-                    ...state.user.other,
+                ...state.user, property: {
+                    ...state.user.property,
                     currentDonor: action.currentDonor,
                     numberOfPieces: action.numberOfPieces,
                     currentRent: action.currentRent,
@@ -83,8 +83,7 @@ export const bailleurReducer = createReducer(
                     areYouInterestedInAParkingSpace: action.areYouInterestedInAParkingSpace,
                     InterestedInAParkingSpaceHowMuch: action.InterestedInAParkingSpaceHowMuch,
                     refrences: action.refrences,
-                    possibleRemarks: action.possibleRemarks
-
+                    possibleRemarks: action.possibleRemarks,
                 }
             }
         }

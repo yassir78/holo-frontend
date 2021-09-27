@@ -6,6 +6,7 @@ const getBailleurRegisterState = createFeatureSelector<bailleurRegisterState>("b
 export const getpayslipProcessEndedSuccessfuly = createSelector(getBailleurRegisterState, (state) => {
     return state.payslipProcessEndedSuccessfuly;
 });
+
 export const getNet = createSelector(getBailleurRegisterState, (state) => {
     return state.net;
 });
