@@ -107,7 +107,8 @@ export class LocataireRegisterComponent implements OnInit {
       lastName: this.lastName?.value,
       profileImage: this.profileImgUrl,
       phoneNumber: this.phoneNumber?.value,
-      password: this.password?.value
+      password: this.password?.value,
+      roles: ["LOCATAIRE"]
     }))
     this.user.subscribe(user => {
       this.store.dispatch(RemetteurActions.remetteurRegister({ user: user }))

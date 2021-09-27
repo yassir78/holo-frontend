@@ -1,4 +1,5 @@
 import { createAction, props } from "@ngrx/store";
+import { Role } from "aws-sdk/clients/budgets";
 import { User } from "src/app/models/user";
 export const register = createAction(
     '[Register component] add register section info to state',
@@ -10,7 +11,8 @@ export const register = createAction(
         phoneNumber: string,
         profileImage: string,
         email: string,
-        password: string
+        password: string,
+        roles: string[];
     }>()
 )
 
