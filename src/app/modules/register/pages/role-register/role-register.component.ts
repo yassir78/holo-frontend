@@ -8,17 +8,17 @@ import { Router } from '@angular/router';
 })
 export class RoleRegisterComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  goToMemberRegister(){
-    this.router.navigate(['/register/membre'])
+  goToMemberRegister() {
+    this.router.navigate(['/register/bailleur'])
   }
 
-  goToPropertyRegister(){
-    this.router.navigate(['/register'])
+  goToPropertyRegister() {
+    this.router.navigate(['/register/locataire'])
   }
 
 }
