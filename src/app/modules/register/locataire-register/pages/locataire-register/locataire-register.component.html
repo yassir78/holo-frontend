@@ -125,6 +125,18 @@
               Email Obligatoire.
             </span>
           </div>
+          <div class="col-span-6 sm:col-span-6">
+            <label for="password" class="block text-sm font-bold popping">Mot de passe</label>
+            <input
+              [ngClass]=" (password?.dirty || password?.touched) && password?.invalid && password?.errors?.required ? 'border-red-500' : 'border-blue-100'"
+              type="password" placeholder="Votre mot de passe" name="password" id="password" autocomplete="password"
+              formControlName="password"
+              class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
+            <span class="text-red-600"
+              *ngIf="(password?.dirty || password?.touched) && password?.invalid && password?.errors?.required">
+              Mot de passe Obligatoire.
+            </span>
+          </div>
         </div>
         <div>
           <div class="space-y-8 divide-y divide-gray-200">

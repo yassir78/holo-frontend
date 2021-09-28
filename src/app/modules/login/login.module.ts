@@ -17,6 +17,8 @@ import { LoginEffects } from './state/login.effect';
   imports: [
     CommonModule,
     LoginRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
     StoreModule.forFeature(
       "login", loginReducer
     ),

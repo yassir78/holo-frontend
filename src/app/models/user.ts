@@ -8,7 +8,7 @@ export interface User {
    email?: string;
    phoneNumber?: string;
    birth?: Date;
-   roles?: Role[];
+   roles?: string[];
    profileImage?: string;
 
 }
