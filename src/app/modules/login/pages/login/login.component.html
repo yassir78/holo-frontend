@@ -6,7 +6,7 @@
             <img class="mx-auto md:mx-0" src="../../../../../assets/images/logo.png" alt="">
 
         </div>
-        <div class="login__right__frame mt-20 hidden md:block">
+        <div class="login__right__frame mt-10 hidden md:block">
             <img class="mx-auto" src="../../../../../assets/images/acitivitepro3.png" alt="">
         </div>
 
@@ -14,13 +14,14 @@
     </div>
     <div
         class=" login__left  rounded-xl shadow-lg md:shadow-none md:border-0 md:rounded-none py-4 md:py-0 border-2 md:mt-52 mt-9 mx-3 px-4 lg:px-9 xl:px-36 bg-white ">
-        <div class="login__left__title mt-10 ">
+        <div class="login__left__title  ">
             <span class="login__left__title__text mt-20 sm:text-5xl text-3xl font-extrabold ">Se connecter </span>
         </div>
         <form [formGroup]="loginForm">
             <div class="login__left__form mt-10">
                 <div class="login__left__form__group ">
-                    <label for="email" class="font-medium text-warm-gray-900 login__left__form__group__label">Email</label>
+                    <label for="email"
+                        class="font-medium text-warm-gray-900 login__left__form__group__label">Email</label>
                     <input type="email" name="email" id="email" placeholder="Votre email" formControlName="email"
                         class="py-3 mt-2 px-4 w-full block shadow-sm text-warm-gray-900 focus:ring-blue-300	 focus:border-blue-100 border-warm-gray-200 rounded-xl placeholder-200">
                 </div>
@@ -28,7 +29,8 @@
                     <label for="password" class="font-medium text-warm-gray-900 login__left__form__group__label">Mot de
                         passe</label>
                     <div class="relative ">
-                        <input type="password" name="password" id="password" placeholder="Votre mot de passe" formControlName="password"
+                        <input type="password" name="password" id="password" placeholder="Votre mot de passe"
+                            formControlName="password"
                             class="py-3 mt-2 px-4 w-full block shadow-sm text-warm-gray-900 focus:ring-blue-500	 focus:border-blue-100 border-warm-gray-200 rounded-xl placeholder-200">
                         <img class="absolute bottom-3 right-3 hover:cursor-pointer active:-translate-y-1 transition		"
                             src="../../../../../assets/images/eye.png" alt="">
@@ -50,7 +52,8 @@
                     <button type="button"
                         class="w-full inline-flex justify-center items-center popping  py-4 border border-blue-300 shadow-sm text-base font-medium rounded-xl text-black bg-white focus:outline-none hover:bg-blue-300 hover:text-white active:-translate-y-1">
                         <!-- Heroicon name: solid/mail -->
-                        <img src="../../../../../assets/images/google.svg" class="mr-3" height="20px" width="20px" alt="">
+                        <img src="../../../../../assets/images/google.svg" class="mr-3" height="20px" width="20px"
+                            alt="">
                         Se connecter avec Google
                     </button>
                 </div>
