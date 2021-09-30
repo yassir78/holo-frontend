@@ -1,229 +1,236 @@
-  <div class="text-black text-3xl font-extrabold  mb-10">Activité professionelle</div>
-  <form [formGroup]="activityForm">
-    <div class="grid grid-cols-6 gap-6">
-      <div class="col-span-6 sm:col-span-3">
-        <label for="profession" class="block text-sm font-medium text-gray-700">Profession</label>
-        <input type="text"
-          [ngClass]=" (profession?.invalid && profession?.touched) ? 'border-red-500' : 'border-blue-100'"
-          name="profession" formControlName="profession" placeholder="Votre profession" id="profession"
-          autocomplete="given-name"
-          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
-        <span class="text-red-600"
-          *ngIf="(profession?.dirty || profession?.touched) && profession?.invalid && profession?.errors?.required">
-          Champ obligatoire.
-        </span>
-      </div>
-      <div class="col-span-6 sm:col-span-3">
-        <label for="professionDate" class="block text-sm font-medium text-gray-700">Depuis</label>
-        <input type="date"
-          [ngClass]=" (professionDate?.invalid && professionDate?.touched) ? 'border-red-500' : 'border-blue-100'"
-          name="professionDate" formControlName="professionDate" id="professionDate" autocomplete="given-name"
-          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
-        <span class="text-red-600"
-          *ngIf="(professionDate?.dirty || professionDate?.touched) && professionDate?.invalid && professionDate?.errors?.required">
-          Date obligatoire.
-        </span>
-      </div>
+<div class="text-black text-3xl font-extrabold  mb-10">Activité professionelle</div>
+<form [formGroup]="activityForm">
+  <div class="grid grid-cols-6 gap-6">
+    <div class="col-span-6 sm:col-span-3">
+      <label for="profession" class="block text-sm font-medium text-gray-700">Profession</label>
+      <input type="text"
+        [ngClass]=" (profession?.invalid && profession?.touched) ? 'border-red-500' : 'border-blue-100'"
+        name="profession" formControlName="profession" placeholder="Votre profession" id="profession"
+        autocomplete="given-name"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
+      <span class="text-red-600"
+        *ngIf="(profession?.dirty || profession?.touched) && profession?.invalid && profession?.errors?.required">
+        Champ obligatoire.
+      </span>
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="professionDate" class="block text-sm font-medium text-gray-700">Depuis</label>
+      <input type="date"
+        [ngClass]=" (professionDate?.invalid && professionDate?.touched) ? 'border-red-500' : 'border-blue-100'"
+        name="professionDate" formControlName="professionDate" id="professionDate" autocomplete="given-name"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+      <span class="text-red-600"
+        *ngIf="(professionDate?.dirty || professionDate?.touched) && professionDate?.invalid && professionDate?.errors?.required">
+        Date obligatoire.
+      </span>
+    </div>
 
-      <div class="col-span-6 sm:col-span-3">
-        <label for="employer" class="block text-sm font-medium text-gray-700">Employeur</label>
-        <input type="text" [ngClass]=" (employer?.invalid && employer?.touched) ? 'border-red-500' : 'border-blue-100'"
-          name="employer" formControlName="employer" placeholder="Employeur" id="employer" autocomplete="family-name"
-          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
-        <span class="text-red-600"
-          *ngIf="(employer?.dirty || employer?.touched) && employer?.invalid && employer?.errors?.required">
-          Champ obligatoire.
-        </span>
-      </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="employer" class="block text-sm font-medium text-gray-700">Employeur</label>
+      <input type="text" [ngClass]=" (employer?.invalid && employer?.touched) ? 'border-red-500' : 'border-blue-100'"
+        name="employer" formControlName="employer" placeholder="Employeur" id="employer" autocomplete="family-name"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
+      <span class="text-red-600"
+        *ngIf="(employer?.dirty || employer?.touched) && employer?.invalid && employer?.errors?.required">
+        Champ obligatoire.
+      </span>
+    </div>
 
-      <div class="col-span-6 sm:col-span-3">
-        <label for="workplace" class="block text-sm font-medium text-gray-700">Lieu de travail</label>
-        <input type="text"
-          [ngClass]=" (workplace?.invalid && workplace?.touched) ? 'border-red-500' : 'border-blue-100'"
-          name="workplace" formControlName="workplace" id="workplace" placeholder="Votre lieu de travail"
-          autocomplete="given-name"
-          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
-        <span class="text-red-600"
-          *ngIf="(workplace?.dirty || workplace?.touched) && workplace?.invalid && workplace?.errors?.required">
-          Champ obligatoire.
-        </span>
-      </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="workplace" class="block text-sm font-medium text-gray-700">Lieu de travail</label>
+      <input type="text" [ngClass]=" (workplace?.invalid && workplace?.touched) ? 'border-red-500' : 'border-blue-100'"
+        name="workplace" formControlName="workplace" id="workplace" placeholder="Votre lieu de travail"
+        autocomplete="given-name"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+      <span class="text-red-600"
+        *ngIf="(workplace?.dirty || workplace?.touched) && workplace?.invalid && workplace?.errors?.required">
+        Champ obligatoire.
+      </span>
+    </div>
 
-      <div class="col-span-6 sm:col-span-3">
-        <label for="contactPerson" class="block text-sm font-medium text-gray-700">Personne de contact</label>
-        <input type="text"
-          [ngClass]=" (contactPerson?.invalid && contactPerson?.touched) ? 'border-red-500' : 'border-blue-100'"
-          name="contactPerson" formControlName="contactPerson" placeholder="Votre personne de contact"
-          id="contactPerson" autocomplete="family-name"
-          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
-        <span class="text-red-600"
-          *ngIf="(contactPerson?.dirty || contactPerson?.touched) && contactPerson?.invalid && contactPerson?.errors?.required">
-          Champ obligatoire.
-        </span>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="contactPerson" class="block text-sm font-medium text-gray-700">Personne de contact</label>
+      <input type="text"
+        [ngClass]=" (contactPerson?.invalid && contactPerson?.touched) ? 'border-red-500' : 'border-blue-100'"
+        name="contactPerson" formControlName="contactPerson" placeholder="Votre personne de contact" id="contactPerson"
+        autocomplete="family-name"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+      <span class="text-red-600"
+        *ngIf="(contactPerson?.dirty || contactPerson?.touched) && contactPerson?.invalid && contactPerson?.errors?.required">
+        Champ obligatoire.
+      </span>
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="professionalPhoneNumber" class="block text-sm font-medium text-gray-700">Téléphone
+        professionnel</label>
+      <input type="text"
+        [ngClass]=" (professionalPhoneNumber?.invalid && professionalPhoneNumber?.touched) ? 'border-red-500' : 'border-blue-100'"
+        placeholder="+41" name="professionalPhoneNumber" formControlName="professionalPhoneNumber"
+        id="professionalPhoneNumber" autocomplete="family-name"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
+      <span class="text-red-600"
+        *ngIf="(professionalPhoneNumber?.dirty || professionalPhoneNumber?.touched) && professionalPhoneNumber?.invalid && professionalPhoneNumber?.errors?.required">
+        Champ obligatoire.
+      </span>
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="grossMonthlyIncome" class="block text-sm font-medium text-gray-700">Revenu mensuel brut</label>
+      <input type="text"
+        [ngClass]=" (grossMonthlyIncome?.invalid && grossMonthlyIncome?.touched) ? 'border-red-500' : 'border-blue-100'"
+        name="grossMonthlyIncome" formControlName="grossMonthlyIncome" placeholder="0" id="grossMonthlyIncome"
+        autocomplete="family-name"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+      <span class="text-red-600"
+        *ngIf="(grossMonthlyIncome?.dirty || grossMonthlyIncome?.touched) && grossMonthlyIncome?.invalid && grossMonthlyIncome?.errors?.required">
+        Champ obligatoire.
+      </span>
+      <div *ngIf=" grossMonthlyIncome?.invalid" class="text-left mt-1">
+        <div class="text-red-600" *ngIf="grossMonthlyIncome?.errors?.inv">Montant brut ne correspond pas à celui de
+          votre
+          fiche de salaire {{gross}}</div>
       </div>
-      <div class="col-span-6 sm:col-span-3">
-        <label for="professionalPhoneNumber" class="block text-sm font-medium text-gray-700">Téléphone
-          professionnel</label>
-        <input type="text"
-          [ngClass]=" (professionalPhoneNumber?.invalid && professionalPhoneNumber?.touched) ? 'border-red-500' : 'border-blue-100'"
-          placeholder="+41" name="professionalPhoneNumber" formControlName="professionalPhoneNumber"
-          id="professionalPhoneNumber" autocomplete="family-name"
-          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
-        <span class="text-red-600"
-          *ngIf="(professionalPhoneNumber?.dirty || professionalPhoneNumber?.touched) && professionalPhoneNumber?.invalid && professionalPhoneNumber?.errors?.required">
-          Champ obligatoire.
-        </span>
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="netMonthlyIncome" class="block text-sm font-medium text-gray-700">Revenu mensuel net</label>
+      <input type="text" name="netMonthlyIncome" formControlName="netMonthlyIncome" placeholder="0"
+        id="netMonthlyIncome" autocomplete="family-name"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
+        [ngClass]=" (netMonthlyIncome?.invalid && netMonthlyIncome?.touched) ? 'border-red-500' : 'border-blue-100'">
+      <span class="text-red-600"
+        *ngIf="(netMonthlyIncome?.dirty || netMonthlyIncome?.touched) && netMonthlyIncome?.invalid && netMonthlyIncome?.errors?.required">
+        Champ obligatoire.
+      </span>
+      <div *ngIf=" netMonthlyIncome?.invalid" class="text-left mt-1">
+        <div class="text-red-600" *ngIf="netMonthlyIncome?.errors?.inv">Montant net ne correspond pas à celui de votre
+          fiche de salaire {{net}}</div>
       </div>
-      <div class="col-span-6 sm:col-span-3">
-        <label for="grossMonthlyIncome" class="block text-sm font-medium text-gray-700">Revenu mensuel brut</label>
-        <input type="text"
-          [ngClass]=" (grossMonthlyIncome?.invalid && grossMonthlyIncome?.touched) ? 'border-red-500' : 'border-blue-100'"
-          name="grossMonthlyIncome" formControlName="grossMonthlyIncome" placeholder="0" id="grossMonthlyIncome"
-          autocomplete="family-name"
-          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
-        <span class="text-red-600"
-          *ngIf="(grossMonthlyIncome?.dirty || grossMonthlyIncome?.touched) && grossMonthlyIncome?.invalid && grossMonthlyIncome?.errors?.required">
-          Champ obligatoire.
-        </span>
-        <div *ngIf=" grossMonthlyIncome?.invalid" class="text-left mt-1">
-          <div class="text-red-600" *ngIf="grossMonthlyIncome?.errors?.inv">Montant brut ne correspond pas à celui de
-            votre
-            fiche de salaire {{gross}}</div>
+    </div>
+
+    <div class="col-span-6 sm:col-span-3">
+      <label for="lastEmployer" class="block text-sm font-medium text-gray-700">Employeur précédent</label>
+      <input type="text"
+        [ngClass]=" (lastEmployer?.invalid && lastEmployer?.touched) ? 'border-red-500' : 'border-blue-100'"
+        placeholder="Votre employeur précédent" name="lastEmployer" formControlName="lastEmployer" id="lastEmployer"
+        autocomplete="given-name"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+      <span class="text-red-600"
+        *ngIf="(lastEmployer?.dirty || lastEmployer?.touched) && lastEmployer?.invalid && lastEmployer?.errors?.required">
+        Champ obligatoire.
+      </span>
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <label for="lastEmployerSince" class="block text-sm font-medium text-gray-700">Depuis</label>
+      <input type="date"
+        [ngClass]=" (lastEmployerSince?.invalid && lastEmployerSince?.touched) ? 'border-red-500' : 'border-blue-100'"
+        name="lastEmployerSince" formControlName="lastEmployerSince" id="lastEmployerSince" autocomplete="given-name"
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+      <span class="text-red-600"
+        *ngIf="(lastEmployerSince?.dirty || lastEmployerSince?.touched) && lastEmployerSince?.invalid && lastEmployerSince?.errors?.required">
+        Date obligatoire.
+      </span>
+    </div>
+
+  </div>
+  <fieldset class="mt-6">
+    <div>
+      <legend class="text-base font-medium text-gray-900">
+        Fiche de salaire
+      </legend>
+    </div>
+    <div class="mt-4 space-y-4">
+      <div class="flex items-center">
+        <label for="push-everything" class="mr-3 block text-sm font-medium text-gray-500">
+          1er mois de salaire
+        </label>
+        <label for="upload0">
+          <span class="cursor-pointer	" [ngClass]="firstMonthSalary=='+ Ajouter' ? 'text-blue-2' : 'text-gray-700'">
+            {{firstMonthSalary}}</span>
+          <span class="font-medium mx-3 " *ngIf="firstMonthSalary != '+ Ajouter'">{{_progress1|async}} %</span>
+          <input type="file" id="upload0" (change)="firstMonthSalaryDocument($event)" style="display:none">
+        </label>
+        <div class="ml-10" *ngIf="payslipProcessLoading$|async">
+          <div class="dot-pulse"></div>
+
         </div>
-      </div>
-      <div class="col-span-6 sm:col-span-3">
-        <label for="netMonthlyIncome" class="block text-sm font-medium text-gray-700">Revenu mensuel net</label>
-        <input type="text" name="netMonthlyIncome" formControlName="netMonthlyIncome" placeholder="0"
-          id="netMonthlyIncome" autocomplete="family-name"
-          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md"
-          [ngClass]=" (netMonthlyIncome?.invalid && netMonthlyIncome?.touched) ? 'border-red-500' : 'border-blue-100'">
-        <span class="text-red-600"
-          *ngIf="(netMonthlyIncome?.dirty || netMonthlyIncome?.touched) && netMonthlyIncome?.invalid && netMonthlyIncome?.errors?.required">
-          Champ obligatoire.
-        </span>
-        <div *ngIf=" netMonthlyIncome?.invalid" class="text-left mt-1">
-          <div class="text-red-600" *ngIf="netMonthlyIncome?.errors?.inv">Montant net ne correspond pas à celui de votre
-            fiche de salaire {{net}}</div>
+        <div class="ml-10 pulse" *ngIf="payslipProcessLoading$|async">
+          <span class="font-medium text-blue-2 "> traitement</span>
         </div>
-      </div>
 
-      <div class="col-span-6 sm:col-span-3">
-        <label for="lastEmployer" class="block text-sm font-medium text-gray-700">Employeur précédent</label>
-        <input type="text"
-          [ngClass]=" (lastEmployer?.invalid && lastEmployer?.touched) ? 'border-red-500' : 'border-blue-100'"
-          placeholder="Votre employeur précédent" name="lastEmployer" formControlName="lastEmployer" id="lastEmployer"
-          autocomplete="given-name"
-          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
-        <span class="text-red-600"
-          *ngIf="(lastEmployer?.dirty || lastEmployer?.touched) && lastEmployer?.invalid && lastEmployer?.errors?.required">
-          Champ obligatoire.
-        </span>
+        <div class="ml-10" *ngIf="payslipProcessEndedSuccessfuly$|async">
+          <span class="font-medium text-green-500">Document traité avec succès</span>
+        </div>
+        <div class="ml-10">
+          <span class="font-medium text-red-500">{{payslipProcessErrorMsg$|async}}</span>
+        </div>
+
       </div>
-      <div class="col-span-6 sm:col-span-3">
-        <label for="lastEmployerSince" class="block text-sm font-medium text-gray-700">Depuis</label>
-        <input type="date"
-          [ngClass]=" (lastEmployerSince?.invalid && lastEmployerSince?.touched) ? 'border-red-500' : 'border-blue-100'"
-          name="lastEmployerSince" formControlName="lastEmployerSince" id="lastEmployerSince" autocomplete="given-name"
-          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
-        <span class="text-red-600"
-          *ngIf="(lastEmployerSince?.dirty || lastEmployerSince?.touched) && lastEmployerSince?.invalid && lastEmployerSince?.errors?.required">
-          Date obligatoire.
-        </span>
+      <div class="flex items-center">
+        <label for="push-email" class="mr-3 block text-sm font-medium text-gray-500">
+          2ème mois de salaire
+        </label>
+        <label for="upload1">
+          <span class="cursor-pointer	" [ngClass]="secondMonthSalary=='+ Ajouter' ? 'text-blue-2' : 'text-gray-700'">
+            {{secondMonthSalary}}</span>
+          <span class="font-medium mx-3 " *ngIf="secondMonthSalary != '+ Ajouter'">{{_progress2|async}} %</span>
+          <input type="file" id="upload1" style="display:none" (change)="secondMonthSalaryDocument($event)">
+        </label>
+      </div>
+      <div class="flex items-center">
+        <label for="push-nothing" class="mr-3 block text-sm font-medium text-gray-500">
+          3ème mois de salaire
+        </label>
+        <label for="upload2">
+          <span class="cursor-pointer	" [ngClass]="thirdMonthSalary=='+ Ajouter' ? 'text-blue-2' : 'text-gray-700'">
+            {{thirdMonthSalary}}</span>
+          <span class="font-medium mx-3 " *ngIf="thirdMonthSalary != '+ Ajouter'">{{_progress3|async}} %</span>
+          <input type="file" id="upload2" style="display:none" (change)="thirdMonthSalaryDocument($event)">
+        </label>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset class="mt-6">
+    <div>
+      <legend class="text-base font-medium text-gray-900">
+        Fiche de poursuite
+      </legend>
+    </div>
+    <div class="mt-4 space-y-4">
+      <div class="flex items-center">
+        <label for="push-everything" class="mr-3 block text-sm font-medium text-gray-500">
+          Dernier fiche de poursuite
+        </label>
+        <label for="upload3">
+          <span class="cursor-pointer	" [ngClass]="pursuit=='+ Ajouter' ? 'text-blue-2' : 'text-gray-700'">
+            {{pursuit}}</span>
+          <span class="font-medium mx-3 " *ngIf="pursuit != '+ Ajouter'">{{_progress4|async}} %</span>
+          <input type="file" formControlName="pursuitSheet" id="upload3" style="display:none"
+            (change)="pursuitDocument($event)">
+        </label>
       </div>
 
     </div>
-    <fieldset class="mt-6">
-      <div>
-        <legend class="text-base font-medium text-gray-900">
-          Fiche de salaire
-        </legend>
-      </div>
-      <div class="mt-4 space-y-4">
-        <div class="flex items-center">
-          <label for="push-everything" class="mr-3 block text-sm font-medium text-gray-500">
-            1er mois de salaire
-          </label>
-          <label for="upload0">
-            <span class="cursor-pointer	" [ngClass]="firstMonthSalary=='+ Ajouter' ? 'text-blue-2' : 'text-gray-700'">
-              {{firstMonthSalary}}</span>
-            <span class="font-medium mx-3 " *ngIf="firstMonthSalary != '+ Ajouter'">{{progress1$|async}} %</span>
-            <input type="file" id="upload0" (change)="firstMonthSalaryDocument($event)" style="display:none">
-          </label>
-          <div class="ml-10" *ngIf="payslipProcessLoading$|async">
-            <div class="dot-pulse"></div>
+  </fieldset>
+  <div class="flex justify-between mt-20">
 
-          </div>
-          <div class="ml-10 pulse" *ngIf="payslipProcessLoading$|async">
-            <span class="font-medium text-blue-2 "> traitement</span>
-          </div>
+    <a (click)="returnToProperty()"
+      class="inline-flex items-center px-3 py-2  text-sm text-blue-2 cursor-pointer hover:bg-blue-2">
+      <img src="../../../../../../assets/images/precedent.svg" />
+    </a>
 
-          <div class="ml-10" *ngIf="payslipProcessEndedSuccessfuly$|async">
-            <span class="font-medium text-green-500">Document traité avec succès</span>
-          </div>
-          <div class="ml-10">
-            <span class="font-medium text-red-500">{{payslipProcessErrorMsg$|async}}</span>
-          </div>
 
-        </div>
-        <div class="flex items-center">
-          <label for="push-email" class="mr-3 block text-sm font-medium text-gray-500">
-            2ème mois de salaire
-          </label>
-          <label for="upload1">
-            <span class="cursor-pointer	" [ngClass]="secondMonthSalary=='+ Ajouter' ? 'text-blue-2' : 'text-gray-700'">
-              {{secondMonthSalary}}</span>
-            <span class="font-medium mx-3 " *ngIf="secondMonthSalary != '+ Ajouter'">{{progress2$|async}} %</span>
-            <input type="file" id="upload1" style="display:none" (change)="secondMonthSalaryDocument($event)">
-          </label>
-        </div>
-        <div class="flex items-center">
-          <label for="push-nothing" class="mr-3 block text-sm font-medium text-gray-500">
-            3ème mois de salaire
-          </label>
-          <label for="upload2">
-            <span class="cursor-pointer	" [ngClass]="thirdMonthSalary=='+ Ajouter' ? 'text-blue-2' : 'text-gray-700'">
-              {{thirdMonthSalary}}</span>
-            <span class="font-medium mx-3 " *ngIf="thirdMonthSalary != '+ Ajouter'">{{progress3$|async}} %</span>
-            <input type="file" id="upload2" style="display:none" (change)="thirdMonthSalaryDocument($event)">
-          </label>
-        </div>
-      </div>
-    </fieldset>
-    <fieldset class="mt-6">
-      <div>
-        <legend class="text-base font-medium text-gray-900">
-          Fiche de poursuite
-        </legend>
-      </div>
-      <div class="mt-4 space-y-4">
-        <div class="flex items-center">
-          <label for="push-everything" class="mr-3 block text-sm font-medium text-gray-500">
-            Dernier fiche de poursuite
-          </label>
-          <label for="upload3">
-             <span class="cursor-pointer	" [ngClass]="pursuit=='+ Ajouter' ? 'text-blue-2' : 'text-gray-700'">
-              {{pursuit}}</span>
-            <span class="font-medium mx-3 " *ngIf="pursuit != '+ Ajouter'">{{progress4$|async}} %</span>
-            <input type="file" formControlName="pursuitSheet" id="upload3" style="display:none"  (change)="pursuitDocument($event)">
-          </label>
-        </div>
 
-      </div>
-    </fieldset>
-    <div class="flex justify-between mt-20">
 
-        <a (click)="returnToProperty()"
-          class="inline-flex items-center px-3 py-2  text-sm text-blue-2 cursor-pointer hover:bg-blue-2">
-          <img src="../../../../../../assets/images/precedent.svg" />
-        </a>
+    <button type="button" (click)="goToLogin()" [ngClass]="!activityForm.valid || (getValue(_progress1) > 0 || getValue(_progress1) <100)||
+       (getValue(_progress2) > 0 || getValue(_progress2) <100)||
+       (getValue(_progress3) > 0 || getValue(_progress3) <100)|| 
+       (getValue(_progress4) > 0 || getValue(_progress4) <100) ? 'bg-gray-500 cursor-not-allowed':'bg-blue-2 btnhover'"
+      [disabled]="!activityForm.valid || (getValue(_progress1) > 0 || getValue(_progress1) <100)||
+       (getValue(_progress2) > 0 || getValue(_progress2) <100)||
+       (getValue(_progress3) > 0 || getValue(_progress3) <100)|| 
+       (getValue(_progress4) > 0 || getValue(_progress4) <100)"
+      class="inline-flex  items-center px-8 py-2 border border-transparent text-sm leading-4 font-xl rounded-md shadow-sm text-white bg-blue-2 hover:bg-blue-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-blue-2">
+      Commencer à postuler
+    </button>
 
- 
-     
-
-        <button type="button" (click)="goToLogin()"
-          class="inline-flex  items-center px-8 py-2 border border-transparent text-sm leading-4 font-xl rounded-md shadow-sm text-white bg-blue-2 hover:bg-blue-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-blue-2">
-          Commencer à postuler
-        </button>
-
-    </div>
-  </form>
+  </div>
+</form>

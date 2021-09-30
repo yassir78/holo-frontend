@@ -38,6 +38,7 @@ export class MediaComponent implements OnInit {
   imageUrls: string[] = [];
   _progress: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   progress$: Observable<number> = this._progress.asObservable();
+  progress:number=  0;
   /* @ts-ignore */
   @ViewChild('image', { static: false }) imageCont: ElementRef;
   constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef, private router: Router, private uploadService: UploadFileService, private store: Store<bailleurDashboardState>, private zone: NgZone
@@ -51,6 +52,7 @@ export class MediaComponent implements OnInit {
     this.good$.subscribe(good => {
       this.good = good;
     })
+    this.progress$.subscribe(value=>this.progress = value);
   }
 
   ngAfterViewInit() {

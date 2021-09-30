@@ -21,9 +21,9 @@ import { bailleurDashboardState } from '../../state/bailleurdb.state';
   ]
 })
 export class DetailsComponent implements OnInit {
- /* @ts-ignore */
- good$: Observable<Good>;
-good:Good = {};
+  /* @ts-ignore */
+  good$: Observable<Good>;
+  good: Good = {};
   proximites: string[] = ['Autoroute', 'Gare', 'Aéroport', 'Jardin d’enfants', 'Ecole secondaire', 'Commerces', 'Trans. public']
   extras: string[] = ['Lumineux', 'Véranda/terrasse', 'Ascenseur', 'Accès handicapés', 'Cheminée', 'Air conditionné', 'Piscine', 'Jardin', 'Neuf', 'Ascenseur', 'Attique', 'Baignoire', 'Cuisine équipée', 'Douche', 'Jardin', 'Meublé']
 
@@ -42,7 +42,7 @@ good:Good = {};
   _selectEnvironmentDropDown: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   selectEnvironmentDropDown$: Observable<boolean> = this._selectEnvironmentDropDown.asObservable()
   selectedEnvironmentValue: string = 'Choisissez un environment';
-  
+
 
   detailsForm: FormGroup = new FormGroup({
     numberOfPieces: new FormControl('', Validators.required),
@@ -118,47 +118,44 @@ good:Good = {};
     });
 
     this.good$ = this.store.select(getGood);
+    this.hydrateSection();
+  }
+  hydrateSection() {
     this.good$.subscribe(good => {
-      console.log(this.good)
-      if(Object.keys(good).length !== 0 && good.constructor === Object){
-        this.good = good;
-        this.numberOfPieces?.setValue(this.good.numberOfPieces)
-        this.numberOfRooms?.setValue(this.good.numberOfRooms)
-        this.numberOfBathRooms?.setValue(this.good.numberOfBathRooms)
-        this.numberOfWC?.setValue(this.good.numberOfWC)
-        this.numberOfFloors?.setValue(this.good.numberOfFloors)
-        this.FloorOfTheApartment?.setValue(this.good.FloorOfTheApartment)
-        this.yearOfBuilding?.setValue(this.good.yearOfBuilding)
-        this.yearOfRenovation?.setValue(this.good.yearOfRenovation)
-        this.view?.setValue(this.good.view)
-        this.orientation?.setValue(this.good.orientation)
-        this.heatingTypeSystem?.setValue(this.good.heatingTypeSystem)
-        this.environment?.setValue(this.good.environment)
-        //this.proximity?.setValue(this.good.proximity)
-        //this.extra?.setValue(this.good.extra)
-                    /* @ts-ignore */
-        this.selectedViewValue = this.good.view
-                    /* @ts-ignore */
-        this.selectedOrientationValue = this.good.orientation
-                    /* @ts-ignore */
-        this.selectedHeatingTypeSystemValue = this.good.heatingTypeSystem
-                    /* @ts-ignore */
-        this.selectedEnvironmentValue = this.good.environment
-  
-        const typeProx = <FormArray>this.detailsForm.controls.proximity;
-              /* @ts-ignore */
+      this.good = good;
+      this.numberOfPieces?.setValue(this.good.numberOfPieces ? this.good.numberOfPieces : '');
+      this.numberOfRooms?.setValue(this.good.numberOfRooms ? this.good.numberOfRooms : '');
+      this.numberOfBathRooms?.setValue(this.good.numberOfBathRooms ? this.good.numberOfBathRooms : '');
+      this.numberOfWC?.setValue(this.good.numberOfWC ? this.good.numberOfWC : '');
+      this.numberOfFloors?.setValue(this.good.numberOfFloors ? this.good.numberOfFloors : '')
+      this.FloorOfTheApartment?.setValue(this.good.FloorOfTheApartment ? this.good.FloorOfTheApartment : '')
+      this.yearOfBuilding?.setValue(this.good.yearOfBuilding ? this.good.yearOfBuilding : '')
+      this.yearOfRenovation?.setValue(this.good.yearOfRenovation ? this.good.yearOfRenovation : '')
+      this.view?.setValue(this.good.view ? this.good.view : '')
+      this.orientation?.setValue(this.good.orientation ? this.good.orientation : '')
+      this.heatingTypeSystem?.setValue(this.good.heatingTypeSystem ? this.good.heatingTypeSystem : '')
+      this.environment?.setValue(this.good.environment ? this.good.environment : '')
+      this.good.view ? this.selectedViewValue = this.good.view : this.selectedViewValue = 'Choisissez une vue';
+      this.good.orientation ? this.selectedOrientationValue = this.good.orientation : this.selectedOrientationValue = 'Choisissez une orientation';
+      this.good.heatingTypeSystem ? this.selectedHeatingTypeSystemValue = this.good.heatingTypeSystem : this.selectedHeatingTypeSystemValue = 'Choisissez type chauffage';
+      this.good.environment ? this.selectedEnvironmentValue = this.good.environment : this.selectedEnvironmentValue = 'Choisissez un environment';
+      const typeProx = <FormArray>this.detailsForm.controls.proximity;
+      if (this.good.proximity && this.good.proximity.length > 0) {
+        /* @ts-ignore */
         this.good.proximity.forEach(value => {
           typeProx.push(new FormControl(value))
         })
-        const typeExtra = <FormArray>this.detailsForm.controls.extra;
-              /* @ts-ignore */
+      }
+      const typeExtra = <FormArray>this.detailsForm.controls.extra;
+      if (this.good.extra && this.good.extra.length > 0) {
+        /* @ts-ignore */
         this.good.extra.forEach(value => {
           typeExtra.push(new FormControl(value))
         })
-        
       }
- 
+
     })
+
   }
 
   switchSelectedView() {

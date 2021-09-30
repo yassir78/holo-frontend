@@ -19,6 +19,7 @@ import { formatDate } from '@angular/common';
 export class AboutComponent implements OnInit {
   file: any;
   progress$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  progress: number = 0;
   imageUrl: string | ArrayBuffer | null = 'https://via.placeholder.com/300x300?text=Inserer+Votre+Logo';
   profileImgUrl: any;
   /* @ts-ignore */
@@ -44,6 +45,7 @@ export class AboutComponent implements OnInit {
   ngOnInit(): void {
     this.bailleur$ = this.store.select(getUser);
     this.hydrateSection();
+    this.progress$.subscribe(progress => this.progress = progress);
   }
   get genre() {
     return this.aboutForm.get('genre');
@@ -116,7 +118,7 @@ export class AboutComponent implements OnInit {
         genre: bailleur.gender ? bailleur.gender : 'Monsieur',
         firstName: bailleur.firstName ? bailleur.firstName : '',
         lastName: bailleur.lastName ? bailleur.lastName : '',
-        birth: bailleur.birth ? formatDate(bailleur.birth, 'yyyy-MM-dd', 'en')  : '',
+        birth: bailleur.birth ? formatDate(bailleur.birth, 'yyyy-MM-dd', 'en') : '',
         locality: bailleur.locality ? bailleur.locality : '',
         address: bailleur.simpleAddress ? bailleur.simpleAddress : '',
         domiciledSince: bailleur.domiciledSince ? formatDate(bailleur.domiciledSince, 'yyyy-MM-dd', 'en') : '',

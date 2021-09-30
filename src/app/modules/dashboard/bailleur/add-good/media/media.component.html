@@ -79,6 +79,8 @@
                 </div>
                 <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
                     <button type="button" (click)="continueOnError()"
+                        [ngClass]="(progress>0 ||progress <100) ? 'bg-gray-500 cursor-not-allowed':'bg-blue-2 btnhover'"
+                        [disabled]="(progress>0 || progress <100)"
                         class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-300 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
                         Continuer
                     </button>

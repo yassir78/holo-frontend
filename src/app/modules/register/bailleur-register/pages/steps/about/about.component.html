@@ -175,7 +175,9 @@
   <div>
     <div class="flex mt-10 justify-end">
 
-      <button type="button" (click)="goToActivity()" [disabled]="!aboutForm.valid"
+      <button type="button" (click)="goToActivity()"
+        [ngClass]="!aboutForm.valid || (progress > 0 || progress <100) ? 'bg-gray-500 cursor-not-allowed':'bg-blue-2 btnhover'"
+        [disabled]="!aboutForm.valid || (progress > 0 || progress <100)"
         class="inline-flex  items-center px-8 py-2 border border-transparent text-sm leading-4 font-xl rounded-md shadow-sm text-white bg-blue-2 hover:bg-blue-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-blue-2">
         Suivant
       </button>

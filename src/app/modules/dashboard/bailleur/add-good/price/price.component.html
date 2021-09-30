@@ -167,6 +167,7 @@
                             <div class="flex items-end h-5">
                                 <input id="parking" aria-describedby="parking-description" name="parking"
                                     type="checkbox" formControlName="parking"
+                                    (change)="inclusDansLePrixCheckChange($event)"
                                     class=" h-4 w-4  active:border-4 border-blue-300 rounded-2xl">
                             </div>
                             <div class="ml-3 ">
@@ -188,7 +189,7 @@
 
 
 
-        <div class="px-3 mt-5">
+        <div class="px-3 mt-5" *ngIf="!notBeingIncludedInThePriceShowInput">
             <div class="px-3 mt-5">
                 <div class="flex flex-col md:flex-row  justify-between mt-2">
                     <div class="w-full">
@@ -244,8 +245,8 @@
                 </svg>
                 <span class="ml-2">Précédent</span>
             </button>
-            <button type="submit"   [ngClass]="priceForm.invalid ? 'bg-gray-500 cursor-not-allowed':'bg-blue-2 btnhover'"
-            [disabled]="priceForm.invalid"
+            <button type="submit" [ngClass]="priceForm.invalid ? 'bg-gray-500 cursor-not-allowed':'bg-blue-2 btnhover'"
+                [disabled]="priceForm.invalid"
                 class="text-white px-6 py-2 rounded-md mt-5 md:mt-0 font-700 text-base  font-semibold flex flex-row items-center justify-center">Suivant</button>
         </div>
     </form>

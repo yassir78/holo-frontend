@@ -21,11 +21,10 @@ export class ActivityComponent implements OnInit {
   secondMonthSalary: string = "+ Ajouter";
   thirdMonthSalary: string = "+ Ajouter";
   pursuit: string = "+ Ajouter";
-  progress1$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  progress2$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  progress3$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  progress4$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-
+  _progress1: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  _progress2: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  _progress3: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  _progress4: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   /* @ts-ignore */
   firstMonthSalaryUrl: string;
   /* @ts-ignore */
@@ -124,6 +123,9 @@ export class ActivityComponent implements OnInit {
   get pursuitSheet() {
     return this.activityForm.get('pursuitSheet')
   }
+  getValue(progress:BehaviorSubject<number>){
+   return progress.getValue();
+  }
   goToLogin() {
     this.store.dispatch(BailleurActions.profession({
       profession: this.profession?.value,
@@ -160,7 +162,7 @@ export class ActivityComponent implements OnInit {
       if (evt.type === HttpEventType.UploadProgress) {
         if (evt.total != undefined) {
           console.log(Math.round(100 * evt.loaded / evt.total))
-          this.progress1$.next(Math.round(100 * evt.loaded / evt.total));
+          this._progress1.next(Math.round(100 * evt.loaded / evt.total));
         }
 
       }
@@ -200,7 +202,7 @@ export class ActivityComponent implements OnInit {
       if (evt.type === HttpEventType.UploadProgress) {
         if (evt.total != undefined) {
           console.log(Math.round(100 * evt.loaded / evt.total))
-          this.progress4$.next(Math.round(100 * evt.loaded / evt.total));
+          this._progress4.next(Math.round(100 * evt.loaded / evt.total));
         }
 
       }
@@ -221,7 +223,7 @@ export class ActivityComponent implements OnInit {
       if (evt.type === HttpEventType.UploadProgress) {
         if (evt.total != undefined) {
           console.log(Math.round(100 * evt.loaded / evt.total))
-          this.progress3$.next(Math.round(100 * evt.loaded / evt.total));
+          this._progress3.next(Math.round(100 * evt.loaded / evt.total));
         }
       }
       else if (evt instanceof HttpResponse) {
@@ -242,7 +244,7 @@ export class ActivityComponent implements OnInit {
       if (evt.type === HttpEventType.UploadProgress) {
         if (evt.total != undefined) {
           console.log(Math.round(100 * evt.loaded / evt.total))
-          this.progress2$.next(Math.round(100 * evt.loaded / evt.total));
+          this._progress2.next(Math.round(100 * evt.loaded / evt.total));
         }
 
       }
