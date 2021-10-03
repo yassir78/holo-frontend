@@ -19,11 +19,15 @@
     </div>
     <div class="mt-6 md:mt-0 md:col-span-2 bg-white ">
       <div class="text-gray-700 text-2xl  font-medium text-gray-700 mb-6">A propos de vous</div>
+      <div *ngIf=" password?.invalid" class="text-left mt-1 mb-5">
+        <div class="text-red-600 text-2xl" *ngIf="password?.errors?.inv">Les deux mots de passe ne sont pas identiques
+        </div>
+      </div>
       <form [formGroup]="registerForm">
         <div class="grid grid-cols-6 gap-6">
-  
+
           <div class="col-span-6 sm:col-span-3">
-            <label for="genre" class="block text-sm font-bold popping">Genre</label>
+            <label for="genre" class="block text-sm font-semibold popping">Genre</label>
             <select id="genre" name="genre" autocomplete="genre" formControlName="genre"
               class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
               <option>Monsieur</option>
@@ -31,7 +35,7 @@
             </select>
           </div>
           <div class="col-span-6 sm:col-span-3">
-            <label for="birth" class="block text-sm font-bold popping">Date de naissance</label>
+            <label for="birth" class="block text-sm font-semibold popping">Date de naissance</label>
             <input
               [ngClass]="(birth?.dirty || birth?.touched) && birth?.invalid && birth?.errors?.required ? 'border-red-500' : 'border-blue-100'"
               type="date" name="birth" id="birth" autocomplete="birth" formControlName="birth"
@@ -41,9 +45,9 @@
               Date de Naissance Obligatoire.
             </span>
           </div>
-    
+
           <div class="col-span-6 sm:col-span-3">
-            <label for="firstName" class="block text-sm font-bold popping">Nom</label>
+            <label for="firstName" class="block text-sm font-semibold popping">Nom</label>
             <input type="text" name="firstName"
               [ngClass]=" (firstName?.invalid && firstName?.touched) ? 'border-red-500' : 'border-blue-100'"
               placeholder="Votre nom" id="firstName" autocomplete="firstName" formControlName="firstName"
@@ -53,9 +57,9 @@
               Nom Obligatoire.
             </span>
           </div>
-    
+
           <div class="col-span-6 sm:col-span-3">
-            <label for="lastName" class="block text-sm font-bold popping">Prénom</label>
+            <label for="lastName" class="block text-sm font-semibold popping">Prénom</label>
             <input
               [ngClass]=" (lastName?.dirty || lastName?.touched) && lastName?.invalid && lastName?.errors?.required ? 'border-red-500' : 'border-blue-100'"
               type="text" name="lastName" placeholder="Votre prénom" id="lastName" autocomplete="lastName"
@@ -66,15 +70,15 @@
               Prénom Obligatoire.
             </span>
           </div>
-    
-        
+
+
           <div class="col-span-6 sm:col-span-6">
-            <label for="last-name" class="block text-sm  mb-3 font-bold popping">Photo de profil</label>
+            <label for="last-name" class="block text-sm  mb-3 font-semibold popping">Photo de profil</label>
             <div class="grid grid-rows-6 grid-flow-col gap-2">
               <div class="row-span-6 sm:row-span-6 ">
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
                   <div class="flex items-center">
-    
+
                     <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100 ">
                       <label>
                         <img [src]="imageUrl" alt="..." class="img-thumbnail circle border-pulsate"
@@ -97,11 +101,11 @@
               <div class="row-span-6 sm:row-span-6">
               </div>
             </div>
-    
+
           </div>
-     
+
           <div class="col-span-6 sm:col-span-3">
-            <label for="phoneNumber" class="block text-sm font-bold popping">Téléphone</label>
+            <label for="phoneNumber" class="block text-sm font-semibold popping">Téléphone</label>
             <input
               [ngClass]=" (phoneNumber?.dirty || phoneNumber?.touched) && phoneNumber?.invalid && phoneNumber?.errors?.required ? 'border-red-500' : 'border-blue-100'"
               type="text" name="phoneNumber" placeholder="Votre numéro de téléphone" id="phoneNumber"
@@ -112,21 +116,36 @@
               Téléphone Obligatoire.
             </span>
           </div>
-    
+
           <div class="col-span-6 sm:col-span-3">
-            <label for="email" class="block text-sm font-bold popping">Email</label>
+            <label for="email" class="block text-sm font-semibold popping">Email</label>
             <input
-              [ngClass]=" (email?.dirty || email?.touched) && email?.invalid && email?.errors?.required ? 'border-red-500' : 'border-blue-100'"
+              [ngClass]=" ((email?.dirty || email?.touched) && email?.invalid && email?.errors?.required ) || (email?.errors?.unique)? 'border-red-500' : 'border-blue-100'"
               type="email" placeholder="Votre adresse email" name="email" id="email" autocomplete="email"
               formControlName="email"
               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
-            <span class="text-red-600"
+            <span class="text-red-600 mt-2"
               *ngIf="(email?.dirty || email?.touched) && email?.invalid && email?.errors?.required">
               Email Obligatoire.
             </span>
+            <!--    <span class="text-blue-400 flex " *ngIf="email?.pending">
+              <span>vérification de l'authenticité</span>
+              <div class="ml-10">
+                <div class="dot-pulse"></div>
+              </div>
+            </span> -->
+            <span class="text-blue-400 flex mt-2" *ngIf="email?.pending">
+              <span>vérification de l'authenticité</span>
+              <div class="ml-10 mt-2">
+                <div class="dot-pulse"></div>
+              </div>
+            </span>
+            <span class="text-red-600 mt-2" *ngIf="email?.errors?.unique">
+              email déjà utilisé
+            </span>
           </div>
-          <div class="col-span-6 sm:col-span-6">
-            <label for="password" class="block text-sm font-bold popping">Mot de passe</label>
+          <div class="col-span-6 sm:col-span-3">
+            <label for="password" class="block text-sm font-semibold popping">Mot de passe</label>
             <input
               [ngClass]=" (password?.dirty || password?.touched) && password?.invalid && password?.errors?.required ? 'border-red-500' : 'border-blue-100'"
               type="password" placeholder="Votre mot de passe" name="password" id="password" autocomplete="password"
@@ -135,6 +154,18 @@
             <span class="text-red-600"
               *ngIf="(password?.dirty || password?.touched) && password?.invalid && password?.errors?.required">
               Mot de passe Obligatoire.
+            </span>
+          </div>
+          <div class="col-span-6 sm:col-span-3">
+            <label for="cpassword" class="block text-sm font-semibold popping">Confirmer votre mot de passe</label>
+            <input
+              [ngClass]=" (cpassword?.dirty || cpassword?.touched) && cpassword?.invalid && cpassword?.errors?.required ? 'border-red-500' : 'border-blue-100'"
+              type="password" placeholder="Confirmer votre mot de passe" name="cpassword" id="cpassword"
+              autocomplete="password" formControlName="cpassword"
+              class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
+            <span class="text-red-600"
+              *ngIf="(cpassword?.dirty || cpassword?.touched) && cpassword?.invalid && cpassword?.errors?.required">
+              Champ Obligatoire.
             </span>
           </div>
         </div>

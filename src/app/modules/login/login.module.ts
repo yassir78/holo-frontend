@@ -9,6 +9,8 @@ import { loginReducer } from './state/login.reducer';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { LoginEffects } from './state/login.effect';
+import { SharedModule } from '../shared/shared.module';
+import { AuthService } from 'src/app/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -23,9 +25,11 @@ import { LoginEffects } from './state/login.effect';
       "login", loginReducer
     ),
     EffectsModule.forFeature([LoginEffects]),
-    FormsModule
-    ], 
-  providers:[]
+    FormsModule,
+    SharedModule,
+
+  ],
+  providers: [AuthService]
 
 })
 export class LoginModule { }

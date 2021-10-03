@@ -23,6 +23,6 @@ import { RemetteurEffect } from './state/remetteur.effect';
       "remetteur", remetteurReducer
     ),
     EffectsModule.forFeature([RemetteurEffect]),
-  ]
+  ],
 })
 export class LocataireRegisterModule { }

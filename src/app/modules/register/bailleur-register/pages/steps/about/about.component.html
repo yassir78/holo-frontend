@@ -139,12 +139,22 @@
     <div class="col-span-6 sm:col-span-3">
       <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
       <input
-        [ngClass]=" (email?.dirty || email?.touched) && email?.invalid && email?.errors?.required ? 'border-red-500' : 'border-blue-100'"
+        [ngClass]=" ((email?.dirty || email?.touched) && email?.invalid && email?.errors?.required) || (email?.errors?.unique) ? 'border-red-500' : 'border-blue-100'"
         type="email" placeholder="Votre adresse email" name="email" id="email" autocomplete="email"
         formControlName="email"
         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
-      <span class="text-red-600" *ngIf="(email?.dirty || email?.touched) && email?.invalid && email?.errors?.required">
+      <span class="text-red-600 mt-2"
+        *ngIf="(email?.dirty || email?.touched) && email?.invalid && email?.errors?.required">
         Email Obligatoire.
+      </span>
+      <span class="text-blue-400 flex mt-2" *ngIf="email?.pending">
+        <span>vérification de l'authenticité</span>
+        <div class="ml-10 mt-2">
+          <div class="dot-pulse"></div>
+        </div>
+      </span>
+      <span class="text-red-600 mt-2" *ngIf="email?.errors?.unique">
+        email déjà utilisé
       </span>
     </div>
     <div class="col-span-6 sm:col-span-3">

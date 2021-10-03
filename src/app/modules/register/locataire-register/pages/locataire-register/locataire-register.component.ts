@@ -9,6 +9,8 @@ import * as RemetteurActions from "../../state/remetteur.action";
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { getUser } from '../../state/remetteur.selector';
+import { existingEmailValidator } from 'src/app/validators/UserValidatos';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-locataire-register',
@@ -29,12 +31,13 @@ export class LocataireRegisterComponent implements OnInit {
     birth: new FormControl('', Validators.required),
     profileImage: new FormControl(''),
     phoneNumber: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required)
-
-
+    email: new FormControl('', Validators.required, existingEmailValidator(this.authService)),
+    password: new FormControl('', Validators.required),
+    cpassword: new FormControl('', Validators.required),
   })
-  constructor(private uploadFileService:UploadFileService, private store: Store<RemetteurRegisterState>, private router:Router) { }
+  constructor(private uploadFileService: UploadFileService,
+    private store: Store<RemetteurRegisterState>,
+    private router: Router, private authService: AuthService) { }
 
 
   get genre() {
@@ -44,7 +47,9 @@ export class LocataireRegisterComponent implements OnInit {
   get password() {
     return this.registerForm.get('password');
   }
-
+  get cpassword() {
+    return this.registerForm.get('cpassword');
+  }
   get firstName() {
     return this.registerForm.get('firstName');
   }
@@ -65,7 +70,7 @@ export class LocataireRegisterComponent implements OnInit {
     this.user = this.store.select(getUser);
   }
 
-  
+
   onFileSelected(event: any) {
     if (event.target.files[0]) {
       this.file = event.target.files[0];
@@ -81,40 +86,47 @@ export class LocataireRegisterComponent implements OnInit {
             this.progress$.next(Math.round(100 * evt.loaded / evt.total));
           }
         }
-         else if (evt instanceof HttpResponse) {
-           /* @ts-ignore*/
-            this.profileImgUrl = evt.body.Location;
-            console.log(this.profileImgUrl)
-          }
-     
-        
+        else if (evt instanceof HttpResponse) {
+          /* @ts-ignore*/
+          this.profileImgUrl = evt.body.Location;
+          console.log(this.profileImgUrl)
+        }
+
+
       }, error => {
         console.log(error)
       })
 
     }
-    
+
   }
 
 
 
   register() {
-    this.store.dispatch(RemetteurActions.register({
-      gender: this.genre?.value,
-      birth: new Date(this.birth?.value),
-      email: this.email?.value,
-      firstName: this.firstName?.value,
-      lastName: this.lastName?.value,
-      profileImage: this.profileImgUrl,
-      phoneNumber: this.phoneNumber?.value,
-      password: this.password?.value,
-      roles: ["LOCATAIRE"]
-    }))
-    this.user.subscribe(user => {
-      this.store.dispatch(RemetteurActions.remetteurRegister({ user: user }))
-    })
-    this.router.navigate(['/login'])
-    
+    if (this.password?.value != this.cpassword?.value) {
+      this.password?.setErrors({ 'inv': true })
+      window.scroll(0, 0);
+
+    } else {
+      this.store.dispatch(RemetteurActions.register({
+        gender: this.genre?.value,
+        birth: new Date(this.birth?.value),
+        email: this.email?.value,
+        firstName: this.firstName?.value,
+        lastName: this.lastName?.value,
+        profileImage: this.profileImgUrl,
+        phoneNumber: this.phoneNumber?.value,
+        password: this.password?.value,
+        roles: ["LOCATAIRE"]
+      }))
+      this.user.subscribe(user => {
+        this.store.dispatch(RemetteurActions.remetteurRegister({ user: user }))
+      })
+      this.router.navigate(['/login'])
+    }
+
+
   }
 
 

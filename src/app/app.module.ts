@@ -11,11 +11,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { UploadFileService } from './services/uploadFileService';
-import { LazyLoadImageModule } from 'ng-lazyload-image'; // <-- import it
-
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +34,7 @@ import { LazyLoadImageModule } from 'ng-lazyload-image'; // <-- import it
       maxAge: 10
     }),
     HttpClientModule,
-    LazyLoadImageModule
+    LazyLoadImageModule,
   ],
 
   providers: [UploadFileService],

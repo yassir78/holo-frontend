@@ -30,6 +30,8 @@
     "@ngrx/store": "^12.3.0",
     "@ngrx/store-devtools": "^12.3.0",
     "@sweetalert2/ngx-sweetalert2": "^10.0.0",
+    "@types/gapi": "0.0.41",
+    "@types/gapi.auth2": "0.0.54",
     "animate.css": "^4.1.1",
     "aws-sdk": "^2.977.0",
     "lodash": "^4.17.21",

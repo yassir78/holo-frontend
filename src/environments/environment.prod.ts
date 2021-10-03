@@ -7,4 +7,5 @@ export const environment = {
   awsAccesskeyID: "AKIA2EE4YWSIR7KVQBEN",
   awsSecretAccessKey: "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",
   awsRegion: "eu-west-3",
+  GOOGLE_AUTH_CLIENT_ID: "533176511985-g3j59borg8g7np1t9ks6u814b2hnf6nv.apps.googleusercontent.com"
 };

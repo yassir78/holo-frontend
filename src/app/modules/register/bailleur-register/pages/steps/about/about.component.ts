@@ -10,7 +10,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Bailleur } from 'src/app/models/bailleur';
 import { getUser } from '../../../state/bailleur.selector';
 import { formatDate } from '@angular/common';
-
+import { AuthService } from 'src/app/services/auth.service';
+import { existingEmailValidator } from 'src/app/validators/UserValidatos';
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -37,10 +38,10 @@ export class AboutComponent implements OnInit {
     cpassword: new FormControl('', Validators.required),
     maritalStatus: new FormControl('Célibataire', Validators.required),
     phoneNumber: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required)
+    email: new FormControl('', Validators.required, existingEmailValidator(this.authService))
 
   })
-  constructor(private router: Router, private store: Store<bailleurRegisterState>, private uploadFileService: UploadFileService,) { }
+  constructor(private router: Router, private store: Store<bailleurRegisterState>, private uploadFileService: UploadFileService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.bailleur$ = this.store.select(getUser);
