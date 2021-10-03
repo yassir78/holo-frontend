@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
@@ -27,6 +27,10 @@ export class NavbarComponent implements OnInit {
   navbarState: string = 'in';
   addMenu: string = 'true';
   notification: string = 'true';
+  defaultImage = 'https://miro.medium.com/max/441/1*9EBHIOzhE1XfMYoKz1JcsQ.gif';
+
+  /* @ts-ignore */
+  @Input() profileImage: string;
   constructor(private eRef: ElementRef) { }
 
   ngOnInit(): void {
@@ -39,7 +43,9 @@ export class NavbarComponent implements OnInit {
       this.addMenu = 'true';
     }
   }
-
+  onImageLoad() {
+    console.log(" m loading")
+  }
   openNotificationMenu() {
     this.addMenu = 'true';
     this.notification = this.notification == 'true' ? 'false' : 'true';

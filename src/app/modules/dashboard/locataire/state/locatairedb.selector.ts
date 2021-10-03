@@ -7,11 +7,14 @@ const getLocataireDashboardState = createFeatureSelector<locataireDashboardState
 export const getGoods = createSelector(getLocataireDashboardState, (state) => {
     return state.goods;
 })
+export const getLoggedInLocaitaire = createSelector(getLocataireDashboardState, (state) => {
+    return state?.loggedLocataire;
+})
 export const getLoading = createSelector(getLocataireDashboardState, (state) => {
-    return state.isLoading;
+    return state?.isLoading;
 })
 export const getSelectedGood = createSelector(getLocataireDashboardState, (state) => {
-    return state.selectedGood;
+    return state?.selectedGood;
 })
 export const areGoodsLoaded = createSelector(getLocataireDashboardState, (state) => {
     return state.isLoading;

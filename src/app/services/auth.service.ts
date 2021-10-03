@@ -4,6 +4,8 @@ import { Observable, ReplaySubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { GoogleAuthDto } from '../models/dtos/googleAuthDto';
 import { User } from '../models/user';
+import { JwtTokenService } from './jwt-token.service';
+import { LocalStorageService } from './local-storage.service';
 declare var gapi: any;
 interface Payload {
   email: string;
@@ -16,7 +18,7 @@ export class AuthService {
   /* @ts-ignore */
   private auth2: gapi.auth2.GoogleAuth;
   private subject = new ReplaySubject<gapi.auth2.GoogleUser>(1);
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private localStorageService: LocalStorageService, private jwtTokenService: JwtTokenService) {
     gapi.load('auth2', () => {
       this.auth2 = gapi.auth2.init({
         client_id: environment.GOOGLE_AUTH_CLIENT_ID,
@@ -25,33 +27,24 @@ export class AuthService {
 
   }
   loginWithGoogle() {
-    this.auth2.signIn({
-      scope: 'email profile openid'
-    }).then(user => {
-      const googleAuthDto: GoogleAuthDto = {} as GoogleAuthDto;
-      /* @ts-ignore */
-      googleAuthDto.token = user.$b.access_token;
-      /* @ts-ignore */
-      console.log(user.$b.access_token)
-      /* @ts-ignore */
-      if (this.auth2.isSignedIn.get()) {
-        var profile = this.auth2.currentUser.get().getBasicProfile();
-        googleAuthDto.profil = {
-          firstName: profile.getGivenName(),
-          lastName: profile.getFamilyName(),
-          profileImage: profile.getImageUrl(),
-          email: profile.getEmail()git a
-        }
-      }
-      this.http.post(`${this.API}/google-authentication/`, googleAuthDto).subscribe(result => {
-        console.log(result)
-      })
-      this.subject.next(user);
-    }).catch(() => {
-      /* @ts-ignore */
-      this.subject.next(null);
-    })
+    return this.auth2.signIn();
 
+  }
+  persistLoggedUserWithGoogle(googleAuthDto: GoogleAuthDto) {
+
+    return this.http.post(`${this.API}/google-authentication/`, googleAuthDto);
+  }
+  getGoogleUserDetails() {
+    if (this.auth2.isSignedIn.get()) {
+      var profile = this.auth2.currentUser.get().getBasicProfile();
+      return {
+        firstName: profile.getGivenName(),
+        lastName: profile.getFamilyName(),
+        profileImage: profile.getImageUrl(),
+        email: profile.getEmail()
+      }
+    }
+    return null
   }
   signOutWithGoogle() {
     this.auth2.signOut()
@@ -68,6 +61,13 @@ export class AuthService {
   }
   findByEmail(payload: Payload) {
     return this.http.post(`${this.API}/auth/email`, payload);
+  }
+  findByEmailPayload() {
+    const token = this.localStorageService.get("accessToken");
+    /* @ts-ignore */
+    const email = this.jwtTokenService.getDecodeToken(token).email as string;
+    return this.findByEmail({ email: email });
+
   }
   observable(): Observable<gapi.auth2.GoogleUser> {
     return this.subject.asObservable();

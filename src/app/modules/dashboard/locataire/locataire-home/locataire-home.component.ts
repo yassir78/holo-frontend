@@ -3,8 +3,9 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Good } from 'src/app/models/good';
-import { getAllGoods, selectGood } from '../state/locatairedb.action';
-import { getGoods, getLoading } from '../state/locatairedb.selector';
+import { Remetteur } from 'src/app/models/remetteur';
+import { getAllGoods, getLoggedLocataireInfo, selectGood } from '../state/locatairedb.action';
+import { getGoods, getLoading, getLoggedInLocaitaire } from '../state/locatairedb.selector';
 import { locataireDashboardState } from '../state/locatairedb.state';
 @Component({
   selector: 'locataire-home',
@@ -17,11 +18,13 @@ export class LocataireHomeComponent implements OnInit {
   goods$: Observable<Good[]>;
   /* @ts-ignore */
   loading$: Observable<boolean>;
+
   constructor(private store: Store<locataireDashboardState>, private router: Router) { }
 
   ngOnInit(): void {
     this.loading$ = this.store.select(getLoading);
     this.goods$ = this.store.select(getGoods);
+    this.store.dispatch(getLoggedLocataireInfo())
     this.store.dispatch(getAllGoods());
   }
   goodDetails(good: Good) {

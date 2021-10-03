@@ -11,6 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { LoginEffects } from './state/login.effect';
 import { SharedModule } from '../shared/shared.module';
 import { AuthService } from 'src/app/services/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { AuthService } from 'src/app/services/auth.service';
     SharedModule,
 
   ],
-  providers: [AuthService]
+  providers: [AuthService, CookieService]
 
 })
 export class LoginModule { }

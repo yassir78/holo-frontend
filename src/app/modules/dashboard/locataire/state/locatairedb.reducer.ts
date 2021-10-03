@@ -15,6 +15,12 @@ export const goodsReducer = createReducer(
     }),
     on(LocatairedbActions.selectGood, (state, action) => {
         return { ...state, selectedGood: action.good }
+    }),
+    on(LocatairedbActions.getLoggedLocataireInfoSuccess, (state, action) => {
+        return { ...state, loggedLocataire: action.locataire }
+    }),
+    on(LocatairedbActions.getLoggedLocataireInfoFailure, (state, action) => {
+        return { ...state, error: action.error }
     })
 
 )

@@ -1,18 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { locataireDashboardState } from './state/locatairedb.state';
-import * as LocatairedbActions from "./state/locatairedb.action";
-import { getGoods } from './state/locatairedb.selector';
-import { Good } from 'src/app/models/good';
+import { getLoggedInLocaitaire } from './state/locatairedb.selector';
+import { Remetteur } from 'src/app/models/remetteur';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-locataire',
   templateUrl: './locataire.component.html',
   styleUrls: ['./locataire.component.scss']
 })
 export class LocataireComponent implements OnInit {
-  constructor() { }
+  /* @ts-ignore */
+  loggedLocatiare$: Observable<Remetteur>;
+  constructor(private store: Store<locataireDashboardState>) { }
 
   ngOnInit(): void {
+    this.loggedLocatiare$ = this.store.select(getLoggedInLocaitaire);
+    this.loggedLocatiare$.subscribe(user => {
+      console.log(user);
+    })
+
   }
 
 }

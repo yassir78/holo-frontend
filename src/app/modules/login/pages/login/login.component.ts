@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
   }
   signinWithGoogle() {
     console.log("google login")
-    this.authService.loginWithGoogle();
+    this.store.dispatch(LoginActions.loginWithGoogle())
   }
   continue() {
     this.loginForm.reset();

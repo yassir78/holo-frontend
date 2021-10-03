@@ -10,6 +10,7 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { GetValuesPipePipe } from './pipes/get-values-pipe.pipe';
 import { SplitPipe } from './pipes/split.pipe';
 import { ModalComponent } from './modal/modal.component';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ModalComponent } from './modal/modal.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    LazyLoadImageModule
   ],
   exports: [
     FooterComponent,
