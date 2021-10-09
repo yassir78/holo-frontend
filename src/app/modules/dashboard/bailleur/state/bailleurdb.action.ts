@@ -1,5 +1,6 @@
 import { createAction, props } from "@ngrx/store";
 import { ModifyInstanceAttributeRequest } from "aws-sdk/clients/ec2";
+import { Bailleur } from "src/app/models/bailleur";
 import { DateAndHours } from "src/app/models/datesAndHours";
 import { Good } from "src/app/models/good";
 import { Payslip } from "src/app/models/payslip";
@@ -85,7 +86,7 @@ export const media = createAction(
 export const disponibility = createAction(
     '[Disponibility component] add good infos to state',
     props<{
-        availabilityOfVisit:  DateAndHours[];
+        availabilityOfVisit: DateAndHours[];
     }>()
 )
 export const addGood = createAction(
@@ -97,6 +98,18 @@ export const addGoodSuccess = createAction(
 )
 export const addGoodFailure = createAction(
     '[Good effect] add good process failure',
+    props<{ error: string }>()
+)
+export const getLoggedBailleurInfo = createAction(
+    '[Bailleur  module] get logged bailleur  info',
+)
+export const getLoggedBailleurInfoSuccess = createAction(
+    '[Bailleur  module] get logged bailleur info success',
+    props<{ bailleur: Bailleur }>()
+
+)
+export const getLoggedBailleurInfoFailure = createAction(
+    '[Bailleur  module] get logged bailleur info failure',
     props<{ error: string }>()
 )
 

@@ -7,3 +7,6 @@ const getBailleurDashboardState = createFeatureSelector<bailleurDashboardState>(
 export const getGood = createSelector(getBailleurDashboardState, (state) => {
     return state.good;
 })
+export const getLoggedInBailleur = createSelector(getBailleurDashboardState, (state) => {
+    return state.loggedBailleur;
+})

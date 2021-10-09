@@ -12,10 +12,9 @@ export function existingEmailValidator(authService: AuthService): AsyncValidator
                 findByEmail({ email: control.value })
                 .pipe(
                     debounceTime(2000),
-                    delay(5000)
                 )
                 .subscribe(
-                    (response: any) => (response.user != null ? resolve({ unique: true }) : resolve(null))
+                    (response: any) => (response?.user != null ? resolve({ unique: true }) : resolve(null))
                 )
 
         });

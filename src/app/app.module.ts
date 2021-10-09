@@ -12,6 +12,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { UploadFileService } from './services/uploadFileService';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { emailConfirmationInterceptor } from './Interceptorrs/emailConfirmationInterceptor';
 @NgModule({
   declarations: [
     AppComponent
@@ -37,7 +38,11 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
     LazyLoadImageModule,
   ],
 
-  providers: [UploadFileService],
+  providers: [UploadFileService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: emailConfirmationInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

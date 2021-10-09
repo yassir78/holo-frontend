@@ -6,10 +6,12 @@ export interface bailleurDashboardState {
     good: Good;
     isLoading: boolean;
     error: string;
+    loggedBailleur: Bailleur;
 }
 export const initialBailleurDashboardState: bailleurDashboardState = {
     good: {},
     isLoading: false,
     error: '',
-  
+    loggedBailleur: {}
+
 };

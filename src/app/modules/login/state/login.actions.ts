@@ -12,6 +12,9 @@ export const loginFailure = createAction(
     '[Login Effect] Login Failure',
     props<{ error: string }>()
 );
+export const resetErrorMessage = createAction(
+    '[Login Component] reset error message'
+);
 export const loginWithGoogle = createAction(
     '[Login Component] Login With Google'
 );

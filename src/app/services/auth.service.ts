@@ -60,6 +60,7 @@ export class AuthService {
     return this.http.post(`${this.API}/auth/register`, user);
   }
   findByEmail(payload: Payload) {
+    console.log("i'm the email service method")
     return this.http.post(`${this.API}/auth/email`, payload);
   }
   findByEmailPayload() {

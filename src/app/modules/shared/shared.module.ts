@@ -8,8 +8,7 @@ import { ResponsivenavComponent } from './responsivenav/responsivenav.component'
 import { RouterModule } from '@angular/router';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { GetValuesPipePipe } from './pipes/get-values-pipe.pipe';
-import { SplitPipe } from './pipes/split.pipe';
-import { ModalComponent } from './modal/modal.component';
+import { SplitPipe } from './pipes/split.pipe'
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @NgModule({
@@ -21,8 +20,7 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
     ResponsivenavComponent,
     ProgressBarComponent,
     GetValuesPipePipe,
-    SplitPipe,
-    ModalComponent
+    SplitPipe
   ],
   imports: [
     CommonModule,
@@ -37,8 +35,7 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
     ResponsivenavComponent,
     ProgressBarComponent,
     GetValuesPipePipe,
-    SplitPipe,
-    ModalComponent
+    SplitPipe
   ]
 })
 export class SharedModule { }

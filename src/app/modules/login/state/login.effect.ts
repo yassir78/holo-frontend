@@ -22,9 +22,12 @@ export class LoginEffects {
             mergeMap(action => this.authService.login(action.email, action.password)
                 .pipe(
                     tap(console.log),
-                    map((token) => {
-                        token.user.roles.includes("LOCATAIRE") ? this.router.navigate(['/dashboard/locataire/goods/home']) : this.router.navigate(['/dashboard/bailleur/mygoods']);
-                        return LoginActions.loginSuccess({ token: token.token })
+                    map((userInfo) => {
+                        this.localStorageService.set("accessToken", userInfo.accessToken);
+                        this.localStorageService.set("refreshToken", userInfo.refreshToken);
+                        userInfo.accessToken.includes("LOCATAIRE") ? this.router.navigate(['/dashboard/locataire/goods/home']) : this.router.navigate(['/dashboard/bailleur/mygoods']);
+
+                        return LoginActions.loginSuccess({ token: userInfo.accessToken })
                     }),
                     catchError((response: HttpErrorResponse) => {
                         return of(LoginActions.loginFailure({ error: response.message }));

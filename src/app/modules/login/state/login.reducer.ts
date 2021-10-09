@@ -11,5 +11,10 @@ export const loginReducer = createReducer(
     }),
     on(LoginActions.loginFailure, (state, action) => {
         return { ...state, isAuthenticated: false, errorMessage: "Mot de passe ou email invalid", loginLoading: false }
+    }),
+    on(LoginActions.resetErrorMessage, (state, action) => {
+        {
+            return { ...state, errorMessage: '' }
+        }
     })
 )

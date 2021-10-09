@@ -7,30 +7,32 @@ export const addGoodReducer = createReducer(
     initialBailleurDashboardState,
     on(BailleurdbActions.information, (state, action) => {
         return {
-            ...state, good: { ...state.good,   status: action.status,
+            ...state, good: {
+                ...state.good, status: action.status,
                 agencyName: action.agencyName,
-                agencyForm:action.agencyForm,
+                agencyForm: action.agencyForm,
                 propertyType: action.propertyType,
-                availablity:action.availablity,
+                availablity: action.availablity,
                 state: action.state,
                 zipCode: action.zipCode,
-                address:action.address,
-                livingSpace:action.livingSpace,
-                terraceArea:action.terraceArea,
+                address: action.address,
+                livingSpace: action.livingSpace,
+                terraceArea: action.terraceArea,
                 gardenArea: action.gardenArea
             }
         }
     }),
     on(BailleurdbActions.details, (state, action) => {
         return {
-            ...state, good: { ...state.good,  numberOfPieces: action.numberOfPieces,
+            ...state, good: {
+                ...state.good, numberOfPieces: action.numberOfPieces,
                 numberOfRooms: action.numberOfRooms,
-                numberOfWC:action.numberOfWC,
-                numberOfBathRooms:action.numberOfRooms,
+                numberOfWC: action.numberOfWC,
+                numberOfBathRooms: action.numberOfRooms,
                 numberOfFloors: action.numberOfFloors,
-                FloorOfTheApartment:action.FloorOfTheApartment,
-                yearOfBuilding:action.yearOfBuilding,
-                yearOfRenovation:action.yearOfRenovation,
+                FloorOfTheApartment: action.FloorOfTheApartment,
+                yearOfBuilding: action.yearOfBuilding,
+                yearOfRenovation: action.yearOfRenovation,
                 heatingTypeSystem: action.heatingTypeSystem,
                 environment: action.environment,
                 view: action.view,
@@ -42,7 +44,8 @@ export const addGoodReducer = createReducer(
     }),
     on(BailleurdbActions.price, (state, action) => {
         return {
-            ...state, good: { ...state.good,    grossPrice: action.grossPrice, grossPriceType:action.grossPriceType,
+            ...state, good: {
+                ...state.good, grossPrice: action.grossPrice, grossPriceType: action.grossPriceType,
                 expenses: action.expenses,
                 netPrice: action.netPrice,
                 accessoryFees: action.accessoryFees,
@@ -54,22 +57,25 @@ export const addGoodReducer = createReducer(
     }),
     on(BailleurdbActions.description, (state, action) => {
         return {
-            ...state, good: { ...state.good,     propertyName: action.propertyName,
-                description:action.description
+            ...state, good: {
+                ...state.good, propertyName: action.propertyName,
+                description: action.description
             }
         }
-    }),  
+    }),
     on(BailleurdbActions.media, (state, action) => {
         return {
-            ...state, good: { ...state.good,  
-                mediaFiles:action.mediaFiles, videoFiles:action.videoFiles
+            ...state, good: {
+                ...state.good,
+                mediaFiles: action.mediaFiles, videoFiles: action.videoFiles
             }
         }
     }),
     on(BailleurdbActions.disponibility, (state, action) => {
         return {
-            ...state, good: { ...state.good,  
-                availabilityOfVisit:action.availabilityOfVisit
+            ...state, good: {
+                ...state.good,
+                availabilityOfVisit: action.availabilityOfVisit
             }
         }
     }),
@@ -79,5 +85,11 @@ export const addGoodReducer = createReducer(
     on(BailleurdbActions.addGoodFailure, (state, action) => {
         return { ...state, isLoading: false, error: action.error }
     }),
+    on(BailleurdbActions.getLoggedBailleurInfoSuccess, (state, action) => {
+        return { ...state, loggedBailleur: action.bailleur }
+    }),
+    on(BailleurdbActions.getLoggedBailleurInfoFailure, (state, action) => {
+        return { ...state, error: action.error }
+    })
 
 )

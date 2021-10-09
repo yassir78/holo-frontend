@@ -30,6 +30,7 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictPropertyInitialization": false,
+    "useUnknownInCatchVariables": false,
     "types" : ["node","gapi", "gapi.auth2"],
     "strictTemplates": true
   }
